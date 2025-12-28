@@ -4,13 +4,10 @@
  */
 export function getFaviconUrl(websiteUrl: string, size: number = 32): string {
   try {
-    const url = new URL(websiteUrl);
-    const domain = url.hostname;
-
     // Use Google's high-quality favicon V2 service
     // Falls back to default icon if not found
     return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(websiteUrl)}&size=${size}`;
-  } catch (error) {
+  } catch {
     // Fallback for invalid URLs
     return `https://www.google.com/s2/favicons?domain=${websiteUrl}&sz=${size}`;
   }
@@ -23,7 +20,7 @@ export function getDomain(websiteUrl: string): string {
   try {
     const url = new URL(websiteUrl);
     return url.hostname.replace("www.", "");
-  } catch (error) {
+  } catch {
     return websiteUrl;
   }
 }
