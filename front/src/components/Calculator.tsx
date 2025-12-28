@@ -18,13 +18,6 @@ interface Recommendation {
   isPAYG: boolean; // Pay-as-you-go flexibility
 }
 
-interface FallbackProvider {
-  provider: string;
-  provider_id: string;
-  pricing_model: string;
-  website_url: string;
-}
-
 const recommendations = computed(() => {
   const gb = bandwidth.value;
   const type = proxyType.value;
