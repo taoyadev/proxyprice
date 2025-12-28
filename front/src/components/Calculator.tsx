@@ -6,6 +6,15 @@ import providersData from "../data/providers.json";
 const bandwidth = signal(50);
 const proxyType = signal("residential");
 
+// Get Google Favicon URL for a provider
+const getFaviconUrl = (websiteUrl: string, size: number = 32): string => {
+  try {
+    return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(websiteUrl)}&size=${size}`;
+  } catch (error) {
+    return `https://www.google.com/s2/favicons?domain=${websiteUrl}&sz=${size}`;
+  }
+};
+
 interface Recommendation {
   provider: string;
   proxyType: string;
@@ -13,6 +22,7 @@ interface Recommendation {
   pricePerGb: number;
   tierLabel: string;
   provider_id: string;
+  website_url: string;
   reason: string; // Why this provider is recommended
   isBestValue: boolean; // Lowest cost for this tier
   isPAYG: boolean; // Pay-as-you-go flexibility
@@ -70,6 +80,10 @@ const recommendations = computed(() => {
         reason = `Best rate for ${gb}GB usage`;
       }
 
+      const providerData = providersData.providers.find(
+        (p) => p.id === pricing.provider_id,
+      );
+
       recs.push({
         provider: pricing.provider_name,
         proxyType: pricing.proxy_type,
@@ -77,6 +91,7 @@ const recommendations = computed(() => {
         pricePerGb: bestTier.price_per_gb,
         tierLabel,
         provider_id: pricing.provider_id,
+        website_url: providerData?.website_url || "",
         reason,
         isBestValue: false, // Will be set below
         isPAYG,
@@ -201,7 +216,18 @@ const Calculator: FunctionalComponent = () => {
               {rec.isBestValue && (
                 <div class="best-value-badge">Best Value</div>
               )}
-              <div class="rec-rank">#{idx + 1}</div>
+              <div class="rec-header">
+                {rec.website_url && (
+                  <img
+                    src={getFaviconUrl(rec.website_url, 32)}
+                    alt={`${rec.provider} favicon`}
+                    class="rec-favicon"
+                    width="32"
+                    height="32"
+                  />
+                )}
+                <div class="rec-rank">#{idx + 1}</div>
+              </div>
               <div class="rec-details">
                 <h4>
                   <a href={`/provider/${rec.provider_id}`}>{rec.provider}</a>

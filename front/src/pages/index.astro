@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import providersData from '../data/providers.json';
 import pricingData from '../data/pricing.json';
+import { getFaviconUrl } from '../lib/favicon';
 
 const comparableProviders = providersData.providers.filter(p => p.cheapest_price_per_gb !== null);
 const cheapestProvider = comparableProviders[0];
@@ -55,6 +56,13 @@ const countByType = (type: string) => {
       <div class="container">
         <div class="highlight-card">
           <span class="highlight-badge">Cheapest Overall</span>
+          <img
+            src={getFaviconUrl(cheapestProvider.website_url, 64)}
+            alt={`${cheapestProvider.name} favicon`}
+            class="highlight-favicon"
+            width="64"
+            height="64"
+          />
           <h2>{cheapestProvider.name}</h2>
           <p class="highlight-price">
             Starting at <strong>${cheapestProvider.cheapest_price_per_gb?.toFixed(2)}/GB</strong>
@@ -261,6 +269,12 @@ const countByType = (type: string) => {
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .highlight-favicon {
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
   }
 

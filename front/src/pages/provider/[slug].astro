@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import providersData from '../../data/providers.json';
 import pricingData from '../../data/pricing.json';
 import { SITE_NAME } from '../../lib/site';
+import { getFaviconUrl } from '../../lib/favicon';
 
 export async function getStaticPaths() {
   return providersData.providers.map(provider => ({
@@ -95,7 +96,16 @@ const topAlternatives = (type: string, count = 5) => {
     </nav>
 
     <div class="provider-header">
-      <h1>{provider.name}</h1>
+      <div class="provider-title">
+        <img
+          src={getFaviconUrl(provider.website_url, 64)}
+          alt={`${provider.name} favicon`}
+          class="provider-favicon"
+          width="64"
+          height="64"
+        />
+        <h1>{provider.name}</h1>
+      </div>
       {provider.trial_offer && (
         <div class="trial-banner">
           <span class="trial-icon">🎁</span>
@@ -330,7 +340,16 @@ const topAlternatives = (type: string, count = 5) => {
                 <div class="alt-list">
                   {topAlternatives(type).map((p) => (
                     <a class="alt-item" href={`/provider/${p.slug}`}>
-                      <span class="alt-name">{p.name}</span>
+                      <div class="alt-info">
+                        <img
+                          src={getFaviconUrl(p.website_url, 24)}
+                          alt={`${p.name} favicon`}
+                          class="alt-favicon"
+                          width="24"
+                          height="24"
+                        />
+                        <span class="alt-name">{p.name}</span>
+                      </div>
                       {p.cheapest_price_per_gb ? (
                         <span class="alt-price">${p.cheapest_price_per_gb.toFixed(2)}/GB</span>
                       ) : (
@@ -422,6 +441,19 @@ const topAlternatives = (type: string, count = 5) => {
 	  .provider-header {
 	    text-align: center;
 	    margin-bottom: 3rem;
+	  }
+
+	  .provider-title {
+	    display: flex;
+	    align-items: center;
+	    justify-content: center;
+	    gap: 1rem;
+	    margin-bottom: 1rem;
+	  }
+
+	  .provider-favicon {
+	    border-radius: 0.5rem;
+	    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	  }
 
 	  .breadcrumbs ol {
@@ -666,6 +698,17 @@ const topAlternatives = (type: string, count = 5) => {
 	  .alt-item:hover {
 	    border-color: var(--color-primary);
 	    text-decoration: none;
+	  }
+
+	  .alt-info {
+	    display: flex;
+	    align-items: center;
+	    gap: 0.75rem;
+	  }
+
+	  .alt-favicon {
+	    border-radius: 0.375rem;
+	    flex-shrink: 0;
 	  }
 
 	  .alt-name {

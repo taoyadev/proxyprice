@@ -1,6 +1,7 @@
 ---
 import providersData from '../data/providers.json';
 import pricingData from '../data/pricing.json';
+import { getFaviconUrl } from '../lib/favicon';
 
 interface Props {
   proxyType?: string;
@@ -147,7 +148,14 @@ const getModelLabel = (model: string) => {
             >
               <td class="provider-name">
                 <a href={`/provider/${provider.slug}`} class="provider-link">
-                  {provider.name}
+                  <img
+                    src={getFaviconUrl(provider.website_url, 20)}
+                    alt={`${provider.name} favicon`}
+                    class="provider-favicon-small"
+                    width="20"
+                    height="20"
+                  />
+                  <span>{provider.name}</span>
                 </a>
               </td>
               <td>
@@ -321,10 +329,18 @@ const getModelLabel = (model: string) => {
 
   .provider-link {
     color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
   }
 
   .provider-link:hover {
     color: var(--color-primary);
+  }
+
+  .provider-favicon-small {
+    border-radius: 0.25rem;
+    flex-shrink: 0;
   }
 
   .proxy-badge {
