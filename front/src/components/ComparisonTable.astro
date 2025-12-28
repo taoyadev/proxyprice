@@ -1,0 +1,591 @@
+---
+import providersData from '../data/providers.json';
+import pricingData from '../data/pricing.json';
+
+interface Props {
+  proxyType?: string;
+  limit?: number;
+  showControls?: boolean;
+}
+
+const { proxyType, limit, showControls = true } = Astro.props;
+const tableId = `comparison-${Math.random().toString(36).slice(2)}`;
+
+const pricingForPage = proxyType
+  ? pricingData.pricing.filter((p) => p.proxy_type === proxyType)
+  : pricingData.pricing;
+
+let filteredPricing = pricingForPage.slice();
+
+// Sort comparable first, then by min $/GB
+filteredPricing.sort((a, b) => {
+  if (a.comparable !== b.comparable) return a.comparable ? -1 : 1;
+  const aPrice = a.min_price_per_gb ?? Infinity;
+  const bPrice = b.min_price_per_gb ?? Infinity;
+  return aPrice - bPrice;
+});
+
+// Limit results if specified
+if (limit) {
+  filteredPricing = filteredPricing.slice(0, limit);
+}
+
+// Get provider details
+const getProvider = (providerId: string) => {
+  return providersData.providers.find(p => p.id === providerId);
+};
+
+const formatPrice = (price: number | null) => {
+  if (price === null) return 'N/A';
+  return `$${price.toFixed(2)}`;
+};
+
+const getProxyTypeLabel = (type: string) => {
+  const labels: Record<string, string> = {
+    residential: 'Residential',
+    datacenter: 'Datacenter',
+    mobile: 'Mobile',
+    isp: 'ISP'
+  };
+  return labels[type] || type;
+};
+
+const getModelLabel = (model: string) => {
+  const labels: Record<string, string> = {
+    per_gb: '$/GB',
+    per_ip: '$/IP',
+    per_proxy: 'per proxy',
+    per_thread: 'per thread',
+    unknown: 'unknown',
+  };
+  return labels[model] || model;
+};
+---
+
+<div class="comparison-table-wrapper" data-table-id={tableId}>
+  <div class="table-controls">
+    <div
+      class="results-count"
+      data-results-count
+      data-suffix={proxyType ? ` for ${getProxyTypeLabel(proxyType)} proxies` : ''}
+    >
+      {(() => {
+        const visible = filteredPricing.filter((p) => p.comparable).length;
+        return (
+          <>
+            Showing {visible} provider{visible !== 1 ? 's' : ''}
+            {proxyType && ` for ${getProxyTypeLabel(proxyType)} proxies`}
+          </>
+        );
+      })()}
+    </div>
+
+    {showControls && (
+      <div class="filters" data-filters>
+        <input
+          class="filter-input"
+          type="search"
+          placeholder="Search providers…"
+          aria-label="Search providers"
+          data-filter="search"
+        />
+
+        {!proxyType && (
+          <select class="filter-select" aria-label="Proxy type" data-filter="type">
+            <option value="all">All types</option>
+            <option value="residential">Residential</option>
+            <option value="datacenter">Datacenter</option>
+            <option value="mobile">Mobile</option>
+            <option value="isp">ISP</option>
+          </select>
+        )}
+
+        <label class="filter-check">
+          <input type="checkbox" checked data-filter="comparableOnly" />
+          <span>Comparable only</span>
+        </label>
+
+        <label class="filter-check">
+          <input type="checkbox" data-filter="trialOnly" />
+          <span>Trial only</span>
+        </label>
+      </div>
+    )}
+  </div>
+
+  <div class="table-container">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Provider</th>
+          <th>Proxy Type</th>
+          <th>Model</th>
+          <th class="sortable">
+            <button class="sort-btn" data-sort="price">
+              Min $/GB
+              <span class="sort-icon">↕</span>
+            </button>
+          </th>
+          <th>Max $/GB</th>
+          <th>Tiers</th>
+          <th>Trial</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredPricing.map(pricing => {
+          const provider = getProvider(pricing.provider_id);
+          if (!provider) return null;
+
+          return (
+            <tr
+              class="provider-row"
+              data-provider={provider.name.toLowerCase()}
+              data-proxy-type={pricing.proxy_type}
+              data-comparable={pricing.comparable ? '1' : '0'}
+              data-has-trial={provider.trial_offer ? '1' : '0'}
+            >
+              <td class="provider-name">
+                <a href={`/provider/${provider.slug}`} class="provider-link">
+                  {provider.name}
+                </a>
+              </td>
+              <td>
+                <span class={`proxy-badge ${pricing.proxy_type}`}>
+                  {getProxyTypeLabel(pricing.proxy_type)}
+                </span>
+              </td>
+              <td class="model-cell">
+                {pricing.comparable ? (
+                  <span class="model-badge comparable">$/GB</span>
+                ) : (
+                  <span class="model-badge non-comparable">{getModelLabel(pricing.pricing_model)}</span>
+                )}
+              </td>
+              <td class="price-cell">
+                <strong>{formatPrice(pricing.min_price_per_gb)}</strong>
+              </td>
+              <td class="price-cell">
+                {formatPrice(pricing.max_price_per_gb)}
+              </td>
+              <td>{pricing.has_pricing ? `${pricing.tier_count ?? 0} tiers` : 'No data'}</td>
+              <td class="trial-cell">
+                {provider.trial_offer ? (
+                  <span class="trial-badge">{provider.trial_offer}</span>
+                ) : (
+                  <span class="no-trial">-</span>
+                )}
+              </td>
+              <td>
+                <a
+                  href={pricing.price_url || provider.website_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="view-btn"
+                >
+                  View Pricing →
+                </a>
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+
+  {filteredPricing.length === 0 && (
+    <div class="no-results">
+      <p>No pricing data available for this proxy type.</p>
+    </div>
+  )}
+</div>
+
+<style>
+  .comparison-table-wrapper {
+    margin: 2rem 0;
+  }
+
+  .table-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .results-count {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  .filters {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .filter-input {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background: var(--color-bg);
+    color: var(--color-text);
+    min-width: 220px;
+  }
+
+  .filter-select {
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .filter-check {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    user-select: none;
+  }
+
+  .table-container {
+    overflow-x: auto;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-bg);
+  }
+
+  .comparison-table th,
+  .comparison-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .comparison-table thead {
+    background: var(--color-bg-alt);
+  }
+
+  .comparison-table th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+  }
+
+  .sortable {
+    padding: 0;
+  }
+
+  .sort-btn {
+    width: 100%;
+    padding: 1rem;
+    background: none;
+    border: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .sort-btn:hover {
+    background: var(--color-bg);
+  }
+
+  .sort-icon {
+    opacity: 0.5;
+  }
+
+  .provider-row:hover {
+    background: var(--color-bg-alt);
+  }
+
+  .provider-name {
+    font-weight: 600;
+  }
+
+  .provider-link {
+    color: var(--color-text);
+  }
+
+  .provider-link:hover {
+    color: var(--color-primary);
+  }
+
+  .proxy-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .proxy-badge.residential {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  .proxy-badge.datacenter {
+    background: #e0e7ff;
+    color: #4338ca;
+  }
+
+  .proxy-badge.mobile {
+    background: #fce7f3;
+    color: #9f1239;
+  }
+
+  .proxy-badge.isp {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .price-cell {
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+    font-size: 0.875rem;
+  }
+
+  .price-cell strong {
+    color: var(--color-secondary);
+    font-size: 1rem;
+  }
+
+  .model-cell {
+    white-space: nowrap;
+  }
+
+  .model-badge {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+    color: var(--color-text);
+  }
+
+  .model-badge.comparable {
+    border-color: rgba(16, 185, 129, 0.35);
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--color-text);
+  }
+
+  .model-badge.non-comparable {
+    border-color: rgba(245, 158, 11, 0.35);
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--color-text);
+  }
+
+  .provider-row[data-comparable="0"] {
+    display: none;
+  }
+
+  .trial-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background: #fef3c7;
+    color: #92400e;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+  }
+
+  .no-trial {
+    color: var(--color-text-light);
+  }
+
+  .view-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .view-btn:hover {
+    background: var(--color-primary-dark);
+    text-decoration: none;
+  }
+
+  .no-results {
+    padding: 3rem;
+    text-align: center;
+    color: var(--color-text-light);
+  }
+
+  @media (max-width: 768px) {
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .proxy-badge,
+    .trial-badge {
+      font-size: 0.625rem;
+    }
+
+    .view-btn {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.8125rem;
+    }
+
+    .filters {
+      justify-content: flex-start;
+    }
+
+    .filter-input {
+      min-width: 180px;
+      width: 100%;
+    }
+  }
+</style>
+
+<script is:inline define:vars={{ tableId }}>
+  const wrapper = document.querySelector(`[data-table-id="${tableId}"]`);
+  if (wrapper) {
+    const tbody = wrapper.querySelector('tbody');
+    const rows = tbody ? Array.from(tbody.querySelectorAll('tr')) : [];
+    const results = wrapper.querySelector('[data-results-count]');
+
+    const searchInput = wrapper.querySelector('[data-filter="search"]');
+    const typeSelect = wrapper.querySelector('[data-filter="type"]');
+    const comparableOnly = wrapper.querySelector('[data-filter="comparableOnly"]');
+    const trialOnly = wrapper.querySelector('[data-filter="trialOnly"]');
+
+    const applyFilters = () => {
+      const q = (searchInput && searchInput.value ? searchInput.value : '').trim().toLowerCase();
+      const type = typeSelect && typeSelect.value ? typeSelect.value : 'all';
+      const comparable = comparableOnly ? comparableOnly.checked : true;
+      const trial = trialOnly ? trialOnly.checked : false;
+
+      let visible = 0;
+      for (const row of rows) {
+        const provider = row.dataset.provider || '';
+        const rowType = row.dataset.proxyType || '';
+        const isComparable = row.dataset.comparable !== '0';
+        const hasTrial = row.dataset.hasTrial === '1';
+
+        const matches =
+          (!q || provider.includes(q)) &&
+          (type === 'all' || rowType === type) &&
+          (!comparable || isComparable) &&
+          (!trial || hasTrial);
+
+        row.style.display = matches ? 'table-row' : 'none';
+        if (matches) visible += 1;
+      }
+
+      if (results) {
+        const suffix = results.dataset.suffix || '';
+        const total = rows.length;
+        results.textContent = `Showing ${visible} of ${total} provider${total !== 1 ? 's' : ''}${suffix}`;
+      }
+    };
+
+    const syncUrlParams = () => {
+      const params = new URLSearchParams(window.location.search);
+
+      const q = searchInput ? searchInput.value.trim() : '';
+      const type = typeSelect ? typeSelect.value : 'all';
+      const comparable = comparableOnly ? comparableOnly.checked : true;
+      const trial = trialOnly ? trialOnly.checked : false;
+
+      if (q) params.set('q', q);
+      else params.delete('q');
+
+      if (type && type !== 'all') params.set('type', type);
+      else params.delete('type');
+
+      if (comparable === false) params.set('comparable', '0');
+      else params.delete('comparable');
+
+      if (trial === true) params.set('trial', '1');
+      else params.delete('trial');
+
+      const next = params.toString();
+      const url = next ? `${window.location.pathname}?${next}` : window.location.pathname;
+      window.history.replaceState(null, '', url);
+    };
+
+    const bind = (el, event) =>
+      el &&
+      el.addEventListener(event, () => {
+        applyFilters();
+        syncUrlParams();
+      });
+
+    bind(searchInput, 'input');
+    bind(typeSelect, 'change');
+    bind(comparableOnly, 'change');
+    bind(trialOnly, 'change');
+
+    // Simple table sorting (scoped)
+    wrapper.querySelectorAll('.sort-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const table = btn.closest('table');
+        if (!table) return;
+
+        const tBody = table.querySelector('tbody');
+        if (!tBody) return;
+
+        const allRows = Array.from(tBody.querySelectorAll('tr'));
+        const sortField = btn.dataset.sort;
+        const ascending = btn.dataset.order !== 'asc';
+
+        allRows.sort((a, b) => {
+          if (sortField === 'price') {
+            const aCellText = a.querySelector('.price-cell strong')?.textContent || '';
+            const bCellText = b.querySelector('.price-cell strong')?.textContent || '';
+
+            const aVal = parseFloat(aCellText.replace(/[$,]/g, '')) || Infinity;
+            const bVal = parseFloat(bCellText.replace(/[$,]/g, '')) || Infinity;
+            return ascending ? aVal - bVal : bVal - aVal;
+          }
+
+          return 0;
+        });
+
+        allRows.forEach((row) => tBody.appendChild(row));
+
+        btn.dataset.order = ascending ? 'asc' : 'desc';
+        const icon = btn.querySelector('.sort-icon');
+        if (icon) {
+          icon.textContent = ascending ? '↑' : '↓';
+        }
+
+        applyFilters();
+        syncUrlParams();
+      });
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    if (searchInput && params.get('q')) searchInput.value = params.get('q');
+    if (typeSelect && params.get('type')) typeSelect.value = params.get('type');
+    if (comparableOnly && params.get('comparable') === '0') comparableOnly.checked = false;
+    if (trialOnly && params.get('trial') === '1') trialOnly.checked = true;
+
+    applyFilters();
+  }
+</script>

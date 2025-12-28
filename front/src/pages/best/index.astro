@@ -1,0 +1,114 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import pricingData from "../../data/pricing.json";
+import { SITE_NAME } from "../../lib/site";
+
+const breadcrumbs = [
+  { name: SITE_NAME, url: new URL("/", Astro.site).toString() },
+  { name: "Best Providers", url: new URL("/best/", Astro.site).toString() },
+];
+---
+
+<BaseLayout
+  title="Best Proxy Providers"
+  description={`Best proxy providers by category (comparable $/GB only). Updated ${pricingData.last_updated}.`}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>Best Proxy Providers</h1>
+      <p class="page-subtitle">
+        Category pages that rank providers with comparable <strong>$/GB</strong> pricing. Updated {pricingData.last_updated}.
+      </p>
+    </header>
+
+    <div class="grid">
+      <a class="card" href="/best/residential-proxies">
+        <h2>Best Residential Proxies</h2>
+        <p>Ranked by lowest min $/GB (comparable only).</p>
+      </a>
+      <a class="card" href="/best/datacenter-proxies">
+        <h2>Best Datacenter Proxies</h2>
+        <p>Bandwidth-priced providers ranked by min $/GB.</p>
+      </a>
+      <a class="card" href="/best/mobile-proxies">
+        <h2>Best Mobile Proxies</h2>
+        <p>Comparable $/GB rankings for mobile proxy offerings.</p>
+      </a>
+      <a class="card" href="/best/isp-proxies">
+        <h2>Best ISP Proxies</h2>
+        <p>Comparable $/GB rankings for ISP proxies.</p>
+      </a>
+    </div>
+
+    <section class="content">
+      <h2>Important note</h2>
+      <p>
+        These pages intentionally exclude non-comparable pricing models (per IP / per proxy / per thread).
+        To include everything, use <a href="/providers">All Providers</a> and disable “Comparable only”.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 900px;
+    margin: 1rem auto 0;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .card {
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    background: var(--color-bg);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .card:hover {
+    text-decoration: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  }
+
+  .card h2 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card p {
+    color: var(--color-text-light);
+  }
+
+  .content {
+    max-width: 900px;
+    margin: 2.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-light);
+  }
+
+  @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

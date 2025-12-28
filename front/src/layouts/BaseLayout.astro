@@ -1,0 +1,390 @@
+---
+import type { HTMLAttributes } from 'astro/types';
+import { DATA_LAST_UPDATED, FEEDBACK_URL, SITE_NAME, SITE_URL } from '../lib/site';
+
+interface Props extends HTMLAttributes<'html'> {
+  title: string;
+  description: string;
+  image?: string;
+  noindex?: boolean;
+  dataLastUpdated?: string;
+  breadcrumbs?: { name: string; url: string }[];
+}
+
+const {
+  title,
+  description,
+  image = '/og-image.svg',
+  noindex = false,
+  dataLastUpdated = DATA_LAST_UPDATED,
+  breadcrumbs = [],
+  ...attrs
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const siteTitle = `${SITE_NAME} - Compare Proxy Provider Pricing`;
+const fullTitle = title === 'Home' ? siteTitle : `${title} | ${SITE_NAME}`;
+
+const schemaGraph: any[] = [
+  {
+    "@type": "Organization",
+    "@id": `${SITE_URL}#organization`,
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+  {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}#website`,
+    name: SITE_NAME,
+    url: SITE_URL,
+    inLanguage: "en",
+  },
+  {
+    "@type": "WebPage",
+    name: fullTitle,
+    url: canonicalURL.toString(),
+    isPartOf: { "@id": `${SITE_URL}#website` },
+  },
+];
+
+if (breadcrumbs.length >= 2) {
+  const breadcrumbId = `${canonicalURL.toString()}#breadcrumb`;
+  schemaGraph.push({
+    "@type": "BreadcrumbList",
+    "@id": breadcrumbId,
+    itemListElement: breadcrumbs.map((b, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: b.name,
+      item: b.url,
+    })),
+  });
+
+  (schemaGraph.find((n) => n["@type"] === "WebPage") as any).breadcrumb = { "@id": breadcrumbId };
+}
+---
+
+<!doctype html>
+<html lang="en" {...attrs}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site)} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={fullTitle} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL(image, Astro.site)} />
+
+    {noindex && <meta name="robots" content="noindex,nofollow" />}
+
+    <meta name="generator" content={Astro.generator} />
+	    <script is:inline
+	      type="application/ld+json"
+	      set:html={JSON.stringify({
+	        "@context": "https://schema.org",
+	        "@graph": schemaGraph,
+	      })}
+	    />
+
+    <style is:global>
+      :root {
+        --color-primary: #3b82f6;
+        --color-primary-dark: #2563eb;
+        --color-secondary: #10b981;
+        --color-accent: #f59e0b;
+        --color-text: #1f2937;
+        --color-text-light: #6b7280;
+        --color-bg: #ffffff;
+        --color-bg-alt: #f9fafb;
+        --color-border: #e5e7eb;
+        --max-width: 1280px;
+        --spacing: 1rem;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --color-text: #f9fafb;
+          --color-text-light: #d1d5db;
+          --color-bg: #111827;
+          --color-bg-alt: #1f2937;
+          --color-border: #374151;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        background: var(--color-bg);
+        color: var(--color-text);
+        line-height: 1.6;
+      }
+
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+        line-height: 1.2;
+        font-weight: 700;
+      }
+
+      h1 { font-size: 2.5rem; }
+      h2 { font-size: 2rem; }
+      h3 { font-size: 1.5rem; }
+
+      a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      button {
+        cursor: pointer;
+        font-family: inherit;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 0 var(--spacing);
+      }
+
+      @media (max-width: 768px) {
+        h1 { font-size: 2rem; }
+        h2 { font-size: 1.75rem; }
+        h3 { font-size: 1.25rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <header class="header">
+      <nav class="container nav">
+        <a href="/" class="logo">
+          <span class="logo-icon">💰</span>
+          <span class="logo-text">ProxyPrice</span>
+        </a>
+	        <ul class="nav-links">
+	          <li><a href="/residential">Residential</a></li>
+	          <li><a href="/datacenter">Datacenter</a></li>
+	          <li><a href="/mobile">Mobile</a></li>
+	          <li><a href="/isp">ISP</a></li>
+	          <li><a href="/best">Best</a></li>
+	          <li><a href="/providers">Providers</a></li>
+	          <li><a href="/calculator" class="nav-cta">Calculator</a></li>
+	        </ul>
+      </nav>
+    </header>
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <div class="footer-section">
+          <h4>ProxyPrice</h4>
+          <p>The definitive proxy price comparison platform. Compare 40+ providers and find the best deal for your needs.</p>
+        </div>
+        <div class="footer-section">
+          <h4>Proxy Types</h4>
+          <ul>
+            <li><a href="/residential">Residential Proxies</a></li>
+            <li><a href="/datacenter">Datacenter Proxies</a></li>
+            <li><a href="/mobile">Mobile Proxies</a></li>
+            <li><a href="/isp">ISP Proxies</a></li>
+          </ul>
+        </div>
+	        <div class="footer-section">
+	          <h4>Tools</h4>
+	          <ul>
+	            <li><a href="/calculator">Price Calculator</a></li>
+	            <li><a href="/best">Best Providers</a></li>
+	            <li><a href="/providers">All Providers</a></li>
+	          </ul>
+	        </div>
+	        <div class="footer-section">
+	          <h4>Resources</h4>
+	          <ul>
+	            <li><a href="/about">About</a></li>
+	            <li><a href="/methodology">Methodology</a></li>
+	            {FEEDBACK_URL && <li><a href={FEEDBACK_URL}>Report a Correction</a></li>}
+	          </ul>
+	        </div>
+	      </div>
+      <div class="container footer-bottom">
+        <p>&copy; {new Date().getFullYear()} {SITE_NAME}. Data updated {dataLastUpdated}.</p>
+      </div>
+    </footer>
+
+    <style>
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        background: var(--color-bg);
+        color: var(--color-text);
+        border: 1px solid var(--color-border);
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        z-index: 200;
+      }
+
+      .skip-link:focus {
+        left: 1rem;
+        top: 1rem;
+      }
+
+      .header {
+        background: var(--color-bg);
+        border-bottom: 1px solid var(--color-border);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(10px);
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-text);
+        text-decoration: none;
+      }
+
+      .logo:hover {
+        text-decoration: none;
+      }
+
+      .logo-icon {
+        font-size: 1.75rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: var(--color-text);
+        font-weight: 500;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .nav-cta {
+        background: var(--color-primary);
+        color: white !important;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+      }
+
+      .nav-cta:hover {
+        background: var(--color-primary-dark);
+      }
+
+      .footer {
+        background: var(--color-bg-alt);
+        border-top: 1px solid var(--color-border);
+        margin-top: 4rem;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h4 {
+        margin-bottom: 1rem;
+        font-size: 1.125rem;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section a {
+        color: var(--color-text-light);
+      }
+
+      .footer-section p {
+        color: var(--color-text-light);
+        font-size: 0.875rem;
+      }
+
+      .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid var(--color-border);
+        text-align: center;
+        color: var(--color-text-light);
+        font-size: 0.875rem;
+      }
+
+	      @media (max-width: 768px) {
+	        .nav-links {
+	          gap: 1rem;
+	          font-size: 0.875rem;
+	        }
+
+	        .nav-links li:not(:nth-last-child(-n + 2)) {
+	          display: none;
+	        }
+
+	        .footer-content {
+	          grid-template-columns: 1fr;
+	          gap: 2rem;
+	        }
+	      }
+	    </style>
+	  </body>
+</html>

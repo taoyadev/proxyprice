@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+---
+
+<BaseLayout
+  title="Mobile Proxies"
+  description="Compare mobile proxy pricing. Real mobile IPs from cellular networks with the highest trust scores."
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>Mobile Proxy Comparison</h1>
+      <p class="page-subtitle">
+        Real mobile IPs from cellular networks. Highest trust score for social media automation, ad verification, and sensitive tasks.
+      </p>
+    </header>
+
+    <ComparisonTable proxyType="mobile" />
+
+    <section class="content">
+      <h2>How to choose mobile proxies</h2>
+      <ul>
+        <li><strong>Trust:</strong> Mobile IPs often have higher trust, but are usually the most expensive.</li>
+        <li><strong>Rotation:</strong> Confirm rotation intervals and session controls.</li>
+        <li><strong>Fair use:</strong> Check bandwidth policies and throttling.</li>
+      </ul>
+
+      <p class="muted">
+        Use the <a href="/calculator">Price Calculator</a> for $/GB providers, and see <a href="/methodology">Methodology</a> for comparison rules.
+      </p>
+      <p class="muted">
+        Looking for a short list? See <a href="/best/mobile-proxies">Best Mobile Proxies</a>.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 1rem auto 0;
+  }
+
+  .content {
+    max-width: 900px;
+    margin: 2.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .content h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .content ul {
+    padding-left: 1.25rem;
+  }
+
+  .muted {
+    color: var(--color-text-light);
+    margin-top: 1rem;
+  }
+</style>

@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+---
+
+<BaseLayout
+  title="Residential Proxies"
+  description="Compare residential proxy pricing from 40+ providers. Find the cheapest residential proxies for web scraping, data collection, and sneaker bots."
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>Residential Proxy Comparison</h1>
+      <p class="page-subtitle">
+        Real residential IPs from ISPs worldwide. Best for web scraping, e-commerce data collection, and accessing geo-restricted content.
+      </p>
+    </header>
+
+    <ComparisonTable proxyType="residential" />
+
+    <section class="content">
+      <h2>How to choose residential proxies</h2>
+      <ul>
+        <li><strong>Bandwidth pricing:</strong> Prefer providers with clear <strong>$/GB</strong> tiers so you can compare fairly.</li>
+        <li><strong>Geo coverage:</strong> Match your target regions and ASN requirements.</li>
+        <li><strong>Rotation vs sticky:</strong> Choose based on scraping vs session-based workflows.</li>
+      </ul>
+
+      <p class="muted">
+        Need a quick estimate? Try the <a href="/calculator">Price Calculator</a>. See <a href="/methodology">Methodology</a> for how we compute $/GB.
+      </p>
+      <p class="muted">
+        Looking for a short list? See <a href="/best/residential-proxies">Best Residential Proxies</a>.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 1rem auto 0;
+  }
+
+  .content {
+    max-width: 900px;
+    margin: 2.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .content h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .content ul {
+    padding-left: 1.25rem;
+  }
+
+  .muted {
+    color: var(--color-text-light);
+    margin-top: 1rem;
+  }
+</style>

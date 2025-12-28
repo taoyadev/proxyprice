@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+---
+
+<BaseLayout
+  title="Datacenter Proxies"
+  description="Compare datacenter proxy pricing. Fast, affordable proxies perfect for high-volume tasks and automation."
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>Datacenter Proxy Comparison</h1>
+      <p class="page-subtitle">
+        Fast, affordable proxies from data centers. Perfect for high-volume tasks, automation, and when speed matters most.
+      </p>
+    </header>
+
+    <ComparisonTable proxyType="datacenter" />
+
+    <section class="content">
+      <h2>How to choose datacenter proxies</h2>
+      <ul>
+        <li><strong>Cost:</strong> Datacenter proxies are usually the cheapest—compare per-IP vs bandwidth plans carefully.</li>
+        <li><strong>Speed:</strong> Look for low-latency locations close to your targets.</li>
+        <li><strong>Block rate:</strong> Some targets block datacenter IP ranges more aggressively.</li>
+      </ul>
+
+      <p class="muted">
+        Use the <a href="/calculator">Price Calculator</a> for $/GB providers. See <a href="/methodology">Methodology</a> for non-comparable models.
+      </p>
+      <p class="muted">
+        Looking for a short list? See <a href="/best/datacenter-proxies">Best Datacenter Proxies</a>.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 1rem auto 0;
+  }
+
+  .content {
+    max-width: 900px;
+    margin: 2.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .content h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .content ul {
+    padding-left: 1.25rem;
+  }
+
+  .muted {
+    color: var(--color-text-light);
+    margin-top: 1rem;
+  }
+</style>

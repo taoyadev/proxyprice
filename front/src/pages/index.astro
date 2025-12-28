@@ -1,0 +1,431 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+import providersData from '../data/providers.json';
+import pricingData from '../data/pricing.json';
+
+const comparableProviders = providersData.providers.filter(p => p.cheapest_price_per_gb !== null);
+const cheapestProvider = comparableProviders[0];
+
+// Count by proxy type
+const countByType = (type: string) => {
+  return pricingData.pricing.filter(p => p.proxy_type === type && p.has_pricing).length;
+};
+---
+
+<BaseLayout
+  title="Home"
+  description="Compare 40+ proxy providers and find the best pricing for residential, datacenter, mobile, and ISP proxies. Transparent pricing comparison updated regularly."
+>
+  <section class="hero">
+    <div class="container">
+      <h1>Find the Cheapest Proxy Provider</h1>
+      <p class="hero-subtitle">
+        Compare pricing from 40+ providers across residential, datacenter, mobile, and ISP proxies.
+        Transparent, normalized pricing updated regularly.
+      </p>
+      <div class="hero-cta">
+        <a href="/calculator" class="btn btn-primary">Price Calculator</a>
+        <a href="#comparison" class="btn btn-secondary">View Comparison</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-value">{providersData.total_count}</div>
+          <div class="stat-label">Providers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">{countByType('residential')}</div>
+          <div class="stat-label">Residential</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">{countByType('datacenter')}</div>
+          <div class="stat-label">Datacenter</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">{countByType('mobile')}</div>
+          <div class="stat-label">Mobile</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {cheapestProvider && (
+    <section class="highlight-section">
+      <div class="container">
+        <div class="highlight-card">
+          <span class="highlight-badge">Cheapest Overall</span>
+          <h2>{cheapestProvider.name}</h2>
+          <p class="highlight-price">
+            Starting at <strong>${cheapestProvider.cheapest_price_per_gb?.toFixed(2)}/GB</strong>
+          </p>
+          <div class="highlight-actions">
+            <a href={`/provider/${cheapestProvider.slug}`} class="btn btn-outline">
+              View Details
+            </a>
+            {cheapestProvider.trial_offer && (
+              <span class="trial-tag">{cheapestProvider.trial_offer}</span>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section class="proxy-types" id="proxy-types">
+    <div class="container">
+      <h2>Browse by Proxy Type</h2>
+      <div class="type-grid">
+        <a href="/residential" class="type-card">
+          <div class="type-icon">🏠</div>
+          <h3>Residential Proxies</h3>
+          <p>Real residential IPs from ISPs worldwide. Best for web scraping and data collection.</p>
+          <div class="type-count">{countByType('residential')} providers</div>
+        </a>
+
+        <a href="/datacenter" class="type-card">
+          <div class="type-icon">🏢</div>
+          <h3>Datacenter Proxies</h3>
+          <p>Fast, affordable proxies from data centers. Perfect for high-volume tasks.</p>
+          <div class="type-count">{countByType('datacenter')} providers</div>
+        </a>
+
+        <a href="/mobile" class="type-card">
+          <div class="type-icon">📱</div>
+          <h3>Mobile Proxies</h3>
+          <p>Real mobile IPs from cellular networks. Highest trust score for sensitive tasks.</p>
+          <div class="type-count">{countByType('mobile')} providers</div>
+        </a>
+
+        <a href="/isp" class="type-card">
+          <div class="type-icon">🌐</div>
+          <h3>ISP Proxies</h3>
+          <p>Static residential IPs from ISPs. Combines speed and legitimacy.</p>
+          <div class="type-count">{countByType('isp')} providers</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="comparison-section" id="comparison">
+    <div class="container">
+      <h2>Top Providers by Price</h2>
+      <p class="section-subtitle">
+        Showing providers with transparent per-GB pricing. Updated {pricingData.last_updated}.
+      </p>
+      <ComparisonTable limit={20} showControls={false} />
+      <div class="view-all">
+        <a href="/providers" class="btn btn-secondary">View All Providers</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <div class="container">
+      <h2>How ProxyPrice Works</h2>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>We Collect</h3>
+          <p>We collect public pricing data from 40+ proxy providers and keep it updated regularly.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>We Normalize</h3>
+          <p>We convert all pricing models to $/GB for transparent comparisons.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>You Compare</h3>
+          <p>Use our calculator or comparison tables to find the best deal for your needs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding: 4rem 0;
+    text-align: center;
+    background: linear-gradient(135deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 2px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .highlight-section {
+    padding: 3rem 0;
+    background: var(--color-bg-alt);
+  }
+
+  .highlight-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: var(--color-bg);
+    border: 2px solid var(--color-secondary);
+    border-radius: 0.75rem;
+    text-align: center;
+  }
+
+  .highlight-badge {
+    display: inline-block;
+    padding: 0.375rem 0.75rem;
+    background: var(--color-secondary);
+    color: white;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+  }
+
+  .highlight-price {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+  }
+
+  .highlight-price strong {
+    color: var(--color-secondary);
+    font-size: 2rem;
+  }
+
+  .highlight-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+  }
+
+  .trial-tag {
+    padding: 0.5rem 1rem;
+    background: #fef3c7;
+    color: #92400e;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .proxy-types {
+    padding: 4rem 0;
+  }
+
+  .proxy-types h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .type-card {
+    padding: 2rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+
+  .type-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .type-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .type-card h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .type-card p {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .type-count {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .comparison-section {
+    padding: 4rem 0;
+    background: var(--color-bg-alt);
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+
+  .view-all {
+    margin-top: 2rem;
+    text-align: center;
+  }
+
+  .how-it-works {
+    padding: 4rem 0;
+  }
+
+  .how-it-works h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+  }
+
+  .step {
+    text-align: center;
+  }
+
+  .step-number {
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  .step h3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .step p {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .hero-cta {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-stats {
+      gap: 1.5rem;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+    }
+
+    .type-grid,
+    .steps-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

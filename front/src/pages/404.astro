@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Not Found"
+  description="Page not found."
+  noindex={true}
+>
+  <div class="container" style="padding: 4rem 0; text-align: center;">
+    <h1>404</h1>
+    <p style="margin-top: 1rem; color: var(--color-text-light);">
+      The page you’re looking for doesn’t exist.
+    </p>
+    <div style="margin-top: 2rem;">
+      <a class="btn" href="/">Go home</a>
+      <a class="btn btn-secondary" href="/providers" style="margin-left: 0.75rem;">Browse providers</a>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    background: var(--color-primary);
+    color: white;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    background: var(--color-primary-dark);
+    text-decoration: none;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 2px solid var(--color-border);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+  }
+</style>
+

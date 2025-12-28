@@ -1,0 +1,887 @@
+﻿Name,Property Name,Price URL,Price Offers,Trial Offer
+Decodo,Residential Proxy,https://decodo.com/proxies/residential-proxies/pricing,"Pay as you go: $7/GB
+2 GB$6/GB$12
+8 GB$5.50/GB$44
+25 GB$5.20/GB$130
+50 GB$4.90/GB$245
+100 GB$4.50/GB$450
+250 GB$4/GB$1,000
+500 GB$3.5/GB$1,750
+1,000 GB$3/GB$3,000
+2,000 GB$2.8/GB$5,600
+5,000 GB$2.2/GB$11,000",3-day free trial
+Decodo,Datacenter Proxy,https://decodo.com/proxies/datacenter-proxies/pricing,"Pay / GB:
+10 GB$0.6/GB$6
+50 GB$0.57/GB$28.5
+100 GB$0.54/GB$54
+250 GB$0.51/GB$127.5
+500 GB$0.48/GB$240
+1000 GB$0.45/GB$450
+3000 GB$0.41/GB$1230
+4000 GB$0.4/G$1600
+5000 GB$0.39/GB$1950
+
+
+Pay / IP:
+100 IPs$0.035/IP$3.5
+500 IPs$0.031/IP$15.7
+1000 IPs$0.03/IP$29.7
+2000 IPs$0.028/IP$56
+4000 IPs$0.026/IP$105
+8000 IPs$0.024/IP$195
+15000 IPs$0.02/IP$300
+
+
+Dedicated:
+3 IPs$1.85/IP$5.55
+10 IPs$1.75/IP$17.5
+25 IPs$1.65/IP$41.25
+50 IPs$1.55/IP$77.5
+100 IPs$1.45/IP$145
+200 IPs$1.35/IP$270
+500 IPs$1.25/IP$625
+1000 IPs$1.2/IP$1200
+2000 IPs$1.15/IP$2300",14-day money-back
+Decodo,Mobile Proxy,https://decodo.com/proxies/mobile/pricing,"Pay as you go: $8.0/GB
+2 GB$7.5/GB$15
+8 GB$7/GB$56
+25 GB$6.5/GB$162.5
+50 GB$6/GB$300
+100 GB$5.5/GB$550
+250 GB$4/GB$1000
+500 GB$3.5/GB$1750
+1000 GB$3/GB$3000
+",14-day money-back
+Decodo,ISP Proxy,https://decodo.com/proxies/isp-proxies/pricing,"Dedicated:
+3 IPs$3.33$9.99
+10 IPs$2.90$29
+20 IPs$2.8$56
+50 IPs$2.7$135
+100 IPs$2.6$260
+200 IPs$2.5$500
+500 IPs$2.30$1,150
+700 IPs$2.2$1,540
+1000 IPs$2.10$2,100
+2000 IPs$2.00$4,000
+
+Pay / GB:
+1 GB$3$3
+10 GB$2.75$27.5
+20 GB$2.5$50
+50 GB$2.25$112.5
+100 GB$2$200
+250 GB$1.8$450
+500 GB$1.6$800
+1000 GB$1.4$1400
+2000 GB$1.3$2600
+
+Pay / IP:
+10 IPs$0.47$4.7
+50 IPs$0.4$20
+100 IPs$0.35$35
+500 IPs$0.33$165
+1000 IPs$0.32$320
+2000 IPs$0.3$600
+4000 IPs$0.28$1120
+8000 IPs$0.27$2160",14-day money-back
+Bright Data,Residential Proxy,https://brightdata.com/pricing/proxy-network/residential-proxies,"Pay as you go: $8/GB
+71 GB$7$499
+166 GB$6$999
+399 GB$5$1999
+",7-day free trial
+Bright Data,Datacenter Proxy,https://brightdata.com/pricing/proxy-network/datacenter-proxies,"Shared:
+10 IPs$1.4/IP$14
+100 IPs$1.0/IP$100
+500 IPs$0.95/IP$475
+1000 IPs$0.9/IP$900
+
+
+Dedicated:
+10 IPs$2.20$22
+100 IPs$1.70$170
+500 IPs$1.50$750
+1000 IPs$1.30$1300
+
+Pay/GB
+Pay as you go: $0.6/GB
+1 TB$0.51/GB$499
+2 TB$0.45/GB$999
+5 TB$0.42/GB$1999",7-day free trial
+Bright Data,Mobile Proxy,https://brightdata.com/proxy-types/mobile-proxies,"Pay as you go: $8/GB
+71 GB$7/GB$499
+166 GB$6/GB$999
+399 GB$5/GB$1999",7-day free trial
+Bright Data,ISP Proxy,https://brightdata.com/pricing/proxy-network/isp-proxies,"Shared:
+10 IPs$1.8/IP$18
+100 IPs$1.45/IP$145
+500 IPs$1.4/IP$700
+1000 IPs$1.3/IP$1300
+
+Dedicated:
+10 IPs$3.5$35
+100 IPs$2.75$275
+500 IPs$2.6$1300
+1000 IPs$2.5$2500
+
+Pay/GB
+Pay as you go: $15/GB
+39 GB$12.75/GB $499
+88 GB$11.25/GB $999
+190 GB$10.5/GB $1999",7-day free trial
+SOAX,Residential Proxy,https://soax.com/proxies/residential,"25 GB$3.6$90
+50 GB$3.4$170
+300 GB$2.46$740
+800 GB$2$1600",3-day trial with $1.99 
+SOAX,Datacenter Proxy,https://soax.com/proxies/datacenter,"145 GB$0.62$90
+346 GB$0.49$170
+1761 GB$0.42$740
+4000 GB$0.4$1600",3-day trial with $1.99 
+SOAX,Mobile Proxy,https://soax.com/proxies/mobile,"25 GB$3.6$90
+50 GB$3.4$170
+300 GB$2.46$740
+800 GB$2$1600",3-day trial with $1.99 
+SOAX,Web Data API,,"36k requests$1.3/1k$90
+136k requests$1.25/1k$170
+672k requests$1.1/1k$740
+1.77m requests$0.9/1k$1600",3-day trial
+IPRoyal,Residential Proxy,https://iproyal.com/pricing/residential-proxies/,"1 GB$7$7
+2 GB$5.95/GB$11.9
+10 GB$5.25/GB$52.50
+50 GB$4.90/GB$245",
+IPRoyal,Datacenter Proxy,https://iproyal.com/pricing/datacenter-proxies/,"30 Days$1.57/IP
+60 Days$1.48/IP/month 
+90 Days$1.39/IP/month",24-hour money-back
+IPRoyal,Mobile Proxy,https://iproyal.com/pricing/mobile-proxies/,"24 Hours$10.11 
+30 Days$130/month 
+60 Days$123.50/month 
+90 Days$117/month",24-hour money-back
+IPRoyal,ISP Proxy,https://iproyal.com/pricing/isp-proxies/,"24 Hours$1.80/IP 
+30 Days$2.70/IP/month 
+60 Days$2.55/IP/month  
+90 Days$2.40/IP/month ",
+Proxy-Seller,Residential Proxy,https://proxy-seller.com/residential-proxies/,,
+Proxy-Seller,Datacenter Proxy,https://proxy-seller.com/usa-proxy/,,
+Proxy-Seller,Mobile Proxy,https://proxy-seller.com/mobile-proxies/,,
+Proxy-Seller,ISP Proxy,https://proxy-seller.com/isp/,,
+Webshare,Residential Proxy,https://www.webshare.io/residential-proxy,"1GB: $7.00/Mo
+10GB: $60.00/Mo
+25GB: $137.50/Mo
+50GB: $275.00/Mo
+100GB: $550.00/Mo
+250GB: $1312.5/Mo
+500GB: $2500.00/Mo
+1000GB: $4500.01/Mo
+3000GB: $13500.02/Mo
+",2-day money-back
+Webshare,Datacenter Proxy,https://www.webshare.io/dedicated-datacenter-proxy,"100 Proxies: $2.99/Mo
+250 Proxies: $7.47/Mo
+500 Proxies: $14.20/Mo
+1,000 Proxies: $26.91/Mo
+2,500 Proxies: $63.54/Mo
+5,000 Proxies: $119.60/Mo
+10,000 Proxies: $224.25/Mo
+15,000 Proxies: $313.95/Mo
+25,000 Proxies: $523.25/Mo
+40,000 Proxies: $777.40/Mo
+60,000 Proxies: $1076.40/Mo
+100,000 Proxies: $1794.00/Mo
+",10 free IPs with 1GB
+Webshare,ISP Proxy,https://www.webshare.io/dedicated-static-residential-proxy,"20 Proxies: $6.00/Mo
+50 Proxies: $15.00/Mo
+75 Proxies: $22.50/Mo
+100 Proxies: $30.00/Mo
+250 Proxies: $75.00/Mo
+500 Proxies: $142.50/Mo
+1,000 Proxies: $270.00/Mo
+2,000 Proxies: $510.00/Mo
+3,000 Proxies: $720.00/Mo
+5,000 Proxies: $1200.00/Mo
+10,000 Proxies: $2250.00/Mo
+",2-day money-back
+Proxy-Cheap,Residential Proxy,https://www.proxy-cheap.com/pricing/rotating-residential-proxies,"1 GB: $4.99/IP
+50 GB+: $3.99/IP
+200 GB+: $2.99/IP
+From 1 TB+: $2.49/IP
+",14-day money-back
+Proxy-Cheap,IPv4 Datacenter Proxy,https://www.proxy-cheap.com/pricing/datacenter-proxy-ipv4,"Standard Plan:
+1 Month: $1.99/IP/Mo
+12 Months: $1.66/IP/Mo
+
+Premium Plan:
+1 Month: $5.99/IP
+3 Months: $5.99/IP
+12 Months: $5.99/IP
+",7-day trial with $1.13/IP
+Proxy-Cheap,Mobile Proxy,https://www.proxy-cheap.com/pricing/rotating-mobile-proxies,"7 Day Trial: $30/IP
+1 Month: $50/IP
+12 Month: $50/IP",14-day money-back
+Proxy-Cheap,ISP Proxy,https://www.proxy-cheap.com/pricing/static-residential-proxies,"Standard Plan:
+1 Month: $3.49/IP
+12 Months: $2.90/IP
+
+Premium Plan:
+1 Month: $9.99/IP
+3 Months: $8.89/IP
+12 Months: $7.79/IP
+",7-day trial with $1.99/IP
+Proxy-Cheap,Proxy Manager,,"Free
+",
+Proxy-IPv4,Datacenter Proxy,https://proxy-ipv4.com/en/#prices,,
+Proxy-IPv4,Mobile Proxy,https://proxy-ipv4.com/en/mobile/,,
+Proxy-IPv4,ISP Proxy,https://proxy-ipv4.com/en/isp/,,
+Geonix,Residential Proxy,https://geonix.com/resident/,,
+Geonix,Datacenter Proxy,https://geonix.com/proxy-usa/,,
+Geonix,Mobile Proxy,https://geonix.com/mobile-proxies/,,
+Geonix,ISP Proxy,https://geonix.com/isp/,,
+Youproxy,Datacenter Proxy,https://youproxy.io/en/prices/?priceTabs=IPV4,,
+Youproxy,Mobile Proxy,https://youproxy.io/en/prices/?priceTabs=MOBILE,,
+Youproxy,ISP Proxy,https://youproxy.io/en/prices/?priceTabs=ISP,,
+Rayobyte,Residential Proxy,https://rayobyte.com/products/residential-proxies#pricing,,
+Rayobyte,Datacenter Proxy,https://rayobyte.com/products/datacenter-ips#dc_pricing,,
+Rayobyte,Mobile Proxy,https://rayobyte.com/products/mobile-proxies#pricing,,
+Rayobyte,ISP Proxy,https://rayobyte.com/products/isp-proxies#pricing,,
+Myprivateproxy,Datacenter Proxy,https://www.myprivateproxy.net/private-proxies/,,
+Buyproxies,Datacenter Proxy,https://buyproxies.org/panel/index.php?rp=/store/dedicated-proxies,,
+Proxyline,Datacenter Proxy,https://proxyline.net/en,,
+Instantproxies,Datacenter Proxy,https://instantproxies.com/pricing/,,
+Shifter,Residential Proxy,https://shifter.io/pricing?product=residential-proxies&subproduct=special-backconnect-proxy,,
+Shifter,ISP Proxy,https://shifter.io/pricing?product=datacenter-proxies&subproduct=static-residential-proxies,,
+Marsproxies,Residential Proxy,https://marsproxies.com/pricing/residential-proxies/,,
+Marsproxies,Datacenter Proxy,https://marsproxies.com/pricing/datacenter-proxies/,,
+Marsproxies,Mobile Proxy,https://marsproxies.com/pricing/mobile-proxies/,,
+Marsproxies,ISP Proxy,https://marsproxies.com/pricing/isp-proxies/,,
+ProxyEmpire,Residential Proxy,https://proxyempire.io/pricing-table/,"Pay As You Go: $9/GB
+$40/5GB: $8/GB
+$150/25GB: $6/GB
+$300/55GB: $5.45/GB
+$600/120GB: $5/GB
+$1250/300GB: $4.17/GB
+$1750/500GB: $3.5/GB
+$3000/1000GB: $3/GB
+",100MB trial with $1.97
+ProxyEmpire,Datacenter Proxy,https://proxyempire.io/pricing-table/,"$25/40GB: $0.625/GB
+$55/100GB: $0.55/GB
+$95/200GB: $0.475/GB
+$225/500GB: $0.45/GB
+$400/1000GB: $0.4/GB
+$1750/5000GB: $0.35/GB
+",
+ProxyEmpire,Mobile Proxy,https://proxyempire.io/pricing-table/,"Rotating Mobile Plan:
+Pay As You Go: $20/GB
+$50/3 GB: $16.67/GB
+$150/10 GB: $15/GB
+$300/22 GB: $13.64/GB
+$660/53 GB: $12.45/GB 
+$1500/150 GB: $10/GB
+$2550/300 GB: $8.50/GB
+$4000/500 GB: $8/GB
+
+Dedicated Mobile Plan:
+USA 5G Mobile Proxies: $250/month
+Multi-Country Package: $125/month
+",50MB trial with $1.97
+ProxyEmpire,ISP Proxy,https://proxyempire.io/pricing-table/,"1 IP: $2/month
+$40/5GB: $8/GB
+$150/25GB: $6/GB
+$300/55GB: $5.45/GB
+$600/120GB: $5/GB
+$1250/300GB: $4.17/GB
+$1750/500GB: $3.5/GB
+$3000/1000GB: $3/GB
+",
+SimplyNode,Residential Proxy,https://www.simplynode.io/product/residential-proxies,,
+SimplyNode,Mobile Proxy,https://www.simplynode.io/product/mobile-proxies,,
+Proxy6,Datacenter Proxy,https://proxy6.net/,,
+OculusProxies,Residential Proxy,https://oculusproxies.com/pricing/smart-residential-proxies,,
+OculusProxies,Datacenter Proxy,https://oculusproxies.com/pricing/dedicated-datacenter-proxies,,
+OculusProxies,ISP Proxy,https://oculusproxies.com/pricing/isp-premium-proxies,,
+Toolip,Residential Proxy,https://toolip.io/pricing/rotating-residential-proxies,,
+Toolip,Datacenter Proxy,https://toolip.io/pricing/dedicated-datacenter-proxies,,
+Toolip,ISP Proxy,https://toolip.io/pricing/global-isp-proxies,,
+Resiprox,Residential Proxy,https://resiprox.com/#pricing,,
+Resiprox,Mobile Proxy,https://resiprox.com/#pricing,,
+Dataimpulse,Residential Proxy,https://dataimpulse.com/residential-proxies/,,
+Dataimpulse,Mobile Proxy,https://dataimpulse.com/mobile-proxies/,,
+Dataimpulse,Datacenter Proxy,https://dataimpulse.com/datacenter-proxies/,,
+Squidproxies,Datacenter Proxy,https://www.squidproxies.com/plans-and-pricing?type=datacenter,,
+Squidproxies,Residential Proxy,https://www.squidproxies.com/plans-and-pricing?type=residential,,
+Proxys.io,Mobile Proxy,https://proxys.io/en/buy-mobile-proxies,,
+Proxys.io,Residential Proxy,https://proxys.io/en/residential,,
+Proxys.io,Datacenter Proxy,https://proxys.io/en/cart,,
+HydraProxy,Residential Proxy,https://hydraproxy.com/pricing/,"1 GB - 50 GB: $5/GB
+50 GB - 150 GB: $4/GB
+150 GB - 1000 GB: $3/GB
+More Than 1 TB: $2.5/GB
+",24-hour money-back
+HydraProxy,Mobile Proxy,https://hydraproxy.com/pricing/,"1 Day: $2.95
+3 Days: $7.95
+7 Days: $15.95
+30 Days: $59.95
+
+Premium Plan:
+1 Day: $3.95
+3 Days: $10.95
+7 Days: $21.95
+30 Days: $79.95
+",24-hour money-back
+Spaceproxy,Datacenter Proxy,https://spaceproxy.net/en/,,
+Shifter,special Residential Proxy,https://shifter.io/pricing?product=residential-proxies&subproduct=special-backconnect-proxy,"Special Rotating Proxies Plan:
+5 IPs/200 GB/$199.99: $0.60/GB
+10 IPs/400 GB/$299.99: $0.60/GB
+25 IPs/1 TB/$599.99: $0.60/GB
+50 IPs/2 TB/$1,199.99: $0.60/GB
+100 IPs/4 TB/$2,399.99: $0.60/GB
+250 IPs/10 TB/$5,999.99: $0.60/GB
+500 IPs/20 TB/$11,999.99: $0.60/GB
+1000 IPs/40 TB/$23,999.99: $0.60/GB
+
+Basic Rotating Proxies Plan:
+5 IPs/200 GB/$99.98: $0.30/GB
+10 IPs/400 GB/$149.98: $0.30/GB
+25 IPs/1 TB/$299.99: $0.30/GB
+50 IPs/2 TB/$599.99: $0.30/GB
+100 IPs/4 TB/$1,199.99: $0.30/GB
+250 IPs/10 TB/$2,999.99: $0.30/GB
+500 IPs/20 TB/$5,999.99: $0.30/GB
+1000 IPs/40 TB/$11,999.99: $0.30/GB
+",3-day money-back
+Shifter,basic Residential Proxy,https://shifter.io/pricing?product=residential-proxies&subproduct=basic-backconnect-proxy,"$74.99/25 IPs
+$149.99/50 IPs
+$224.99/75 IPs
+$299.99/100 IPs
+",3-day money-back
+Geonode,Residential Proxy,,"1 GB: $4/GB
+50 GB: $3.2/GB
+500 GB: $2.5/GB
+1,500GB: $2.15/GB
+2,500GB: $1.9/GB
+3,500GB: $1.7/GB
+",
+Geonode,Unlimited Residential Proxy,,"50 GB: $99/Mo
+125 GB: $249/Mo
+250 GB: $499/Mo
+500 GB: $999/Mo
+1250 GB: $2,499/Mo
+",3-day trial with $9
+Geonode,Datacenter Proxy,,"1 GB: $1/GB
+10 GB: $0.9/GB
+50 GB: $0.8/GB
+100GB: $0.7/GB
+500GB: $0.6/GB
+1000GB: $0.5/GB
+",
+Geonode,Unlimited Mixed Proxy,,"50 GB: $49/Mo
+100 GB: $99/Mo
+250 GB: $249/Mo
+500 GB: $499/Mo
+1000 GB: $999/Mo
+2500 GB: $2,499/Mo
+",3-day trial with $9
+Geonode,Mobile Proxy,,"1 GB: $9.99/GB
+50 GB: $7.99/GB
+500GB: $5.99/GB
+1500GB: $4.99/GB
+2500GB: $3.99/GB
+3500GB: $3.59/GB
+",
+Geonode,Web Unlocker,,"1 GB: $4/GB
+50 GB: $3.2/GB
+500GB: $2.5/GB
+1500GB: $2.15/GB
+2500GB: $1.9/GB
+3500GB: $1.7/GB
+",
+Geonode,Proxy Checker,,"Free
+",
+ProxyScrape,Residential Proxy,https://proxyscrape.com/products/residential-proxies#pricing,"$24.25/5 GB: $4.85/GB
+$47.5/10 GB: $4.75/GB
+$90/20 GB: $4.5/GB
+$170/40 GB: $4.25/GB
+$300/75 GB: $4/GB
+$375/100 GB: $3.75/GB
+$525/150 GB: $3.5/GB
+$812.5/250 GB: $3.25GB
+$1375/500 GB: $2.75/GB
+$1875/750 GB: $2.5/GB
+$2000/1000 GB: $2/GB
+$3700/2000 GB: $1.85/GB
+$5100/3000 GB: $1.7/GB
+$6400/4000 GB: $1.6/GB
+$7500/5000 GB: $1.5/GB
+",3-day money-back
+ProxyScrape,Datacenter Proxy,https://proxyscrape.com/products/datacenter-proxies#pricing,"1 Day Plan:
+1000 Proxies: $4.17/Day
+2500 Proxies: $10 /Day
+5000 Proxies: $19.17/Day
+7500 Proxies: $27.50/Day
+10 000 Proxies: $35.83/Day
+15 000 Proxies: $52.50/Day
+20 000 Proxies: $69.17/Day
+25 000 Proxies: $85.83/Day
+30 000 Proxies: $102.50/Day
+40 000 Proxies: $125/Day
+
+1 Week Plan:
+1000 Proxies: $10.03 /Week
+2500 Proxies: $24.08 /Week
+5000 Proxies: $46.15 /Week
+7500 Proxies: $66.22 /Week
+10 000 Proxies: $86.29 /Week
+15 000 Proxies: $126.42 /Week
+20 000 Proxies: $166.55 /Week
+25 000 Proxies: $206.69 /Week
+30 000 Proxies: $246.82 /Week
+40 000 Proxies: $301 /Week
+
+2 Weeks Plan:
+1000 Proxies: $15.75 /2 weeks
+2500 Proxies: $37.80 /2 weeks
+5000 Proxies: $72.45 /2 weeks
+7500 Proxies: $103.95 /2 weeks
+10 000 Proxies: $135.45 /2 weeks
+15 000 Proxies: $198.45 /2 weeks
+20 000 Proxies: $261.45 /2 weeks
+25 000 Proxies: $324.45 /2 weeks
+30 000 Proxies: $387.45 /2 weeks
+40 000 Proxies: $472.50 /2 weeks
+
+1 Month Plan:
+1000 Proxies: $25 /Month
+2500 Proxies: $60 /Month
+5000 Proxies: $115 /Month
+7500 Proxies: $165 /Month
+10 000 Proxies: $215 /Month
+15 000 Proxies: $315 /Month
+20 000 Proxies: $415 /Month
+25 000 Proxies: $515 /Month
+30 000 Proxies: $615 /Month
+40 000 Proxies: $750 /Month
+",100 free shared datacenter proxies
+ProxyScrape,Dedicated Proxy,https://proxyscrape.com/products/premium,"$6.50/5 IPs: $1.30/IP/month
+$13/10 IPs: $1.30/IP/month
+$32.50/25 IPs: $1.30/IP/month
+$62.50/50 IPs: $1.25/IP/month
+$93.75/75 IPs: $1.25/IP/month
+$120/100 IPs: $1.20/IP/month
+$150/125 IPs: $1.20/IP/month
+$180/150 IPs: $1.20/IP/month
+$240/200 IPs: $1.20/IP/month
+$360/300 IPs: $1.20/IP/month
+$480/400 IPs: $1.20/IP/month
+$600/500 IPs: $1.20/IP/month
+",3-day money-back
+ProxyScrape,Mobile Proxy,https://proxyscrape.com/products/mobile-proxies,"$24.25/5 GB: $4.85/GB
+$47.5/10 GB: $4.75/GB
+$90/20 GB: $4.5/GB
+$170/40 GB: $4.25/GB
+$300/75 GB: $4/GB
+$375/100 GB: $3.75/GB
+$525/150 GB: $3.5/GB
+$812.5/250 GB: $3.25GB
+$1375/500 GB: $2.75/GB
+$1875/750 GB: $2.5/GB
+$2000/1000 GB: $2/GB
+$3700/2000 GB: $1.85/GB
+$5100/3000 GB: $1.7/GB
+$6400/4000 GB: $1.6/GB
+$7500/5000 GB: $1.5/GB
+",3-day money-back
+NetNut,Residential Proxy,,"Monthly Play:
+$300/20GB: $15/GB
+$600/50GB: $12/GB
+$800/100GB: $8/GB
+$1625/250GB: $6.5/GB
+$2500/500GB: $5/GB
+$4000/1TB: $4/GB
+
+Annually Plan:
+$3240/20GB: $13.5/GB
+$6480/50GB: $10.8/GB
+$8640/100GB: $7.2/GB
+$17550/250GB: $5.85/GB
+$2500/500GB: $5/GB
+$4000/1TB: $4/GB
+",7-day free trial 
+NetNut,Datacenter Proxy,,"Monthly Play:
+$100/100GB: $1/GB
+$185/250GB: $0.74/GB
+$350/500GB: $0.7/GB
+$450/750GB: $0.6/GB
+$500/1TB: $0.5/GB
+$1000/2TB: $0.5/GB
+
+Annually Plan:
+$1080/100GB: $0.9/GB
+$1998/250GB: $0.66/GB
+$3780/500GB: $0.63/GB
+$4860/750GB: $0.54/GB
+$5400/1TB: $0.45/GB
+$10800/2TB: $0.45/GB
+",7-day free trial 
+NetNut,Mobile Proxy,,"Monthly Play:
+$400/20GB: $20/GB
+$900/50GB: $18/GB
+$1600/100GB: $16/GB
+$3500/250GB: $14/GB
+$5500/500GB: $11/GB
+$8000/1TB: $8/GB
+
+Annually Plan:
+$4320/20GB: $18/GB
+$9720/50GB: $16.2/GB
+$17280/100GB: $14.4/GB
+$37800/250GB: $12.6/GB
+$59400/500GB: $9.9/GB
+$86400/1TB: $7.2/GB
+",7-day free trial 
+NetNut,ISP Proxy,,"Monthly Play:
+$350/20GB: $17.5/GB
+$750/50GB: $15/GB
+$1000/100GB: $10/GB
+$2000/250GB: $8/GB
+$2500/500GB: $6.5/GB
+$5000/1TB: $5/GB
+
+Annually Plan:
+$3780/20GB: $15.75/GB
+$8100/50GB: $13.5/GB
+$10800/100GB: $9/GB
+$21600/250GB: $7.2/GB
+$2700/500GB: $4.5/GB
+$5400/1TB: $4.5/GB
+",7-day free trial 
+Oxylabs,Residential Proxy,https://oxylabs.io/products/residential-proxy-pool,"Regular Plan:
+Pay as you go (up to 50GB): $10/GB
+$99/mo (11GB): $9/GB
+$300/mo (38GB): $8/GB
+$600/mo (86GB): $7/GB
+
+Enterprise
+$800/mo (133GB): $6/GB
+$1750/mo (318GB): $5.5/GB
+$4000/mo (1TB): $4/GB
+ ",7-day free trial
+Oxylabs,Datacenter Proxy,https://oxylabs.io/products/datacenter-proxies,"Regular Plan:
+$50/mo (77GB): $0.65/GB
+$100/mo (167GB): $0.6/GB
+$200/mo (364GB): $0.55/GB
+$300/mo (600GB): $0.5/GB
+
+Enterprise
+$500/mo (1042GB): $0.48/GB
+$920/mo (2TB): $0.46/GB
+$2200/mo (5TB): $0.44/GB
+ ",7-day free trial
+Oxylabs,Dedicated Datacenter Proxy,https://oxylabs.io/products/datacenter-proxies/dedicated-datacenter-proxies,"$50/mo (20 IPs): $2.50/IP
+$120/mo (50 IPs): $2.40/IP
+$230/mo (100 IPs): $2.30/IP
+$440/mo (200 IPs): $2.20/IP
+$630/mo (300 IPs): $2.10/IP
+$1000/mo (500 IPs): $2.00/IP
+",7-day free trial
+Oxylabs,Mobile Proxy,https://oxylabs.io/products/mobile-proxies,"Regular Plan:
+Pay as you go (up to 30GB): $22/GB
+$200/mo (10GB): $20/GB
+$380/mo (20GB): $19/GB
+$850/mo (50GB): $17/GB
+
+Enterprise
+$1600/mo (100GB): $16/GB
+$3000/mo (200GB): $15/GB
+$4200/mo (300GB): $14/GB
+",
+Oxylabs,Rotating ISP Proxy,,"$340/mo (20GB): $17/GB
+$700/mo (50GB): $14/GB
+$1100/mo (100GB): $11/GB
+",7-day free trial
+Oxylabs,Web Unlocker,,"$75/mo (5GB): $15/GB
+$325/mo (25GB): $13/GB
+$660/mo (60GB): $11/GB
+",1 week free trial with 1GB 
+Oxylabs,Proxy Extension,,"Free
+",
+Rayobyte,Residential Proxy,,"1-15 GB: $7.50/GB
+16-49 GB: $6.25/GB
+50-99 GB: $3.50/GB
+100-249 GB: $3/GB
+250-499 GB: $2.50/GB
+500-999 GB: $2/GB
+1-4.9 TB: $1.5/GB
+",50 MB free trial
+Rayobyte,Datacenter Proxy,,"5 US Dedicated IPs Plan:
+$12.5/Mo: $2.50/IP
+$35.70/3 Mo: $2.38/IP
+$67.50/6 Mo: $2.25/IP
+$127.80/12 Mo: $2.13/IP
+
+5 US Rotating IPs Plan:
+$18.75/Mo: $3.75/IP
+$53.40/3 Mo: $3.56/IP
+$101.40/6 Mo: $3.38/IP
+$191.40/12 Mo: $3.19/IP
+
+5 US Semi-Dedicated IPs Plan:
+$5.00/Mo: $1.00/IP
+$14.25/3 Mo: $0.95/IP
+$27.00/6 Mo: $0.90/IP
+$191.40/12 Mo: $3.19/IP
+
+5 US Ipv6 Proxies Plan:
+$1.00/Mo: $0.20/IP
+$2.85/3 Mo: $0.19/IP
+$5.40/6 Mo: $0.18/IP
+$10.20/12 Mo: $0.17/IP
+",
+Rayobyte,Mobile Proxy,,"$50/Mo: $25/GB
+$300/Mo: $20/GB
+$600/Mo: $15/GB
+",2-day free trial
+Rayobyte,ISP Proxy,,"Per Month: $2.5/IP
+5-99 IPs: $5/IP
+100-999 IPs: $4.8/IP
+1,000-4,999 IPs: $4.6/IP
+",
+Stormproxies,Rotating Reverse Proxy,,"40 Threads: $39/Mo
+80 Threads: $59/Mo 
+150 Threads: $97/Mo 
+",48-hour money-back
+Stormproxies,Residential Proxy,,"$50/Mo: $10/Port
+$90/Mo: $9/Port
+$160/Mo: $8/Port
+$300/Mo: $6/Port
+",48-hour money-back
+Stormproxies,Sneaker Proxy,,"$160/Mo: $8/Port
+$300/Mo: $6/Port
+$550/Mo: $5.5/Port
+$900/Mo: $4.5/Port
+",48-hour money-back
+Stormproxies,Ticketmaster Proxy,,"$160/Mo: $8/Port
+$300/Mo: $6/Port
+$550/Mo: $5.5/Port
+$900/Mo: $4.5/Port
+",48-hour money-back
+Stormproxies,Private Proxy,,"$10/Mo: $2/IP
+$20/Mo: $2/IP
+$40/Mo: $2/IP
+$60/Mo: $2/IP
+$90/Mo: $1.8/IP
+$160/Mo: $1.6/IP
+$320/Mo: $1.6/IP
+$640/Mo: $1.4/IP
+",48-hour money-back
+ProxyRack,Private Unmetered Residential Proxy,,"Monthly Plan:
+$65.95/5 Ports: $13.19/Port
+$149.95/15Ports: $10/Port
+$229.95/25Ports: $9.20/Port
+$419.95/50Ports: $8.40/Port
+$749.95/100Ports: $7.50/Port
+
+Yearly Plan:
+$659.50/5 Ports: $10.99/Port/Mo
+$1,499.95/15 Ports: $8.33/Port/Mo
+$2,299.50/25 Ports: $7.67/Port/Mo
+$4,199.50/25 Ports: $7.00/Port/Mo
+$7,499.50/100 Ports: $6.25/Port/Mo
+",$13.95 /7 days with 5 port
+ProxyRack,"
+Premium Residential Proxy",,"$49.95/10 GB: $5/GB
+$89.95/20 GB: $4.5/GB
+$199.95/50 GB: $4/GB
+$349.95/100 GB: $3.5/GB
+$599.95/200 GB: $3/GB
+$1,249.95/500 GB: $2.5/GB
+$2,249.95/1000 GB: $2.25/GB
+",$13.95 /7 days with 1GB
+ProxyRack,USA Rotating Datacenter Proxy,,"Monthly Plan:
+$75/100 Threads: $0.80/Thread
+$140/250 Threads: $0.60/Thread
+$240/500 Threads: $0.50/Thread
+$440/1000 Threads: $0.50/Thread
+$590/1500 Threads: $0.40/Thread
+$680/2000 Threads: $0.40/Thread
+
+Yearly Plan:
+$650/100 Threads: $0.54/Thread/Mo
+$1,200/250 Threads: $0.40/Thread/Mo
+$2,200/500 Threads: $0.37/Thread/Mo
+$4,100/1000 Threads: $0.34/Thread/Mo
+$5,600/1500 Threads: $0.31/Thread/Mo
+$6,500/2000 Threads: $0.27/Thread/Mo
+",$13.95 /7 days with 250 threads
+ProxyRack,Global Rotating Datacenter Proxy,,"Monthly Plan:
+$75/100 Threads: $0.75/Thread
+$140/250 Threads: $0.56/Thread
+$240/500 Threads: $0.48/Thread
+$440/1000 Threads: $0.39/Thread
+$590/1500 Threads: $0.75/Thread
+$680/2000 Threads: $0.34/Thread
+
+Yearly Plan:
+$650/100 Threads: $0.54/Thread/Mo
+$1,200/250 Threads: $0.40/Thread/Mo
+$2,200/500 Threads: $0.0.37/Thread/Mo
+$4,100/1000 Threads: $0.34/Thread/Mo
+$5,600/1500 Threads: $0.31/Thread/Mo
+$6,500/2000 Threads: $0.27/Thread/Mo
+",$13.95 /7 days with 250 threads
+ProxyRack,Static USA Datacenter Proxy,,"$50/100 IPs: $0.50/IP
+$80/200 IPs: $0.40/IP
+$150/500 IPs: $0.30/IP
+$300/1000 IPs: $0.30/IP
+$540/2000 IPs: $0.27/IP
+$1,250/5000 IPs: $0.25/IP
+",$13.95 /7 days with 100 IPs
+Froxy,Residential Proxy,,"$8/mo: $8/GB
+$21/mo: $7/GB
+$45/mo: $6.43/GB
+$150/mo: $5/GB
+$200/mo: $4/GB
+$3000/mo: $2.93/GB
+",3-day trial 100 MB of $1.99
+Froxy,Mobile Proxy,,"$11/mo: $11/GB
+$20/mo: $10/GB
+$45/mo: $9/GB
+$85/mo: $8.5/GB
+$150/mo: $7.5/GB
+$700/mo: $7/GB
+",3-day trial 100 MB of $1.99
+Infatica,Residential Proxy,,"Monthly Plan:
+$96/8GB: $12/GB
+$360/40GB: $9/GB
+$700/100GB: $7/GB
+$2,400/400GB: $6/GB
+$3,500/1,000GB: $3.5/GB
+
+Yearly Plan:
+$922/96GB: $9.6/GB
+$3,456/480GB: $7.2/GB
+$6,720/1,200GB: $5.6/GB
+$23,040/4,800GB: $4.8/GB
+$33,600/12,000GB: $2.8/GB 
+",3-day trial for $1.99
+Infatica,Datacenter Proxy,,"$15/5 IPs: $3/IP
+$100/1000 IPs: $3/IP
+$300/3000 IPs: $0.1/IP
+$500/5000 IPs: $0.1/IP
+",
+Infatica,Mobile Proxy,,"Monthly Plan:
+$45/3GB: $15/GB
+$130/10GB: $13/GB
+$240/20GB: $12/GB
+$500/50GB: $10/GB
+$800/100GB: $8/GB
+
+Yearly Plan:
+$432/36GB: $12/GB
+$1,248/120GB: $10.4/GB
+$2,304/240GB: $9.6/GB
+$4,800/600GB: $8/GB
+$7,680/1200GB: $6.4/GB 
+",3-day trial for $1.99
+PacketStream,Residential Proxy,,"$50/50GB 
+$100/100GB 
+$250/250GB 
+$500/500GB 
+$1000/1TB ",
+The Social Proxy,Mobile Proxy,,"Austria Proxies by Proxy Plan
+2 Days: $23/IP
+1 Week: $34/IP
+Monthly: $89/IP
+3 Month: $232/IP
+6 Month: $397/IP
+Yearly: $661/IP
+
+Israel Proxies by Proxy Plan
+2 Days: $23/IP
+1 Week: $34/IP
+Monthly: $89/IP
+3 Month: $232/IP
+6 Month: $397/IP
+Yearly: $661/IP
+
+UK Proxies by Proxy Plan
+2 Days: $23/IP
+1 Week: $34/IP
+Monthly: $89/IP
+3 Month: $232/IP
+6 Month: $397/IP
+Yearly: $661/IP
+
+5G US by Proxy Plan
+2 Days: $27/IP
+1 Week: $50/IP
+Monthly: $133/IP
+3 Month: $331/IP
+6 Month: $595/IP
+Yearly: $1058/IP
+
+Pay as you go Plan by Usage 
+USA proxies: $23/GB
+UK and Austria porxes: $20/GB
+Israel proxes: $16/GB
+
+Monthly Plan by Usage 
+USA proxies: $19/GB
+UK and Austria porxes: $17/GB
+Israel proxes: $14/GB
+
+Yearly Plan by Usage
+USA proxies: $17/GB
+UK and Austria porxes: $15/GB
+Israel proxes: $12/GB
+
+Rotating Proxies Pay as you go Plan
+USA: $23/GB
+UK and Austria: $20/GB
+Israel proxes: $16/GB
+
+Rotating Proxies Monthly Plan
+USA: $19/GB
+UK and Austria: $17/GB
+Israel proxes: $14/GB
+
+Rotating Proxies Yearly Plan
+USA: $17/GB
+UK and Austria: $15/GB
+Israel proxes: $12/GB
+",24-hour trial with €1 setup fee
+ProxyWow,ISP Proxy,,"$25/Mo: $5/IP
+$100/Mo: $4/IP
+$300/Mo: $3/IP
+$1000/Mo: $2.5/IP",
+Airproxy,Mobile Proxy,,€67/proxy/30 days,72-hour tray at €9.9
+ProxyGuys,Residential Proxy,,"$5/100MB
+$25/500MB
+$50/2GB
+$100/5GB
+$150/10GB
+$250/25GB
+$400/50GB
+$600/100GB
+$1000/400GB
+",$5 for a trial including 100MB
+ProxyGuys,Mobile Proxy,,"24 Hours Plan: $20/IP
+Weekly Plan: $50/IP
+Monthly Plan: $150/IP",1-hour trial
+Nimbleway,Residential Proxy,,"Monthly Plan:
+$600: $9.2/GB
+$1,600: $7.5/GB
+$3,600: $5.5/GB
+
+Annually Plan:
+$600: $8/GB
+$1,600: $6.5/GB
+$3,600: $4.8/GB
+",22 GB free trial
+Nimbleway,Web Unlocker,,"Monthly Plan:
+$600: $2.5/CPM
+$1,600: $2.2/CPM
+$3,600: $1.8/CPM
+ 
+Annually Plan:
+$600: $2.2/CPM
+$1,600: $1.9/CPM
+$3,600: $1.6/CPM
+",100 CPM free trial
+Asocks,Residential Proxy,,$3 per GB,3-day free trial
+Asocks,Mobile Proxy,,$3 per GB,3-day free trial

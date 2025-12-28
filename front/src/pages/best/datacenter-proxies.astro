@@ -1,0 +1,89 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import providersData from "../../data/providers.json";
+import pricingData from "../../data/pricing.json";
+import { SITE_NAME } from "../../lib/site";
+
+const type = "datacenter";
+const typeLabel = "Datacenter";
+
+const providerById = new Map(providersData.providers.map((p) => [p.id, p]));
+
+const top = pricingData.pricing
+  .filter((p) => p.proxy_type === type && p.comparable && typeof p.min_price_per_gb === "number")
+  .sort((a, b) => (a.min_price_per_gb ?? Infinity) - (b.min_price_per_gb ?? Infinity))
+  .slice(0, 10)
+  .map((p) => ({
+    provider: providerById.get(p.provider_id),
+    min: p.min_price_per_gb,
+    url: p.price_url,
+  }))
+  .filter(
+    (x): x is { provider: any; min: number; url: string | null } =>
+      Boolean(x.provider) && typeof x.min === "number",
+  );
+
+const breadcrumbs = [
+  { name: SITE_NAME, url: new URL("/", Astro.site).toString() },
+  { name: "Best Providers", url: new URL("/best/", Astro.site).toString() },
+  { name: "Best Datacenter Proxies", url: new URL("/best/datacenter-proxies/", Astro.site).toString() },
+];
+---
+
+<BaseLayout
+  title={`Best ${typeLabel} Proxies`}
+  description={`Best ${typeLabel.toLowerCase()} proxy providers with comparable $/GB pricing. Updated ${pricingData.last_updated}.`}
+  breadcrumbs={breadcrumbs}
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>Best Datacenter Proxies (by $/GB)</h1>
+      <p class="page-subtitle">
+        Providers with comparable <strong>$/GB</strong> pricing for datacenter proxies, ranked by lowest min $/GB. Updated {pricingData.last_updated}.
+      </p>
+    </header>
+
+    <section class="list">
+      {top.length === 0 ? (
+        <p class="muted">No comparable $/GB pricing found for this category yet.</p>
+      ) : (
+        <ol class="rank">
+          {top.map((item) => (
+            <li class="rank-item">
+              <a class="rank-link" href={`/provider/${item.provider.slug}`}>
+                <span class="name">{item.provider.name}</span>
+                <span class="price">${item.min.toFixed(2)}/GB</span>
+              </a>
+              <div class="meta">
+                <a href="/datacenter">Compare all datacenter providers →</a>
+                {item.url && <a href={item.url} target="_blank" rel="noopener noreferrer">Official pricing →</a>}
+              </div>
+            </li>
+          ))}
+        </ol>
+      )}
+    </section>
+
+    <section class="content">
+      <h2>Notes</h2>
+      <p class="muted">
+        Many datacenter products are sold per IP (non-comparable). This page includes only bandwidth-priced ($/GB) offerings.
+        See <a href="/providers">All Providers</a> to include non-comparable pricing models.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header { text-align: center; margin-bottom: 2.5rem; }
+  .page-subtitle { font-size: 1.125rem; color: var(--color-text-light); max-width: 900px; margin: 1rem auto 0; }
+  .rank { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; max-width: 900px; margin-left: auto; margin-right: auto; }
+  .rank-item { border: 1px solid var(--color-border); border-radius: 0.75rem; background: var(--color-bg); overflow: hidden; }
+  .rank-link { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 1.25rem; text-decoration: none; color: var(--color-text); }
+  .rank-link:hover { text-decoration: none; background: var(--color-bg-alt); }
+  .name { font-weight: 700; }
+  .price { font-family: 'SF Mono', 'Monaco', 'Consolas', monospace; color: var(--color-secondary); font-weight: 800; }
+  .meta { display: flex; gap: 1rem; padding: 0.75rem 1.25rem; border-top: 1px solid var(--color-border); background: var(--color-bg-alt); font-size: 0.9rem; }
+  .content { max-width: 900px; margin: 2.5rem auto 0; padding-top: 2rem; border-top: 1px solid var(--color-border); }
+  .muted { color: var(--color-text-light); margin-top: 1rem; }
+</style>

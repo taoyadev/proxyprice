@@ -1,0 +1,503 @@
+[
+  {
+    "id": "decodo",
+    "name": "Decodo",
+    "slug": "decodo",
+    "website_url": "https://decodo.com",
+    "trial_offer": "3-day free trial",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "bright-data",
+    "name": "Bright Data",
+    "slug": "bright-data",
+    "website_url": "https://brightdata.com",
+    "trial_offer": "7-day free trial",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "soax",
+    "name": "SOAX",
+    "slug": "soax",
+    "website_url": "https://soax.com",
+    "trial_offer": "3-day trial with $1.99",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "other"
+    ]
+  },
+  {
+    "id": "iproyal",
+    "name": "IPRoyal",
+    "slug": "iproyal",
+    "website_url": "https://iproyal.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "proxy-seller",
+    "name": "Proxy-Seller",
+    "slug": "proxy-seller",
+    "website_url": "https://proxy-seller.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "webshare",
+    "name": "Webshare",
+    "slug": "webshare",
+    "website_url": "https://webshare.io",
+    "trial_offer": "2-day money-back",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "isp"
+    ]
+  },
+  {
+    "id": "proxy-cheap",
+    "name": "Proxy-Cheap",
+    "slug": "proxy-cheap",
+    "website_url": "https://proxy-cheap.com",
+    "trial_offer": "14-day money-back",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp",
+      "other"
+    ]
+  },
+  {
+    "id": "proxy-ipv4",
+    "name": "Proxy-IPv4",
+    "slug": "proxy-ipv4",
+    "website_url": "https://proxy-ipv4.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "geonix",
+    "name": "Geonix",
+    "slug": "geonix",
+    "website_url": "https://geonix.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "youproxy",
+    "name": "Youproxy",
+    "slug": "youproxy",
+    "website_url": "https://youproxy.io",
+    "trial_offer": null,
+    "proxy_types": [
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "rayobyte",
+    "name": "Rayobyte",
+    "slug": "rayobyte",
+    "website_url": "https://rayobyte.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "myprivateproxy",
+    "name": "Myprivateproxy",
+    "slug": "myprivateproxy",
+    "website_url": "https://myprivateproxy.net",
+    "trial_offer": null,
+    "proxy_types": [
+      "datacenter"
+    ]
+  },
+  {
+    "id": "buyproxies",
+    "name": "Buyproxies",
+    "slug": "buyproxies",
+    "website_url": "https://buyproxies.org",
+    "trial_offer": null,
+    "proxy_types": [
+      "datacenter"
+    ]
+  },
+  {
+    "id": "proxyline",
+    "name": "Proxyline",
+    "slug": "proxyline",
+    "website_url": "https://proxyline.net",
+    "trial_offer": null,
+    "proxy_types": [
+      "datacenter"
+    ]
+  },
+  {
+    "id": "instantproxies",
+    "name": "Instantproxies",
+    "slug": "instantproxies",
+    "website_url": "https://instantproxies.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "datacenter"
+    ]
+  },
+  {
+    "id": "shifter",
+    "name": "Shifter",
+    "slug": "shifter",
+    "website_url": "https://shifter.io",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "isp"
+    ]
+  },
+  {
+    "id": "marsproxies",
+    "name": "Marsproxies",
+    "slug": "marsproxies",
+    "website_url": "https://marsproxies.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "proxyempire",
+    "name": "ProxyEmpire",
+    "slug": "proxyempire",
+    "website_url": "https://proxyempire.io",
+    "trial_offer": "100MB trial with $1.97",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "simplynode",
+    "name": "SimplyNode",
+    "slug": "simplynode",
+    "website_url": "https://simplynode.io",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "mobile"
+    ]
+  },
+  {
+    "id": "proxy6",
+    "name": "Proxy6",
+    "slug": "proxy6",
+    "website_url": "https://proxy6.net",
+    "trial_offer": null,
+    "proxy_types": [
+      "datacenter"
+    ]
+  },
+  {
+    "id": "oculusproxies",
+    "name": "OculusProxies",
+    "slug": "oculusproxies",
+    "website_url": "https://oculusproxies.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "isp"
+    ]
+  },
+  {
+    "id": "toolip",
+    "name": "Toolip",
+    "slug": "toolip",
+    "website_url": "https://toolip.io",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "isp"
+    ]
+  },
+  {
+    "id": "resiprox",
+    "name": "Resiprox",
+    "slug": "resiprox",
+    "website_url": "https://resiprox.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "mobile"
+    ]
+  },
+  {
+    "id": "dataimpulse",
+    "name": "Dataimpulse",
+    "slug": "dataimpulse",
+    "website_url": "https://dataimpulse.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "mobile",
+      "datacenter"
+    ]
+  },
+  {
+    "id": "squidproxies",
+    "name": "Squidproxies",
+    "slug": "squidproxies",
+    "website_url": "https://squidproxies.com",
+    "trial_offer": null,
+    "proxy_types": [
+      "datacenter",
+      "residential"
+    ]
+  },
+  {
+    "id": "proxys-io",
+    "name": "Proxys.io",
+    "slug": "proxys-io",
+    "website_url": "https://proxys.io",
+    "trial_offer": null,
+    "proxy_types": [
+      "mobile",
+      "residential",
+      "datacenter"
+    ]
+  },
+  {
+    "id": "hydraproxy",
+    "name": "HydraProxy",
+    "slug": "hydraproxy",
+    "website_url": "https://hydraproxy.com",
+    "trial_offer": "24-hour money-back",
+    "proxy_types": [
+      "residential",
+      "mobile"
+    ]
+  },
+  {
+    "id": "spaceproxy",
+    "name": "Spaceproxy",
+    "slug": "spaceproxy",
+    "website_url": "https://spaceproxy.net",
+    "trial_offer": null,
+    "proxy_types": [
+      "datacenter"
+    ]
+  },
+  {
+    "id": "geonode",
+    "name": "Geonode",
+    "slug": "geonode",
+    "website_url": "",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "other",
+      "mobile"
+    ]
+  },
+  {
+    "id": "proxyscrape",
+    "name": "ProxyScrape",
+    "slug": "proxyscrape",
+    "website_url": "https://proxyscrape.com",
+    "trial_offer": "3-day money-back",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "other",
+      "mobile"
+    ]
+  },
+  {
+    "id": "netnut",
+    "name": "NetNut",
+    "slug": "netnut",
+    "website_url": "",
+    "trial_offer": "7-day free trial",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp"
+    ]
+  },
+  {
+    "id": "oxylabs",
+    "name": "Oxylabs",
+    "slug": "oxylabs",
+    "website_url": "https://oxylabs.io",
+    "trial_offer": "7-day free trial",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile",
+      "isp",
+      "other"
+    ]
+  },
+  {
+    "id": "stormproxies",
+    "name": "Stormproxies",
+    "slug": "stormproxies",
+    "website_url": "",
+    "trial_offer": "48-hour money-back",
+    "proxy_types": [
+      "other",
+      "residential"
+    ]
+  },
+  {
+    "id": "proxyrack",
+    "name": "ProxyRack",
+    "slug": "proxyrack",
+    "website_url": "",
+    "trial_offer": "$13.95 /7 days with 5 port",
+    "proxy_types": [
+      "residential",
+      "datacenter"
+    ]
+  },
+  {
+    "id": "froxy",
+    "name": "Froxy",
+    "slug": "froxy",
+    "website_url": "",
+    "trial_offer": "3-day trial 100 MB of $1.99",
+    "proxy_types": [
+      "residential",
+      "mobile"
+    ]
+  },
+  {
+    "id": "infatica",
+    "name": "Infatica",
+    "slug": "infatica",
+    "website_url": "",
+    "trial_offer": "3-day trial for $1.99",
+    "proxy_types": [
+      "residential",
+      "datacenter",
+      "mobile"
+    ]
+  },
+  {
+    "id": "packetstream",
+    "name": "PacketStream",
+    "slug": "packetstream",
+    "website_url": "",
+    "trial_offer": null,
+    "proxy_types": [
+      "residential"
+    ]
+  },
+  {
+    "id": "the-social-proxy",
+    "name": "The Social Proxy",
+    "slug": "the-social-proxy",
+    "website_url": "",
+    "trial_offer": "24-hour trial with €1 setup fee",
+    "proxy_types": [
+      "mobile"
+    ]
+  },
+  {
+    "id": "proxywow",
+    "name": "ProxyWow",
+    "slug": "proxywow",
+    "website_url": "",
+    "trial_offer": null,
+    "proxy_types": [
+      "isp"
+    ]
+  },
+  {
+    "id": "airproxy",
+    "name": "Airproxy",
+    "slug": "airproxy",
+    "website_url": "",
+    "trial_offer": "72-hour tray at €9.9",
+    "proxy_types": [
+      "mobile"
+    ]
+  },
+  {
+    "id": "proxyguys",
+    "name": "ProxyGuys",
+    "slug": "proxyguys",
+    "website_url": "",
+    "trial_offer": "$5 for a trial including 100MB",
+    "proxy_types": [
+      "residential",
+      "mobile"
+    ]
+  },
+  {
+    "id": "nimbleway",
+    "name": "Nimbleway",
+    "slug": "nimbleway",
+    "website_url": "",
+    "trial_offer": "22 GB free trial",
+    "proxy_types": [
+      "residential",
+      "other"
+    ]
+  },
+  {
+    "id": "asocks",
+    "name": "Asocks",
+    "slug": "asocks",
+    "website_url": "",
+    "trial_offer": "3-day free trial",
+    "proxy_types": [
+      "residential",
+      "mobile"
+    ]
+  }
+]

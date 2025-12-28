@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+---
+
+<BaseLayout
+  title="ISP Proxies"
+  description="Compare ISP proxy pricing. Static residential IPs that combine speed and legitimacy."
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>ISP Proxy Comparison</h1>
+      <p class="page-subtitle">
+        Static residential IPs from ISPs. Combines the speed of datacenter proxies with the legitimacy of residential IPs.
+      </p>
+    </header>
+
+    <ComparisonTable proxyType="isp" />
+
+    <section class="content">
+      <h2>How to choose ISP proxies</h2>
+      <ul>
+        <li><strong>Stability:</strong> ISP proxies are often used for sticky sessions and long-lived identities.</li>
+        <li><strong>Location:</strong> Make sure the ISP/region matches your target market.</li>
+        <li><strong>Pricing model:</strong> Many ISP offerings are sold per IP—compare carefully against bandwidth-based plans.</li>
+      </ul>
+
+      <p class="muted">
+        Try the <a href="/calculator">Price Calculator</a> for comparable $/GB pricing and see <a href="/methodology">Methodology</a> for details.
+      </p>
+      <p class="muted">
+        Looking for a short list? See <a href="/best/isp-proxies">Best ISP Proxies</a>.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 1rem auto 0;
+  }
+
+  .content {
+    max-width: 900px;
+    margin: 2.5rem auto 0;
+    padding-top: 2rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .content h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .content ul {
+    padding-left: 1.25rem;
+  }
+
+  .muted {
+    color: var(--color-text-light);
+    margin-top: 1rem;
+  }
+</style>

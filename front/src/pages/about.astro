@@ -1,0 +1,74 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { DATA_LAST_UPDATED } from "../lib/site";
+import { FEEDBACK_URL } from "../lib/site";
+---
+
+<BaseLayout
+  title="About"
+  description="About ProxyPrice: a transparent proxy pricing comparison site that normalizes complex pricing to help you find the best deal."
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>About ProxyPrice</h1>
+      <p class="page-subtitle">
+        ProxyPrice helps you compare proxy providers transparently by collecting public pricing and presenting it in a consistent format.
+      </p>
+    </header>
+
+    <section class="content">
+      <h2>What this site does</h2>
+      <ul>
+        <li>Aggregates public pricing across residential, datacenter, mobile, and ISP proxy offerings.</li>
+        <li>Highlights providers with comparable <strong>$/GB</strong> pricing so you can sort fairly.</li>
+        <li>Offers a simple calculator to estimate monthly cost for a given bandwidth need.</li>
+      </ul>
+
+      <h2>Data freshness</h2>
+      <p>Pricing data is last updated <strong>{DATA_LAST_UPDATED}</strong>.</p>
+
+      <h2>Disclaimer</h2>
+      <p>
+        Prices and terms change frequently. Always verify details on the provider’s official pricing page before purchasing.
+        If you spot an error, please open a correction issue.
+      </p>
+      {FEEDBACK_URL && (
+        <p>
+          <a href={FEEDBACK_URL}>Report a correction on GitHub →</a>
+        </p>
+      )}
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 800px;
+    margin: 1rem auto 0;
+  }
+
+  .content {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .content h2 {
+    margin: 2rem 0 0.75rem;
+  }
+
+  .content p,
+  .content li {
+    color: var(--color-text);
+  }
+
+  .content ul {
+    padding-left: 1.25rem;
+  }
+</style>

@@ -1,0 +1,33 @@
+{
+  "name": "proxyprice",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "ProxyPrice - The definitive proxy price comparison platform",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "lint": "eslint \"src/**/*.{ts,tsx,astro}\"",
+    "validate:data": "node scripts/validate-data.mjs",
+    "linkcheck": "node scripts/linkcheck.mjs dist",
+    "verify": "npm run lint && npm run check && npm run build && npm run validate:data && npm run linkcheck"
+  },
+  "dependencies": {
+    "@astrojs/preact": "4.1.3",
+    "@preact/signals": "2.5.1",
+    "astro": "^5.16.6",
+    "preact": "10.28.1",
+    "zod": "3.25.76"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.6",
+    "@astrojs/sitemap": "3.6.0",
+    "@typescript-eslint/eslint-plugin": "8.19.0",
+    "@typescript-eslint/parser": "8.19.0",
+    "eslint": "9.18.0",
+    "eslint-plugin-astro": "1.5.0",
+    "typescript": "5.7.3"
+  }
+}

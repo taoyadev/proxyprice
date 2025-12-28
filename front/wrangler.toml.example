@@ -1,0 +1,19 @@
+# Cloudflare Pages Configuration Template
+# Copy this file to wrangler.toml and fill in your values
+# DO NOT commit wrangler.toml to version control
+
+name = "proxyprice"
+compatibility_date = "2025-12-28"
+
+# Remove account_id from here - use environment variable instead
+# Set CLOUDFLARE_ACCOUNT_ID in your environment or GitHub Secrets
+
+# Pages configuration
+pages_build_output_dir = "dist"
+
+[site]
+bucket = "./dist"
+
+# Environment variables (add your own as needed)
+[vars]
+# PUBLIC_FEEDBACK_URL = "your-feedback-url"

@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ComparisonTable from '../components/ComparisonTable.astro';
+---
+
+<BaseLayout
+  title="All Providers"
+  description="Compare all proxy providers in one place. View pricing, features, and trial offers from 40+ providers."
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>All Proxy Providers</h1>
+      <p class="page-subtitle">
+        Complete listing of all proxy providers with transparent pricing comparison.
+      </p>
+      <p class="page-note">
+        By default we show comparable <strong>$/GB</strong> pricing. Uncheck “Comparable only” to view non-comparable models (per IP / per proxy / per thread).
+      </p>
+    </header>
+
+    <ComparisonTable />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 1rem auto 0;
+  }
+
+  .page-note {
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    max-width: 860px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>

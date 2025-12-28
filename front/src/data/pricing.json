@@ -1,0 +1,3398 @@
+{
+  "pricing": [
+    {
+      "provider_id": "decodo",
+      "provider_name": "Decodo",
+      "proxy_type": "residential",
+      "price_url": "https://decodo.com/proxies/residential-proxies/pricing",
+      "tiers": [
+        {
+          "gb": 1,
+          "price_per_gb": 7.0,
+          "total": 7.0,
+          "pricing_model": "per_gb",
+          "is_payg": true
+        },
+        {
+          "gb": 2.0,
+          "price_per_gb": 6.0,
+          "total": 12.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 8.0,
+          "price_per_gb": 5.5,
+          "total": 44.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 25.0,
+          "price_per_gb": 5.2,
+          "total": 130.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 4.9,
+          "total": 245.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 4.5,
+          "total": 450.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 4.0,
+          "total": 1000.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 3.5,
+          "total": 1750.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1000.0,
+          "price_per_gb": 3.0,
+          "total": 3000.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 2000.0,
+          "price_per_gb": 2.8,
+          "total": 5600.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 5000.0,
+          "price_per_gb": 2.2,
+          "total": 11000.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 2.2,
+      "max_price_per_gb": 7.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 11
+    },
+    {
+      "provider_id": "decodo",
+      "provider_name": "Decodo",
+      "proxy_type": "datacenter",
+      "price_url": "https://decodo.com/proxies/datacenter-proxies/pricing",
+      "tiers": [
+        {
+          "gb": 10.0,
+          "price_per_gb": 0.6,
+          "total": 6.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 0.57,
+          "total": 28.5,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 0.54,
+          "total": 54.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 0.51,
+          "total": 127.5,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 0.48,
+          "total": 240.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1000.0,
+          "price_per_gb": 0.45,
+          "total": 450.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 3000.0,
+          "price_per_gb": 0.41,
+          "total": 1230.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 5000.0,
+          "price_per_gb": 0.39,
+          "total": 1950.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "ips": 100,
+          "price_per_ip": 0.035,
+          "total": 3.5,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 500,
+          "price_per_ip": 0.031,
+          "total": 15.7,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 1000,
+          "price_per_ip": 0.03,
+          "total": 29.7,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 2000,
+          "price_per_ip": 0.028,
+          "total": 56.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 4000,
+          "price_per_ip": 0.026,
+          "total": 105.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 8000,
+          "price_per_ip": 0.024,
+          "total": 195.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 15000,
+          "price_per_ip": 0.02,
+          "total": 300.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 3,
+          "price_per_ip": 1.85,
+          "total": 5.55,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 10,
+          "price_per_ip": 1.75,
+          "total": 17.5,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 25,
+          "price_per_ip": 1.65,
+          "total": 41.25,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 50,
+          "price_per_ip": 1.55,
+          "total": 77.5,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 100,
+          "price_per_ip": 1.45,
+          "total": 145.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 200,
+          "price_per_ip": 1.35,
+          "total": 270.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 500,
+          "price_per_ip": 1.25,
+          "total": 625.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 1000,
+          "price_per_ip": 1.2,
+          "total": 1200.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 2000,
+          "price_per_ip": 1.15,
+          "total": 2300.0,
+          "pricing_model": "per_ip"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 0.39,
+      "max_price_per_gb": 0.6,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 24
+    },
+    {
+      "provider_id": "decodo",
+      "provider_name": "Decodo",
+      "proxy_type": "mobile",
+      "price_url": "https://decodo.com/proxies/mobile/pricing",
+      "tiers": [
+        {
+          "gb": 1,
+          "price_per_gb": 8.0,
+          "total": 8.0,
+          "pricing_model": "per_gb",
+          "is_payg": true
+        },
+        {
+          "gb": 2.0,
+          "price_per_gb": 7.5,
+          "total": 15.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 8.0,
+          "price_per_gb": 7.0,
+          "total": 56.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 25.0,
+          "price_per_gb": 6.5,
+          "total": 162.5,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 6.0,
+          "total": 300.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 5.5,
+          "total": 550.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 4.0,
+          "total": 1000.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 3.5,
+          "total": 1750.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1000.0,
+          "price_per_gb": 3.0,
+          "total": 3000.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 3.0,
+      "max_price_per_gb": 8.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 9
+    },
+    {
+      "provider_id": "decodo",
+      "provider_name": "Decodo",
+      "proxy_type": "isp",
+      "price_url": "https://decodo.com/proxies/isp-proxies/pricing",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "bright-data",
+      "provider_name": "Bright Data",
+      "proxy_type": "residential",
+      "price_url": "https://brightdata.com/pricing/proxy-network/residential-proxies",
+      "tiers": [
+        {
+          "gb": 1,
+          "price_per_gb": 8.0,
+          "total": 8.0,
+          "pricing_model": "per_gb",
+          "is_payg": true
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 8.0,
+      "max_price_per_gb": 8.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 1
+    },
+    {
+      "provider_id": "bright-data",
+      "provider_name": "Bright Data",
+      "proxy_type": "datacenter",
+      "price_url": "https://brightdata.com/pricing/proxy-network/datacenter-proxies",
+      "tiers": [
+        {
+          "ips": 10,
+          "price_per_ip": 1.4,
+          "total": 14.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 100,
+          "price_per_ip": 1.0,
+          "total": 100.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 500,
+          "price_per_ip": 0.95,
+          "total": 475.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 1000,
+          "price_per_ip": 0.9,
+          "total": 900.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "gb": 1,
+          "price_per_gb": 0.6,
+          "total": 0.6,
+          "pricing_model": "per_gb",
+          "is_payg": true
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 0.6,
+      "max_price_per_gb": 0.6,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 5
+    },
+    {
+      "provider_id": "bright-data",
+      "provider_name": "Bright Data",
+      "proxy_type": "mobile",
+      "price_url": "https://brightdata.com/proxy-types/mobile-proxies",
+      "tiers": [
+        {
+          "gb": 1,
+          "price_per_gb": 8.0,
+          "total": 8.0,
+          "pricing_model": "per_gb",
+          "is_payg": true
+        },
+        {
+          "gb": 71.0,
+          "price_per_gb": 7.0,
+          "total": 499.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 166.0,
+          "price_per_gb": 6.0,
+          "total": 999.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 399.0,
+          "price_per_gb": 5.0,
+          "total": 1999.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 5.0,
+      "max_price_per_gb": 8.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 4
+    },
+    {
+      "provider_id": "bright-data",
+      "provider_name": "Bright Data",
+      "proxy_type": "isp",
+      "price_url": "https://brightdata.com/pricing/proxy-network/isp-proxies",
+      "tiers": [
+        {
+          "ips": 10,
+          "price_per_ip": 1.8,
+          "total": 18.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 100,
+          "price_per_ip": 1.45,
+          "total": 145.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 500,
+          "price_per_ip": 1.4,
+          "total": 700.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "ips": 1000,
+          "price_per_ip": 1.3,
+          "total": 1300.0,
+          "pricing_model": "per_ip"
+        },
+        {
+          "gb": 1,
+          "price_per_gb": 15.0,
+          "total": 15.0,
+          "pricing_model": "per_gb",
+          "is_payg": true
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 15.0,
+      "max_price_per_gb": 15.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 5
+    },
+    {
+      "provider_id": "soax",
+      "provider_name": "SOAX",
+      "proxy_type": "residential",
+      "price_url": "https://soax.com/proxies/residential",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "soax",
+      "provider_name": "SOAX",
+      "proxy_type": "datacenter",
+      "price_url": "https://soax.com/proxies/datacenter",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "soax",
+      "provider_name": "SOAX",
+      "proxy_type": "mobile",
+      "price_url": "https://soax.com/proxies/mobile",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "soax",
+      "provider_name": "SOAX",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "iproyal",
+      "provider_name": "IPRoyal",
+      "proxy_type": "residential",
+      "price_url": "https://iproyal.com/pricing/residential-proxies/",
+      "tiers": [
+        {
+          "gb": 2.0,
+          "price_per_gb": 5.95,
+          "total": 11.9,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 10.0,
+          "price_per_gb": 5.25,
+          "total": 52.5,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 4.9,
+          "total": 245.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 4.9,
+      "max_price_per_gb": 5.95,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 3
+    },
+    {
+      "provider_id": "iproyal",
+      "provider_name": "IPRoyal",
+      "proxy_type": "datacenter",
+      "price_url": "https://iproyal.com/pricing/datacenter-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "iproyal",
+      "provider_name": "IPRoyal",
+      "proxy_type": "mobile",
+      "price_url": "https://iproyal.com/pricing/mobile-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "iproyal",
+      "provider_name": "IPRoyal",
+      "proxy_type": "isp",
+      "price_url": "https://iproyal.com/pricing/isp-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-seller",
+      "provider_name": "Proxy-Seller",
+      "proxy_type": "residential",
+      "price_url": "https://proxy-seller.com/residential-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-seller",
+      "provider_name": "Proxy-Seller",
+      "proxy_type": "datacenter",
+      "price_url": "https://proxy-seller.com/usa-proxy/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-seller",
+      "provider_name": "Proxy-Seller",
+      "proxy_type": "mobile",
+      "price_url": "https://proxy-seller.com/mobile-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-seller",
+      "provider_name": "Proxy-Seller",
+      "proxy_type": "isp",
+      "price_url": "https://proxy-seller.com/isp/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "webshare",
+      "provider_name": "Webshare",
+      "proxy_type": "residential",
+      "price_url": "https://www.webshare.io/residential-proxy",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "webshare",
+      "provider_name": "Webshare",
+      "proxy_type": "datacenter",
+      "price_url": "https://www.webshare.io/dedicated-datacenter-proxy",
+      "tiers": [
+        {
+          "proxies": 100,
+          "total": 2.99,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 250,
+          "total": 7.47,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 500,
+          "total": 14.2,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 1000,
+          "total": 26.91,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 2500,
+          "total": 63.54,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 5000,
+          "total": 119.6,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 10000,
+          "total": 224.25,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 15000,
+          "total": 313.95,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 25000,
+          "total": 523.25,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 40000,
+          "total": 777.4,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 60000,
+          "total": 1076.4,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 100000,
+          "total": 1794.0,
+          "pricing_model": "per_proxy"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "per_proxy",
+      "comparable": false,
+      "tier_count": 12
+    },
+    {
+      "provider_id": "webshare",
+      "provider_name": "Webshare",
+      "proxy_type": "isp",
+      "price_url": "https://www.webshare.io/dedicated-static-residential-proxy",
+      "tiers": [
+        {
+          "proxies": 20,
+          "total": 6.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 50,
+          "total": 15.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 75,
+          "total": 22.5,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 100,
+          "total": 30.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 250,
+          "total": 75.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 500,
+          "total": 142.5,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 1000,
+          "total": 270.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 2000,
+          "total": 510.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 3000,
+          "total": 720.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 5000,
+          "total": 1200.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 10000,
+          "total": 2250.0,
+          "pricing_model": "per_proxy"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "per_proxy",
+      "comparable": false,
+      "tier_count": 11
+    },
+    {
+      "provider_id": "proxy-cheap",
+      "provider_name": "Proxy-Cheap",
+      "proxy_type": "residential",
+      "price_url": "https://www.proxy-cheap.com/pricing/rotating-residential-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-cheap",
+      "provider_name": "Proxy-Cheap",
+      "proxy_type": "datacenter",
+      "price_url": "https://www.proxy-cheap.com/pricing/datacenter-proxy-ipv4",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-cheap",
+      "provider_name": "Proxy-Cheap",
+      "proxy_type": "mobile",
+      "price_url": "https://www.proxy-cheap.com/pricing/rotating-mobile-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-cheap",
+      "provider_name": "Proxy-Cheap",
+      "proxy_type": "isp",
+      "price_url": "https://www.proxy-cheap.com/pricing/static-residential-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-cheap",
+      "provider_name": "Proxy-Cheap",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-ipv4",
+      "provider_name": "Proxy-IPv4",
+      "proxy_type": "datacenter",
+      "price_url": "https://proxy-ipv4.com/en/#prices",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-ipv4",
+      "provider_name": "Proxy-IPv4",
+      "proxy_type": "mobile",
+      "price_url": "https://proxy-ipv4.com/en/mobile/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy-ipv4",
+      "provider_name": "Proxy-IPv4",
+      "proxy_type": "isp",
+      "price_url": "https://proxy-ipv4.com/en/isp/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonix",
+      "provider_name": "Geonix",
+      "proxy_type": "residential",
+      "price_url": "https://geonix.com/resident/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonix",
+      "provider_name": "Geonix",
+      "proxy_type": "datacenter",
+      "price_url": "https://geonix.com/proxy-usa/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonix",
+      "provider_name": "Geonix",
+      "proxy_type": "mobile",
+      "price_url": "https://geonix.com/mobile-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonix",
+      "provider_name": "Geonix",
+      "proxy_type": "isp",
+      "price_url": "https://geonix.com/isp/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "youproxy",
+      "provider_name": "Youproxy",
+      "proxy_type": "datacenter",
+      "price_url": "https://youproxy.io/en/prices/?priceTabs=IPV4",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "youproxy",
+      "provider_name": "Youproxy",
+      "proxy_type": "mobile",
+      "price_url": "https://youproxy.io/en/prices/?priceTabs=MOBILE",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "youproxy",
+      "provider_name": "Youproxy",
+      "proxy_type": "isp",
+      "price_url": "https://youproxy.io/en/prices/?priceTabs=ISP",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "rayobyte",
+      "provider_name": "Rayobyte",
+      "proxy_type": "residential",
+      "price_url": "https://rayobyte.com/products/residential-proxies#pricing",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "rayobyte",
+      "provider_name": "Rayobyte",
+      "proxy_type": "datacenter",
+      "price_url": "https://rayobyte.com/products/datacenter-ips#dc_pricing",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "rayobyte",
+      "provider_name": "Rayobyte",
+      "proxy_type": "mobile",
+      "price_url": "https://rayobyte.com/products/mobile-proxies#pricing",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "rayobyte",
+      "provider_name": "Rayobyte",
+      "proxy_type": "isp",
+      "price_url": "https://rayobyte.com/products/isp-proxies#pricing",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "myprivateproxy",
+      "provider_name": "Myprivateproxy",
+      "proxy_type": "datacenter",
+      "price_url": "https://www.myprivateproxy.net/private-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "buyproxies",
+      "provider_name": "Buyproxies",
+      "proxy_type": "datacenter",
+      "price_url": "https://buyproxies.org/panel/index.php?rp=/store/dedicated-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxyline",
+      "provider_name": "Proxyline",
+      "proxy_type": "datacenter",
+      "price_url": "https://proxyline.net/en",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "instantproxies",
+      "provider_name": "Instantproxies",
+      "proxy_type": "datacenter",
+      "price_url": "https://instantproxies.com/pricing/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "shifter",
+      "provider_name": "Shifter",
+      "proxy_type": "residential",
+      "price_url": "https://shifter.io/pricing?product=residential-proxies&subproduct=special-backconnect-proxy",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "shifter",
+      "provider_name": "Shifter",
+      "proxy_type": "isp",
+      "price_url": "https://shifter.io/pricing?product=datacenter-proxies&subproduct=static-residential-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "marsproxies",
+      "provider_name": "Marsproxies",
+      "proxy_type": "residential",
+      "price_url": "https://marsproxies.com/pricing/residential-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "marsproxies",
+      "provider_name": "Marsproxies",
+      "proxy_type": "datacenter",
+      "price_url": "https://marsproxies.com/pricing/datacenter-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "marsproxies",
+      "provider_name": "Marsproxies",
+      "proxy_type": "mobile",
+      "price_url": "https://marsproxies.com/pricing/mobile-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "marsproxies",
+      "provider_name": "Marsproxies",
+      "proxy_type": "isp",
+      "price_url": "https://marsproxies.com/pricing/isp-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxyempire",
+      "provider_name": "ProxyEmpire",
+      "proxy_type": "residential",
+      "price_url": "https://proxyempire.io/pricing-table/",
+      "tiers": [
+        {
+          "gb": 5.0,
+          "price_per_gb": 8.0,
+          "total": 40.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 25.0,
+          "price_per_gb": 6.0,
+          "total": 150.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 55.0,
+          "price_per_gb": 5.45,
+          "total": 300.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 120.0,
+          "price_per_gb": 5.0,
+          "total": 600.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 300.0,
+          "price_per_gb": 4.17,
+          "total": 1250.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 3.5,
+          "total": 1750.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1000.0,
+          "price_per_gb": 3.0,
+          "total": 3000.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 3.0,
+      "max_price_per_gb": 8.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 7
+    },
+    {
+      "provider_id": "proxyempire",
+      "provider_name": "ProxyEmpire",
+      "proxy_type": "datacenter",
+      "price_url": "https://proxyempire.io/pricing-table/",
+      "tiers": [
+        {
+          "gb": 40.0,
+          "price_per_gb": 0.625,
+          "total": 25.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 0.55,
+          "total": 55.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 200.0,
+          "price_per_gb": 0.475,
+          "total": 95.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 0.45,
+          "total": 225.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1000.0,
+          "price_per_gb": 0.4,
+          "total": 400.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 5000.0,
+          "price_per_gb": 0.35,
+          "total": 1750.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 0.35,
+      "max_price_per_gb": 0.625,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 6
+    },
+    {
+      "provider_id": "proxyempire",
+      "provider_name": "ProxyEmpire",
+      "proxy_type": "mobile",
+      "price_url": "https://proxyempire.io/pricing-table/",
+      "tiers": [
+        {
+          "gb": 3.0,
+          "price_per_gb": 16.67,
+          "total": 50.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 10.0,
+          "price_per_gb": 15.0,
+          "total": 150.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 22.0,
+          "price_per_gb": 13.64,
+          "total": 300.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 53.0,
+          "price_per_gb": 12.45,
+          "total": 660.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 150.0,
+          "price_per_gb": 10.0,
+          "total": 1500.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 300.0,
+          "price_per_gb": 8.5,
+          "total": 2550.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 8.0,
+          "total": 4000.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 8.0,
+      "max_price_per_gb": 16.67,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 7
+    },
+    {
+      "provider_id": "proxyempire",
+      "provider_name": "ProxyEmpire",
+      "proxy_type": "isp",
+      "price_url": "https://proxyempire.io/pricing-table/",
+      "tiers": [
+        {
+          "gb": 5.0,
+          "price_per_gb": 8.0,
+          "total": 40.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 25.0,
+          "price_per_gb": 6.0,
+          "total": 150.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 55.0,
+          "price_per_gb": 5.45,
+          "total": 300.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 120.0,
+          "price_per_gb": 5.0,
+          "total": 600.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 300.0,
+          "price_per_gb": 4.17,
+          "total": 1250.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 3.5,
+          "total": 1750.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1000.0,
+          "price_per_gb": 3.0,
+          "total": 3000.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 3.0,
+      "max_price_per_gb": 8.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 7
+    },
+    {
+      "provider_id": "simplynode",
+      "provider_name": "SimplyNode",
+      "proxy_type": "residential",
+      "price_url": "https://www.simplynode.io/product/residential-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "simplynode",
+      "provider_name": "SimplyNode",
+      "proxy_type": "mobile",
+      "price_url": "https://www.simplynode.io/product/mobile-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxy6",
+      "provider_name": "Proxy6",
+      "proxy_type": "datacenter",
+      "price_url": "https://proxy6.net/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "oculusproxies",
+      "provider_name": "OculusProxies",
+      "proxy_type": "residential",
+      "price_url": "https://oculusproxies.com/pricing/smart-residential-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "oculusproxies",
+      "provider_name": "OculusProxies",
+      "proxy_type": "datacenter",
+      "price_url": "https://oculusproxies.com/pricing/dedicated-datacenter-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "oculusproxies",
+      "provider_name": "OculusProxies",
+      "proxy_type": "isp",
+      "price_url": "https://oculusproxies.com/pricing/isp-premium-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "toolip",
+      "provider_name": "Toolip",
+      "proxy_type": "residential",
+      "price_url": "https://toolip.io/pricing/rotating-residential-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "toolip",
+      "provider_name": "Toolip",
+      "proxy_type": "datacenter",
+      "price_url": "https://toolip.io/pricing/dedicated-datacenter-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "toolip",
+      "provider_name": "Toolip",
+      "proxy_type": "isp",
+      "price_url": "https://toolip.io/pricing/global-isp-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "resiprox",
+      "provider_name": "Resiprox",
+      "proxy_type": "residential",
+      "price_url": "https://resiprox.com/#pricing",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "resiprox",
+      "provider_name": "Resiprox",
+      "proxy_type": "mobile",
+      "price_url": "https://resiprox.com/#pricing",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "dataimpulse",
+      "provider_name": "Dataimpulse",
+      "proxy_type": "residential",
+      "price_url": "https://dataimpulse.com/residential-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "dataimpulse",
+      "provider_name": "Dataimpulse",
+      "proxy_type": "mobile",
+      "price_url": "https://dataimpulse.com/mobile-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "dataimpulse",
+      "provider_name": "Dataimpulse",
+      "proxy_type": "datacenter",
+      "price_url": "https://dataimpulse.com/datacenter-proxies/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "squidproxies",
+      "provider_name": "Squidproxies",
+      "proxy_type": "datacenter",
+      "price_url": "https://www.squidproxies.com/plans-and-pricing?type=datacenter",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "squidproxies",
+      "provider_name": "Squidproxies",
+      "proxy_type": "residential",
+      "price_url": "https://www.squidproxies.com/plans-and-pricing?type=residential",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxys-io",
+      "provider_name": "Proxys.io",
+      "proxy_type": "mobile",
+      "price_url": "https://proxys.io/en/buy-mobile-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxys-io",
+      "provider_name": "Proxys.io",
+      "proxy_type": "residential",
+      "price_url": "https://proxys.io/en/residential",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxys-io",
+      "provider_name": "Proxys.io",
+      "proxy_type": "datacenter",
+      "price_url": "https://proxys.io/en/cart",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "hydraproxy",
+      "provider_name": "HydraProxy",
+      "proxy_type": "residential",
+      "price_url": "https://hydraproxy.com/pricing/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "hydraproxy",
+      "provider_name": "HydraProxy",
+      "proxy_type": "mobile",
+      "price_url": "https://hydraproxy.com/pricing/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "spaceproxy",
+      "provider_name": "Spaceproxy",
+      "proxy_type": "datacenter",
+      "price_url": "https://spaceproxy.net/en/",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "shifter",
+      "provider_name": "Shifter",
+      "proxy_type": "residential",
+      "price_url": "https://shifter.io/pricing?product=residential-proxies&subproduct=special-backconnect-proxy",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "shifter",
+      "provider_name": "Shifter",
+      "proxy_type": "residential",
+      "price_url": "https://shifter.io/pricing?product=residential-proxies&subproduct=basic-backconnect-proxy",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonode",
+      "provider_name": "Geonode",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonode",
+      "provider_name": "Geonode",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonode",
+      "provider_name": "Geonode",
+      "proxy_type": "datacenter",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonode",
+      "provider_name": "Geonode",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonode",
+      "provider_name": "Geonode",
+      "proxy_type": "mobile",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonode",
+      "provider_name": "Geonode",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "geonode",
+      "provider_name": "Geonode",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxyscrape",
+      "provider_name": "ProxyScrape",
+      "proxy_type": "residential",
+      "price_url": "https://proxyscrape.com/products/residential-proxies#pricing",
+      "tiers": [
+        {
+          "gb": 20.0,
+          "price_per_gb": 4.5,
+          "total": 90.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 40.0,
+          "price_per_gb": 4.25,
+          "total": 170.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 75.0,
+          "price_per_gb": 4.0,
+          "total": 300.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 3.75,
+          "total": 375.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 150.0,
+          "price_per_gb": 3.5,
+          "total": 525.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 2.75,
+          "total": 1375.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 750.0,
+          "price_per_gb": 2.5,
+          "total": 1875.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1000.0,
+          "price_per_gb": 2.0,
+          "total": 2000.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 2000.0,
+          "price_per_gb": 1.85,
+          "total": 3700.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 3000.0,
+          "price_per_gb": 1.7,
+          "total": 5100.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 4000.0,
+          "price_per_gb": 1.6,
+          "total": 6400.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 5000.0,
+          "price_per_gb": 1.5,
+          "total": 7500.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 1.5,
+      "max_price_per_gb": 4.5,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 12
+    },
+    {
+      "provider_id": "proxyscrape",
+      "provider_name": "ProxyScrape",
+      "proxy_type": "datacenter",
+      "price_url": "https://proxyscrape.com/products/datacenter-proxies#pricing",
+      "tiers": [
+        {
+          "proxies": 1000,
+          "total": 4.17,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 2500,
+          "total": 10.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 5000,
+          "total": 19.17,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 7500,
+          "total": 27.5,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 35.83,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 52.5,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 69.17,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 85.83,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 102.5,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 125.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 1000,
+          "total": 10.03,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 2500,
+          "total": 24.08,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 5000,
+          "total": 46.15,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 7500,
+          "total": 66.22,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 86.29,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 126.42,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 166.55,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 206.69,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 246.82,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 301.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 1000,
+          "total": 15.75,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 2500,
+          "total": 37.8,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 5000,
+          "total": 72.45,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 7500,
+          "total": 103.95,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 135.45,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 198.45,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 261.45,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 324.45,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 387.45,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 472.5,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 1000,
+          "total": 25.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 2500,
+          "total": 60.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 5000,
+          "total": 115.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 7500,
+          "total": 165.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 215.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 315.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 415.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 515.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 615.0,
+          "pricing_model": "per_proxy"
+        },
+        {
+          "proxies": 0,
+          "total": 750.0,
+          "pricing_model": "per_proxy"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "per_proxy",
+      "comparable": false,
+      "tier_count": 40
+    },
+    {
+      "provider_id": "proxyscrape",
+      "provider_name": "ProxyScrape",
+      "proxy_type": "other",
+      "price_url": "https://proxyscrape.com/products/premium",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxyscrape",
+      "provider_name": "ProxyScrape",
+      "proxy_type": "mobile",
+      "price_url": "https://proxyscrape.com/products/mobile-proxies",
+      "tiers": [
+        {
+          "gb": 20.0,
+          "price_per_gb": 4.5,
+          "total": 90.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 40.0,
+          "price_per_gb": 4.25,
+          "total": 170.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 75.0,
+          "price_per_gb": 4.0,
+          "total": 300.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 3.75,
+          "total": 375.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 150.0,
+          "price_per_gb": 3.5,
+          "total": 525.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 2.75,
+          "total": 1375.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 750.0,
+          "price_per_gb": 2.5,
+          "total": 1875.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1000.0,
+          "price_per_gb": 2.0,
+          "total": 2000.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 2000.0,
+          "price_per_gb": 1.85,
+          "total": 3700.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 3000.0,
+          "price_per_gb": 1.7,
+          "total": 5100.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 4000.0,
+          "price_per_gb": 1.6,
+          "total": 6400.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 5000.0,
+          "price_per_gb": 1.5,
+          "total": 7500.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 1.5,
+      "max_price_per_gb": 4.5,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 12
+    },
+    {
+      "provider_id": "netnut",
+      "provider_name": "NetNut",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 20.0,
+          "price_per_gb": 15.0,
+          "total": 300.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 12.0,
+          "total": 600.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 8.0,
+          "total": 800.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 6.5,
+          "total": 1625.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 5.0,
+          "total": 2500.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 20.0,
+          "price_per_gb": 13.5,
+          "total": 3240.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 10.8,
+          "total": 6480.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 7.2,
+          "total": 8640.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 5.85,
+          "total": 17550.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 5.0,
+          "total": 2500.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 5.0,
+      "max_price_per_gb": 15.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 10
+    },
+    {
+      "provider_id": "netnut",
+      "provider_name": "NetNut",
+      "proxy_type": "datacenter",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 100.0,
+          "price_per_gb": 1.0,
+          "total": 100.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 0.74,
+          "total": 185.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 0.7,
+          "total": 350.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 750.0,
+          "price_per_gb": 0.6,
+          "total": 450.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 0.9,
+          "total": 1080.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 0.66,
+          "total": 1998.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 0.63,
+          "total": 3780.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 750.0,
+          "price_per_gb": 0.54,
+          "total": 4860.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 0.54,
+      "max_price_per_gb": 1.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 8
+    },
+    {
+      "provider_id": "netnut",
+      "provider_name": "NetNut",
+      "proxy_type": "mobile",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 20.0,
+          "price_per_gb": 20.0,
+          "total": 400.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 18.0,
+          "total": 900.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 16.0,
+          "total": 1600.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 14.0,
+          "total": 3500.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 11.0,
+          "total": 5500.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 20.0,
+          "price_per_gb": 18.0,
+          "total": 4320.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 16.2,
+          "total": 9720.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 14.4,
+          "total": 17280.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 12.6,
+          "total": 37800.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 9.9,
+          "total": 59400.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 9.9,
+      "max_price_per_gb": 20.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 10
+    },
+    {
+      "provider_id": "netnut",
+      "provider_name": "NetNut",
+      "proxy_type": "isp",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 20.0,
+          "price_per_gb": 17.5,
+          "total": 350.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 15.0,
+          "total": 750.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 10.0,
+          "total": 1000.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 8.0,
+          "total": 2000.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 6.5,
+          "total": 2500.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 20.0,
+          "price_per_gb": 15.75,
+          "total": 3780.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 13.5,
+          "total": 8100.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 9.0,
+          "total": 10800.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 7.2,
+          "total": 21600.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 4.5,
+          "total": 2700.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 4.5,
+      "max_price_per_gb": 17.5,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 10
+    },
+    {
+      "provider_id": "oxylabs",
+      "provider_name": "Oxylabs",
+      "proxy_type": "residential",
+      "price_url": "https://oxylabs.io/products/residential-proxy-pool",
+      "tiers": [
+        {
+          "gb": 11.0,
+          "price_per_gb": 9.0,
+          "total": 99.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 38.0,
+          "price_per_gb": 7.89,
+          "total": 300.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 86.0,
+          "price_per_gb": 6.98,
+          "total": 600.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 133.0,
+          "price_per_gb": 6.02,
+          "total": 800.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 318.0,
+          "price_per_gb": 5.5,
+          "total": 1750.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 5.5,
+      "max_price_per_gb": 9.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 5
+    },
+    {
+      "provider_id": "oxylabs",
+      "provider_name": "Oxylabs",
+      "proxy_type": "datacenter",
+      "price_url": "https://oxylabs.io/products/datacenter-proxies",
+      "tiers": [
+        {
+          "gb": 77.0,
+          "price_per_gb": 0.65,
+          "total": 50.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 167.0,
+          "price_per_gb": 0.6,
+          "total": 100.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 364.0,
+          "price_per_gb": 0.55,
+          "total": 200.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 600.0,
+          "price_per_gb": 0.5,
+          "total": 300.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1042.0,
+          "price_per_gb": 0.48,
+          "total": 500.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 0.48,
+      "max_price_per_gb": 0.65,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 5
+    },
+    {
+      "provider_id": "oxylabs",
+      "provider_name": "Oxylabs",
+      "proxy_type": "datacenter",
+      "price_url": "https://oxylabs.io/products/datacenter-proxies/dedicated-datacenter-proxies",
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "oxylabs",
+      "provider_name": "Oxylabs",
+      "proxy_type": "mobile",
+      "price_url": "https://oxylabs.io/products/mobile-proxies",
+      "tiers": [
+        {
+          "gb": 10.0,
+          "price_per_gb": 20.0,
+          "total": 200.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 20.0,
+          "price_per_gb": 19.0,
+          "total": 380.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 17.0,
+          "total": 850.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 16.0,
+          "total": 1600.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 200.0,
+          "price_per_gb": 15.0,
+          "total": 3000.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 300.0,
+          "price_per_gb": 14.0,
+          "total": 4200.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 14.0,
+      "max_price_per_gb": 20.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 6
+    },
+    {
+      "provider_id": "oxylabs",
+      "provider_name": "Oxylabs",
+      "proxy_type": "isp",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 20.0,
+          "price_per_gb": 17.0,
+          "total": 340.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 14.0,
+          "total": 700.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 11.0,
+          "total": 1100.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 11.0,
+      "max_price_per_gb": 17.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 3
+    },
+    {
+      "provider_id": "oxylabs",
+      "provider_name": "Oxylabs",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 5.0,
+          "price_per_gb": 15.0,
+          "total": 75.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 25.0,
+          "price_per_gb": 13.0,
+          "total": 325.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 60.0,
+          "price_per_gb": 11.0,
+          "total": 660.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 11.0,
+      "max_price_per_gb": 15.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 3
+    },
+    {
+      "provider_id": "oxylabs",
+      "provider_name": "Oxylabs",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "rayobyte",
+      "provider_name": "Rayobyte",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "rayobyte",
+      "provider_name": "Rayobyte",
+      "proxy_type": "datacenter",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "rayobyte",
+      "provider_name": "Rayobyte",
+      "proxy_type": "mobile",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "rayobyte",
+      "provider_name": "Rayobyte",
+      "proxy_type": "isp",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "stormproxies",
+      "provider_name": "Stormproxies",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [
+        {
+          "threads": 40,
+          "total": 39.0,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 80,
+          "total": 59.0,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 150,
+          "total": 97.0,
+          "pricing_model": "per_thread"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "per_thread",
+      "comparable": false,
+      "tier_count": 3
+    },
+    {
+      "provider_id": "stormproxies",
+      "provider_name": "Stormproxies",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "stormproxies",
+      "provider_name": "Stormproxies",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "stormproxies",
+      "provider_name": "Stormproxies",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "stormproxies",
+      "provider_name": "Stormproxies",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxyrack",
+      "provider_name": "ProxyRack",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxyrack",
+      "provider_name": "ProxyRack",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxyrack",
+      "provider_name": "ProxyRack",
+      "proxy_type": "datacenter",
+      "price_url": null,
+      "tiers": [
+        {
+          "threads": 100,
+          "total": 0.8,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 250,
+          "total": 0.6,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 500,
+          "total": 0.5,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 1000,
+          "total": 0.5,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 1500,
+          "total": 0.4,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 2000,
+          "total": 0.4,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 100,
+          "total": 0.54,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 250,
+          "total": 0.4,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 500,
+          "total": 0.37,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 1000,
+          "total": 0.34,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 1500,
+          "total": 0.31,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 2000,
+          "total": 0.27,
+          "pricing_model": "per_thread"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "per_thread",
+      "comparable": false,
+      "tier_count": 12
+    },
+    {
+      "provider_id": "proxyrack",
+      "provider_name": "ProxyRack",
+      "proxy_type": "datacenter",
+      "price_url": null,
+      "tiers": [
+        {
+          "threads": 100,
+          "total": 0.75,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 250,
+          "total": 0.56,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 500,
+          "total": 0.48,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 1000,
+          "total": 0.39,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 1500,
+          "total": 0.75,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 2000,
+          "total": 0.34,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 100,
+          "total": 0.54,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 250,
+          "total": 0.4,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 500,
+          "total": 0.0,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 1000,
+          "total": 0.34,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 1500,
+          "total": 0.31,
+          "pricing_model": "per_thread"
+        },
+        {
+          "threads": 2000,
+          "total": 0.27,
+          "pricing_model": "per_thread"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "per_thread",
+      "comparable": false,
+      "tier_count": 12
+    },
+    {
+      "provider_id": "proxyrack",
+      "provider_name": "ProxyRack",
+      "proxy_type": "datacenter",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "froxy",
+      "provider_name": "Froxy",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "froxy",
+      "provider_name": "Froxy",
+      "proxy_type": "mobile",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "infatica",
+      "provider_name": "Infatica",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 8.0,
+          "price_per_gb": 12.0,
+          "total": 96.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 40.0,
+          "price_per_gb": 9.0,
+          "total": 360.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 7.0,
+          "total": 700.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 400.0,
+          "price_per_gb": 6.0,
+          "total": 2400.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 96.0,
+          "price_per_gb": 9.6,
+          "total": 922.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 480.0,
+          "price_per_gb": 7.2,
+          "total": 3456.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 6.0,
+      "max_price_per_gb": 12.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 6
+    },
+    {
+      "provider_id": "infatica",
+      "provider_name": "Infatica",
+      "proxy_type": "datacenter",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "infatica",
+      "provider_name": "Infatica",
+      "proxy_type": "mobile",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 3.0,
+          "price_per_gb": 15.0,
+          "total": 45.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 10.0,
+          "price_per_gb": 13.0,
+          "total": 130.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 20.0,
+          "price_per_gb": 12.0,
+          "total": 240.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 10.0,
+          "total": 500.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 8.0,
+          "total": 800.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 36.0,
+          "price_per_gb": 12.0,
+          "total": 432.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 120.0,
+          "price_per_gb": 10.4,
+          "total": 1248.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 240.0,
+          "price_per_gb": 9.6,
+          "total": 2304.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 600.0,
+          "price_per_gb": 8.0,
+          "total": 4800.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 1200.0,
+          "price_per_gb": 6.4,
+          "total": 7680.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 6.4,
+      "max_price_per_gb": 15.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 10
+    },
+    {
+      "provider_id": "packetstream",
+      "provider_name": "PacketStream",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 50.0,
+          "price_per_gb": 1.0,
+          "total": 50.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 1.0,
+          "total": 100.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 250.0,
+          "price_per_gb": 1.0,
+          "total": 250.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 500.0,
+          "price_per_gb": 1.0,
+          "total": 500.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 1.0,
+      "max_price_per_gb": 1.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 4
+    },
+    {
+      "provider_id": "the-social-proxy",
+      "provider_name": "The Social Proxy",
+      "proxy_type": "mobile",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxywow",
+      "provider_name": "ProxyWow",
+      "proxy_type": "isp",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "airproxy",
+      "provider_name": "Airproxy",
+      "proxy_type": "mobile",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "proxyguys",
+      "provider_name": "ProxyGuys",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [
+        {
+          "gb": 2.0,
+          "price_per_gb": 25.0,
+          "total": 50.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 5.0,
+          "price_per_gb": 20.0,
+          "total": 100.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 10.0,
+          "price_per_gb": 15.0,
+          "total": 150.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 25.0,
+          "price_per_gb": 10.0,
+          "total": 250.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 50.0,
+          "price_per_gb": 8.0,
+          "total": 400.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 100.0,
+          "price_per_gb": 6.0,
+          "total": 600.0,
+          "pricing_model": "per_gb"
+        },
+        {
+          "gb": 400.0,
+          "price_per_gb": 2.5,
+          "total": 1000.0,
+          "pricing_model": "per_gb"
+        }
+      ],
+      "has_pricing": true,
+      "min_price_per_gb": 2.5,
+      "max_price_per_gb": 25.0,
+      "pricing_model": "per_gb",
+      "comparable": true,
+      "tier_count": 7
+    },
+    {
+      "provider_id": "proxyguys",
+      "provider_name": "ProxyGuys",
+      "proxy_type": "mobile",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "nimbleway",
+      "provider_name": "Nimbleway",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "nimbleway",
+      "provider_name": "Nimbleway",
+      "proxy_type": "other",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "asocks",
+      "provider_name": "Asocks",
+      "proxy_type": "residential",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    },
+    {
+      "provider_id": "asocks",
+      "provider_name": "Asocks",
+      "proxy_type": "mobile",
+      "price_url": null,
+      "tiers": [],
+      "has_pricing": false,
+      "min_price_per_gb": null,
+      "max_price_per_gb": null,
+      "pricing_model": "unknown",
+      "comparable": false,
+      "tier_count": 0
+    }
+  ],
+  "last_updated": "2025-12-28",
+  "total_count": 131
+}

@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import pricingData from "../data/pricing.json";
+---
+
+<BaseLayout
+  title="Methodology"
+  description="How ProxyPrice collects and normalizes proxy pricing. Learn what is comparable ($/GB) and what is not."
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>Methodology</h1>
+      <p class="page-subtitle">
+        Proxy providers price products in many ways. Here’s how we standardize pricing and what we consider comparable.
+      </p>
+    </header>
+
+    <section class="content">
+      <h2>Comparable vs non-comparable</h2>
+      <p>
+        A record is marked <strong>comparable</strong> only when it includes an explicit per-GB rate (for example <code>$5/GB</code>)
+        or a plan that can be converted to <strong>$/GB</strong>.
+      </p>
+      <p>
+        When pricing is expressed as <strong>per IP</strong>, <strong>per proxy</strong>, or <strong>per thread</strong>, we do not convert
+        it to <strong>$/GB</strong> because bandwidth allowances vary and conversion would be misleading. Those records are shown as
+        <strong>non-comparable</strong>.
+      </p>
+
+      <h2>How we compute $/GB</h2>
+      <ul>
+        <li>If the tier already provides <code>$X/GB</code>, we use that as the per-GB rate.</li>
+        <li>If the tier is a plan like <code>$600/50GB</code>, we compute <code>600 / 50 = 12.00</code> $/GB.</li>
+        <li>For each provider + proxy type, we compute the <strong>min</strong> and <strong>max</strong> $/GB across tiers.</li>
+      </ul>
+
+      <h2>Sorting and recommendations</h2>
+      <ul>
+        <li>Comparison tables sort by <strong>min $/GB</strong> (lowest first) for comparable records.</li>
+        <li>The calculator recommends providers by selecting the cheapest tier that covers your requested GB (when available).</li>
+      </ul>
+
+      <h2>Data freshness</h2>
+      <p>
+        Dataset last updated <strong>{pricingData.last_updated}</strong>. If you see stale data, re-run the pipeline and rebuild the site.
+      </p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 860px;
+    margin: 1rem auto 0;
+  }
+
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .content h2 {
+    margin: 2rem 0 0.75rem;
+  }
+
+  .content ul {
+    padding-left: 1.25rem;
+  }
+</style>
+

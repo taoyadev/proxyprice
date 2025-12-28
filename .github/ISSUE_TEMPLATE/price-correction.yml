@@ -1,0 +1,56 @@
+name: Price correction
+description: Report incorrect or outdated proxy pricing data
+title: "[Pricing] <provider> – <proxy type> – correction"
+labels:
+  - pricing
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep ProxyPrice accurate. Please include the provider’s official pricing link and the exact correction.
+  - type: input
+    id: provider
+    attributes:
+      label: Provider name
+      placeholder: Example: Decodo
+    validations:
+      required: true
+  - type: dropdown
+    id: proxy_type
+    attributes:
+      label: Proxy type
+      options:
+        - Residential
+        - Datacenter
+        - Mobile
+        - ISP
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: pricing_url
+    attributes:
+      label: Official pricing URL
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What ProxyPrice currently shows
+      placeholder: Paste the current tier(s) or the incorrect numbers
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What it should be
+      placeholder: Paste the corrected tier(s) / pricing model / notes
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / evidence (optional)
+      placeholder: Screenshots, plan details, currency, minimum spend, etc.
+
