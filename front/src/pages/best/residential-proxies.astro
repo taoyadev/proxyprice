@@ -23,7 +23,7 @@ const top = pricingData.pricing
         bestFor = "All proxy types";
       } else if (provider.trial_offer && provider.trial_offer.includes("free")) {
         bestFor = "Free trials available";
-      } else if (p.min_price_per_gb < 0.5) {
+      } else if ((p.min_price_per_gb ?? Infinity) < 0.5) {
         bestFor = "Best budget option";
       } else if (provider.proxy_types.includes("isp")) {
         bestFor = "Static sessions included";

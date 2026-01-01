@@ -5,22 +5,13 @@
 
 import type { Tier } from "../../lib/schemas";
 import type { ProxyType } from "../../lib/proxy-types";
-import type {
-  Recommendation,
-  FallbackProvider,
-  MOST_POPULAR_PROVIDERS,
-} from "./types";
+import type { Recommendation, FallbackProvider } from "./types";
+import { MOST_POPULAR_PROVIDERS } from "./types";
 import pricingData from "../../data/pricing.json";
 import providersData from "../../data/providers.json";
 
 // Re-export the popular providers set for use in components
-export const MOST_POPULAR_PROVIDERS = new Set([
-  "bright-data",
-  "oxylabs",
-  "smartproxy",
-  "shifter",
-  "netnut",
-]) as Set<string>;
+export { MOST_POPULAR_PROVIDERS };
 
 /**
  * Compute provider recommendations based on bandwidth and proxy type

@@ -136,27 +136,27 @@ const formatPrice = (price: number | null) => {
 
 // Type definitions for pricing tiers
 interface PerGBTier {
-  pricing_model: 'per_gb';
+  pricing_model: string;
   gb: number;
   price_per_gb: number | null;
   total: number | null;
 }
 
 interface PerIPTier {
-  pricing_model: 'per_ip';
+  pricing_model: string;
   ips: number;
   price_per_ip: number | null;
   total: number | null;
 }
 
 interface PerProxyTier {
-  pricing_model: 'per_proxy';
+  pricing_model: string;
   proxies: number;
   total: number | null;
 }
 
 interface PerThreadTier {
-  pricing_model: 'per_thread';
+  pricing_model: string;
   threads: number;
   total: number | null;
 }
@@ -170,23 +170,23 @@ interface PricingWithTiers {
 }
 
 // Type guard for per-GB tiers
-function isPerGBTier(tier: Tier): tier is PerGBTier {
-  return tier.pricing_model === 'per_gb';
+function isPerGBTier(tier: any): tier is PerGBTier {
+  return tier?.pricing_model === 'per_gb' && 'gb' in tier;
 }
 
 // Type guard for per-IP tiers
-function isPerIPTier(tier: Tier): tier is PerIPTier {
-  return tier.pricing_model === 'per_ip';
+function isPerIPTier(tier: any): tier is PerIPTier {
+  return tier?.pricing_model === 'per_ip' && 'ips' in tier;
 }
 
 // Type guard for per-proxy tiers
-function isPerProxyTier(tier: Tier): tier is PerProxyTier {
-  return tier.pricing_model === 'per_proxy';
+function isPerProxyTier(tier: any): tier is PerProxyTier {
+  return tier?.pricing_model === 'per_proxy' && 'proxies' in tier;
 }
 
 // Type guard for per-thread tiers
-function isPerThreadTier(tier: Tier): tier is PerThreadTier {
-  return tier.pricing_model === 'per_thread';
+function isPerThreadTier(tier: any): tier is PerThreadTier {
+  return tier?.pricing_model === 'per_thread' && 'threads' in tier;
 }
 
 const getPricingModelLabel = (model: string) => {
@@ -349,23 +349,23 @@ const topAlternatives = (type: string, count = 5) => {
 	                        </tr>
 	                      </thead>
 	                      <tbody>
-	                        {pricing.tiers
+	                        {(pricing.tiers as any[])
 	                          .filter(isPerGBTier)
 	                          .slice(0, 10)
 	                          .map(tier => (
 	                            <tr>
-	                              <td>{tier.gb} GB</td>
+	                              <td>{tier.gb ?? 'N/A'} GB</td>
 	                              <td>{formatPrice(tier.price_per_gb)}</td>
 	                              <td>${tier.total?.toFixed(2) ?? 'N/A'}</td>
 	                            </tr>
 	                          ))}
 	                      </tbody>
 	                    </table>
-	                    {pricing.tiers.filter(isPerGBTier).length === 0 && (
+	                    {(pricing.tiers as any[]).filter(isPerGBTier).length === 0 && (
 	                      <p class="no-pricing">Comparable pricing is marked for this record, but no per-GB tiers were parsed.</p>
 	                    )}
-	                    {pricing.tiers.filter(isPerGBTier).length > 10 && (
-	                      <p class="more-tiers">+{pricing.tiers.filter(isPerGBTier).length - 10} more tiers</p>
+	                    {(pricing.tiers as any[]).filter(isPerGBTier).length > 10 && (
+	                      <p class="more-tiers">+{(pricing.tiers as any[]).filter(isPerGBTier).length - 10} more tiers</p>
 	                    )}
 	                  </div>
 	                ) : (
@@ -385,7 +385,7 @@ const topAlternatives = (type: string, count = 5) => {
 	                            </tr>
 	                          </thead>
 	                          <tbody>
-	                            {pricing.tiers
+	                            {(pricing.tiers as any[])
 	                              .filter(isPerIPTier)
 	                              .slice(0, 10)
 	                              .map(tier => (
@@ -410,7 +410,7 @@ const topAlternatives = (type: string, count = 5) => {
 	                            </tr>
 	                          </thead>
 	                          <tbody>
-	                            {pricing.tiers
+	                            {(pricing.tiers as any[])
 	                              .filter(isPerProxyTier)
 	                              .slice(0, 10)
 	                              .map(tier => (
@@ -434,7 +434,7 @@ const topAlternatives = (type: string, count = 5) => {
 	                            </tr>
 	                          </thead>
 	                          <tbody>
-	                            {pricing.tiers
+	                            {(pricing.tiers as any[])
 	                              .filter(isPerThreadTier)
 	                              .slice(0, 10)
 	                              .map(tier => (

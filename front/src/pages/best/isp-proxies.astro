@@ -18,7 +18,7 @@ const top = pricingData.pricing
     const provider = providerById.get(p.provider_id);
     let bestFor: string | null = null;
     if (provider) {
-      if (p.min_price_per_gb < 1) {
+      if ((p.min_price_per_gb ?? Infinity) < 1) {
         bestFor = "Best value";
       } else if (provider.proxy_types.includes("residential")) {
         bestFor = "Also residential";
