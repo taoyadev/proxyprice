@@ -267,6 +267,7 @@ const formatPrice = (price: number | null) => {
   title={pageTitle}
   description={pageDescription}
   breadcrumbs={breadcrumbs}
+  noindex={true}
 >
   <script is:inline type="application/ld+json" set:html={JSON.stringify(comparisonSchema)} />
   <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
