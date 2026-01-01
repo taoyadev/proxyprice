@@ -16,6 +16,36 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+def validate_and_fix_tiers(tiers: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+    """
+    Validate and fix pricing tiers by recalculating price_per_gb from total/gb.
+
+    When both 'gb' and 'total' are present for a per_gb tier, recalculate
+    price_per_gb to ensure accuracy. This fixes data source errors.
+
+    Args:
+        tiers: List of pricing tier dictionaries
+
+    Returns:
+        List of validated/fixed tier dictionaries
+    """
+    fixed_tiers = []
+    for tier in tiers:
+        tier_copy = tier.copy()
+
+        # For per_gb tiers with both gb and total, recalculate price_per_gb
+        if (tier_copy.get('pricing_model') == 'per_gb' and
+                'gb' in tier_copy and
+                'total' in tier_copy and
+                tier_copy['gb'] > 0):
+            calculated = tier_copy['total'] / tier_copy['gb']
+            tier_copy['price_per_gb'] = round(calculated, 4)
+
+        fixed_tiers.append(tier_copy)
+
+    return fixed_tiers
+
+
 def calculate_price_extremes(
     tiers: List[Dict[str, Any]],
     extreme: Literal["min", "max"]
@@ -45,11 +75,13 @@ def calculate_price_extremes(
 def normalize_pricing_record(record: Dict[str, Any]) -> Dict[str, Any]:
     """
     Normalize a single pricing record by:
-    1. Calculating min/max $/GB
-    2. Determining pricing model
-    3. Flagging records without per-GB pricing
+    1. Validating and fixing tier prices
+    2. Calculating min/max $/GB
+    3. Determining pricing model
+    4. Flagging records without per-GB pricing
     """
-    tiers = record.get('tiers', [])
+    # Fix price_per_gb values before processing
+    tiers = validate_and_fix_tiers(record.get('tiers', []))
 
     if not tiers:
         return {
@@ -80,6 +112,7 @@ def normalize_pricing_record(record: Dict[str, Any]) -> Dict[str, Any]:
 
     return {
         **record,
+        'tiers': tiers,  # Include fixed tiers with recalculated price_per_gb
         'min_price_per_gb': min_price,
         'max_price_per_gb': max_price,
         'pricing_model': pricing_model,
