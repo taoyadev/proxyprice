@@ -114,9 +114,10 @@ jobs:
         run: make pipeline
 
       - name: Copy data to frontend
+        working-directory: .
         run: |
-          cp data/raw/pricing_raw.json ../front/src/data/pricing.json
-          cp data/raw/providers_raw.json ../front/src/data/providers.json
+          cp data/raw/pricing_raw.json front/src/data/pricing.json
+          cp data/raw/providers_raw.json front/src/data/providers.json
 
       - name: Upload generated data
         uses: actions/upload-artifact@v4
