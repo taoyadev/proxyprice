@@ -677,7 +677,6 @@ const tableSchema = {
 
         // Announce sort order for screen readers
         const sortDirection = ascending ? 'ascending' : 'descending';
-        const announcement = `Table sorted by price in ${sortDirection} order`;
         btn.setAttribute('aria-label', `Sort by minimum price per GB (${sortDirection})`);
 
         applyFilters();
