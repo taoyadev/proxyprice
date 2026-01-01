@@ -96,7 +96,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run data pipeline
-        run: make pipeline
+        run: |
+          python3 scripts/parse_csv.py
+          python3 scripts/normalize.py
 
       - name: Copy data to frontend
         working-directory: .
