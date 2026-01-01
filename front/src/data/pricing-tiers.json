@@ -1,0 +1,71 @@
+{
+  "pricingTiers": [
+    {
+      "id": "under-1-per-gb",
+      "slug": "under-1-per-gb",
+      "title": "Under $1/GB Proxies",
+      "description": "Find all proxy providers with pricing under $1 per GB. Compare the most affordable residential, datacenter, mobile, and ISP proxies.",
+      "content": {
+        "overview": "Finding proxy providers under $1 per GB is the sweet spot for most users. At this price point, you get reliable service without breaking the bank, whether you're web scraping, monitoring SEO, or running automation tasks.",
+        "priceRange": {
+          "min": 0,
+          "max": 1
+        },
+        "whyChoose": "Providers in this tier offer the best value for money. You'll find established companies with reliable infrastructure and good support without paying premium prices.",
+        "bestFor": [
+          "Startups and small businesses",
+          "Personal projects and learning",
+          "Cost-sensitive large operations"
+        ]
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 100
+      }
+    },
+    {
+      "id": "budget-proxies",
+      "slug": "budget-proxies",
+      "title": "Budget Proxy Providers",
+      "description": "Compare the most affordable proxy providers. Find cheap residential and datacenter proxies without sacrificing quality.",
+      "content": {
+        "overview": "Budget proxy providers offer competitive pricing for users who need to maximize value. These providers typically have lower prices by optimizing their infrastructure or targeting specific use cases.",
+        "priceRange": {
+          "min": 0,
+          "max": 3
+        },
+        "whyChoose": "Budget providers are ideal for testing, development, and applications where absolute reliability isn't critical. Many budget providers still offer excellent service for common use cases.",
+        "bestFor": [
+          "Testing and development",
+          "Learning and experimentation",
+          "Non-critical automation",
+          "High-volume operations where cost is the primary concern"
+        ]
+      },
+      "calculatorPreset": {
+        "proxyType": "datacenter",
+        "bandwidth": 50
+      }
+    },
+    {
+      "id": "free-trial-proxies",
+      "slug": "free-trial-proxies",
+      "title": "Proxy Providers with Free Trials",
+      "description": "Find proxy providers offering free trials. Test services risk-free before committing to a paid plan.",
+      "content": {
+        "overview": "Before investing in a proxy provider, it's smart to test their service first. Many providers offer free trials ranging from a few days to a set amount of bandwidth, allowing you to verify performance for your specific use case.",
+        "whyChoose": "Free trials let you test connection speeds, IP quality, and compatibility with your tools before spending money. They're essential for finding the right provider for your needs.",
+        "trialBenefits": [
+          "Test actual performance for your use case",
+          "Verify IP quality and geolocation",
+          "Check dashboard and API usability",
+          "Evaluate customer support responsiveness"
+        ]
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 50
+      }
+    }
+  ]
+}

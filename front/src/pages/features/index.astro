@@ -1,0 +1,295 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import featuresData from '../../data/features.json';
+import { SITE_NAME } from '../../lib/site';
+
+// Define proxy type labels
+const proxyTypeLabels: Record<string, string> = {
+  residential: 'Residential',
+  datacenter: 'Datacenter',
+  mobile: 'Mobile',
+  isp: 'ISP'
+};
+
+const breadcrumbs = [
+  { name: SITE_NAME, url: new URL('/', Astro.site).toString() },
+  { name: 'Features', url: new URL('/features/', Astro.site).toString() },
+];
+---
+
+<BaseLayout
+  title="Proxy Features"
+  description="Compare proxy providers by feature. Find rotating residential proxies, static ISP proxies, SOCKS5 proxies, and more."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>Proxy Features</h1>
+      <p class="page-subtitle">
+        Explore different proxy features and find providers that offer what you need. From rotating IPs to SOCKS5 protocol, understand the options available.
+      </p>
+    </header>
+
+    <div class="features-grid">
+      {featuresData.features.map(feature => (
+        <a href={`/features/${feature.slug}/`} class="feature-card">
+          <div class="feature-icon">
+            {feature.id === 'rotating-residential' && '🔄'}
+            {feature.id === 'static-residential' && '🏠'}
+            {feature.id === 'socks5' && '🌐'}
+          </div>
+          <h2>{feature.title}</h2>
+          <p>{feature.description}</p>
+          <div class="feature-meta">
+            <span class="proxy-type-badge">
+              {feature.recommendedProxyTypes.map(t => proxyTypeLabels[t] || t).join(' & ')}
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <section class="info-section">
+      <h2>Understanding Proxy Features</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Rotating vs Static IPs</h3>
+          <p>
+            <strong>Rotating IPs</strong> change automatically per request or on a timer, making them ideal for web scraping where you need to avoid blocks.
+            <strong>Static IPs</strong> maintain the same address, essential for session persistence in account management and logins.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>Protocol Types</h3>
+          <p>
+            <strong>HTTP/HTTPS proxies</strong> handle web traffic and are most common. <strong>SOCKS5 proxies</strong> offer more flexibility, supporting various traffic types including UDP, making them suitable for applications beyond web browsing.
+          </p>
+        </div>
+        <div class="info-card">
+          <h3>IP Source Matters</h3>
+          <p>
+            <strong>Residential IPs</strong> come from real ISP connections and have high trust scores. <strong>Datacenter IPs</strong> are cheaper but more easily detected.
+            <strong>Mobile IPs</strong> offer the highest trust for sensitive targets.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison-section">
+      <h2>Choosing Based on Your Needs</h2>
+      <div class="use-case-table">
+        <table>
+          <thead>
+            <tr>
+              <th>Use Case</th>
+              <th>Recommended Feature</th>
+              <th>Proxy Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Web Scraping</td>
+              <td><a href="/features/rotating-residential-proxies/">Rotating Residential</a></td>
+              <td>Residential</td>
+            </tr>
+            <tr>
+              <td>Account Management</td>
+              <td><a href="/features/static-residential-proxies/">Static Residential (ISP)</a></td>
+              <td>ISP</td>
+            </tr>
+            <tr>
+              <td>Sneaker Bots</td>
+              <td><a href="/features/static-residential-proxies/">Static Residential</a></td>
+              <td>ISP</td>
+            </tr>
+            <tr>
+              <td>Social Media</td>
+              <td><a href="/features/static-residential-proxies/">Static Residential</a></td>
+              <td>Mobile</td>
+            </tr>
+            <tr>
+              <td>Gaming/VoIP</td>
+              <td><a href="/features/socks5-proxies/">SOCKS5</a></td>
+              <td>Datacenter</td>
+            </tr>
+            <tr>
+              <td>Ad Verification</td>
+              <td><a href="/features/rotating-residential-proxies/">Rotating Residential</a></td>
+              <td>Residential/Mobile</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .feature-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .feature-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .feature-card h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  .feature-card p {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .feature-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .proxy-type-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  .info-section {
+    margin-bottom: 4rem;
+  }
+
+  .info-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .info-card {
+    background: var(--color-bg-alt);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .info-card h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .info-card p {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  .info-card strong {
+    color: var(--color-text);
+  }
+
+  .comparison-section {
+    background: var(--color-bg-alt);
+    border-radius: 0.75rem;
+    padding: 2rem;
+  }
+
+  .comparison-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .use-case-table {
+    overflow-x: auto;
+  }
+
+  .use-case-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--color-bg);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .use-case-table th,
+  .use-case-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .use-case-table th {
+    background: var(--color-bg-alt);
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .use-case-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  .use-case-table a {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

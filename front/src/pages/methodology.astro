@@ -1,6 +1,12 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import TrustBadge from "../components/TrustBadge.astro";
 import pricingData from "../data/pricing.json";
+import providersData from "../data/providers.json";
+
+const totalPricingRecords = pricingData.pricing.length;
+const comparableRecords = pricingData.pricing.filter(p => p.comparable).length;
+const verificationRate = Math.round((comparableRecords / totalPricingRecords) * 100);
 ---
 
 <BaseLayout
@@ -11,9 +17,39 @@ import pricingData from "../data/pricing.json";
     <header class="page-header">
       <h1>Methodology</h1>
       <p class="page-subtitle">
-        Proxy providers price products in many ways. Here’s how we standardize pricing and what we consider comparable.
+        Proxy providers price products in many ways. Here's how we standardize pricing and what we consider comparable.
       </p>
+      <div class="header-trust">
+        <TrustBadge lastUpdated={pricingData.last_updated} variant="inline" providerCount={providersData.total_count} />
+      </div>
     </header>
+
+    <section class="transparency-card">
+      <div class="transparency-header">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+        </svg>
+        <h2>Our Commitment to Transparency</h2>
+      </div>
+      <p class="transparency-text">
+        ProxyPrice is independently operated and has no financial relationships with any proxy providers.
+        Our comparisons are based solely on publicly available pricing data, manually collected and verified.
+      </p>
+      <div class="transparency-metrics">
+        <div class="tm-item">
+          <span class="tm-value">{providersData.total_count}+</span>
+          <span class="tm-label">Providers</span>
+        </div>
+        <div class="tm-item">
+          <span class="tm-value">{totalPricingRecords}</span>
+          <span class="tm-label">Pricing Records</span>
+        </div>
+        <div class="tm-item">
+          <span class="tm-value">{verificationRate}%</span>
+          <span class="tm-label">Verified</span>
+        </div>
+      </div>
+    </section>
 
     <section class="content">
       <h2>Comparable vs non-comparable</h2>
@@ -27,12 +63,33 @@ import pricingData from "../data/pricing.json";
         <strong>non-comparable</strong>.
       </p>
 
+      <div class="info-box">
+        <div class="info-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        <div class="info-content">
+          <strong>Why we do not convert per-IP pricing</strong>
+          <p>Converting per-IP pricing to per-GB would be misleading because different providers include vastly different bandwidth allowances. We show non-comparable pricing as-is so you can make informed decisions.</p>
+        </div>
+      </div>
+
       <h2>How we compute $/GB</h2>
       <ul>
         <li>If the tier already provides <code>$X/GB</code>, we use that as the per-GB rate.</li>
         <li>If the tier is a plan like <code>$600/50GB</code>, we compute <code>600 / 50 = 12.00</code> $/GB.</li>
         <li>For each provider + proxy type, we compute the <strong>min</strong> and <strong>max</strong> $/GB across tiers.</li>
       </ul>
+
+      <h2>Data collection process</h2>
+      <ol>
+        <li><strong>Provider Discovery</strong> - We identify proxy providers through industry research and user submissions.</li>
+        <li><strong>Manual Collection</strong> - Pricing data is manually collected from official provider websites.</li>
+        <li><strong>Normalization</strong> - All pricing is converted to standardized formats for comparison.</li>
+        <li><strong>Verification</strong> - Data is verified against source material before publication.</li>
+        <li><strong>Regular Updates</strong> - We refresh our data regularly to catch pricing changes.</li>
+      </ol>
 
       <h2>Sorting and recommendations</h2>
       <ul>
@@ -42,7 +99,17 @@ import pricingData from "../data/pricing.json";
 
       <h2>Data freshness</h2>
       <p>
-        Dataset last updated <strong>{pricingData.last_updated}</strong>. If you see stale data, re-run the pipeline and rebuild the site.
+        Dataset last updated <strong>{pricingData.last_updated}</strong>. If you see stale data, please
+        <a href="https://github.com/proxyprice/proxyprice/issues">report an issue</a>.
+      </p>
+    </section>
+
+    <section class="disclaimer-section">
+      <h3>Disclaimer</h3>
+      <p>
+        ProxyPrice is an independent comparison platform. We do not sell proxies directly and are not affiliated
+        with any provider. While we strive for accuracy, pricing may change and we cannot guarantee real-time accuracy.
+        Always verify pricing directly with the provider before making a purchase decision.
       </p>
     </section>
   </div>
@@ -61,17 +128,171 @@ import pricingData from "../data/pricing.json";
     margin: 1rem auto 0;
   }
 
+  .header-trust {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .transparency-card {
+    max-width: 900px;
+    margin: 0 auto 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1px solid #a7f3d0;
+    border-radius: 1rem;
+  }
+
+  .transparency-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .transparency-header svg {
+    width: 2rem;
+    height: 2rem;
+    color: #059669;
+  }
+
+  .transparency-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #065f46;
+  }
+
+  .transparency-text {
+    color: #047857;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .transparency-metrics {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .tm-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tm-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #059669;
+  }
+
+  .tm-label {
+    font-size: 0.875rem;
+    color: #047857;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
   .content {
     max-width: 900px;
     margin: 0 auto;
   }
 
   .content h2 {
-    margin: 2rem 0 0.75rem;
+    margin: 2.5rem 0 0.75rem;
+  }
+
+  .content h2:first-of-type {
+    margin-top: 0;
   }
 
   .content ul {
     padding-left: 1.25rem;
   }
-</style>
 
+  .content ol {
+    padding-left: 1.5rem;
+  }
+
+  .content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .info-box {
+    display: flex;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--color-bg-alt);
+    border-left: 4px solid var(--color-primary);
+    border-radius: 0.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .info-icon {
+    flex-shrink: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .info-content strong {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .info-content p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+  }
+
+  .disclaimer-section {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding: 1.5rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+  }
+
+  .disclaimer-section h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .disclaimer-section p {
+    margin: 0;
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .transparency-card {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+      border-color: #047857;
+    }
+
+    .transparency-header h2,
+    .transparency-text {
+      color: #d1fae5;
+    }
+
+    .tm-value,
+    .tm-label {
+      color: #a7f3d0;
+    }
+
+    .transparency-header svg {
+      color: #a7f3d0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .transparency-metrics {
+      gap: 1rem;
+    }
+
+    .tm-value {
+      font-size: 1.5rem;
+    }
+  }
+</style>

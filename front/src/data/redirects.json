@@ -1,0 +1,177 @@
+{
+  "providers": {
+    "proxyempire": {
+      "url": "https://proxyempire.io",
+      "affiliate": null
+    },
+    "decodo": {
+      "url": "https://decodo.com",
+      "affiliate": null
+    },
+    "oxylabs": {
+      "url": "https://oxylabs.io",
+      "affiliate": null
+    },
+    "netnut": {
+      "url": "https://netnut.io",
+      "affiliate": null
+    },
+    "bright-data": {
+      "url": "https://brightdata.com",
+      "affiliate": null
+    },
+    "packetstream": {
+      "url": "https://packetstream.io",
+      "affiliate": null
+    },
+    "proxyscrape": {
+      "url": "https://proxyscrape.com",
+      "affiliate": null
+    },
+    "proxyguys": {
+      "url": "https://proxyguys.com",
+      "affiliate": null
+    },
+    "iproyal": {
+      "url": "https://iproyal.com",
+      "affiliate": null
+    },
+    "infatica": {
+      "url": "https://infatica.io",
+      "affiliate": null
+    },
+    "soax": {
+      "url": "https://soax.com",
+      "affiliate": null
+    },
+    "proxy-seller": {
+      "url": "https://proxy-seller.com",
+      "affiliate": null
+    },
+    "webshare": {
+      "url": "https://webshare.io",
+      "affiliate": null
+    },
+    "proxy-cheap": {
+      "url": "https://proxy-cheap.com",
+      "affiliate": null
+    },
+    "proxy-ipv4": {
+      "url": "https://proxy-ipv4.com",
+      "affiliate": null
+    },
+    "geonix": {
+      "url": "https://geonix.com",
+      "affiliate": null
+    },
+    "youproxy": {
+      "url": "https://youproxy.io",
+      "affiliate": null
+    },
+    "rayobyte": {
+      "url": "https://rayobyte.com",
+      "affiliate": null
+    },
+    "myprivateproxy": {
+      "url": "https://myprivateproxy.net",
+      "affiliate": null
+    },
+    "buyproxies": {
+      "url": "https://buyproxies.org",
+      "affiliate": null
+    },
+    "proxyline": {
+      "url": "https://proxyline.net",
+      "affiliate": null
+    },
+    "instantproxies": {
+      "url": "https://instantproxies.com",
+      "affiliate": null
+    },
+    "shifter": {
+      "url": "https://shifter.io",
+      "affiliate": null
+    },
+    "marsproxies": {
+      "url": "https://marsproxies.com",
+      "affiliate": null
+    },
+    "simplynode": {
+      "url": "https://simplynode.io",
+      "affiliate": null
+    },
+    "proxy6": {
+      "url": "https://proxy6.net",
+      "affiliate": null
+    },
+    "oculusproxies": {
+      "url": "https://oculusproxies.com",
+      "affiliate": null
+    },
+    "toolip": {
+      "url": "https://toolip.io",
+      "affiliate": null
+    },
+    "resiprox": {
+      "url": "https://resiprox.com",
+      "affiliate": null
+    },
+    "dataimpulse": {
+      "url": "https://dataimpulse.com",
+      "affiliate": null
+    },
+    "squidproxies": {
+      "url": "https://squidproxies.com",
+      "affiliate": null
+    },
+    "proxys-io": {
+      "url": "https://proxys.io",
+      "affiliate": null
+    },
+    "hydraproxy": {
+      "url": "https://hydraproxy.com",
+      "affiliate": null
+    },
+    "spaceproxy": {
+      "url": "https://spaceproxy.net",
+      "affiliate": null
+    },
+    "geonode": {
+      "url": "https://geonode.com",
+      "affiliate": null
+    },
+    "stormproxies": {
+      "url": "https://stormproxies.com",
+      "affiliate": null
+    },
+    "proxyrack": {
+      "url": "https://www.proxyrack.com",
+      "affiliate": null
+    },
+    "froxy": {
+      "url": "https://froxy.com",
+      "affiliate": null
+    },
+    "the-social-proxy": {
+      "url": "https://thesocialproxy.com",
+      "affiliate": null
+    },
+    "proxywow": {
+      "url": "https://proxywow.com",
+      "affiliate": null
+    },
+    "airproxy": {
+      "url": "https://airproxy.io",
+      "affiliate": null
+    },
+    "nimbleway": {
+      "url": "https://www.nimbleway.com",
+      "affiliate": null
+    },
+    "asocks": {
+      "url": "https://asocks.com",
+      "affiliate": null
+    }
+  },
+  "_comment": "Set 'affiliate' to override 'url'. Example: \"affiliate\": \"https://proxyempire.io?ref=abc123\""
+}

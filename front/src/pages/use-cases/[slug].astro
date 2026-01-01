@@ -1,0 +1,532 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import useCasesData from '../../data/use-cases.json';
+import providersData from '../../data/providers.json';
+import pricingData from '../../data/pricing.json';
+import { SITE_NAME, SITE_URL } from '../../lib/site';
+import { getFaviconUrl } from '../../lib/favicon';
+
+export async function getStaticPaths() {
+  return useCasesData.useCases.map(useCase => ({
+    params: { slug: useCase.slug },
+    props: { useCase },
+  }));
+}
+
+const { useCase } = Astro.props;
+
+// Define proxy type labels
+const proxyTypeLabels: Record<string, string> = {
+  residential: 'Residential',
+  datacenter: 'Datacenter',
+  mobile: 'Mobile',
+  isp: 'ISP'
+};
+
+const breadcrumbs = [
+  { name: SITE_NAME, url: new URL('/', Astro.site).toString() },
+  { name: 'Use Cases', url: new URL('/use-cases/', Astro.site).toString() },
+  { name: useCase.title, url: new URL(`/use-cases/${useCase.slug}/`, Astro.site).toString() },
+];
+
+// Get recommended providers based on proxy types
+const getRecommendedProviders = (types: string[], limit = 5) => {
+  const ranked = pricingData.pricing
+    .filter((p) => types.includes(p.proxy_type) && p.comparable && p.min_price_per_gb != null)
+    .sort((a, b) => (a.min_price_per_gb ?? Infinity) - (b.min_price_per_gb ?? Infinity))
+    .map((p) => providersData.providers.find((prov) => prov.id === p.provider_id))
+    .filter((p): p is any => Boolean(p));
+
+  const unique: any[] = [];
+  const seen = new Set<string>();
+  for (const p of ranked) {
+    if (seen.has(p.id)) continue;
+    seen.add(p.id);
+    unique.push(p);
+    if (unique.length >= limit) break;
+  }
+  return unique;
+};
+
+const recommendedProviders = getRecommendedProviders(useCase.content.recommendedTypes);
+
+const formatPrice = (price: number | null) => {
+  if (price === null) return 'N/A';
+  return `$${price.toFixed(2)}`;
+};
+
+// Schema.org for use case page
+const canonicalURL = new URL(`/use-cases/${useCase.slug}/`, Astro.site);
+const useCaseSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": useCase.title,
+  "description": useCase.description,
+  "url": canonicalURL.toString(),
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}#website`,
+  },
+  "about": {
+    "@type": "Thing",
+    "name": useCase.title,
+    "description": useCase.content.overview,
+  },
+};
+---
+
+<BaseLayout
+  title={useCase.title}
+  description={useCase.description}
+  breadcrumbs={breadcrumbs}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(useCaseSchema)} />
+
+  <div class="container" style="padding: 3rem 0;">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/use-cases/">Use Cases</a></li>
+        <li aria-current="page">{useCase.title}</li>
+      </ol>
+    </nav>
+
+    <header class="use-case-header">
+      <h1>{useCase.title}</h1>
+      <p class="use-case-subtitle">{useCase.description}</p>
+    </header>
+
+    <section class="use-case-content">
+      <div class="use-case-main">
+        <div class="content-card">
+          <h2>Overview</h2>
+          <p>{useCase.content.overview}</p>
+        </div>
+
+        <div class="content-card">
+          <h2>{useCase.content.bandwidth.label}</h2>
+          <div class="bandwidth-grid">
+            {useCase.content.bandwidth.ranges.map(range => (
+              <div class="bandwidth-item">
+                <div class="bandwidth-level">{range.level}</div>
+                <div class="bandwidth-gb">{range.gb} GB</div>
+                <div class="bandwidth-desc">{range.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>Key Features to Look For</h2>
+          <ul class="feature-list">
+            {useCase.content.keyFeatures.map(feature => (
+              <li>
+                <span class="check-icon">✓</span>
+                {feature}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="content-card">
+          <h2>Recommended Proxy Types</h2>
+          <div class="proxy-type-pills">
+            {useCase.content.recommendedTypes.map(type => (
+              <a href={`/${type}`} class={`proxy-type-pill ${type}`}>
+                {proxyTypeLabels[type] || type}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>Top Providers for {useCase.title}</h2>
+          <p class="provider-criteria">
+            {useCase.content.providerCriteria}
+          </p>
+          <div class="recommended-providers">
+            {recommendedProviders.map(provider => (
+              <a href={`/provider/${provider.slug}`} class="provider-card">
+                <img
+                  src={getFaviconUrl(provider.website_url, 32)}
+                  alt={`${provider.name} favicon`}
+                  class="provider-favicon"
+                  width="32"
+                  height="32"
+                />
+                <div class="provider-card-info">
+                  <div class="provider-card-name">{provider.name}</div>
+                  {provider.cheapest_price_per_gb ? (
+                    <div class="provider-card-price">{formatPrice(provider.cheapest_price_per_gb)}/GB</div>
+                  ) : (
+                    <div class="provider-card-price">Contact for pricing</div>
+                  )}
+                </div>
+                {provider.trial_offer && (
+                  <span class="trial-badge">Trial</span>
+                )}
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>Calculate Your Costs</h2>
+          <p>
+            Use our calculator to estimate monthly costs based on your bandwidth needs for {useCase.title.toLowerCase()}.
+          </p>
+          <div class="preset-calculator">
+            <a href={`/calculator?gb=${useCase.calculatorPreset.bandwidth}&type=${useCase.calculatorPreset.proxyType}`} class="btn btn-primary">
+              Calculate with {useCase.calculatorPreset.bandwidth}GB {useCase.calculatorPreset.proxyType} preset
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="use-case-sidebar">
+        <div class="sidebar-card">
+          <h3>Quick Links</h3>
+          <ul class="sidebar-links">
+            <li><a href="/calculator">Price Calculator</a></li>
+            <li><a href="/providers">All Providers</a></li>
+            <li><a href="/methodology">Methodology</a></li>
+          </ul>
+        </div>
+
+        {useCasesData.useCases
+          .filter(uc => uc.id !== useCase.id)
+          .slice(0, 3)
+          .map(relatedUseCase => (
+            <div class="sidebar-card">
+              <h3>Related Use Cases</h3>
+              <a href={`/use-cases/${relatedUseCase.slug}/`} class="related-link">
+                {relatedUseCase.title}
+              </a>
+            </div>
+          ))}
+      </aside>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumbs ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0;
+    margin: 0 0 1rem;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  .breadcrumbs li::after {
+    content: '/';
+    margin-left: 0.5rem;
+    opacity: 0.6;
+  }
+
+  .breadcrumbs li:last-child::after {
+    content: '';
+    margin: 0;
+  }
+
+  .breadcrumbs a {
+    color: var(--color-text-light);
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .use-case-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .use-case-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .use-case-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .use-case-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+  }
+
+  .use-case-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .content-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+  }
+
+  .content-card h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .bandwidth-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .bandwidth-item {
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 1.25rem;
+    text-align: center;
+  }
+
+  .bandwidth-level {
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .bandwidth-gb {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .bandwidth-desc {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-bg-alt);
+    border-radius: 0.5rem;
+  }
+
+  .check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--color-secondary);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .proxy-type-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .proxy-type-pill {
+    display: inline-block;
+    padding: 0.625rem 1.25rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .proxy-type-pill.residential {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  .proxy-type-pill.datacenter {
+    background: #e0e7ff;
+    color: #4338ca;
+  }
+
+  .proxy-type-pill.mobile {
+    background: #fce7f3;
+    color: #9f1239;
+  }
+
+  .proxy-type-pill.isp {
+    background: #d1fae5;
+    color: #065f46;
+  }
+
+  .proxy-type-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .provider-criteria {
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .recommended-providers {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .provider-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s;
+    position: relative;
+  }
+
+  .provider-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .provider-favicon {
+    border-radius: 0.375rem;
+    flex-shrink: 0;
+  }
+
+  .provider-card-info {
+    flex: 1;
+  }
+
+  .provider-card-name {
+    font-weight: 600;
+  }
+
+  .provider-card-price {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  }
+
+  .trial-badge {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.25rem 0.5rem;
+    background: #fef3c7;
+    color: #92400e;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .preset-calculator {
+    margin-top: 1rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    text-decoration: none;
+  }
+
+  .use-case-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sidebar-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .sidebar-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+  }
+
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar-links a {
+    color: var(--color-text);
+  }
+
+  .related-link {
+    display: block;
+    padding: 0.75rem;
+    background: var(--color-bg-alt);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: all 0.2s;
+  }
+
+  .related-link:hover {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .use-case-header h1 {
+      font-size: 2rem;
+    }
+
+    .use-case-content {
+      grid-template-columns: 1fr;
+    }
+
+    .bandwidth-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

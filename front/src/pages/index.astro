@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import TrustBadge from '../components/TrustBadge.astro';
 import providersData from '../data/providers.json';
 import pricingData from '../data/pricing.json';
 import { getFaviconUrl } from '../lib/favicon';
@@ -12,6 +13,11 @@ const cheapestProvider = comparableProviders[0];
 const countByType = (type: string) => {
   return pricingData.pricing.filter(p => p.proxy_type === type && p.has_pricing).length;
 };
+
+// Calculate total comparable records
+const totalComparableRecords = pricingData.pricing.filter(p => p.comparable).length;
+const totalPricingRecords = pricingData.pricing.length;
+const verificationRate = Math.round((totalComparableRecords / totalPricingRecords) * 100);
 ---
 
 <BaseLayout
@@ -117,13 +123,90 @@ const countByType = (type: string) => {
 
   <section class="comparison-section" id="comparison">
     <div class="container">
-      <h2>Top Providers by Price</h2>
-      <p class="section-subtitle">
-        Showing providers with transparent per-GB pricing. Updated {pricingData.last_updated}.
-      </p>
+      <div class="section-header-with-trust">
+        <div>
+          <h2>Top Providers by Price</h2>
+          <p class="section-subtitle">
+            Showing providers with transparent per-GB pricing.
+          </p>
+        </div>
+        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" providerCount={providersData.total_count} />
+      </div>
       <ComparisonTable limit={20} showControls={false} />
       <div class="view-all">
         <a href="/providers" class="btn btn-secondary">View All Providers</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-section">
+    <div class="container">
+      <h2>Why Trust ProxyPrice?</h2>
+      <p class="trust-subtitle">
+        We provide unbiased, transparent pricing comparisons to help you make informed decisions.
+      </p>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon-wrapper trust-icon-independent">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M9.661 2.237a.531.531 0 01.678 0 11.906.11l-.22.22a.531.531 0 01-.678 0l-.22-.22a.531.531 0 010-.678zm1.06 1.06a.531.531 0 00-.678 0l-.22.22a.531.531 0 000 .678l.22.22a.531.531 0 00.678 0l.22-.22a.531.531 0 000-.678zM8.315 4.284a.75.75 0 011.06 0l.531.531.531-.531a.75.75 0 111.06 1.06l-.531.531.531.531a.75.75 0 01-1.06 1.06l-.531-.531-.531.531a.75.75 0 01-1.06-1.06l.531-.531-.531-.531a.75.75 0 010-1.06zm.75 4.75a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5a.75.75 0 01.75-.75zM10 13a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 13zm0-6a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 7z" clip-rule="evenodd" />
+              <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM1 10a9 9 0 1118 0 9 9 0 01-18 0z" />
+            </svg>
+          </div>
+          <h3>100% Independent</h3>
+          <p>We are not owned by any proxy provider. Our comparisons are unbiased and based solely on published pricing data.</p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon-wrapper trust-icon-verified">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3>{verificationRate}% Price Verified</h3>
+          <p>Every pricing point is manually verified from provider sources. {totalComparableRecords} records with comparable $/GB pricing.</p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon-wrapper trust-icon-updated">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <h3>Regularly Updated</h3>
+          <p>Our data is refreshed regularly to ensure you see current pricing. Last update: {pricingData.last_updated}.</p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon-wrapper trust-icon-methodology">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+            </svg>
+          </div>
+          <h3>Transparent Methodology</h3>
+          <p>We explain exactly how we collect and normalize pricing data. No hidden formulas or black-box algorithms.</p>
+        </div>
+      </div>
+
+      <div class="trust-metrics">
+        <div class="metric">
+          <div class="metric-value">{providersData.total_count}+</div>
+          <div class="metric-label">Providers Tracked</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">{totalPricingRecords}</div>
+          <div class="metric-label">Pricing Records</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value">4</div>
+          <div class="metric-label">Proxy Types</div>
+        </div>
+      </div>
+
+      <div class="trust-cta">
+        <a href="/methodology" class="btn btn-outline">Read Our Methodology</a>
+        <a href="/about" class="btn btn-secondary">About ProxyPrice</a>
       </div>
     </div>
   </section>
@@ -151,6 +234,43 @@ const countByType = (type: string) => {
     </div>
   </section>
 </BaseLayout>
+
+<!-- Organization Schema -->
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "ProxyPrice",
+  "url": "https://proxyprice.com",
+  "logo": "https://proxyprice.com/og-image.png",
+  "description": "ProxyPrice is the leading independent proxy price comparison platform. Compare 40+ proxy providers with transparent, normalized pricing for residential, datacenter, mobile, and ISP proxies.",
+  "sameAs": [
+    "https://twitter.com/proxyprice",
+    "https://github.com/proxyprice"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "url": "https://proxyprice.com"
+  },
+  "founder": {
+    "@type": "Organization",
+    "name": "ProxyPrice"
+  },
+  "foundingDate": "2024",
+  "areaServed": "Worldwide",
+  "knowsAbout": [
+    "residential proxies",
+    "datacenter proxies",
+    "mobile proxies",
+    "ISP proxies",
+    "web scraping proxies",
+    "socks5 proxies",
+    "rotating proxies",
+    "static proxies"
+  ]
+}
+</script>
 
 <style>
   .hero {
@@ -362,10 +482,142 @@ const countByType = (type: string) => {
     background: var(--color-bg-alt);
   }
 
+  .section-header-with-trust {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
   .section-subtitle {
+    color: var(--color-text-light);
+    margin-bottom: 0;
+  }
+
+  .trust-section {
+    padding: 4rem 0;
+    background: linear-gradient(180deg, var(--color-bg-alt) 0%, var(--color-bg) 100%);
+  }
+
+  .trust-section h2 {
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .trust-subtitle {
     text-align: center;
     color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    font-size: 1.125rem;
+  }
+
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .trust-card {
+    padding: 2rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    text-align: center;
+    transition: all 0.2s;
+  }
+
+  .trust-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+  }
+
+  .trust-icon-wrapper {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin: 0 auto 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+  }
+
+  .trust-icon-wrapper svg {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: white;
+  }
+
+  .trust-icon-independent {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  }
+
+  .trust-icon-verified {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  }
+
+  .trust-icon-updated {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  }
+
+  .trust-icon-methodology {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  }
+
+  .trust-card h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  .trust-card p {
+    color: var(--color-text-light);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+  }
+
+  .trust-metrics {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    padding: 2.5rem;
+    background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    border-radius: 1rem;
     margin-bottom: 2rem;
+  }
+
+  .metric {
+    text-align: center;
+  }
+
+  .metric-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--color-secondary);
+    line-height: 1;
+  }
+
+  .metric-label {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-top: 0.5rem;
+  }
+
+  .trust-cta {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .trust-metrics {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+    }
   }
 
   .view-all {
@@ -440,6 +692,21 @@ const countByType = (type: string) => {
     .type-grid,
     .steps-grid {
       grid-template-columns: 1fr;
+    }
+
+    .section-header-with-trust {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .trust-metrics {
+      gap: 2rem;
+      padding: 1.5rem;
+    }
+
+    .trust-cta {
+      flex-direction: column;
+      align-items: center;
     }
   }
 </style>

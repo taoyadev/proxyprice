@@ -6,8 +6,14 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   output: "static",
-  integrations: [preact(), sitemap()],
-  site: "https://proxyprice.com",
+  integrations: [
+    preact(),
+    sitemap({
+      // Affiliate redirect pages are not content pages and should not be crawled.
+      filter: (page) => !new URL(page).pathname.startsWith("/go/"),
+    }),
+  ],
+  site: process.env.PUBLIC_SITE_URL || "https://proxyprice.com",
   build: {
     inlineStylesheets: "auto",
   },

@@ -1,6 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types';
 import { DATA_LAST_UPDATED, FEEDBACK_URL, SITE_NAME, SITE_URL } from '../lib/site';
+import Analytics from '../components/Analytics.astro';
 
 interface Props extends HTMLAttributes<'html'> {
   title: string;
@@ -14,7 +15,7 @@ interface Props extends HTMLAttributes<'html'> {
 const {
   title,
   description,
-  image = '/og-image.svg',
+  image = '/og-image.png',
   noindex = false,
   dataLastUpdated = DATA_LAST_UPDATED,
   breadcrumbs = [],
@@ -22,7 +23,7 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const siteTitle = `${SITE_NAME} - Compare Proxy Provider Pricing`;
+const siteTitle = `Compare Proxy Prices | 40+ Providers | ${SITE_NAME}`;
 const fullTitle = title === 'Home' ? siteTitle : `${title} | ${SITE_NAME}`;
 
 const schemaGraph: any[] = [
@@ -69,8 +70,21 @@ if (breadcrumbs.length >= 2) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- Global Styles -->
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
+
     <link rel="canonical" href={canonicalURL} />
+
+    <!-- Preconnect for external resources -->
+    <link rel="preconnect" href="https://t0.gstatic.com" />
+    <link rel="dns-prefetch" href="https://t0.gstatic.com" />
 
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
@@ -192,6 +206,13 @@ if (breadcrumbs.length >= 2) {
           <span class="logo-icon">💰</span>
           <span class="logo-text">ProxyPrice</span>
         </a>
+
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+          <span class="hamburger"></span>
+        </button>
+
 	        <ul class="nav-links">
 	          <li><a href="/residential">Residential</a></li>
 	          <li><a href="/datacenter">Datacenter</a></li>
@@ -234,13 +255,18 @@ if (breadcrumbs.length >= 2) {
 	        <div class="footer-section">
 	          <h4>Resources</h4>
 	          <ul>
-	            <li><a href="/about">About</a></li>
+	            <li><a href="/features">Features</a></li>
+	            <li><a href="/use-cases">Use Cases</a></li>
+	            <li><a href="/pricing">Pricing Tiers</a></li>
 	            <li><a href="/methodology">Methodology</a></li>
 	            {FEEDBACK_URL && <li><a href={FEEDBACK_URL}>Report a Correction</a></li>}
 	          </ul>
 	        </div>
 	      </div>
       <div class="container footer-bottom">
+        <p class="disclosure">
+          <strong>Affiliate Disclosure:</strong> Some links on this website are affiliate links. If you make a purchase through these links, we may earn a commission at no additional cost to you. This helps support our work and allows us to continue providing unbiased comparisons.
+        </p>
         <p>&copy; {new Date().getFullYear()} {SITE_NAME}. Data updated {dataLastUpdated}.</p>
       </div>
     </footer>
@@ -326,6 +352,11 @@ if (breadcrumbs.length >= 2) {
         background: var(--color-primary-dark);
       }
 
+      /* Mobile Menu Button */
+      .mobile-menu-btn {
+        display: none;
+      }
+
       .footer {
         background: var(--color-bg-alt);
         border-top: 1px solid var(--color-border);
@@ -370,14 +401,86 @@ if (breadcrumbs.length >= 2) {
         font-size: 0.875rem;
       }
 
+      .footer-bottom .disclosure {
+        font-size: 0.8125rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: var(--color-bg-alt);
+        border-radius: 0.5rem;
+        border: 1px solid var(--color-border);
+      }
+
+      .footer-bottom .disclosure strong {
+        color: var(--color-text);
+      }
+
 	      @media (max-width: 768px) {
-	        .nav-links {
-	          gap: 1rem;
-	          font-size: 0.875rem;
+	        .mobile-menu-btn {
+	          display: flex;
+	          flex-direction: column;
+	          justify-content: space-around;
+	          width: 2rem;
+	          height: 2rem;
+	          background: transparent;
+	          border: none;
+	          cursor: pointer;
+	          padding: 0;
+	          z-index: 102;
 	        }
 
-	        .nav-links li:not(:nth-last-child(-n + 2)) {
-	          display: none;
+	        .hamburger {
+	          width: 1.75rem;
+	          height: 2px;
+	          background: var(--color-text);
+	          border-radius: 2px;
+	          transition: all 0.3s ease-in-out;
+	          transform-origin: center;
+	        }
+
+	        .mobile-menu-btn[aria-expanded="true"] .hamburger:nth-child(1) {
+	          transform: translateY(7px) rotate(45deg);
+	        }
+
+	        .mobile-menu-btn[aria-expanded="true"] .hamburger:nth-child(2) {
+	          opacity: 0;
+	        }
+
+	        .mobile-menu-btn[aria-expanded="true"] .hamburger:nth-child(3) {
+	          transform: translateY(-7px) rotate(-45deg);
+	        }
+
+	        .nav-links {
+	          position: fixed;
+	          top: 0;
+	          right: -100%;
+	          flex-direction: column;
+	          align-items: center;
+	          justify-content: center;
+	          gap: 2rem;
+	          width: 75%;
+	          max-width: 300px;
+	          height: 100vh;
+	          background: var(--color-bg);
+	          border-left: 1px solid var(--color-border);
+	          box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+	          transition: right 0.3s ease-in-out;
+	          padding: 5rem 0;
+	          font-size: 1rem;
+	        }
+
+	        .nav-links.nav-links-open {
+	          right: 0;
+	        }
+
+	        .nav-links a {
+	          padding: 0.75rem 1.5rem;
+	          border-radius: 0.5rem;
+	        }
+
+	        .nav-cta {
+	          width: auto;
+	          text-align: center;
 	        }
 
 	        .footer-content {
@@ -385,6 +488,50 @@ if (breadcrumbs.length >= 2) {
 	          gap: 2rem;
 	        }
 	      }
+
+	      @media (min-width: 769px) {
+	        .mobile-menu-btn {
+	          display: none;
+	        }
+	      }
 	    </style>
-	  </body>
+
+	    <script is:inline>
+	      const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+	      const navLinks = document.querySelector('.nav-links');
+
+	      if (mobileMenuBtn && navLinks) {
+	        mobileMenuBtn.addEventListener('click', () => {
+	          const isOpen = navLinks.classList.toggle('nav-links-open');
+	          mobileMenuBtn.setAttribute('aria-expanded', isOpen.toString());
+	        });
+
+	        // Close menu when clicking outside
+	        document.addEventListener('click', (e) => {
+	          if (!navLinks.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+	            navLinks.classList.remove('nav-links-open');
+	            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+	          }
+	        });
+
+	        // Close menu when clicking a link
+	        navLinks.querySelectorAll('a').forEach(link => {
+	          link.addEventListener('click', () => {
+	            navLinks.classList.remove('nav-links-open');
+	            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+	          });
+	        });
+
+	        // Close menu on escape key
+	        document.addEventListener('keydown', (e) => {
+	          if (e.key === 'Escape') {
+	            navLinks.classList.remove('nav-links-open');
+	            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+	          }
+	        });
+	      }
+	    </script>
+    <!-- Privacy-Friendly Analytics -->
+    <Analytics />
+  </body>
 </html>

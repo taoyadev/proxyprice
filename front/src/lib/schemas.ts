@@ -21,7 +21,7 @@ export const ProviderSchema = z.object({
 export type Provider = z.infer<typeof ProviderSchema>;
 
 // Pricing tier schema
-const TierSchema = z
+export const TierSchema = z
   .object({
     gb: z.number().positive().optional(),
     price_per_gb: z.number().nonnegative().optional(),
@@ -38,6 +38,8 @@ const TierSchema = z
     ips: z.number().int().positive().optional(),
   })
   .passthrough(); // Allow extra fields for flexibility
+
+export type Tier = z.infer<typeof TierSchema>;
 
 // Pricing record schema
 export const PricingSchema = z.object({

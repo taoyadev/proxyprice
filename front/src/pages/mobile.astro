@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import pricingData from '../data/pricing.json';
 ---
 
 <BaseLayout
@@ -9,13 +11,94 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 >
   <div class="container" style="padding: 3rem 0;">
     <header class="page-header">
-      <h1>Mobile Proxy Comparison</h1>
-      <p class="page-subtitle">
-        Real mobile IPs from cellular networks. Highest trust score for social media automation, ad verification, and sensitive tasks.
-      </p>
+      <div class="header-top">
+        <div>
+          <h1>Mobile Proxy Comparison</h1>
+          <p class="page-subtitle">
+            Real mobile IPs from cellular networks. Highest trust score for social media automation, ad verification, and sensitive tasks.
+          </p>
+        </div>
+        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+      </div>
     </header>
 
     <ComparisonTable proxyType="mobile" />
+
+    <section class="guide-content">
+      <article class="guide-section">
+        <h2>What Are Mobile Proxies?</h2>
+        <p>
+          Mobile proxies route your internet traffic through IP addresses assigned by mobile network operators (MNOs) to cellular devices. These IPs are used by smartphones, tablets, and mobile hotspots connected to 3G, 4G LTE, and 5G networks from carriers like Verizon, AT&T, Vodafone, and T-Mobile worldwide.
+        </p>
+        <p>
+          Mobile IPs carry the highest trust scores of any proxy type because they are shared naturally among thousands of legitimate users through carrier-grade NAT (CGNAT). When a mobile device disconnects and reconnects to the network, it may receive a different IP address, which is then assigned to another user. This constant IP recycling makes it nearly impossible for websites to permanently block mobile IPs without affecting real customers.
+        </p>
+        <p>
+          Mobile proxy providers obtain their IPs through agreements with mobile carriers, by operating their own mobile devices, or through SDK-based networks that route traffic through consenting mobile app users. The result is access to genuine mobile network IPs that websites treat as legitimate mobile visitors.
+        </p>
+      </article>
+
+      <article class="guide-section">
+        <h2>How Mobile Proxy Pricing Works</h2>
+        <p>
+          Mobile proxies command premium pricing due to the complexity and cost of maintaining mobile network infrastructure. They are typically the most expensive proxy type, but their unmatched trust levels justify the investment for sensitive use cases.
+        </p>
+        <p>
+          <strong>Bandwidth-based pricing</strong> is common, with rates typically ranging from $20-50 per GB for standard plans. Enterprise customers with high volumes can negotiate rates as low as $5-15 per GB. This model works well for users with variable or unpredictable traffic patterns.
+        </p>
+        <p>
+          <strong>Time-based subscriptions</strong> charge a flat rate for unlimited or high-bandwidth access during a set period. Monthly plans might range from $100-500 depending on the provider and features. This model suits users with consistent, predictable usage patterns.
+        </p>
+        <p>
+          <strong>Port-based pricing</strong> sells access to dedicated mobile connections at $50-200 per port monthly. Each port connects through a specific mobile device, giving you stable access to that carrier's IP pool with automatic rotation.
+        </p>
+        <p>
+          Key pricing factors include: carrier selection (premium carriers cost more), geographic coverage, rotation frequency, concurrent connection limits, and whether you need dedicated or shared access. Some providers offer 4G-only or 5G-specific pricing tiers.
+        </p>
+      </article>
+
+      <article class="guide-section">
+        <h2>Best Use Cases for Mobile Proxies</h2>
+        <p>
+          Mobile proxies are essential when you need the highest level of trust and authenticity. Their premium cost is justified for tasks where residential or datacenter proxies face blocks or restrictions.
+        </p>
+        <ul class="use-case-list">
+          <li><strong>Social media management:</strong> Manage multiple Instagram, TikTok, Facebook, and Twitter accounts without triggering platform security. Mobile IPs match the expected access patterns of genuine mobile app users.</li>
+          <li><strong>Ad verification:</strong> View mobile advertisements exactly as real users see them. Verify mobile ad placements, creatives, and landing pages across different carriers and locations.</li>
+          <li><strong>App store optimization:</strong> Research app rankings, reviews, and competitor data from mobile-first app stores. Access mobile-specific search results and recommendations.</li>
+          <li><strong>Mobile-first platforms:</strong> Access services and APIs that restrict or modify responses for non-mobile traffic. Many platforms serve different content to mobile users.</li>
+          <li><strong>Sneaker and retail bots:</strong> Achieve higher success rates on limited releases. Retailers trust mobile traffic more than residential or datacenter connections.</li>
+          <li><strong>Account creation:</strong> Register accounts on platforms with strict anti-fraud measures. Mobile IPs rarely appear on blacklists and pass device fingerprint validation.</li>
+          <li><strong>Price monitoring:</strong> Access mobile-specific pricing that may differ from desktop. Some retailers offer mobile-only deals or dynamic pricing based on device type.</li>
+          <li><strong>Sensitive data collection:</strong> Gather information from highly protected websites where residential proxies face challenges.</li>
+        </ul>
+      </article>
+
+      <article class="guide-section">
+        <h2>Mobile vs Residential Proxies</h2>
+        <p>
+          Both mobile and residential proxies provide authentic user IPs, but they differ in important ways that affect performance, cost, and use case fit.
+        </p>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <h3>Trust and Detection</h3>
+            <p>Mobile proxies carry the highest trust scores because mobile IPs are naturally shared among thousands of users through CGNAT. Blocking a mobile IP risks blocking legitimate customers. Residential IPs have good trust but are increasingly fingerprinted and blacklisted by aggressive anti-bot systems.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Price Comparison</h3>
+            <p>Mobile proxies cost 2-5x more than residential alternatives. Expect $20-50 per GB for mobile versus $5-15 per GB for residential. This premium reflects the infrastructure costs and scarcity of mobile IP access. Budget carefully based on your volume requirements.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Speed and Latency</h3>
+            <p>Residential proxies typically offer faster and more stable connections because they route through fixed broadband networks. Mobile proxies may experience variable latency depending on cellular network conditions, signal strength, and carrier congestion.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>When to Choose Mobile</h3>
+            <p>Select mobile proxies for: social media automation, accessing mobile-first platforms, bypassing the most aggressive anti-bot systems, mobile ad verification, and any scenario where residential proxies face blocks. Use residential for general scraping and tasks where mobile trust is not required.</p>
+          </div>
+        </div>
+      </article>
+    </section>
 
     <section class="content">
       <h2>How to choose mobile proxies</h2>
@@ -37,15 +120,32 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 
 <style>
   .page-header {
-    text-align: center;
     margin-bottom: 3rem;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .page-header h1 {
+    margin-bottom: 1rem;
   }
 
   .page-subtitle {
     font-size: 1.125rem;
     color: var(--color-text-light);
     max-width: 700px;
-    margin: 1rem auto 0;
+    margin: 1rem 0 0;
+  }
+
+  @media (max-width: 768px) {
+    .header-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   .content {

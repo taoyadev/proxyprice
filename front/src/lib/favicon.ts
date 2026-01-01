@@ -3,14 +3,14 @@
  * Uses Google's favicon service to fetch high-quality favicons
  */
 export function getFaviconUrl(websiteUrl: string, size: number = 32): string {
-  try {
-    // Use Google's high-quality favicon V2 service
-    // Falls back to default icon if not found
-    return `https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(websiteUrl)}&size=${size}`;
-  } catch {
-    // Fallback for invalid URLs
-    return `https://www.google.com/s2/favicons?domain=${websiteUrl}&sz=${size}`;
-  }
+  // Use Google's high-quality favicon V2 service
+  // Falls back to default icon if not found
+  return (
+    "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=" +
+    encodeURIComponent(websiteUrl) +
+    "&size=" +
+    size
+  );
 }
 
 /**

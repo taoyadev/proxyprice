@@ -3,48 +3,286 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout
-  title="Not Found"
-  description="Page not found."
+  title="Page Not Found"
+  description="The page you're looking for doesn't exist. Use our navigation to find what you need."
   noindex={true}
 >
-  <div class="container" style="padding: 4rem 0; text-align: center;">
-    <h1>404</h1>
-    <p style="margin-top: 1rem; color: var(--color-text-light);">
-      The page you’re looking for doesn’t exist.
-    </p>
-    <div style="margin-top: 2rem;">
-      <a class="btn" href="/">Go home</a>
-      <a class="btn btn-secondary" href="/providers" style="margin-left: 0.75rem;">Browse providers</a>
+  <div class="container">
+    <div class="not-found-wrapper">
+      <div class="not-found-content">
+        <div class="error-icon">404</div>
+        <h1>Page Not Found</h1>
+        <p class="error-message">
+          The page you are looking for does not exist or has been moved.
+        </p>
+        <p class="error-submessage">
+          Do not worry, you can find what you are looking for using the options below.
+        </p>
+
+        <div class="quick-links">
+          <a href="/calculator" class="action-card">
+            <div class="action-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+              </svg>
+            </div>
+            <div>
+              <h3>Price Calculator</h3>
+              <p>Calculate costs for your proxy needs</p>
+            </div>
+          </a>
+
+          <a href="/providers" class="action-card">
+            <div class="action-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
+              </svg>
+            </div>
+            <div>
+              <h3>All Providers</h3>
+              <p>Browse 40+ proxy providers</p>
+            </div>
+          </a>
+
+          <a href="/best" class="action-card">
+            <div class="action-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z" clip-rule="evenodd" />
+              </svg>
+            </div>
+            <div>
+              <h3>Best Providers</h3>
+              <p>Top picks by proxy type</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="proxy-type-links">
+          <h3>Browse by Proxy Type</h3>
+          <div class="type-links">
+            <a href="/residential" class="type-link">Residential Proxies</a>
+            <a href="/datacenter" class="type-link">Datacenter Proxies</a>
+            <a href="/mobile" class="type-link">Mobile Proxies</a>
+            <a href="/isp" class="type-link">ISP Proxies</a>
+          </div>
+        </div>
+
+        <div class="home-link">
+          <a href="/" class="btn btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
+            </svg>
+            Back to Homepage
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </BaseLayout>
 
 <style>
-  .btn {
-    display: inline-block;
-    padding: 0.875rem 1.5rem;
-    border-radius: 0.5rem;
-    font-weight: 600;
-    background: var(--color-primary);
-    color: white;
-    text-decoration: none;
+  .container {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .btn:hover {
-    background: var(--color-primary-dark);
-    text-decoration: none;
+  .not-found-wrapper {
+    width: 100%;
+    max-width: 700px;
+    padding: 3rem 2rem;
   }
 
-  .btn-secondary {
-    background: transparent;
+  .not-found-content {
+    text-align: center;
+  }
+
+  .error-icon {
+    font-size: 8rem;
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+  }
+
+  .not-found-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
     color: var(--color-text);
-    border: 2px solid var(--color-border);
   }
 
-  .btn-secondary:hover {
+  .error-message {
+    font-size: 1.125rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .error-submessage {
+    color: var(--color-text-light);
+    margin-bottom: 3rem;
+  }
+
+  .quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .action-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    color: var(--color-text);
+    text-align: left;
+    transition: all 0.2s;
+  }
+
+  .action-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  .action-icon {
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-radius: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .action-icon svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--color-primary);
+  }
+
+  .action-card h3 {
+    font-size: 1rem;
+    margin: 0 0 0.25rem;
+  }
+
+  .action-card p {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  .proxy-type-links {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--color-bg-alt);
+    border-radius: 0.75rem;
+  }
+
+  .proxy-type-links h3 {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+  }
+
+  .type-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+  }
+
+  .type-link {
+    padding: 0.5rem 1rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .type-link:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
-    background: transparent;
+    text-decoration: none;
+  }
+
+  .home-link {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    text-decoration: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .action-icon {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .error-icon {
+      font-size: 5rem;
+    }
+
+    .not-found-content h1 {
+      font-size: 1.5rem;
+    }
+
+    .quick-links {
+      grid-template-columns: 1fr;
+    }
+
+    .action-card {
+      padding: 1rem;
+    }
+
+    .action-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+
+    .action-icon svg {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
   }
 </style>
-

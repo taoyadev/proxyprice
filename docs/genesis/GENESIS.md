@@ -327,7 +327,7 @@ proxyprice/
 
 import requests
 
-SOAX_API_KEY = "6ff36d5d-202e-4361-9519-02f3dcdf9e78"
+SOAX_API_KEY = "[REDACTED]"  # Use environment variable in production
 SOAX_ENDPOINT = "https://scraping.soax.com/v1/webdata/fetch-content"
 
 def scrape_pricing_page(url: str) -> str:

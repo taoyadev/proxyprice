@@ -1,6 +1,17 @@
 {
   "providers": [
     {
+      "id": "shifter",
+      "name": "Shifter",
+      "slug": "shifter",
+      "website_url": "https://shifter.io",
+      "trial_offer": null,
+      "proxy_types": ["residential", "isp"],
+      "cheapest_price_per_gb": 0.3,
+      "has_pricing_data": true,
+      "pricing_count": 4
+    },
+    {
       "id": "proxyempire",
       "name": "ProxyEmpire",
       "slug": "proxyempire",
@@ -23,6 +34,17 @@
       "pricing_count": 4
     },
     {
+      "id": "soax",
+      "name": "SOAX",
+      "slug": "soax",
+      "website_url": "https://soax.com",
+      "trial_offer": "3-day trial with $1.99",
+      "proxy_types": ["residential", "datacenter", "mobile", "other"],
+      "cheapest_price_per_gb": 0.4,
+      "has_pricing_data": true,
+      "pricing_count": 4
+    },
+    {
       "id": "oxylabs",
       "name": "Oxylabs",
       "slug": "oxylabs",
@@ -30,6 +52,17 @@
       "trial_offer": "7-day free trial",
       "proxy_types": ["residential", "datacenter", "mobile", "isp", "other"],
       "cheapest_price_per_gb": 0.48,
+      "has_pricing_data": true,
+      "pricing_count": 7
+    },
+    {
+      "id": "geonode",
+      "name": "Geonode",
+      "slug": "geonode",
+      "website_url": "https://geonode.com",
+      "trial_offer": null,
+      "proxy_types": ["residential", "datacenter", "other", "mobile"],
+      "cheapest_price_per_gb": 0.5,
       "has_pricing_data": true,
       "pricing_count": 7
     },
@@ -78,6 +111,28 @@
       "pricing_count": 4
     },
     {
+      "id": "rayobyte",
+      "name": "Rayobyte",
+      "slug": "rayobyte",
+      "website_url": "https://rayobyte.com",
+      "trial_offer": null,
+      "proxy_types": ["residential", "datacenter", "mobile", "isp"],
+      "cheapest_price_per_gb": 2.0,
+      "has_pricing_data": true,
+      "pricing_count": 8
+    },
+    {
+      "id": "proxyrack",
+      "name": "ProxyRack",
+      "slug": "proxyrack",
+      "website_url": "https://www.proxyrack.com",
+      "trial_offer": "$13.95 /7 days with 5 port",
+      "proxy_types": ["residential", "datacenter"],
+      "cheapest_price_per_gb": 2.25,
+      "has_pricing_data": true,
+      "pricing_count": 5
+    },
+    {
       "id": "proxyguys",
       "name": "ProxyGuys",
       "slug": "proxyguys",
@@ -85,6 +140,61 @@
       "trial_offer": "$5 for a trial including 100MB",
       "proxy_types": ["residential", "mobile"],
       "cheapest_price_per_gb": 2.5,
+      "has_pricing_data": true,
+      "pricing_count": 2
+    },
+    {
+      "id": "froxy",
+      "name": "Froxy",
+      "slug": "froxy",
+      "website_url": "https://froxy.com",
+      "trial_offer": "3-day trial 100 MB of $1.99",
+      "proxy_types": ["residential", "mobile"],
+      "cheapest_price_per_gb": 2.93,
+      "has_pricing_data": true,
+      "pricing_count": 2
+    },
+    {
+      "id": "hydraproxy",
+      "name": "HydraProxy",
+      "slug": "hydraproxy",
+      "website_url": "https://hydraproxy.com",
+      "trial_offer": "24-hour money-back",
+      "proxy_types": ["residential", "mobile"],
+      "cheapest_price_per_gb": 3.0,
+      "has_pricing_data": true,
+      "pricing_count": 2
+    },
+    {
+      "id": "asocks",
+      "name": "Asocks",
+      "slug": "asocks",
+      "website_url": "https://asocks.com",
+      "trial_offer": "3-day free trial",
+      "proxy_types": ["residential", "mobile"],
+      "cheapest_price_per_gb": 3.0,
+      "has_pricing_data": true,
+      "pricing_count": 2
+    },
+    {
+      "id": "webshare",
+      "name": "Webshare",
+      "slug": "webshare",
+      "website_url": "https://webshare.io",
+      "trial_offer": "2-day money-back",
+      "proxy_types": ["residential", "datacenter", "isp"],
+      "cheapest_price_per_gb": 4.5,
+      "has_pricing_data": true,
+      "pricing_count": 3
+    },
+    {
+      "id": "nimbleway",
+      "name": "Nimbleway",
+      "slug": "nimbleway",
+      "website_url": "https://www.nimbleway.com",
+      "trial_offer": "22 GB free trial",
+      "proxy_types": ["residential", "other"],
+      "cheapest_price_per_gb": 4.8,
       "has_pricing_data": true,
       "pricing_count": 2
     },
@@ -111,17 +221,6 @@
       "pricing_count": 3
     },
     {
-      "id": "soax",
-      "name": "SOAX",
-      "slug": "soax",
-      "website_url": "https://soax.com",
-      "trial_offer": "3-day trial with $1.99",
-      "proxy_types": ["residential", "datacenter", "mobile", "other"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
-      "pricing_count": 4
-    },
-    {
       "id": "proxy-seller",
       "name": "Proxy-Seller",
       "slug": "proxy-seller",
@@ -133,17 +232,6 @@
       "pricing_count": 4
     },
     {
-      "id": "webshare",
-      "name": "Webshare",
-      "slug": "webshare",
-      "website_url": "https://webshare.io",
-      "trial_offer": "2-day money-back",
-      "proxy_types": ["residential", "datacenter", "isp"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": true,
-      "pricing_count": 3
-    },
-    {
       "id": "proxy-cheap",
       "name": "Proxy-Cheap",
       "slug": "proxy-cheap",
@@ -151,7 +239,7 @@
       "trial_offer": "14-day money-back",
       "proxy_types": ["residential", "datacenter", "mobile", "isp", "other"],
       "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
+      "has_pricing_data": true,
       "pricing_count": 5
     },
     {
@@ -186,17 +274,6 @@
       "cheapest_price_per_gb": null,
       "has_pricing_data": false,
       "pricing_count": 3
-    },
-    {
-      "id": "rayobyte",
-      "name": "Rayobyte",
-      "slug": "rayobyte",
-      "website_url": "https://rayobyte.com",
-      "trial_offer": null,
-      "proxy_types": ["residential", "datacenter", "mobile", "isp"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
-      "pricing_count": 8
     },
     {
       "id": "myprivateproxy",
@@ -241,17 +318,6 @@
       "cheapest_price_per_gb": null,
       "has_pricing_data": false,
       "pricing_count": 1
-    },
-    {
-      "id": "shifter",
-      "name": "Shifter",
-      "slug": "shifter",
-      "website_url": "https://shifter.io",
-      "trial_offer": null,
-      "proxy_types": ["residential", "isp"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
-      "pricing_count": 4
     },
     {
       "id": "marsproxies",
@@ -353,17 +419,6 @@
       "pricing_count": 3
     },
     {
-      "id": "hydraproxy",
-      "name": "HydraProxy",
-      "slug": "hydraproxy",
-      "website_url": "https://hydraproxy.com",
-      "trial_offer": "24-hour money-back",
-      "proxy_types": ["residential", "mobile"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
-      "pricing_count": 2
-    },
-    {
       "id": "spaceproxy",
       "name": "Spaceproxy",
       "slug": "spaceproxy",
@@ -373,17 +428,6 @@
       "cheapest_price_per_gb": null,
       "has_pricing_data": false,
       "pricing_count": 1
-    },
-    {
-      "id": "geonode",
-      "name": "Geonode",
-      "slug": "geonode",
-      "website_url": "https://geonode.com",
-      "trial_offer": null,
-      "proxy_types": ["residential", "datacenter", "other", "mobile"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
-      "pricing_count": 7
     },
     {
       "id": "stormproxies",
@@ -397,28 +441,6 @@
       "pricing_count": 5
     },
     {
-      "id": "proxyrack",
-      "name": "ProxyRack",
-      "slug": "proxyrack",
-      "website_url": "https://www.proxyrack.com",
-      "trial_offer": "$13.95 /7 days with 5 port",
-      "proxy_types": ["residential", "datacenter"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": true,
-      "pricing_count": 5
-    },
-    {
-      "id": "froxy",
-      "name": "Froxy",
-      "slug": "froxy",
-      "website_url": "https://froxy.com",
-      "trial_offer": "3-day trial 100 MB of $1.99",
-      "proxy_types": ["residential", "mobile"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
-      "pricing_count": 2
-    },
-    {
       "id": "the-social-proxy",
       "name": "The Social Proxy",
       "slug": "the-social-proxy",
@@ -426,7 +448,7 @@
       "trial_offer": "24-hour trial with €1 setup fee",
       "proxy_types": ["mobile"],
       "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
+      "has_pricing_data": true,
       "pricing_count": 1
     },
     {
@@ -437,7 +459,7 @@
       "trial_offer": null,
       "proxy_types": ["isp"],
       "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
+      "has_pricing_data": true,
       "pricing_count": 1
     },
     {
@@ -448,32 +470,10 @@
       "trial_offer": "72-hour tray at €9.9",
       "proxy_types": ["mobile"],
       "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
+      "has_pricing_data": true,
       "pricing_count": 1
-    },
-    {
-      "id": "nimbleway",
-      "name": "Nimbleway",
-      "slug": "nimbleway",
-      "website_url": "https://www.nimbleway.com",
-      "trial_offer": "22 GB free trial",
-      "proxy_types": ["residential", "other"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
-      "pricing_count": 2
-    },
-    {
-      "id": "asocks",
-      "name": "Asocks",
-      "slug": "asocks",
-      "website_url": "https://asocks.com",
-      "trial_offer": "3-day free trial",
-      "proxy_types": ["residential", "mobile"],
-      "cheapest_price_per_gb": null,
-      "has_pricing_data": false,
-      "pricing_count": 2
     }
   ],
-  "last_updated": "2025-12-28",
+  "last_updated": "2025-12-31",
   "total_count": 43
 }

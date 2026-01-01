@@ -1,0 +1,423 @@
+{
+  "useCases": [
+    {
+      "id": "web-scraping",
+      "slug": "web-scraping-proxies",
+      "title": "Web Scraping Proxies",
+      "description": "Find the best proxy providers for web scraping at scale. Compare pricing on residential and datacenter proxies optimized for data extraction.",
+      "content": {
+        "overview": "Web scraping requires proxies that can handle high-volume requests while avoiding IP blocks. The right proxy provider depends on your scale, target sites, and budget.",
+        "bandwidth": {
+          "label": "Typical Bandwidth Needs",
+          "ranges": [
+            {
+              "level": "Small",
+              "gb": 10,
+              "description": "Personal projects, learning"
+            },
+            {
+              "level": "Medium",
+              "gb": 100,
+              "description": "Startups, small business data"
+            },
+            {
+              "level": "Large",
+              "gb": 500,
+              "description": "Enterprise scraping operations"
+            },
+            {
+              "level": "Enterprise",
+              "gb": 1000,
+              "description": "Large-scale data extraction"
+            }
+          ]
+        },
+        "recommendedTypes": ["residential", "datacenter"],
+        "keyFeatures": [
+          "Rotating IPs to avoid blocks",
+          "High concurrency limits",
+          "Geo-targeting capabilities",
+          "Session management options"
+        ],
+        "providerCriteria": "Providers ranked by price per GB with residential proxy options for avoiding detection and datacenter proxies for high-volume, cost-sensitive scraping."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 100
+      },
+      "relatedUseCases": ["ad-verification-proxies", "seo-monitoring-proxies"]
+    },
+    {
+      "id": "sneaker-bot",
+      "slug": "sneaker-bot-proxies",
+      "title": "Sneaker Bot Proxies",
+      "description": "Compare proxy providers for sneaker botting. Find residential and ISP proxies with low latency for sneaker copping success.",
+      "content": {
+        "overview": "Sneaker bots require ultra-low latency proxies from residential IPs to maximize checkout success. ISP proxies offer the best balance of speed and legitimacy for sneaker releases.",
+        "bandwidth": {
+          "label": "Bandwidth Requirements",
+          "ranges": [
+            {
+              "level": "Minimal",
+              "gb": 1,
+              "description": "A few tasks per release"
+            },
+            {
+              "level": "Moderate",
+              "gb": 5,
+              "description": "Multiple releases monthly"
+            },
+            {
+              "level": "Heavy",
+              "gb": 25,
+              "description": "Every release, many tasks"
+            }
+          ]
+        },
+        "recommendedTypes": ["isp", "residential"],
+        "keyFeatures": [
+          "Low latency connection",
+          "Static IP sessions",
+          "US residential IPs",
+          "Unlimited bandwidth options"
+        ],
+        "providerCriteria": "Providers ranked by ISP proxy availability and residential proxy quality, with emphasis on session stability and speed."
+      },
+      "calculatorPreset": {
+        "proxyType": "isp",
+        "bandwidth": 5
+      },
+      "relatedUseCases": [
+        "social-media-automation-proxies",
+        "ticketing-proxies"
+      ]
+    },
+    {
+      "id": "ad-verification",
+      "slug": "ad-verification-proxies",
+      "title": "Ad Verification Proxies",
+      "description": "Find proxy providers for ad verification and fraud detection. Compare residential proxies for geo-targeted ad monitoring.",
+      "content": {
+        "overview": "Ad verification requires proxies from diverse geographic locations to verify ad placement and detect fraud. Residential proxies are essential for accessing ads as real users would see them.",
+        "bandwidth": {
+          "label": "Bandwidth Requirements",
+          "ranges": [
+            {
+              "level": "Basic",
+              "gb": 50,
+              "description": "Single campaign monitoring"
+            },
+            {
+              "level": "Professional",
+              "gb": 200,
+              "description": "Multiple campaigns"
+            },
+            {
+              "level": "Enterprise",
+              "gb": 1000,
+              "description": "Full ad verification platform"
+            }
+          ]
+        },
+        "recommendedTypes": ["residential", "mobile"],
+        "keyFeatures": [
+          "Global IP coverage",
+          "City-level targeting",
+          "Real residential IPs",
+          "High IP rotation"
+        ],
+        "providerCriteria": "Providers ranked by geographic coverage and residential proxy pool size, critical for accurate ad verification."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 200
+      },
+      "relatedUseCases": ["web-scraping-proxies", "seo-monitoring-proxies"]
+    },
+    {
+      "id": "seo-monitoring",
+      "slug": "seo-monitoring-proxies",
+      "title": "SEO Monitoring Proxies",
+      "description": "Compare proxy providers for SEO monitoring and rank tracking. Find affordable residential proxies for accurate search engine position tracking.",
+      "content": {
+        "overview": "SEO monitoring requires proxies to check search engine rankings from different locations without getting blocked. Residential proxies provide the most accurate ranking data by mimicking real user behavior.",
+        "bandwidth": {
+          "label": "Bandwidth Requirements",
+          "ranges": [
+            { "level": "Personal", "gb": 25, "description": "Track own sites" },
+            {
+              "level": "Agency",
+              "gb": 100,
+              "description": "Multiple client sites"
+            },
+            {
+              "level": "Platform",
+              "gb": 500,
+              "description": "Rank tracking SaaS"
+            }
+          ]
+        },
+        "recommendedTypes": ["residential", "datacenter"],
+        "keyFeatures": [
+          "Location-based targeting",
+          "SERP-specific IPs",
+          "Rotation controls",
+          "High success rates"
+        ],
+        "providerCriteria": "Providers ranked by price efficiency and SERP success rates for residential proxies used in rank tracking."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 100
+      },
+      "relatedUseCases": ["web-scraping-proxies", "ad-verification-proxies"]
+    },
+    {
+      "id": "social-media-automation",
+      "slug": "social-media-automation-proxies",
+      "title": "Social Media Automation Proxies",
+      "description": "Find proxy providers for social media automation. Compare mobile and residential proxies for managing multiple accounts safely.",
+      "content": {
+        "overview": "Social media automation requires high-trust proxies to avoid account bans. Mobile proxies offer the highest trust scores for platforms like Instagram, TikTok, and Twitter, while residential proxies are a cost-effective alternative.",
+        "bandwidth": {
+          "label": "Bandwidth Requirements",
+          "ranges": [
+            { "level": "Personal", "gb": 5, "description": "5-10 accounts" },
+            { "level": "Growth", "gb": 25, "description": "10-50 accounts" },
+            { "level": "Agency", "gb": 100, "description": "50+ accounts" }
+          ]
+        },
+        "recommendedTypes": ["mobile", "residential"],
+        "keyFeatures": [
+          "High trust score",
+          "Static IP sessions",
+          "Mobile carrier IPs",
+          "Account-specific IPs"
+        ],
+        "providerCriteria": "Providers ranked by mobile proxy availability and residential proxy quality for social media platform compatibility."
+      },
+      "calculatorPreset": {
+        "proxyType": "mobile",
+        "bandwidth": 25
+      },
+      "relatedUseCases": ["sneaker-bot-proxies", "web-scraping-proxies"]
+    },
+    {
+      "id": "ticket-bot",
+      "slug": "ticket-bot-proxies",
+      "title": "Ticket Bot Proxies",
+      "description": "Find the best proxies for ticket purchasing bots. Compare residential and ISP proxies for buying event tickets without IP blocks.",
+      "content": {
+        "overview": "Ticket bots require high-trust residential proxies to bypass IP-based purchase limits on ticketing platforms. Sticky sessions are essential for maintaining checkout flow.",
+        "bandwidth": {
+          "label": "Bandwidth Requirements",
+          "ranges": [
+            {
+              "level": "Casual",
+              "gb": 5,
+              "description": "Occasional ticket purchases"
+            },
+            {
+              "level": "Regular",
+              "gb": 15,
+              "description": "Frequent event purchases"
+            },
+            {
+              "level": "Broker",
+              "gb": 50,
+              "description": "Professional ticket reselling"
+            }
+          ]
+        },
+        "recommendedTypes": ["residential", "isp"],
+        "keyFeatures": [
+          "IP rotation for multiple attempts",
+          "Sticky sessions for checkout",
+          "Geo-targeting for regional sales",
+          "High trust scores"
+        ],
+        "providerCriteria": "Providers ranked by residential proxy quality, rotation capabilities, and sticky session stability for ticket purchasing."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 15
+      },
+      "relatedUseCases": [
+        "sneaker-bot-proxies",
+        "social-media-automation-proxies"
+      ]
+    },
+    {
+      "id": "amazon-scraping",
+      "slug": "amazon-scraping-proxies",
+      "title": "Amazon Scraping Proxies",
+      "description": "Find proxy providers optimized for Amazon scraping. Compare residential proxies for extracting product data without anti-bot detection.",
+      "content": {
+        "overview": "Amazon has sophisticated anti-bot systems that require premium residential proxies for successful scraping. Rotating IPs with proper session management are essential.",
+        "bandwidth": {
+          "label": "Bandwidth Requirements",
+          "ranges": [
+            {
+              "level": "Seller",
+              "gb": 50,
+              "description": "Competitor monitoring"
+            },
+            {
+              "level": "Researcher",
+              "gb": 200,
+              "description": "Product data extraction"
+            },
+            {
+              "level": "Platform",
+              "gb": 500,
+              "description": "Price tracking service"
+            }
+          ]
+        },
+        "recommendedTypes": ["residential"],
+        "keyFeatures": [
+          "Undetected residential IPs",
+          "Smart rotation controls",
+          "Session persistence",
+          "US and EU IP coverage"
+        ],
+        "providerCriteria": "Providers ranked by residential proxy quality and success rates with e-commerce platforms including Amazon."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 200
+      },
+      "relatedUseCases": ["web-scraping-proxies", "market-research-proxies"]
+    },
+    {
+      "id": "lead-generation",
+      "slug": "lead-generation-proxies",
+      "title": "Lead Generation Proxies",
+      "description": "Compare proxies for lead generation and contact scraping. Find residential proxies for extracting business contact data at scale.",
+      "content": {
+        "overview": "Lead generation requires scraping business directories, social media, and company websites. Residential proxies help avoid blocks while gathering contact information.",
+        "bandwidth": {
+          "label": "Bandwidth Requirements",
+          "ranges": [
+            {
+              "level": "Small",
+              "gb": 25,
+              "description": "B2B outreach campaigns"
+            },
+            {
+              "level": "Medium",
+              "gb": 100,
+              "description": "Marketing agency needs"
+            },
+            {
+              "level": "Large",
+              "gb": 500,
+              "description": "Lead generation platforms"
+            }
+          ]
+        },
+        "recommendedTypes": ["residential", "datacenter"],
+        "keyFeatures": [
+          "Rotating IPs for volume",
+          "Geo-targeting for local leads",
+          "High concurrency",
+          "Success rate optimization"
+        ],
+        "providerCriteria": "Providers ranked by price efficiency and residential proxy pool size for high-volume lead scraping."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 100
+      },
+      "relatedUseCases": ["web-scraping-proxies", "market-research-proxies"]
+    },
+    {
+      "id": "market-research",
+      "slug": "market-research-proxies",
+      "title": "Market Research Proxies",
+      "description": "Find proxies for market research and competitive intelligence. Compare residential proxies for gathering competitor data anonymously.",
+      "content": {
+        "overview": "Market research requires anonymous access to competitor websites, pricing data, and industry trends. Residential proxies provide the legitimacy needed for comprehensive data collection.",
+        "bandwidth": {
+          "label": "Bandwidth Requirements",
+          "ranges": [
+            {
+              "level": "Startup",
+              "gb": 50,
+              "description": "Initial market analysis"
+            },
+            {
+              "level": "Business",
+              "gb": 200,
+              "description": "Ongoing competitive monitoring"
+            },
+            {
+              "level": "Enterprise",
+              "gb": 1000,
+              "description": "Market intelligence platform"
+            }
+          ]
+        },
+        "recommendedTypes": ["residential", "datacenter"],
+        "keyFeatures": [
+          "Anonymous data collection",
+          "Competitor price monitoring",
+          "Trend analysis",
+          "Geo-specific research"
+        ],
+        "providerCriteria": "Providers ranked by global IP coverage and price efficiency for large-scale market research operations."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 200
+      },
+      "relatedUseCases": [
+        "web-scraping-proxies",
+        "lead-generation-proxies",
+        "amazon-scraping-proxies"
+      ]
+    },
+    {
+      "id": "stock-trading",
+      "slug": "stock-trading-proxies",
+      "title": "Stock Trading Proxies",
+      "description": "Find low-latency proxies for stock trading and financial data. Compare datacenter proxies for real-time market access.",
+      "content": {
+        "overview": "Stock trading and financial applications require ultra-low latency connections. Datacenter proxies located near exchanges provide the fastest execution times.",
+        "bandwidth": {
+          "label": "Bandwidth Requirements",
+          "ranges": [
+            {
+              "level": "Trader",
+              "gb": 10,
+              "description": "Individual trading"
+            },
+            {
+              "level": "Firm",
+              "gb": 100,
+              "description": "Small trading operation"
+            },
+            {
+              "level": "Fund",
+              "gb": 500,
+              "description": "Institutional trading"
+            }
+          ]
+        },
+        "recommendedTypes": ["datacenter", "isp"],
+        "keyFeatures": [
+          "Ultra-low latency",
+          "Proximity to exchanges",
+          "Stable connections",
+          "99.9%+ uptime"
+        ],
+        "providerCriteria": "Providers ranked by datacenter proxy speed, latency, and reliability for financial trading applications."
+      },
+      "calculatorPreset": {
+        "proxyType": "datacenter",
+        "bandwidth": 100
+      },
+      "relatedUseCases": ["market-research-proxies"]
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ComparisonTable from '../../components/ComparisonTable.astro';
+import pricingTiersData from '../../data/pricing-tiers.json';
+import providersData from '../../data/providers.json';
+import { SITE_NAME, SITE_URL } from '../../lib/site';
+import { getFaviconUrl } from '../../lib/favicon';
+
+export async function getStaticPaths() {
+  return pricingTiersData.pricingTiers.map(tier => ({
+    params: { tier: tier.slug },
+    props: { tier },
+  }));
+}
+
+const { tier } = Astro.props;
+
+const breadcrumbs = [
+  { name: SITE_NAME, url: new URL('/', Astro.site).toString() },
+  { name: 'Pricing Tiers', url: new URL('/pricing/', Astro.site).toString() },
+  { name: tier.title, url: new URL(`/pricing/${tier.slug}/`, Astro.site).toString() },
+];
+
+// Filter providers by price range
+const getProvidersInRange = (minPrice: number, maxPrice: number, limit = 10) => {
+  return providersData.providers
+    .filter(p => p.cheapest_price_per_gb !== null && p.cheapest_price_per_gb >= minPrice && p.cheapest_price_per_gb <= maxPrice)
+    .sort((a, b) => (a.cheapest_price_per_gb ?? Infinity) - (b.cheapest_price_per_gb ?? Infinity))
+    .slice(0, limit);
+};
+
+// For free trial providers
+const getTrialProviders = (limit = 10) => {
+  return providersData.providers
+    .filter(p => p.trial_offer !== null)
+    .slice(0, limit);
+};
+
+const filteredProviders = tier.id === 'free-trial-proxies'
+  ? getTrialProviders()
+  : getProvidersInRange(tier.content.priceRange?.min ?? 0, tier.content.priceRange?.max ?? 999);
+
+const formatPrice = (price: number | null) => {
+  if (price === null) return 'N/A';
+  return `$${price.toFixed(2)}`;
+};
+
+// Schema.org for pricing tier page
+const canonicalURL = new URL(`/pricing/${tier.slug}/`, Astro.site);
+const pricingTierSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "headline": tier.title,
+  "description": tier.description,
+  "url": canonicalURL.toString(),
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "@id": `${SITE_URL}#website`,
+  },
+};
+---
+
+<BaseLayout
+  title={tier.title}
+  description={tier.description}
+  breadcrumbs={breadcrumbs}
+>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(pricingTierSchema)} />
+
+  <div class="container" style="padding: 3rem 0;">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/pricing/">Pricing</a></li>
+        <li aria-current="page">{tier.title}</li>
+      </ol>
+    </nav>
+
+    <header class="tier-header">
+      <h1>{tier.title}</h1>
+      <p class="tier-subtitle">{tier.description}</p>
+    </header>
+
+    <section class="tier-content">
+      <div class="tier-main">
+        <div class="content-card">
+          <h2>Overview</h2>
+          <p>{tier.content.overview}</p>
+        </div>
+
+        {tier.content.whyChoose && (
+          <div class="content-card">
+            <h2>Why Choose This Tier</h2>
+            <p>{tier.content.whyChoose}</p>
+          </div>
+        )}
+
+        {tier.content.bestFor && (
+          <div class="content-card">
+            <h2>Best For</h2>
+            <ul class="feature-list">
+              {tier.content.bestFor.map(item => (
+                <li>
+                  <span class="check-icon">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {tier.content.trialBenefits && (
+          <div class="content-card">
+            <h2>Benefits of Free Trials</h2>
+            <ul class="feature-list">
+              {tier.content.trialBenefits.map(item => (
+                <li>
+                  <span class="check-icon">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <div class="content-card">
+          <h2>Providers in This Category</h2>
+          <div class="providers-grid">
+            {filteredProviders.length > 0 ? (
+              filteredProviders.map(provider => (
+                <a href={`/provider/${provider.slug}`} class="provider-card">
+                  <img
+                    src={getFaviconUrl(provider.website_url, 40)}
+                    alt={`${provider.name} favicon`}
+                    class="provider-favicon"
+                    width="40"
+                    height="40"
+                  />
+                  <div class="provider-card-info">
+                    <div class="provider-card-name">{provider.name}</div>
+                    <div class="provider-card-price">
+                      {provider.cheapest_price_per_gb ? (
+                        <>from {formatPrice(provider.cheapest_price_per_gb)}/GB</>
+                      ) : (
+                        <>{provider.trial_offer}</>
+                      )}
+                    </div>
+                  </div>
+                  {provider.trial_offer && (
+                    <span class="trial-badge">Free Trial</span>
+                  )}
+                  <span class="arrow-icon">→</span>
+                </a>
+              ))
+            ) : (
+              <p class="no-providers">No providers found in this category.</p>
+            )}
+          </div>
+        </div>
+
+        <div class="content-card">
+          <h2>Calculate Your Costs</h2>
+          <p>
+            Use our calculator to estimate monthly costs based on your bandwidth needs.
+          </p>
+          <div class="preset-calculator">
+            <a href={`/calculator?gb=${tier.calculatorPreset.bandwidth}&type=${tier.calculatorPreset.proxyType}`} class="btn btn-primary">
+              Calculate with {tier.calculatorPreset.bandwidth}GB preset
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <aside class="tier-sidebar">
+        <div class="sidebar-card">
+          <h3>Quick Links</h3>
+          <ul class="sidebar-links">
+            <li><a href="/calculator">Price Calculator</a></li>
+            <li><a href="/providers">All Providers</a></li>
+            <li><a href="/use-cases">Use Cases</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <h3>Other Pricing Tiers</h3>
+          <ul class="sidebar-links">
+            {pricingTiersData.pricingTiers
+              .filter(t => t.id !== tier.id)
+              .map(otherTier => (
+                <li>
+                  <a href={`/pricing/${otherTier.slug}/`}>{otherTier.title}</a>
+                </li>
+              ))}
+          </ul>
+        </div>
+      </aside>
+    </section>
+
+    {tier.id !== 'free-trial-proxies' && filteredProviders.length > 0 && (
+      <section class="comparison-section">
+        <h2>Full Comparison Table</h2>
+        <p class="section-subtitle">
+          Compare detailed pricing tiers for providers in this category.
+        </p>
+        <ComparisonTable limit={20} showControls={true} />
+      </section>
+    )}
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumbs ol {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0;
+    margin: 0 0 1rem;
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+  }
+
+  .breadcrumbs li::after {
+    content: '/';
+    margin-left: 0.5rem;
+    opacity: 0.6;
+  }
+
+  .breadcrumbs li:last-child::after {
+    content: '';
+    margin: 0;
+  }
+
+  .breadcrumbs a {
+    color: var(--color-text-light);
+  }
+
+  .breadcrumbs a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .tier-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .tier-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tier-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .tier-content {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .tier-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .content-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+  }
+
+  .content-card h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .content-card p {
+    color: var(--color-text-light);
+    line-height: 1.7;
+  }
+
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--color-bg-alt);
+    border-radius: 0.5rem;
+  }
+
+  .check-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--color-secondary);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  .providers-grid {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .provider-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .provider-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .provider-favicon {
+    border-radius: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  .provider-card-info {
+    flex: 1;
+  }
+
+  .provider-card-name {
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .provider-card-price {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+  }
+
+  .trial-badge {
+    padding: 0.25rem 0.75rem;
+    background: #fef3c7;
+    color: #92400e;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .arrow-icon {
+    color: var(--color-primary);
+    font-size: 1.25rem;
+  }
+
+  .no-providers {
+    color: var(--color-text-light);
+    font-style: italic;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .preset-calculator {
+    margin-top: 1rem;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.875rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    color: white;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    text-decoration: none;
+  }
+
+  .tier-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sidebar-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .sidebar-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+  }
+
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .sidebar-links a {
+    color: var(--color-text);
+  }
+
+  .sidebar-links a:hover {
+    color: var(--color-primary);
+  }
+
+  .comparison-section {
+    background: var(--color-bg-alt);
+    border-radius: 0.75rem;
+    padding: 2rem;
+  }
+
+  .comparison-section h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    text-align: center;
+    color: var(--color-text-light);
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .tier-header h1 {
+      font-size: 2rem;
+    }
+
+    .tier-content {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

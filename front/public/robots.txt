@@ -1,4 +1,5 @@
 User-agent: *
-Allow: /
+Crawl-delay: 1
+Disallow: /go/
 
-Sitemap: https://proxyprice.com/sitemap-index.xml
+Sitemap: https://proxyprice.com/sitemap-0.xml

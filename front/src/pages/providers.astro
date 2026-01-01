@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import pricingData from '../data/pricing.json';
+import providersData from '../data/providers.json';
 ---
 
 <BaseLayout
@@ -9,13 +12,18 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 >
   <div class="container" style="padding: 3rem 0;">
     <header class="page-header">
-      <h1>All Proxy Providers</h1>
-      <p class="page-subtitle">
-        Complete listing of all proxy providers with transparent pricing comparison.
-      </p>
-      <p class="page-note">
-        By default we show comparable <strong>$/GB</strong> pricing. Uncheck “Comparable only” to view non-comparable models (per IP / per proxy / per thread).
-      </p>
+      <div class="header-content">
+        <div>
+          <h1>All Proxy Providers</h1>
+          <p class="page-subtitle">
+            Complete listing of all proxy providers with transparent pricing comparison.
+          </p>
+          <p class="page-note">
+            By default we show comparable <strong>$/GB</strong> pricing. Uncheck "Comparable only" to view non-comparable models (per IP / per proxy / per thread).
+          </p>
+        </div>
+        <TrustBadge lastUpdated={pricingData.last_updated} variant="full" providerCount={providersData.total_count} />
+      </div>
     </header>
 
     <ComparisonTable />
@@ -24,23 +32,37 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 
 <style>
   .page-header {
-    text-align: center;
     margin-bottom: 3rem;
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .header-content > div {
+    flex: 1;
   }
 
   .page-subtitle {
     font-size: 1.125rem;
     color: var(--color-text-light);
     max-width: 700px;
-    margin: 1rem auto 0;
+    margin: 1rem 0 0;
   }
 
   .page-note {
     margin-top: 0.75rem;
     font-size: 0.95rem;
     color: var(--color-text-light);
-    max-width: 860px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 700px;
+  }
+
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+    }
   }
 </style>

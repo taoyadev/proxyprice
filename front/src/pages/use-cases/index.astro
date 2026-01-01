@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import useCasesData from '../../data/use-cases.json';
+import { SITE_NAME } from '../../lib/site';
+
+// Define proxy type labels
+const proxyTypeLabels: Record<string, string> = {
+  residential: 'Residential',
+  datacenter: 'Datacenter',
+  mobile: 'Mobile',
+  isp: 'ISP'
+};
+
+const breadcrumbs = [
+  { name: SITE_NAME, url: new URL('/', Astro.site).toString() },
+  { name: 'Use Cases', url: new URL('/use-cases/', Astro.site).toString() },
+];
+---
+
+<BaseLayout
+  title="Proxy Use Cases"
+  description="Find the best proxy providers for your specific use case. Compare pricing for web scraping, sneaker bots, ad verification, SEO monitoring, and social media automation."
+  breadcrumbs={breadcrumbs}
+>
+  <div class="container" style="padding: 3rem 0;">
+    <header class="page-header">
+      <h1>Proxy Use Cases</h1>
+      <p class="page-subtitle">
+        Find the right proxy provider for your specific needs. Each use case has different requirements for bandwidth, IP type, and pricing.
+      </p>
+    </header>
+
+    <div class="use-cases-grid">
+      {useCasesData.useCases.map(useCase => (
+        <a href={`/use-cases/${useCase.slug}/`} class="use-case-card">
+          <div class="use-case-icon">
+            {useCase.id === 'web-scraping' && '🕷️'}
+            {useCase.id === 'sneaker-bot' && '👟'}
+            {useCase.id === 'ad-verification' && '📺'}
+            {useCase.id === 'seo-monitoring' && '📊'}
+            {useCase.id === 'social-media-automation' && '📱'}
+          </div>
+          <h2>{useCase.title}</h2>
+          <p>{useCase.description}</p>
+          <div class="use-case-meta">
+            <span class="proxy-type-badge">
+              {useCase.content.recommendedTypes.map(t => proxyTypeLabels[t] || t).join(', ')}
+            </span>
+            <span class="bandwidth-badge">
+              {useCase.calculatorPreset.bandwidth}GB typical
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <section class="info-section">
+      <h2>Choosing the Right Proxy for Your Use Case</h2>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>Web Scraping</h3>
+          <p>Requires rotating residential proxies for avoiding blocks at scale. Datacenter proxies work for less protected targets.</p>
+          <a href="/use-cases/web-scraping-proxies/">Learn more →</a>
+        </div>
+        <div class="info-card">
+          <h3>Sneaker Bots</h3>
+          <p>Needs low-latency ISP proxies for the best checkout success. Static residential IPs provide the right balance of speed and trust.</p>
+          <a href="/use-cases/sneaker-bot-proxies/">Learn more →</a>
+        </div>
+        <div class="info-card">
+          <h3>Ad Verification</h3>
+          <p>Requires geo-diverse residential and mobile proxies to verify ads appear correctly across different locations.</p>
+          <a href="/use-cases/ad-verification-proxies/">Learn more →</a>
+        </div>
+        <div class="info-card">
+          <h3>SEO Monitoring</h3>
+          <p>Residential proxies provide the most accurate SERP tracking. Datacenter proxies work for non-Google search engines.</p>
+          <a href="/use-cases/seo-monitoring-proxies/">Learn more →</a>
+        </div>
+        <div class="info-card">
+          <h3>Social Media</h3>
+          <p>Mobile proxies offer the highest trust scores for platforms. ISP proxies are a cost-effective alternative for account management.</p>
+          <a href="/use-cases/social-media-automation-proxies/">Learn more →</a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .use-cases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .use-case-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-decoration: none;
+    color: var(--color-text);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .use-case-card:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .use-case-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .use-case-card h2 {
+    margin-bottom: 0.75rem;
+    font-size: 1.25rem;
+  }
+
+  .use-case-card p {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    flex: 1;
+  }
+
+  .use-case-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .proxy-type-badge,
+  .bandwidth-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .proxy-type-badge {
+    background: #dbeafe;
+    color: #1e40af;
+  }
+
+  .bandwidth-badge {
+    background: #e0e7ff;
+    color: #4338ca;
+  }
+
+  .info-section {
+    margin-top: 4rem;
+  }
+
+  .info-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .info-card {
+    background: var(--color-bg-alt);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .info-card h3 {
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .info-card p {
+    color: var(--color-text-light);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .info-card a {
+    color: var(--color-primary);
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  @media (max-width: 768px) {
+    .page-header h1 {
+      font-size: 2rem;
+    }
+
+    .use-cases-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

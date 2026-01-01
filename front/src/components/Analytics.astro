@@ -1,0 +1,37 @@
+---
+/**
+ * Privacy-Friendly Analytics Integration
+ *
+ * Supports Umami Analytics (self-hosted or cloud) with environment-based configuration.
+ * Set PUBLIC_ANALYTICS_URL and PUBLIC_ANALYTICS_ID in .env or build environment.
+ *
+ * Features:
+ * - Privacy-focused: No cookies, GDPR compliant by default
+ * - Environment controlled: Disabled if env vars not set
+ * - Lightweight: < 1KB script
+ */
+
+interface Props {
+  enabled?: boolean;
+  websiteId?: string;
+  hostUrl?: string;
+}
+
+const {
+  enabled = import.meta.env.PUBLIC_ANALYTICS_ENABLED === "true",
+  websiteId = import.meta.env.PUBLIC_ANALYTICS_ID,
+  hostUrl = import.meta.env.PUBLIC_ANALYTICS_URL,
+} = Astro.props;
+
+// Only render if analytics is properly configured
+const shouldRender = enabled && websiteId && hostUrl;
+---
+
+{shouldRender && (
+  <script
+    is:inline
+    defer
+    src={`${hostUrl}/script.js`}
+    data-website-id={websiteId}
+  />
+)}

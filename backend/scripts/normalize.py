@@ -3,31 +3,43 @@
 Normalize pricing data and calculate min/max prices per GB.
 """
 import json
+import logging
 from datetime import date
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Literal
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 
-def calculate_min_price_per_gb(tiers: List[Dict[str, Any]]) -> Optional[float]:
-    """Calculate the minimum $/GB from all tiers"""
+def calculate_price_extremes(
+    tiers: List[Dict[str, Any]],
+    extreme: Literal["min", "max"]
+) -> Optional[float]:
+    """
+    Calculate the minimum or maximum $/GB from all tiers.
+
+    Args:
+        tiers: List of pricing tier dictionaries
+        extreme: Either "min" for minimum or "max" for maximum price
+
+    Returns:
+        The calculated price value, or None if no valid prices found
+    """
     prices = []
 
     for tier in tiers:
         if tier.get('pricing_model') == 'per_gb' and 'price_per_gb' in tier:
             prices.append(tier['price_per_gb'])
 
-    return min(prices) if prices else None
+    if not prices:
+        return None
 
-
-def calculate_max_price_per_gb(tiers: List[Dict[str, Any]]) -> Optional[float]:
-    """Calculate the maximum $/GB from all tiers"""
-    prices = []
-
-    for tier in tiers:
-        if tier.get('pricing_model') == 'per_gb' and 'price_per_gb' in tier:
-            prices.append(tier['price_per_gb'])
-
-    return max(prices) if prices else None
+    return min(prices) if extreme == "min" else max(prices)
 
 
 def normalize_pricing_record(record: Dict[str, Any]) -> Dict[str, Any]:
@@ -53,8 +65,8 @@ def normalize_pricing_record(record: Dict[str, Any]) -> Dict[str, Any]:
     has_per_gb = any(t.get('pricing_model') == 'per_gb' for t in tiers)
 
     if has_per_gb:
-        min_price = calculate_min_price_per_gb(tiers)
-        max_price = calculate_max_price_per_gb(tiers)
+        min_price = calculate_price_extremes(tiers, "min")
+        max_price = calculate_price_extremes(tiers, "max")
         pricing_model = 'per_gb'
         comparable = True
     else:
@@ -103,6 +115,52 @@ def add_provider_metadata(providers: List[Dict], pricing_records: List[Dict]) ->
     return providers
 
 
+def load_json_file(path: Path) -> Any:
+    """
+    Load JSON file with proper error handling.
+
+    Args:
+        path: Path to the JSON file
+
+    Returns:
+        Parsed JSON data
+
+    Raises:
+        FileNotFoundError: If file doesn't exist
+        json.JSONDecodeError: If file contains invalid JSON
+    """
+    if not path.exists():
+        logger.error(f"File not found: {path}")
+        raise FileNotFoundError(f"Required data file not found: {path}")
+
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except json.JSONDecodeError as e:
+        logger.error(f"Invalid JSON in {path}: {e}")
+        raise
+
+
+def save_json_file(path: Path, data: Any) -> None:
+    """
+    Save data to JSON file with proper error handling.
+
+    Args:
+        path: Path to save the file
+        data: Data to serialize to JSON
+
+    Raises:
+        IOError: If file cannot be written
+    """
+    try:
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        logger.info(f"Saved: {path}")
+    except IOError as e:
+        logger.error(f"Failed to write {path}: {e}")
+        raise
+
+
 def main():
     """Main execution"""
     project_root = Path(__file__).parent.parent.parent
@@ -112,14 +170,17 @@ def main():
 
     last_updated = date.today().isoformat()
 
-    # Load raw data
-    with open(input_dir / 'providers_raw.json', 'r') as f:
-        providers = json.load(f)
+    # Load raw data with error handling
+    providers_path = input_dir / 'providers_raw.json'
+    pricing_path = input_dir / 'pricing_raw.json'
 
-    with open(input_dir / 'pricing_raw.json', 'r') as f:
-        pricing_records = json.load(f)
+    logger.info(f"Loading providers from: {providers_path}")
+    providers = load_json_file(providers_path)
 
-    print(f"Normalizing {len(pricing_records)} pricing records...")
+    logger.info(f"Loading pricing from: {pricing_path}")
+    pricing_records = load_json_file(pricing_path)
+
+    logger.info(f"Normalizing {len(pricing_records)} pricing records...")
 
     # Normalize pricing records
     normalized_pricing = [normalize_pricing_record(r) for r in pricing_records]
@@ -136,26 +197,26 @@ def main():
     providers_output = output_dir / 'providers.json'
     pricing_output = output_dir / 'pricing.json'
 
-    with open(providers_output, 'w', encoding='utf-8') as f:
-        json.dump({
-            'providers': providers_with_metadata,
-            'last_updated': last_updated,
-            'total_count': len(providers_with_metadata)
-        }, f, indent=2, ensure_ascii=False)
+    providers_data = {
+        'providers': providers_with_metadata,
+        'last_updated': last_updated,
+        'total_count': len(providers_with_metadata)
+    }
+    save_json_file(providers_output, providers_data)
 
-    with open(pricing_output, 'w', encoding='utf-8') as f:
-        json.dump({
-            'pricing': normalized_pricing,
-            'last_updated': last_updated,
-            'total_count': len(normalized_pricing)
-        }, f, indent=2, ensure_ascii=False)
+    pricing_data = {
+        'pricing': normalized_pricing,
+        'last_updated': last_updated,
+        'total_count': len(normalized_pricing)
+    }
+    save_json_file(pricing_output, pricing_data)
 
     # Generate summary stats
     comparable_count = len([p for p in normalized_pricing if p.get('comparable', False)])
-    print(f"✓ Normalized {len(normalized_pricing)} pricing records")
-    print(f"✓ {comparable_count} records have comparable $/GB pricing")
-    print(f"✓ {len(normalized_pricing) - comparable_count} records use alternative pricing models")
-    print(f"✓ Saved to {output_dir}")
+    logger.info(f"Normalized {len(normalized_pricing)} pricing records")
+    logger.info(f"{comparable_count} records have comparable $/GB pricing")
+    logger.info(f"{len(normalized_pricing) - comparable_count} records use alternative pricing models")
+    logger.info(f"Output saved to: {output_dir}")
 
     return providers_with_metadata, normalized_pricing
 

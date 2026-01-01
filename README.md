@@ -2,6 +2,10 @@
 
 The definitive proxy price comparison platform - compare 40+ proxy providers transparently.
 
+[CI/CD](https://github.com/YOUR_USERNAME/proxyprice/actions/workflows/cloudflare-pages.yml/badge.svg)
+[Codecov](https://codecov.io/gh/YOUR_USERNAME/proxyprice)
+[Data Freshness](https://img.shields.io/badge/data--freshness-30--days-green)
+
 ## 🚀 Project Overview
 
 ProxyPrice is a static site that provides transparent pricing comparison for proxy services across residential, datacenter, mobile, and ISP proxies. It normalizes complex pricing models into comparable $/GB metrics to help users find the best deal for their needs.
@@ -126,9 +130,58 @@ Output: `dist/` directory with static HTML
 
 ### Run Tests
 
+**Backend (Python):**
+
 ```bash
 cd backend
-python3 -m pytest tests/test_normalization.py -v
+
+# Run all tests
+make test
+
+# Run with coverage
+make test-cov
+
+# Run in watch mode
+make test-watch
+
+# Run linting
+make lint
+
+# Run validation only
+make validate
+
+# Run full data pipeline
+make pipeline
+
+# Clean generated files
+make clean
+
+# Run all checks
+make all
+```
+
+**Frontend (TypeScript):**
+
+```bash
+cd front
+
+# Run tests
+npm test
+
+# Run tests with coverage
+npm run test:coverage
+
+# Run type checking
+npm run check
+
+# Run linting
+npm run lint
+
+# Validate data
+npm run validate:data
+
+# Run all verification steps
+npm run verify
 ```
 
 ## 📈 Performance
@@ -154,6 +207,12 @@ To update pricing data:
    ```
 4. Deploy (automatic with git push)
 
+## 🔗 Affiliate / Redirect Links
+
+External “View Pricing →” links are routed through `/go/<provider-slug>` so you can switch to affiliate URLs later without touching UI components.
+
+See: `docs/AFFILIATE_REDIRECTS.md`
+
 ## 🚀 Deployment
 
 ### GitHub Pages (Recommended)
@@ -163,6 +222,7 @@ See `docs/release/GITHUB_PAGES.md`.
 ### Environment Variables
 
 - `PUBLIC_FEEDBACK_URL` (optional): GitHub Issues URL for “Report a Correction” link.
+- `PUBLIC_SITE_URL` (optional): Override canonical URL + sitemap host (defaults to `https://proxyprice.com`).
 
 ## 📝 Adding New Providers
 
@@ -177,7 +237,41 @@ See `docs/release/GITHUB_PAGES.md`.
 2. Run data pipeline
 3. Rebuild and deploy
 
-## 🧪 Testing
+## 🧪 CI/CD
+
+### GitHub Actions Workflows
+
+The project uses GitHub Actions for continuous integration and deployment:
+
+- **Cloudflare Pages Workflow** (`.github/workflows/cloudflare-pages.yml`)
+- **GitHub Pages Workflow** (`.github/workflows/pages.yml`)
+
+### CI Jobs
+
+Each workflow runs the following jobs:
+
+| Job              | Description                                                |
+| ---------------- | ---------------------------------------------------------- |
+| `backend-test`   | Runs Python tests with coverage reporting                  |
+| `frontend-test`  | Runs TypeScript/Vitest tests with coverage                 |
+| `data-pipeline`  | Executes the full data pipeline (parse + normalize + copy) |
+| `data-freshness` | Verifies data files are updated within 30 days             |
+| `validate`       | Runs linting, type checking, and data validation           |
+| `deploy-preview` | Creates preview deployments for pull requests              |
+| `deploy`         | Deploys to production on main branch merges                |
+
+### Coverage Reporting
+
+Coverage reports are uploaded to:
+
+- **Codecov** (requires `CODECOV_TOKEN` secret)
+- **GitHub Artifacts** (available for download from workflow runs)
+
+### Data Freshness Check
+
+The CI automatically checks that `front/src/data/pricing.json` and `front/src/data/providers.json` have been updated within the last 30 days. Builds will fail if data is stale.
+
+### Local Development
 
 - **Unit Tests**: Python pytest for data normalization logic
 - **Type Checking**: `npm run check` for TypeScript validation

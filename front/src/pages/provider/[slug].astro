@@ -1,9 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import TrustBadge from '../../components/TrustBadge.astro';
+import DataFreshnessBadge from '../../components/DataFreshnessBadge.astro';
 import providersData from '../../data/providers.json';
 import pricingData from '../../data/pricing.json';
 import { SITE_NAME } from '../../lib/site';
 import { getFaviconUrl } from '../../lib/favicon';
+import { getProxyTypeLabel } from '../../lib/proxy-types';
 
 export async function getStaticPaths() {
   return providersData.providers.map(provider => ({
@@ -19,6 +22,107 @@ const providerPricing = pricingData.pricing.filter(p => p.provider_id === provid
 const comparablePricing = providerPricing.filter((p) => p.comparable);
 const nonComparablePricing = providerPricing.filter((p) => !p.comparable && p.has_pricing);
 
+// Build proxy types description for SEO
+const proxyTypesDescription = (provider.proxy_types || [])
+  .filter((t) => t !== 'other')
+  .map((t) => getProxyTypeLabel(t))
+  .join(', ');
+
+// Generate enhanced title
+const enhancedTitle = proxyTypesDescription
+  ? `${provider.name} Proxy Pricing | ${proxyTypesDescription} Proxies`
+  : `${provider.name} Proxy Pricing & Plans`;
+
+const enhancedDescription = provider.cheapest_price_per_gb
+  ? `Compare ${provider.name} proxy pricing starting at $${provider.cheapest_price_per_gb.toFixed(2)}/GB. ${proxyTypesDescription ? `Offers ${proxyTypesDescription} proxies.` : ''} Transparent pricing comparison updated ${pricingData.last_updated}.`
+  : `Compare ${provider.name} proxy pricing across all proxy types. ${proxyTypesDescription ? `Offers ${proxyTypesDescription} proxies.` : ''} Transparent pricing data updated ${pricingData.last_updated}.`;
+
+// Build Product schema with aggregate offer
+const minPrice = comparablePricing.reduce((min, p) => {
+  const price = p.min_price_per_gb ?? Infinity;
+  return price < min ? price : min;
+}, Infinity);
+
+const maxPrice = comparablePricing.reduce((max, p) => {
+  const price = p.max_price_per_gb ?? 0;
+  return price > max ? price : max;
+}, 0);
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  'name': `${provider.name} Proxy Services`,
+  'description': enhancedDescription,
+  'url': new URL(`/provider/${provider.slug}/`, Astro.site).toString(),
+  'brand': {
+    '@type': 'Brand',
+    'name': provider.name,
+  },
+  ...(minPrice !== Infinity && {
+    'offers': {
+      '@type': 'AggregateOffer',
+      'lowPrice': minPrice,
+      'highPrice': maxPrice,
+      'priceCurrency': 'USD',
+      'offerCount': comparablePricing.length,
+      'url': new URL(`/provider/${provider.slug}/`, Astro.site).toString(),
+      'availability': 'https://schema.org/InStock',
+    },
+  }),
+};
+
+// Build FAQ schema
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'What does "comparable" mean?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Comparable pricing means the provider tier can be expressed as a per-GB rate ($/GB). Other models like per IP, per proxy, or per thread are not converted to $/GB for fair comparison.',
+      },
+    },
+    {
+      '@type': 'Question',
+      'name': `What is the starting price for ${provider.name} proxies?`,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': provider.cheapest_price_per_gb
+          ? `${provider.name} proxies start at $${provider.cheapest_price_per_gb.toFixed(2)}/GB for comparable tiers.`
+          : 'Contact the provider directly for pricing information.',
+      },
+    },
+    {
+      '@type': 'Question',
+      'name': `What proxy types does ${provider.name} offer?`,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': proxyTypesDescription
+          ? `${provider.name} offers ${proxyTypesDescription} proxies.`
+          : 'See the pricing section above for available proxy types.',
+      },
+    },
+    {
+      '@type': 'Question',
+      'name': 'Does the calculator include discounts or taxes?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'No. The calculator estimates cost using public list pricing tiers. Always confirm final pricing on the provider site.',
+      },
+    },
+    {
+      '@type': 'Question',
+      'name': 'How often is pricing updated?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': `Pricing data was last updated ${pricingData.last_updated}. See our methodology page for details on data collection and updates.`,
+      },
+    },
+  ],
+};
+
 const breadcrumbs = [
   { name: SITE_NAME, url: new URL('/', Astro.site).toString() },
   { name: 'Providers', url: new URL('/providers', Astro.site).toString() },
@@ -30,15 +134,60 @@ const formatPrice = (price: number | null) => {
   return `$${price.toFixed(2)}`;
 };
 
-const getProxyTypeLabel = (type: string) => {
-  const labels: Record<string, string> = {
-    residential: 'Residential',
-    datacenter: 'Datacenter',
-    mobile: 'Mobile',
-    isp: 'ISP'
-  };
-  return labels[type] || type;
-};
+// Type definitions for pricing tiers
+interface PerGBTier {
+  pricing_model: 'per_gb';
+  gb: number;
+  price_per_gb: number | null;
+  total: number | null;
+}
+
+interface PerIPTier {
+  pricing_model: 'per_ip';
+  ips: number;
+  price_per_ip: number | null;
+  total: number | null;
+}
+
+interface PerProxyTier {
+  pricing_model: 'per_proxy';
+  proxies: number;
+  total: number | null;
+}
+
+interface PerThreadTier {
+  pricing_model: 'per_thread';
+  threads: number;
+  total: number | null;
+}
+
+type Tier = PerGBTier | PerIPTier | PerProxyTier | PerThreadTier;
+
+interface PricingWithTiers {
+  comparable: boolean;
+  tiers?: Tier[];
+  pricing_model?: string;
+}
+
+// Type guard for per-GB tiers
+function isPerGBTier(tier: Tier): tier is PerGBTier {
+  return tier.pricing_model === 'per_gb';
+}
+
+// Type guard for per-IP tiers
+function isPerIPTier(tier: Tier): tier is PerIPTier {
+  return tier.pricing_model === 'per_ip';
+}
+
+// Type guard for per-proxy tiers
+function isPerProxyTier(tier: Tier): tier is PerProxyTier {
+  return tier.pricing_model === 'per_proxy';
+}
+
+// Type guard for per-thread tiers
+function isPerThreadTier(tier: Tier): tier is PerThreadTier {
+  return tier.pricing_model === 'per_thread';
+}
 
 const getPricingModelLabel = (model: string) => {
   const labels: Record<string, string> = {
@@ -66,10 +215,9 @@ const topAlternatives = (type: string, count = 5) => {
     .filter((p) => p.proxy_type === type && p.comparable && p.min_price_per_gb != null)
     .sort((a, b) => (a.min_price_per_gb ?? Infinity) - (b.min_price_per_gb ?? Infinity))
     .map((p) => providersData.providers.find((prov) => prov.id === p.provider_id))
-    .filter((p): p is any => Boolean(p))
-    .filter((p) => p.id !== provider.id);
+    .filter((p): p is typeof providersData.providers[number] => p !== undefined && p.id !== provider.id);
 
-  const unique: any[] = [];
+  const unique: typeof providersData.providers[number][] = [];
   const seen = new Set<string>();
   for (const p of ranked) {
     if (seen.has(p.id)) continue;
@@ -82,10 +230,14 @@ const topAlternatives = (type: string, count = 5) => {
 ---
 
 <BaseLayout
-  title={provider.name}
-  description={`Compare ${provider.name} proxy pricing across all types. Transparent pricing data updated regularly.`}
+  title={enhancedTitle}
+  description={enhancedDescription}
   breadcrumbs={breadcrumbs}
 >
+  <!-- Product Schema -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(productSchema)} />
+  <!-- FAQ Schema -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   <div class="container" style="padding: 3rem 0;">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
       <ol>
@@ -104,15 +256,28 @@ const topAlternatives = (type: string, count = 5) => {
           width="64"
           height="64"
         />
-        <h1>{provider.name}</h1>
-      </div>
-      {provider.trial_offer && (
-        <div class="trial-banner">
-          <span class="trial-icon">🎁</span>
-          <strong>Trial Offer:</strong> {provider.trial_offer}
+        <div>
+          <h1>{provider.name} Proxy Pricing & Plans</h1>
+          {proxyTypesDescription && (
+            <p class="provider-subtitle">{proxyTypesDescription} proxies with transparent $/GB pricing</p>
+          )}
         </div>
-      )}
+      </div>
+      <div class="provider-header-badges">
+        <DataFreshnessBadge
+          hasComparablePricing={comparablePricing.length > 0}
+          lastUpdated={pricingData.last_updated}
+          variant="compact"
+        />
+      </div>
     </div>
+
+    {provider.trial_offer && (
+      <div class="trial-banner">
+        <span class="trial-icon">🎁</span>
+        <strong>Trial Offer:</strong> {provider.trial_offer}
+      </div>
+    )}
 
     <section class="summary">
       <div class="summary-grid">
@@ -185,31 +350,31 @@ const topAlternatives = (type: string, count = 5) => {
 	                      </thead>
 	                      <tbody>
 	                        {pricing.tiers
-	                          .filter(t => (t as any).pricing_model === 'per_gb')
+	                          .filter(isPerGBTier)
 	                          .slice(0, 10)
 	                          .map(tier => (
 	                            <tr>
-	                              <td>{(tier as any).gb} GB</td>
-	                              <td>{formatPrice((tier as any).price_per_gb)}</td>
-	                              <td>${(tier as any).total?.toFixed(2)}</td>
+	                              <td>{tier.gb} GB</td>
+	                              <td>{formatPrice(tier.price_per_gb)}</td>
+	                              <td>${tier.total?.toFixed(2) ?? 'N/A'}</td>
 	                            </tr>
 	                          ))}
 	                      </tbody>
 	                    </table>
-	                    {pricing.tiers.filter(t => (t as any).pricing_model === 'per_gb').length === 0 && (
+	                    {pricing.tiers.filter(isPerGBTier).length === 0 && (
 	                      <p class="no-pricing">Comparable pricing is marked for this record, but no per-GB tiers were parsed.</p>
 	                    )}
-	                    {pricing.tiers.filter(t => (t as any).pricing_model === 'per_gb').length > 10 && (
-	                      <p class="more-tiers">+{pricing.tiers.filter(t => (t as any).pricing_model === 'per_gb').length - 10} more tiers</p>
+	                    {pricing.tiers.filter(isPerGBTier).length > 10 && (
+	                      <p class="more-tiers">+{pricing.tiers.filter(isPerGBTier).length - 10} more tiers</p>
 	                    )}
 	                  </div>
 	                ) : (
 	                  <div class="non-comparable">
 	                    <p class="non-comparable-note">
-	                      This pricing is <strong>non-comparable</strong> ({getPricingModelLabel((pricing as any).pricing_model)}). We don’t convert it to $/GB.
+	                      This pricing is <strong>non-comparable</strong> ({getPricingModelLabel(pricing.pricing_model || 'unknown')}). We don't convert it to $/GB.
 	                    </p>
 
-	                    {(pricing as any).pricing_model === 'per_ip' && (
+	                    {pricing.pricing_model === 'per_ip' && pricing.tiers && (
 	                      <div class="tiers-table">
 	                        <table>
 	                          <thead>
@@ -221,13 +386,13 @@ const topAlternatives = (type: string, count = 5) => {
 	                          </thead>
 	                          <tbody>
 	                            {pricing.tiers
-	                              .filter(t => (t as any).pricing_model === 'per_ip')
+	                              .filter(isPerIPTier)
 	                              .slice(0, 10)
 	                              .map(tier => (
 	                                <tr>
-	                                  <td>{(tier as any).ips}</td>
-	                                  <td>{formatPrice((tier as any).price_per_ip)}</td>
-	                                  <td>${(tier as any).total?.toFixed(2)}</td>
+	                                  <td>{tier.ips}</td>
+	                                  <td>{formatPrice(tier.price_per_ip)}</td>
+	                                  <td>${tier.total?.toFixed(2) ?? 'N/A'}</td>
 	                                </tr>
 	                              ))}
 	                          </tbody>
@@ -235,7 +400,7 @@ const topAlternatives = (type: string, count = 5) => {
 	                      </div>
 	                    )}
 
-	                    {(pricing as any).pricing_model === 'per_proxy' && (
+	                    {pricing.pricing_model === 'per_proxy' && pricing.tiers && (
 	                      <div class="tiers-table">
 	                        <table>
 	                          <thead>
@@ -246,12 +411,12 @@ const topAlternatives = (type: string, count = 5) => {
 	                          </thead>
 	                          <tbody>
 	                            {pricing.tiers
-	                              .filter(t => (t as any).pricing_model === 'per_proxy')
+	                              .filter(isPerProxyTier)
 	                              .slice(0, 10)
 	                              .map(tier => (
 	                                <tr>
-	                                  <td>{(tier as any).proxies}</td>
-	                                  <td>${(tier as any).total?.toFixed(2)}</td>
+	                                  <td>{tier.proxies}</td>
+	                                  <td>${tier.total?.toFixed(2) ?? 'N/A'}</td>
 	                                </tr>
 	                              ))}
 	                          </tbody>
@@ -259,7 +424,7 @@ const topAlternatives = (type: string, count = 5) => {
 	                      </div>
 	                    )}
 
-	                    {(pricing as any).pricing_model === 'per_thread' && (
+	                    {pricing.pricing_model === 'per_thread' && pricing.tiers && (
 	                      <div class="tiers-table">
 	                        <table>
 	                          <thead>
@@ -270,12 +435,12 @@ const topAlternatives = (type: string, count = 5) => {
 	                          </thead>
 	                          <tbody>
 	                            {pricing.tiers
-	                              .filter(t => (t as any).pricing_model === 'per_thread')
+	                              .filter(isPerThreadTier)
 	                              .slice(0, 10)
 	                              .map(tier => (
 	                                <tr>
-	                                  <td>{(tier as any).threads}</td>
-	                                  <td>${(tier as any).total?.toFixed(2)}</td>
+	                                  <td>{tier.threads}</td>
+	                                  <td>${tier.total?.toFixed(2) ?? 'N/A'}</td>
 	                                </tr>
 	                              ))}
 	                          </tbody>
@@ -283,9 +448,9 @@ const topAlternatives = (type: string, count = 5) => {
 	                      </div>
 	                    )}
 
-	                    {(pricing as any).pricing_model !== 'per_ip' &&
-	                      (pricing as any).pricing_model !== 'per_proxy' &&
-	                      (pricing as any).pricing_model !== 'per_thread' && (
+	                    {pricing.pricing_model !== 'per_ip' &&
+	                      pricing.pricing_model !== 'per_proxy' &&
+	                      pricing.pricing_model !== 'per_thread' && (
 	                        <p class="no-pricing">Pricing tiers were detected but could not be normalized for comparison.</p>
 	                      )}
 	                  </div>
@@ -294,11 +459,9 @@ const topAlternatives = (type: string, count = 5) => {
 	                <p class="no-pricing">Pricing data not available.</p>
 	              )}
 
-	              {pricing.price_url && (
-	                <a href={pricing.price_url} target="_blank" rel="noopener noreferrer" class="view-pricing-btn">
-	                  View Full Pricing →
-	                </a>
-	              )}
+	              <a href={`/go/${provider.slug}`} target="_blank" rel="sponsored noopener noreferrer" class="view-pricing-btn">
+	                View Full Pricing →
+	              </a>
 	            </div>
 	          ))}
 
@@ -396,7 +559,7 @@ const topAlternatives = (type: string, count = 5) => {
           <h3>Provider Information</h3>
           <dl>
             <dt>Website</dt>
-            <dd><a href={provider.website_url} target="_blank" rel="noopener noreferrer">{provider.website_url}</a></dd>
+            <dd><a href={`/go/${provider.slug}`} target="_blank" rel="sponsored noopener noreferrer">{provider.website_url}</a></dd>
 
             {provider.proxy_types && provider.proxy_types.length > 0 && (
               <>
@@ -419,7 +582,7 @@ const topAlternatives = (type: string, count = 5) => {
             )}
           </dl>
 
-          <a href={provider.website_url} target="_blank" rel="noopener noreferrer" class="cta-button">
+          <a href={`/go/${provider.slug}`} target="_blank" rel="sponsored noopener noreferrer" class="cta-button">
             Visit {provider.name} →
           </a>
         </div>
@@ -439,21 +602,63 @@ const topAlternatives = (type: string, count = 5) => {
 
 <style>
 	  .provider-header {
-	    text-align: center;
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: flex-start;
+	    gap: 1.5rem;
 	    margin-bottom: 3rem;
 	  }
 
 	  .provider-title {
 	    display: flex;
+	    flex-direction: row;
 	    align-items: center;
-	    justify-content: center;
 	    gap: 1rem;
-	    margin-bottom: 1rem;
+	  }
+
+	  .provider-title h1 {
+	    margin-bottom: 0.25rem;
+	  }
+
+	  .provider-subtitle {
+	    color: var(--color-text-light);
+	    font-size: 1rem;
 	  }
 
 	  .provider-favicon {
 	    border-radius: 0.5rem;
 	    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	  }
+
+	  .provider-header-badges {
+	    display: flex;
+	    flex-direction: column;
+	    gap: 0.75rem;
+	    align-items: flex-end;
+	  }
+
+	  .verified-badge {
+	    display: inline-flex;
+	    align-items: center;
+	    gap: 0.5rem;
+	    padding: 0.5rem 1rem;
+	    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+	    color: #065f46;
+	    border-radius: 9999px;
+	    font-size: 0.875rem;
+	    font-weight: 600;
+	  }
+
+	  .verified-badge svg {
+	    width: 1rem;
+	    height: 1rem;
+	  }
+
+	  @media (prefers-color-scheme: dark) {
+	    .verified-badge {
+	      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+	      color: #d1fae5;
+	    }
 	  }
 
 	  .breadcrumbs ol {
@@ -854,14 +1059,33 @@ const topAlternatives = (type: string, count = 5) => {
 	      grid-template-columns: 1fr;
 	    }
 
-    .provider-sidebar {
-      position: static;
-    }
+	    .provider-header {
+	      flex-direction: column;
+	      align-items: flex-start;
+	    }
 
-    .pricing-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.5rem;
-    }
-  }
+	    .provider-title {
+	      flex-direction: column;
+	      text-align: center;
+	    }
+
+	    .provider-title h1 {
+	      font-size: 1.5rem;
+	    }
+
+	    .provider-header-badges {
+	      align-items: flex-start;
+	      width: 100%;
+	    }
+
+	    .provider-sidebar {
+	      position: static;
+	    }
+
+	    .pricing-header {
+	      flex-direction: column;
+	      align-items: flex-start;
+	      gap: 0.5rem;
+	    }
+	  }
 </style>

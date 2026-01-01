@@ -2,6 +2,7 @@
 import providersData from '../data/providers.json';
 import pricingData from '../data/pricing.json';
 import { getFaviconUrl } from '../lib/favicon';
+import { getProxyTypeLabel } from '../lib/proxy-types';
 
 interface Props {
   proxyType?: string;
@@ -31,6 +32,12 @@ if (limit) {
   filteredPricing = filteredPricing.slice(0, limit);
 }
 
+// Find minimum price for "lowest price" badge
+const comparablePrices = filteredPricing
+  .filter(p => p.comparable && p.min_price_per_gb !== null)
+  .map(p => p.min_price_per_gb ?? Infinity);
+const minPrice = comparablePrices.length > 0 ? Math.min(...comparablePrices) : null;
+
 // Get provider details
 const getProvider = (providerId: string) => {
   return providersData.providers.find(p => p.id === providerId);
@@ -39,16 +46,6 @@ const getProvider = (providerId: string) => {
 const formatPrice = (price: number | null) => {
   if (price === null) return 'N/A';
   return `$${price.toFixed(2)}`;
-};
-
-const getProxyTypeLabel = (type: string) => {
-  const labels: Record<string, string> = {
-    residential: 'Residential',
-    datacenter: 'Datacenter',
-    mobile: 'Mobile',
-    isp: 'ISP'
-  };
-  return labels[type] || type;
 };
 
 const getModelLabel = (model: string) => {
@@ -61,7 +58,39 @@ const getModelLabel = (model: string) => {
   };
   return labels[model] || model;
 };
+
+// Generate Table Schema for SEO
+const tableSchemaData = filteredPricing
+  .filter(p => p.comparable)
+  .slice(0, 20)
+  .map(pricing => {
+    const provider = getProvider(pricing.provider_id);
+    return provider ? {
+      provider: provider.name,
+      proxyType: getProxyTypeLabel(pricing.proxy_type),
+      minPrice: pricing.min_price_per_gb ? `$${pricing.min_price_per_gb.toFixed(2)}/GB` : 'N/A',
+      maxPrice: pricing.max_price_per_gb ? `$${pricing.max_price_per_gb.toFixed(2)}/GB` : 'N/A',
+      tiers: pricing.tier_count ?? 0,
+      trial: provider.trial_offer || 'No'
+    } : null;
+  })
+  .filter(Boolean);
+
+const tableSchema = {
+  "@context": "https://schema.org",
+  "@type": "Table",
+  "about": proxyType
+    ? `${getProxyTypeLabel(proxyType)} proxy pricing comparison`
+    : "Proxy provider pricing comparison",
+  "cssSelector": ".comparison-table",
+};
 ---
+
+<!-- Table Schema for SEO -->
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(tableSchema)}
+/>
 
 <div class="comparison-table-wrapper" data-table-id={tableId}>
   <div class="table-controls">
@@ -122,9 +151,15 @@ const getModelLabel = (model: string) => {
           <th>Proxy Type</th>
           <th>Model</th>
           <th class="sortable">
-            <button class="sort-btn" data-sort="price">
+            <button
+              class="sort-btn"
+              data-sort="price"
+              type="button"
+              aria-label="Sort by minimum price per GB"
+              aria-live="polite"
+            >
               Min $/GB
-              <span class="sort-icon">↕</span>
+              <span class="sort-icon" aria-hidden="true">↕</span>
             </button>
           </th>
           <th>Max $/GB</th>
@@ -171,7 +206,12 @@ const getModelLabel = (model: string) => {
                 )}
               </td>
               <td class="price-cell">
-                <strong>{formatPrice(pricing.min_price_per_gb)}</strong>
+                <strong class={pricing.min_price_per_gb === minPrice ? 'price-lowest' : ''}>
+                  {formatPrice(pricing.min_price_per_gb)}
+                  {pricing.min_price_per_gb === minPrice && (
+                    <span class="lowest-badge">Lowest</span>
+                  )}
+                </strong>
               </td>
               <td class="price-cell">
                 {formatPrice(pricing.max_price_per_gb)}
@@ -186,9 +226,9 @@ const getModelLabel = (model: string) => {
               </td>
               <td>
                 <a
-                  href={pricing.price_url || provider.website_url}
+                  href={`/go/${provider.slug}`}
                   target="_blank"
-                  rel="noopener noreferrer"
+                  rel="sponsored noopener noreferrer"
                   class="view-btn"
                 >
                   View Pricing →
@@ -381,6 +421,50 @@ const getModelLabel = (model: string) => {
   .price-cell strong {
     color: var(--color-secondary);
     font-size: 1rem;
+    position: relative;
+  }
+
+  .price-lowest {
+    color: #059669 !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .lowest-badge {
+    display: inline-block;
+    padding: 0.125rem 0.5rem;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    border-radius: 9999px;
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .price-lowest {
+      color: #6ee7b7 !important;
+    }
+
+    .lowest-badge {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+      color: #d1fae5;
+    }
+  }
+
+  /* Price tier color coding */
+  .provider-row[data-price-tier="low"] .price-cell strong {
+    color: #059669;
+  }
+
+  .provider-row[data-price-tier="medium"] .price-cell strong {
+    color: var(--color-secondary);
+  }
+
+  .provider-row[data-price-tier="high"] .price-cell strong {
+    color: #d97706;
   }
 
   .model-cell {
@@ -557,9 +641,9 @@ const getModelLabel = (model: string) => {
     bind(comparableOnly, 'change');
     bind(trialOnly, 'change');
 
-    // Simple table sorting (scoped)
+    // Simple table sorting (scoped) with keyboard support
     wrapper.querySelectorAll('.sort-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
+      const handleSort = () => {
         const table = btn.closest('table');
         if (!table) return;
 
@@ -591,8 +675,23 @@ const getModelLabel = (model: string) => {
           icon.textContent = ascending ? '↑' : '↓';
         }
 
+        // Announce sort order for screen readers
+        const sortDirection = ascending ? 'ascending' : 'descending';
+        const announcement = `Table sorted by price in ${sortDirection} order`;
+        btn.setAttribute('aria-label', `Sort by minimum price per GB (${sortDirection})`);
+
         applyFilters();
         syncUrlParams();
+      };
+
+      btn.addEventListener('click', handleSort);
+
+      // Keyboard support: Enter and Space keys
+      btn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          handleSort();
+        }
       });
     });
 

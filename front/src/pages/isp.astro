@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import pricingData from '../data/pricing.json';
 ---
 
 <BaseLayout
@@ -9,13 +11,97 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 >
   <div class="container" style="padding: 3rem 0;">
     <header class="page-header">
-      <h1>ISP Proxy Comparison</h1>
-      <p class="page-subtitle">
-        Static residential IPs from ISPs. Combines the speed of datacenter proxies with the legitimacy of residential IPs.
-      </p>
+      <div class="header-top">
+        <div>
+          <h1>ISP Proxy Comparison</h1>
+          <p class="page-subtitle">
+            Static residential IPs from ISPs. Combines the speed of datacenter proxies with the legitimacy of residential IPs.
+          </p>
+        </div>
+        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+      </div>
     </header>
 
     <ComparisonTable proxyType="isp" />
+
+    <section class="guide-content">
+      <article class="guide-section">
+        <h2>What Are ISP Proxies?</h2>
+        <p>
+          ISP proxies, also known as static residential proxies, are IP addresses registered to Internet Service Providers but hosted on datacenter servers. They combine the authenticity of residential IPs with the speed and reliability of datacenter infrastructure, creating a hybrid solution for demanding use cases.
+        </p>
+        <p>
+          Unlike traditional residential proxies that route through real home networks, ISP proxies use IP addresses that ISPs have allocated from their address space but are deployed in commercial data centers. When websites check these IPs, they appear to belong to legitimate ISP customers rather than hosting companies, bypassing many datacenter blocking measures.
+        </p>
+        <p>
+          ISP proxies are typically static, meaning you maintain the same IP address for extended periods rather than rotating through a pool. This persistence makes them ideal for tasks requiring consistent identity, such as account management, long-running sessions, and building reputation on platforms.
+        </p>
+        <p>
+          Providers source ISP proxies by purchasing IP blocks directly from Internet Service Providers or through partnerships with regional telcos. The limited supply of genuine ISP-registered addresses makes these proxies more scarce and valuable than standard datacenter options.
+        </p>
+      </article>
+
+      <article class="guide-section">
+        <h2>How ISP Proxy Pricing Works</h2>
+        <p>
+          ISP proxy pricing reflects their hybrid nature, falling between datacenter and residential costs. The static assignment model creates unique pricing structures compared to bandwidth-based residential proxies.
+        </p>
+        <p>
+          <strong>Per-IP monthly subscriptions</strong> are the most common model. Expect to pay $3-10 per IP per month, with volume discounts for larger orders. Unlike rotating residential pools, you pay for specific IPs that remain yours for the subscription period.
+        </p>
+        <p>
+          <strong>Bandwidth allocation</strong> varies by provider. Some offer unlimited bandwidth with IP-based pricing, similar to datacenter proxies. Others combine IP fees with bandwidth caps, such as 20-50GB per IP monthly. Check bandwidth policies carefully to avoid unexpected overage charges.
+        </p>
+        <p>
+          <strong>Geographic premium</strong> affects pricing significantly. ISP proxies from the United States and Western Europe cost more than those from other regions due to higher demand and limited supply. Specific city targeting commands additional premiums.
+        </p>
+        <p>
+          <strong>Minimum commitments</strong> are common because providers must maintain dedicated IP allocations. Monthly minimums might range from $50-200. Some providers require 3-6 month commitments for the best rates or access to premium IP blocks.
+        </p>
+      </article>
+
+      <article class="guide-section">
+        <h2>Best Use Cases for ISP Proxies</h2>
+        <p>
+          ISP proxies excel in scenarios requiring stable identity, speed, and residential-level trust. Their static nature and datacenter-grade performance make them ideal for specific professional applications.
+        </p>
+        <ul class="use-case-list">
+          <li><strong>E-commerce operations:</strong> Manage seller accounts on Amazon, eBay, Walmart, and other marketplaces. Maintain consistent IPs to avoid triggering account verification or suspension.</li>
+          <li><strong>Social media management:</strong> Operate multiple accounts on Instagram, Facebook, LinkedIn, and other platforms with stable IPs that do not trigger suspicious activity flags.</li>
+          <li><strong>Ticketing and reservations:</strong> Access ticket platforms and booking sites for monitoring and purchasing. Static IPs avoid the rate limiting that affects rotating proxies.</li>
+          <li><strong>Brand protection:</strong> Monitor for counterfeit products, unauthorized sellers, and brand abuse across e-commerce platforms while maintaining stable access.</li>
+          <li><strong>Sneaker and limited release copping:</strong> Achieve high success rates on footwear and retail sites that block datacenter IPs. ISP proxies combine speed with residential trust.</li>
+          <li><strong>Account creation and warming:</strong> Register and build reputation on platforms that require consistent IP history. New accounts need stable IPs to establish trust.</li>
+          <li><strong>Streaming and geo-unlocking:</strong> Access region-locked content with stable, residential-appearing IPs that avoid VPN detection.</li>
+          <li><strong>Long-running scraping sessions:</strong> Maintain authenticated sessions for extended data collection without IP rotation disrupting cookies and session state.</li>
+        </ul>
+      </article>
+
+      <article class="guide-section">
+        <h2>ISP vs Residential Proxies</h2>
+        <p>
+          ISP and residential proxies both offer legitimate user IPs, but their underlying architecture creates important differences in performance, persistence, and pricing.
+        </p>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <h3>IP Persistence</h3>
+            <p>ISP proxies are static, giving you the same IP for weeks or months at a time. Residential proxies typically rotate, cycling through different IPs with each request or session. Choose ISP for stable identity; choose residential for anonymity through rotation.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Speed and Reliability</h3>
+            <p>ISP proxies run on datacenter infrastructure, delivering consistent high-speed performance with enterprise uptime. Residential proxies route through consumer networks with variable speeds depending on the end user's connection quality and availability.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Trust Level</h3>
+            <p>Both proxy types appear as legitimate ISP customers to websites. ISP proxies may face slightly higher scrutiny because their IPs can be fingerprinted as hosting-based despite ISP registration. Residential proxies from actual homes have slightly higher trust for extremely sensitive targets.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Cost Structure</h3>
+            <p>ISP proxies charge per IP with often unlimited bandwidth, making costs predictable. Residential proxies charge per GB, which can add up quickly for bandwidth-heavy tasks. For high-traffic stable sessions, ISP proxies often provide better value.</p>
+          </div>
+        </div>
+      </article>
+    </section>
 
     <section class="content">
       <h2>How to choose ISP proxies</h2>
@@ -37,15 +123,32 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 
 <style>
   .page-header {
-    text-align: center;
     margin-bottom: 3rem;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .page-header h1 {
+    margin-bottom: 1rem;
   }
 
   .page-subtitle {
     font-size: 1.125rem;
     color: var(--color-text-light);
     max-width: 700px;
-    margin: 1rem auto 0;
+    margin: 1rem 0 0;
+  }
+
+  @media (max-width: 768px) {
+    .header-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   .content {

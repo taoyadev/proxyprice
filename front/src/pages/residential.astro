@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import pricingData from '../data/pricing.json';
 ---
 
 <BaseLayout
@@ -9,13 +11,90 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 >
   <div class="container" style="padding: 3rem 0;">
     <header class="page-header">
-      <h1>Residential Proxy Comparison</h1>
-      <p class="page-subtitle">
-        Real residential IPs from ISPs worldwide. Best for web scraping, e-commerce data collection, and accessing geo-restricted content.
-      </p>
+      <div class="header-top">
+        <div>
+          <h1>Residential Proxy Comparison</h1>
+          <p class="page-subtitle">
+            Real residential IPs from ISPs worldwide. Best for web scraping, e-commerce data collection, and accessing geo-restricted content.
+          </p>
+        </div>
+        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+      </div>
     </header>
 
     <ComparisonTable proxyType="residential" />
+
+    <section class="guide-content">
+      <article class="guide-section">
+        <h2>What Are Residential Proxies?</h2>
+        <p>
+          Residential proxies are IP addresses assigned by Internet Service Providers (ISPs) to real homeowners and devices. Unlike datacenter proxies that originate from cloud servers, residential IPs come from actual residential networks, making them appear as genuine user traffic to websites and online services.
+        </p>
+        <p>
+          When you connect through a residential proxy, your requests are routed through a real device in someone's home. This gives you an authentic digital footprint that matches regular internet users. Major websites and anti-bot systems have difficulty distinguishing residential proxy traffic from legitimate visitors because the IPs belong to real ISP customers.
+        </p>
+        <p>
+          Residential proxy networks are built through partnerships with application developers who integrate SDK-based monetization, allowing users to opt-in to share their bandwidth. Leading providers maintain pools of millions of residential IPs across virtually every country and city worldwide.
+        </p>
+      </article>
+
+      <article class="guide-section">
+        <h2>How Residential Proxy Pricing Works</h2>
+        <p>
+          Residential proxy pricing typically follows a bandwidth-based model where you pay per gigabyte (GB) of data transferred. This differs from datacenter proxies that often charge per IP address or port. Understanding the pricing structure helps you optimize costs based on your specific use case.
+        </p>
+        <p>
+          <strong>Pay-per-GB pricing</strong> is the most common model. Entry-level plans start around $10-15 per GB for small volumes, while enterprise customers purchasing terabytes can negotiate rates as low as $1-3 per GB. Most providers offer tiered pricing where costs decrease as volume increases.
+        </p>
+        <p>
+          <strong>Subscription plans</strong> bundle a set amount of bandwidth per month at a discounted rate. These work well for predictable workloads. Unused bandwidth may or may not roll over depending on the provider.
+        </p>
+        <p>
+          Additional factors affecting price include geo-targeting precision (country-level vs city-level), session duration (rotating vs sticky sessions), and concurrent connection limits. Premium features like SOCKS5 support, API access, and dedicated account management also influence total cost.
+        </p>
+      </article>
+
+      <article class="guide-section">
+        <h2>Best Use Cases for Residential Proxies</h2>
+        <p>
+          Residential proxies excel in scenarios where appearing as a genuine user is critical. Their authentic IP addresses bypass sophisticated anti-bot measures that would block datacenter traffic.
+        </p>
+        <ul class="use-case-list">
+          <li><strong>Web scraping at scale:</strong> Extract product data, pricing intelligence, and market research from e-commerce sites, search engines, and social platforms that actively block scrapers.</li>
+          <li><strong>Ad verification:</strong> Verify that digital advertisements display correctly across different geographic regions and detect ad fraud or unauthorized placements.</li>
+          <li><strong>SEO monitoring:</strong> Track search engine rankings from multiple locations without triggering Google's bot detection or receiving skewed results.</li>
+          <li><strong>Sneaker and ticket bots:</strong> Access limited-release products and event tickets from retail sites that implement strict anti-bot measures.</li>
+          <li><strong>Social media management:</strong> Manage multiple accounts across platforms while avoiding detection and IP-based restrictions.</li>
+          <li><strong>Price comparison:</strong> Collect competitor pricing data across regions to inform dynamic pricing strategies.</li>
+          <li><strong>Market research:</strong> Access geo-restricted content and localized search results for competitive analysis.</li>
+        </ul>
+      </article>
+
+      <article class="guide-section">
+        <h2>Residential vs Datacenter Proxies</h2>
+        <p>
+          Choosing between residential and datacenter proxies depends on your specific requirements for anonymity, speed, and budget. Each type has distinct advantages for different use cases.
+        </p>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <h3>Anonymity and Detection</h3>
+            <p>Residential proxies offer superior anonymity because they use real ISP-assigned IPs. Websites struggle to differentiate residential proxy traffic from regular visitors. Datacenter IPs are easier to identify and block since they originate from known hosting ranges.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Speed and Performance</h3>
+            <p>Datacenter proxies typically deliver faster connection speeds and lower latency because they run on dedicated server infrastructure. Residential proxies route through consumer networks, which can introduce variable performance depending on the end user's connection quality.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Cost Efficiency</h3>
+            <p>Datacenter proxies are significantly cheaper, often 10-20x less expensive than residential options. For high-volume tasks where detection is not a concern, datacenter proxies provide better cost efficiency. Residential proxies justify their premium for tasks requiring authentic user appearances.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Pool Size and Coverage</h3>
+            <p>Leading residential providers maintain pools of 50+ million IPs across every country. Datacenter providers offer smaller pools but with more predictable availability. Residential IPs rotate frequently as users connect and disconnect, while datacenter IPs remain stable.</p>
+          </div>
+        </div>
+      </article>
+    </section>
 
     <section class="content">
       <h2>How to choose residential proxies</h2>
@@ -37,15 +116,107 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 
 <style>
   .page-header {
-    text-align: center;
     margin-bottom: 3rem;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .page-header h1 {
+    margin-bottom: 1rem;
   }
 
   .page-subtitle {
     font-size: 1.125rem;
     color: var(--color-text-light);
     max-width: 700px;
-    margin: 1rem auto 0;
+    margin: 1rem 0 0;
+  }
+
+  @media (max-width: 768px) {
+    .header-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .guide-content {
+    max-width: 900px;
+    margin: 3rem auto 0;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .guide-section {
+    margin-bottom: 2.5rem;
+  }
+
+  .guide-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+  }
+
+  .guide-section p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+  }
+
+  .guide-section strong {
+    color: var(--color-text);
+  }
+
+  .use-case-list {
+    padding-left: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .use-case-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+  }
+
+  .use-case-list strong {
+    color: var(--color-text);
+  }
+
+  .comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .comparison-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .comparison-item {
+    background: var(--color-bg-alt);
+    padding: 1.25rem;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+
+  .comparison-item h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text);
+  }
+
+  .comparison-item p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+    margin: 0;
   }
 
   .content {

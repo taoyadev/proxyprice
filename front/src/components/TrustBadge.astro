@@ -1,0 +1,217 @@
+---
+/**
+ * TrustBadge - Reusable component displaying data freshness and verification status
+ *
+ * @param lastUpdated - Date string when data was last updated
+ * @param showFullDate - If true, shows full date instead of relative time
+ * @param variant - 'compact' | 'full' | 'inline'
+ * @param providerCount - Optional total provider count to display
+ */
+interface Props {
+  lastUpdated?: string;
+  showFullDate?: boolean;
+  variant?: 'compact' | 'full' | 'inline';
+  providerCount?: number;
+}
+
+const {
+  lastUpdated,
+  showFullDate = false,
+  variant = 'compact',
+  providerCount,
+} = Astro.props;
+
+// Parse the date and calculate relative time
+const getDateInfo = (dateStr: string | undefined) => {
+  if (!dateStr) {
+    return { text: 'Recently updated', title: dateStr || 'Data updated recently' };
+  }
+
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+  let text = '';
+  if (diffDays === 0) {
+    text = 'Updated today';
+  } else if (diffDays === 1) {
+    text = 'Updated yesterday';
+  } else if (diffDays < 7) {
+    text = `Updated ${diffDays} days ago`;
+  } else if (diffDays < 30) {
+    const weeks = Math.floor(diffDays / 7);
+    text = `Updated ${weeks} week${weeks > 1 ? 's' : ''} ago`;
+  } else if (diffDays < 365) {
+    const months = Math.floor(diffDays / 30);
+    text = `Updated ${months} month${months > 1 ? 's' : ''} ago`;
+  } else {
+    const years = Math.floor(diffDays / 365);
+    text = `Updated ${years} year${years > 1 ? 's' : ''} ago`;
+  }
+
+  return {
+    text: showFullDate ? `Updated ${date.toLocaleDateString()}` : text,
+    fullDate: date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
+    title: `Last verified: ${date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+  };
+};
+
+const dateInfo = getDateInfo(lastUpdated);
+---
+
+{variant === 'compact' && (
+  <div class="trust-badge trust-badge-compact" title={dateInfo.title}>
+    <svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+    </svg>
+    <span class="trust-text">{dateInfo.text}</span>
+  </div>
+)}
+
+{variant === 'inline' && (
+  <span class="trust-badge trust-badge-inline" title={dateInfo.title}>
+    <svg class="trust-icon trust-icon-sm" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+    </svg>
+    <span class="trust-text">{dateInfo.text}</span>
+    {lastUpdated && <span class="trust-full-date">({dateInfo.fullDate})</span>}
+  </span>
+)}
+
+{variant === 'full' && (
+  <div class="trust-badge trust-badge-full">
+    <div class="trust-header">
+      <svg class="trust-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+      </svg>
+      <span class="trust-label">Data Verified</span>
+    </div>
+    <div class="trust-details">
+      <p class="trust-date">{dateInfo.text}</p>
+      <p class="trust-full">{dateInfo.fullDate}</p>
+      {providerCount && (
+        <p class="trust-count">{providerCount} providers tracked</p>
+      )}
+    </div>
+  </div>
+)}
+
+<style>
+  .trust-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .trust-badge-compact {
+    padding: 0.375rem 0.75rem;
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .trust-badge-inline {
+    color: var(--color-text-light);
+    font-weight: 500;
+  }
+
+  .trust-badge-full {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border: 1px solid #a7f3d0;
+    border-radius: 0.75rem;
+  }
+
+  .trust-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+    color: #059669;
+  }
+
+  .trust-icon-sm {
+    width: 0.875rem;
+    height: 0.875rem;
+  }
+
+  .trust-text {
+    color: inherit;
+  }
+
+  .trust-full-date {
+    color: var(--color-text-light);
+    font-size: 0.8125rem;
+    margin-left: 0.25rem;
+  }
+
+  .trust-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .trust-label {
+    font-weight: 700;
+    color: #065f46;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .trust-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .trust-date {
+    font-weight: 600;
+    color: #047857;
+    margin: 0;
+  }
+
+  .trust-full {
+    font-size: 0.8125rem;
+    color: #059669;
+    margin: 0;
+  }
+
+  .trust-count {
+    font-size: 0.8125rem;
+    color: #047857;
+    margin: 0;
+    margin-top: 0.25rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .trust-badge-compact {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+      color: #d1fae5;
+    }
+
+    .trust-badge-full {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+      border-color: #047857;
+    }
+
+    .trust-icon {
+      color: #a7f3d0;
+    }
+
+    .trust-label,
+    .trust-date {
+      color: #d1fae5;
+    }
+
+    .trust-full,
+    .trust-count {
+      color: #a7f3d0;
+    }
+  }
+</style>

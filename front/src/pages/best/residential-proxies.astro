@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import TrustBadge from "../../components/TrustBadge.astro";
 import providersData from "../../data/providers.json";
 import pricingData from "../../data/pricing.json";
 import { SITE_NAME } from "../../lib/site";
@@ -13,13 +14,32 @@ const top = pricingData.pricing
   .filter((p) => p.proxy_type === type && p.comparable && typeof p.min_price_per_gb === "number")
   .sort((a, b) => (a.min_price_per_gb ?? Infinity) - (b.min_price_per_gb ?? Infinity))
   .slice(0, 10)
-  .map((p) => ({
-    provider: providerById.get(p.provider_id),
-    min: p.min_price_per_gb,
-    url: p.price_url,
-  }))
+  .map((p) => {
+    const provider = providerById.get(p.provider_id);
+    // Determine "best for" label based on provider attributes
+    let bestFor: string | null = null;
+    if (provider) {
+      if (provider.proxy_types.includes("mobile") && provider.proxy_types.includes("isp")) {
+        bestFor = "All proxy types";
+      } else if (provider.trial_offer && provider.trial_offer.includes("free")) {
+        bestFor = "Free trials available";
+      } else if (p.min_price_per_gb < 0.5) {
+        bestFor = "Best budget option";
+      } else if (provider.proxy_types.includes("isp")) {
+        bestFor = "Static sessions included";
+      } else {
+        bestFor = "Rotating IPs";
+      }
+    }
+    return {
+      provider,
+      min: p.min_price_per_gb,
+      url: p.price_url,
+      bestFor,
+    };
+  })
   .filter(
-    (x): x is { provider: any; min: number; url: string | null } =>
+    (x): x is { provider: any; min: number; url: string | null; bestFor: string | null } =>
       Boolean(x.provider) && typeof x.min === "number",
   );
 
@@ -28,6 +48,27 @@ const breadcrumbs = [
   { name: "Best Providers", url: new URL("/best/", Astro.site).toString() },
   { name: "Best Residential Proxies", url: new URL("/best/residential-proxies/", Astro.site).toString() },
 ];
+
+// Build ItemList schema for SEO
+const itemListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": top.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Product",
+      "name": `${item.provider.name} Residential Proxies`,
+      "url": new URL(`/provider/${item.provider.slug}/`, Astro.site).toString(),
+      "offers": {
+        "@type": "Offer",
+        "price": item.min,
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+      },
+    },
+  })),
+};
 ---
 
 <BaseLayout
@@ -35,12 +76,20 @@ const breadcrumbs = [
   description={`Best ${typeLabel.toLowerCase()} proxy providers with comparable $/GB pricing. Updated ${pricingData.last_updated}.`}
   breadcrumbs={breadcrumbs}
 >
+  <!-- ItemList Schema -->
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(itemListSchema)} />
+
   <div class="container" style="padding: 3rem 0;">
     <header class="page-header">
-      <h1>Best Residential Proxies (by $/GB)</h1>
-      <p class="page-subtitle">
-        A curated ranking of providers with comparable <strong>$/GB</strong> pricing for residential proxies. Updated {pricingData.last_updated}.
-      </p>
+      <div class="header-top">
+        <div>
+          <h1>Best Residential Proxies (by $/GB)</h1>
+          <p class="page-subtitle">
+            A curated ranking of providers with comparable <strong>$/GB</strong> pricing for residential proxies.
+          </p>
+        </div>
+        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+      </div>
     </header>
 
     <section class="list">
@@ -51,12 +100,15 @@ const breadcrumbs = [
           {top.map((item) => (
             <li class="rank-item">
               <a class="rank-link" href={`/provider/${item.provider.slug}`}>
-                <span class="name">{item.provider.name}</span>
+                <div class="rank-header">
+                  <span class="name">{item.provider.name}</span>
+                  {item.bestFor && <span class="best-for">{item.bestFor}</span>}
+                </div>
                 <span class="price">${item.min.toFixed(2)}/GB</span>
               </a>
               <div class="meta">
                 <a href="/residential">Compare all residential providers →</a>
-                {item.url && <a href={item.url} target="_blank" rel="noopener noreferrer">Official pricing →</a>}
+                <a href={`/go/${item.provider.slug}`} target="_blank" rel="sponsored noopener noreferrer">Official pricing →</a>
               </div>
             </li>
           ))}
@@ -80,14 +132,28 @@ const breadcrumbs = [
 
 <style>
   .page-header {
-    text-align: center;
     margin-bottom: 2.5rem;
   }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
   .page-subtitle {
     font-size: 1.125rem;
     color: var(--color-text-light);
-    max-width: 900px;
-    margin: 1rem auto 0;
+    max-width: 700px;
+    margin: 1rem 0 0;
+  }
+
+  @media (max-width: 768px) {
+    .header-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
   .rank {
     list-style: none;
@@ -112,6 +178,20 @@ const breadcrumbs = [
     padding: 1rem 1.25rem;
     text-decoration: none;
     color: var(--color-text);
+  }
+  .rank-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .best-for {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 0.25rem;
+    font-weight: 500;
   }
   .rank-link:hover {
     text-decoration: none;

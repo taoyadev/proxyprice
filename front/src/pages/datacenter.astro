@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
+import TrustBadge from '../components/TrustBadge.astro';
+import pricingData from '../data/pricing.json';
 ---
 
 <BaseLayout
@@ -9,13 +11,94 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 >
   <div class="container" style="padding: 3rem 0;">
     <header class="page-header">
-      <h1>Datacenter Proxy Comparison</h1>
-      <p class="page-subtitle">
-        Fast, affordable proxies from data centers. Perfect for high-volume tasks, automation, and when speed matters most.
-      </p>
+      <div class="header-top">
+        <div>
+          <h1>Datacenter Proxy Comparison</h1>
+          <p class="page-subtitle">
+            Fast, affordable proxies from data centers. Perfect for high-volume tasks, automation, and when speed matters most.
+          </p>
+        </div>
+        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+      </div>
     </header>
 
     <ComparisonTable proxyType="datacenter" />
+
+    <section class="guide-content">
+      <article class="guide-section">
+        <h2>What Are Datacenter Proxies?</h2>
+        <p>
+          Datacenter proxies are IP addresses that originate from servers housed in data centers rather than from residential Internet Service Providers. These IPs are created in bulk by hosting companies and cloud providers, offering fast, reliable connections through enterprise-grade infrastructure.
+        </p>
+        <p>
+          Unlike residential proxies that route through real home networks, datacenter proxies connect directly through commercial servers. This architecture delivers superior speed and bandwidth but creates a different digital fingerprint. Websites can identify datacenter IP ranges through autonomous system number (ASN) lookups, which is why some platforms block or restrict these connections.
+        </p>
+        <p>
+          Datacenter proxies come in two main varieties: shared proxies where multiple users share the same IPs, and dedicated (private) proxies assigned exclusively to a single customer. Shared proxies cost less but may suffer from IP reputation issues caused by other users. Dedicated proxies provide consistent performance and clean IP history.
+        </p>
+      </article>
+
+      <article class="guide-section">
+        <h2>How Datacenter Proxy Pricing Works</h2>
+        <p>
+          Datacenter proxy pricing models differ significantly from residential proxies. Instead of paying per gigabyte of bandwidth, you typically pay per IP address or port on a monthly subscription basis.
+        </p>
+        <p>
+          <strong>Per-IP pricing</strong> is the standard model where you purchase a set number of dedicated IPs. Prices range from $1-5 per IP monthly for shared proxies and $2-10 per IP for dedicated proxies. Bulk discounts are common, with prices dropping significantly when purchasing hundreds or thousands of IPs.
+        </p>
+        <p>
+          <strong>Bandwidth-based plans</strong> are offered by some providers, particularly those with rotating datacenter pools. These plans charge per GB similar to residential proxies but at much lower rates, typically $0.10-0.50 per GB.
+        </p>
+        <p>
+          <strong>Unlimited bandwidth</strong> is a key advantage of per-IP datacenter plans. Once you pay for the IPs, you can transfer unlimited data without additional costs. This makes datacenter proxies extremely cost-effective for bandwidth-intensive tasks like large-scale web scraping or downloading.
+        </p>
+        <p>
+          Location and subnet diversity also affect pricing. Premium locations with clean IP reputations command higher prices. Providers offering diverse subnets and ASNs typically charge more but provide better success rates against sophisticated blocking.
+        </p>
+      </article>
+
+      <article class="guide-section">
+        <h2>Best Use Cases for Datacenter Proxies</h2>
+        <p>
+          Datacenter proxies shine in scenarios where speed, cost efficiency, and high bandwidth matter more than appearing as a residential user. They are the workhorse of large-scale data operations.
+        </p>
+        <ul class="use-case-list">
+          <li><strong>High-volume web scraping:</strong> Extract data from websites that do not actively block datacenter IPs. Ideal for aggregating publicly available information at scale with minimal cost per request.</li>
+          <li><strong>SEO tools and rank tracking:</strong> Many SEO platforms rely on datacenter proxies for rank checking across search engines. The speed enables rapid position monitoring across thousands of keywords.</li>
+          <li><strong>Market research:</strong> Collect pricing data, product information, and competitive intelligence from sites with permissive scraping policies.</li>
+          <li><strong>Brand protection:</strong> Monitor for counterfeit products, unauthorized resellers, and trademark infringement across e-commerce platforms.</li>
+          <li><strong>Security testing:</strong> Perform penetration testing, vulnerability scanning, and security audits using distributed IP addresses.</li>
+          <li><strong>Accessing geo-restricted content:</strong> Bypass geographic restrictions on streaming services, news sites, and regional content platforms.</li>
+          <li><strong>Load testing:</strong> Simulate traffic from multiple IP addresses to stress test web applications and infrastructure.</li>
+          <li><strong>Automation at scale:</strong> Run automated workflows across websites where residential-level anonymity is not required.</li>
+        </ul>
+      </article>
+
+      <article class="guide-section">
+        <h2>Datacenter vs Residential Proxies</h2>
+        <p>
+          Understanding the tradeoffs between datacenter and residential proxies helps you select the right tool for each task. Here is how they compare across critical dimensions.
+        </p>
+        <div class="comparison-grid">
+          <div class="comparison-item">
+            <h3>Cost Comparison</h3>
+            <p>Datacenter proxies offer dramatically lower costs, often 10-50x cheaper than residential alternatives. A datacenter proxy might cost $2-5 per month with unlimited bandwidth, while residential proxies charge $5-15 per GB. For bandwidth-heavy tasks, datacenter proxies provide substantial savings.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Speed and Reliability</h3>
+            <p>Datacenter proxies deliver consistent high-speed connections because they run on enterprise infrastructure with dedicated bandwidth. Expect sub-100ms latency and speeds measured in Gbps. Residential proxies depend on consumer connections, introducing variable performance.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Detection and Blocking</h3>
+            <p>Websites can easily identify datacenter IP ranges through ASN databases. Sophisticated anti-bot systems like Cloudflare, PerimeterX, and DataDome actively block or challenge datacenter traffic. Residential IPs avoid this detection because they match legitimate user patterns.</p>
+          </div>
+          <div class="comparison-item">
+            <h3>Use Case Fit</h3>
+            <p>Choose datacenter proxies for: high-volume scraping of permissive sites, SEO monitoring, internal testing, and cost-sensitive operations. Choose residential proxies for: scraping protected sites, social media automation, ad verification, and any task requiring authentic user appearance.</p>
+          </div>
+        </div>
+      </article>
+    </section>
 
     <section class="content">
       <h2>How to choose datacenter proxies</h2>
@@ -37,15 +120,32 @@ import ComparisonTable from '../components/ComparisonTable.astro';
 
 <style>
   .page-header {
-    text-align: center;
     margin-bottom: 3rem;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .page-header h1 {
+    margin-bottom: 1rem;
   }
 
   .page-subtitle {
     font-size: 1.125rem;
     color: var(--color-text-light);
     max-width: 700px;
-    margin: 1rem auto 0;
+    margin: 1rem 0 0;
+  }
+
+  @media (max-width: 768px) {
+    .header-top {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   .content {

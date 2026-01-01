@@ -10,7 +10,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent / 'scripts'))
 
 from parse_csv import parse_tier_line, extract_price_per_gb, normalize_proxy_type
-from normalize import calculate_min_price_per_gb, calculate_max_price_per_gb
+from normalize import calculate_price_extremes
 
 
 class TestParsing:
@@ -73,7 +73,7 @@ class TestNormalization:
             {'pricing_model': 'per_gb', 'price_per_gb': 3.0},
             {'pricing_model': 'per_gb', 'price_per_gb': 7.0}
         ]
-        assert calculate_min_price_per_gb(tiers) == 3.0
+        assert calculate_price_extremes(tiers, "min") == 3.0
 
     def test_calculate_max_price_per_gb(self):
         tiers = [
@@ -81,11 +81,11 @@ class TestNormalization:
             {'pricing_model': 'per_gb', 'price_per_gb': 3.0},
             {'pricing_model': 'per_gb', 'price_per_gb': 7.0}
         ]
-        assert calculate_max_price_per_gb(tiers) == 7.0
+        assert calculate_price_extremes(tiers, "max") == 7.0
 
     def test_empty_tiers(self):
-        assert calculate_min_price_per_gb([]) is None
-        assert calculate_max_price_per_gb([]) is None
+        assert calculate_price_extremes([], "min") is None
+        assert calculate_price_extremes([], "max") is None
 
     def test_mixed_pricing_models(self):
         tiers = [
@@ -93,8 +93,8 @@ class TestNormalization:
             {'pricing_model': 'per_ip', 'price_per_ip': 2.0},
             {'pricing_model': 'per_gb', 'price_per_gb': 3.0}
         ]
-        assert calculate_min_price_per_gb(tiers) == 3.0
-        assert calculate_max_price_per_gb(tiers) == 5.0
+        assert calculate_price_extremes(tiers, "min") == 3.0
+        assert calculate_price_extremes(tiers, "max") == 5.0
 
 
 if __name__ == '__main__':

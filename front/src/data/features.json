@@ -1,0 +1,368 @@
+{
+  "features": [
+    {
+      "id": "rotating-residential",
+      "slug": "rotating-residential-proxies",
+      "title": "Rotating Residential Proxies",
+      "description": "Compare providers offering rotating residential proxies. Find the best pricing on rotating IPs for web scraping and automation.",
+      "content": {
+        "overview": "Rotating residential proxies automatically change your IP address for each request or after a set interval. This rotation makes them ideal for web scraping, as each request appears to come from a different residential IP, significantly reducing the chance of blocks.",
+        "howItWorks": "Residential proxy networks route your traffic through real residential IP addresses assigned by ISPs. Rotation happens either per-request (each new connection gets a new IP) or time-based (IP changes every X seconds).",
+        "benefits": [
+          "Avoid IP blocks and rate limits",
+          "High anonymity and trust scores",
+          "Geo-targeting capabilities",
+          "Large IP pool sizes"
+        ],
+        "idealFor": [
+          "Large-scale web scraping",
+          "Price monitoring",
+          "Ad verification",
+          "SEO rank tracking"
+        ],
+        "pricing": "Rotating residential proxies typically cost $0.30-$15 per GB depending on volume and provider reputation."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 100
+      },
+      "recommendedProxyTypes": ["residential"]
+    },
+    {
+      "id": "static-residential",
+      "slug": "static-residential-proxies",
+      "title": "Static Residential Proxies",
+      "description": "Find providers offering static residential proxies (ISP proxies). Compare pricing on persistent residential IPs for account management.",
+      "content": {
+        "overview": "Static residential proxies, also known as ISP proxies, provide you with a residential IP address that doesn't change. You get the legitimacy of a residential IP with the stability of a static connection, perfect for maintaining sessions.",
+        "howItWorks": "ISP proxies are IP addresses assigned by Internet Service Providers but hosted in data centers. They appear as residential IPs to target websites but offer the speed and stability of datacenter proxies.",
+        "benefits": [
+          "Consistent IP for session persistence",
+          "High trust score like residential IPs",
+          "Fast connection speeds",
+          "Lower ban risk than datacenter IPs"
+        ],
+        "idealFor": [
+          "Account management",
+          "Sneaker bots",
+          "Social media automation",
+          "E-commerce operations"
+        ],
+        "pricing": "Static residential proxies typically cost $1-$10 per GB or are priced per IP per month."
+      },
+      "calculatorPreset": {
+        "proxyType": "isp",
+        "bandwidth": 50
+      },
+      "recommendedProxyTypes": ["isp"]
+    },
+    {
+      "id": "socks5-proxies",
+      "slug": "socks5-proxies",
+      "title": "SOCKS5 Proxies",
+      "description": "Compare proxy providers offering SOCKS5 protocol. Find the best SOCKS5 proxy pricing for enhanced performance and compatibility.",
+      "content": {
+        "overview": "SOCKS5 is a proxy protocol that offers more flexibility and better performance than HTTP proxies. It handles various types of traffic including TCP and UDP, making it ideal for applications beyond simple web browsing.",
+        "howItWorks": "SOCKS5 operates at the session layer of the OSI model, routing packets between client and server through a proxy server. It supports authentication and can handle different types of traffic including FTP, SMTP, and more.",
+        "benefits": [
+          "Supports TCP and UDP traffic",
+          "Better performance than HTTP proxies",
+          "Strong authentication options",
+          "Fewer errors and better reliability"
+        ],
+        "idealFor": [
+          "Video streaming and torrenting",
+          "Email clients",
+          "File transfer protocols",
+          "Gaming and VoIP applications"
+        ],
+        "pricing": "SOCKS5 proxies are often included with standard proxy plans, with pricing similar to HTTP proxies."
+      },
+      "calculatorPreset": {
+        "proxyType": "datacenter",
+        "bandwidth": 100
+      },
+      "recommendedProxyTypes": ["datacenter", "residential"]
+    },
+    {
+      "id": "ipv6-proxies",
+      "slug": "ipv6-proxies",
+      "title": "IPv6 Proxies",
+      "description": "Compare providers offering IPv6 proxy servers. Find the best pricing on IPv6 proxies with larger address space and better connectivity.",
+      "content": {
+        "overview": "IPv6 proxies use the newer IPv6 protocol, providing a virtually unlimited address space. This makes each IP unique and less likely to be blacklisted, offering advantages for certain use cases.",
+        "howItWorks": "IPv6 proxies route traffic through servers with IPv6 addresses. The protocol's massive address space (2^128 addresses) means proxies can be dedicated to single users without reuse.",
+        "benefits": [
+          "Virtually unlimited IP addresses",
+          "Lower risk of IP blacklisting",
+          "Better connectivity with IPv6-native services",
+          "Often included at no extra cost"
+        ],
+        "idealFor": [
+          "High-volume scraping",
+          "IPv6-compatible target sites",
+          "Cost-sensitive operations",
+          "Applications requiring many unique IPs"
+        ],
+        "pricing": "IPv6 proxies are often cheaper than IPv4, with many providers including them at no additional cost."
+      },
+      "calculatorPreset": {
+        "proxyType": "datacenter",
+        "bandwidth": 100
+      },
+      "recommendedProxyTypes": ["datacenter"]
+    },
+    {
+      "id": "http-vs-socks5",
+      "slug": "http-vs-socks5-proxies",
+      "title": "HTTP vs SOCKS5 Proxies",
+      "description": "Understand the difference between HTTP and SOCKS5 proxies. Compare pricing and find the right protocol for your use case.",
+      "content": {
+        "overview": "HTTP proxies are designed for web traffic and work at the application layer, while SOCKS5 operates at the session layer and can handle any traffic type. Choosing between them depends on your specific use case.",
+        "howItWorks": "HTTP proxies interpret and filter HTTP/HTTPS traffic, allowing for content filtering and caching. SOCKS5 simply tunnels traffic without interpretation, supporting any protocol or port.",
+        "benefits": [
+          "HTTP: Content filtering and caching",
+          "HTTP: Better for web-only applications",
+          "SOCKS5: Protocol-agnostic traffic handling",
+          "SOCKS5: Better for P2P and streaming"
+        ],
+        "idealFor": [
+          "HTTP: Web scraping and browsing",
+          "HTTP: Corporate content filtering",
+          "SOCKS5: Torrenting and P2P",
+          "SOCKS5: Email and FTP clients"
+        ],
+        "pricing": "Pricing is similar for both protocols, with SOCKS5 sometimes commanding a small premium due to its flexibility."
+      },
+      "calculatorPreset": {
+        "proxyType": "datacenter",
+        "bandwidth": 50
+      },
+      "recommendedProxyTypes": ["datacenter", "residential"]
+    },
+    {
+      "id": "4g-mobile-proxies",
+      "slug": "4g-mobile-proxies",
+      "title": "4G Mobile Proxies",
+      "description": "Compare 4G mobile proxy providers. Find the best pricing on high-speed 4G LTE mobile proxies with highest trust scores.",
+      "content": {
+        "overview": "4G mobile proxies use IP addresses assigned by mobile carriers to cellular devices. They offer the highest trust scores and lowest detection rates, making them premium options for sensitive tasks.",
+        "howItWorks": "Traffic is routed through 4G/LTE cellular connections, with IPs assigned by mobile carriers. These IPs appear as legitimate mobile users to target services.",
+        "benefits": [
+          "Highest trust score among proxy types",
+          "Lowest detection and block rates",
+          "Real carrier-assigned IPs",
+          "Excellent for app automation"
+        ],
+        "idealFor": [
+          "Social media automation",
+          "Sneaker copping",
+          "App testing",
+          "High-security operations"
+        ],
+        "pricing": "4G mobile proxies are premium-priced, typically $10-$50+ per GB depending on carrier and location."
+      },
+      "calculatorPreset": {
+        "proxyType": "mobile",
+        "bandwidth": 10
+      },
+      "recommendedProxyTypes": ["mobile"]
+    },
+    {
+      "id": "unlimited-bandwidth-proxies",
+      "slug": "unlimited-bandwidth-proxies",
+      "title": "Unlimited Bandwidth Proxies",
+      "description": "Find proxy providers offering unlimited bandwidth plans. Compare pricing on flat-rate proxy services with no data caps.",
+      "content": {
+        "overview": "Unlimited bandwidth proxies charge a flat rate per IP or connection rather than per GB of data. This pricing model can be cost-effective for high-bandwidth applications.",
+        "howItWorks": "Providers offer unlimited traffic for a fixed monthly price per IP. The actual bandwidth may be subject to fair-use policies, but hard caps are removed.",
+        "benefits": [
+          "Predictable monthly costs",
+          "No per-GB overage charges",
+          "Ideal for high-bandwidth tasks",
+          "Better for continuous operations"
+        ],
+        "idealFor": [
+          "High-volume scraping",
+          "Video streaming",
+          "Continuous monitoring",
+          "Data-intensive applications"
+        ],
+        "pricing": "Unlimited plans typically cost $1-$10 per IP per month, depending on proxy type and quality."
+      },
+      "calculatorPreset": {
+        "proxyType": "datacenter",
+        "bandwidth": 500
+      },
+      "recommendedProxyTypes": ["datacenter", "isp"]
+    },
+    {
+      "id": "rotating-proxies",
+      "slug": "rotating-proxies",
+      "title": "Rotating Proxies",
+      "description": "Compare rotating proxy providers. Find the best pricing on automatic IP rotation for web scraping and automation.",
+      "content": {
+        "overview": "Rotating proxies automatically change your IP address at set intervals or per request. This prevents IP-based blocking and enables large-scale operations.",
+        "howItWorks": "Rotation can be configured per-request (new IP each connection), time-based (IP changes every X seconds), or random. Some providers offer sticky sessions for maintaining IP when needed.",
+        "benefits": [
+          "Automatic IP changes",
+          "Reduces blocking and rate limiting",
+          "Scales to high request volumes",
+          "Mimics organic traffic patterns"
+        ],
+        "idealFor": [
+          "Web scraping at scale",
+          "Price comparison engines",
+          "Ad verification",
+          "SEO monitoring"
+        ],
+        "pricing": "Rotating proxies typically cost $0.30-$15 per GB for residential, less for datacenter IPs."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 100
+      },
+      "recommendedProxyTypes": ["residential", "datacenter"]
+    },
+    {
+      "id": "sticky-proxies",
+      "slug": "sticky-proxies",
+      "title": "Sticky Proxies",
+      "description": "Find providers offering sticky session proxies. Compare pricing on proxies with persistent IP connections for session management.",
+      "content": {
+        "overview": "Sticky proxies maintain the same IP address for an extended period, allowing you to maintain sessions across multiple requests. This is essential for login-based operations.",
+        "howItWorks": "Sticky sessions preserve your IP for a configurable duration (30 seconds to 60+ minutes). All requests within this timeframe use the same IP.",
+        "benefits": [
+          "Maintain login sessions",
+          "Handle multi-step workflows",
+          "Preserve shopping cart state",
+          "Support complex interactions"
+        ],
+        "idealFor": [
+          "Account management",
+          "E-commerce automation",
+          "Social media posting",
+          "Authenticated scraping"
+        ],
+        "pricing": "Sticky sessions are typically included at no extra cost with residential and mobile proxy plans."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 50
+      },
+      "recommendedProxyTypes": ["residential", "mobile", "isp"]
+    },
+    {
+      "id": "ipv4-proxies",
+      "slug": "ipv4-proxies",
+      "title": "IPv4 Proxies",
+      "description": "Compare IPv4 proxy providers. Find the best pricing on IPv4 proxies with maximum compatibility across all services.",
+      "content": {
+        "overview": "IPv4 proxies use the traditional IPv4 protocol and offer maximum compatibility with all online services. While IPv4 addresses are limited, they remain the standard for most proxy operations.",
+        "howItWorks": "IPv4 proxies route traffic through servers with IPv4 addresses. These addresses are universally recognized and supported by all internet services.",
+        "benefits": [
+          "Universal compatibility",
+          "Works with all services",
+          "Well-established infrastructure",
+          "Lower latency than IPv6 in some cases"
+        ],
+        "idealFor": [
+          "Legacy system access",
+          "Maximum compatibility needed",
+          "Services not supporting IPv6",
+          "General-purpose proxying"
+        ],
+        "pricing": "IPv4 proxies are the standard pricing baseline, with datacenter proxies from $0.50-$5/GB and residential from $1-$15/GB."
+      },
+      "calculatorPreset": {
+        "proxyType": "datacenter",
+        "bandwidth": 100
+      },
+      "recommendedProxyTypes": ["datacenter", "residential"]
+    },
+    {
+      "id": "sneaker-proxies",
+      "slug": "sneaker-proxies",
+      "title": "Sneaker Proxies",
+      "description": "Find the best proxies for sneaker botting. Compare low-latency residential and ISP proxies for sneaker copping success.",
+      "content": {
+        "overview": "Sneaker proxies are optimized for speed and location, specifically for purchasing limited-edition sneakers. They require ultra-low latency and IPs close to release sites.",
+        "howItWorks": "Proxies are located near sneaker retailer data centers, with residential or ISP IPs for legitimacy. Sticky sessions maintain IP during checkout process.",
+        "benefits": [
+          "Ultra-low latency checkout",
+          "IPs near retail sites",
+          "High trust for legitimacy",
+          "Sticky sessions for checkout"
+        ],
+        "idealFor": [
+          "Limited sneaker releases",
+          "Streetwear drops",
+          "Ticket purchasing",
+          "Flash sales"
+        ],
+        "pricing": "Sneaker-optimized proxies are premium-priced, with ISP proxies costing $3-$10 per GB or $2-$10 monthly per IP."
+      },
+      "calculatorPreset": {
+        "proxyType": "isp",
+        "bandwidth": 5
+      },
+      "recommendedProxyTypes": ["isp", "residential"]
+    },
+    {
+      "id": "ticketing-proxies",
+      "slug": "ticketing-proxies",
+      "title": "Ticketing Proxies",
+      "description": "Compare proxies for ticket purchasing. Find residential and ISP proxies optimized for buying event tickets without blocks.",
+      "content": {
+        "overview": "Ticketing proxies are designed to bypass ticket vendor restrictions during high-demand events. They require high trust scores and rotation to avoid detection.",
+        "howItWorks": "Rotating residential proxies from diverse geographic locations help avoid IP-based ticket purchase limits. Sticky sessions maintain checkout flow.",
+        "benefits": [
+          "Bypass IP purchase limits",
+          "Access geo-restricted sales",
+          "High trust for legitimacy",
+          "Rotation for multiple attempts"
+        ],
+        "idealFor": [
+          "Concert tickets",
+          "Sports events",
+          "Theater shows",
+          "High-demand event sales"
+        ],
+        "pricing": "Ticketing proxies typically cost $3-$15 per GB, with premium options for specific venues or regions."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 10
+      },
+      "recommendedProxyTypes": ["residential", "isp"]
+    },
+    {
+      "id": "api-access",
+      "slug": "api-access",
+      "title": "Proxy API Access",
+      "description": "Compare proxy providers with API access. Find services offering REST APIs for programmatic proxy management and automation.",
+      "content": {
+        "overview": "Proxy APIs allow programmatic management of your proxy service, enabling automation, integration with custom tools, and dynamic proxy allocation based on your needs.",
+        "howItWorks": "REST APIs provide endpoints for retrieving proxy lists, checking usage statistics, managing whitelisted IPs, and configuring rotation settings programmatically.",
+        "benefits": [
+          "Automated proxy rotation",
+          "Usage monitoring integration",
+          "Dynamic IP allocation",
+          "Custom tool integration"
+        ],
+        "idealFor": [
+          "Custom scraping tools",
+          "Automated workflows",
+          "Monitoring dashboards",
+          "DevOps integration"
+        ],
+        "pricing": "API access is typically included with proxy plans, though some providers charge premium rates for advanced API features."
+      },
+      "calculatorPreset": {
+        "proxyType": "residential",
+        "bandwidth": 100
+      },
+      "recommendedProxyTypes": ["residential", "datacenter", "mobile"]
+    }
+  ]
+}
