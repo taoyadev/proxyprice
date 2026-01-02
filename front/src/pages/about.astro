@@ -14,24 +14,24 @@ const proxyTypes = ['residential', 'datacenter', 'mobile', 'isp'];
 
 <BaseLayout
   title="About"
-  description="About ProxyPrice: a transparent proxy pricing comparison site that normalizes complex pricing to help you find the best deal."
+  description="ProxyPrice is an independent proxy comparison platform. We normalize pricing from 40+ providers to a standard $/GB metric. No affiliate rankings, no paid placements. Just real data to help you find the best deal."
 >
   <div class="container" style="padding: 3rem 0;">
     <header class="page-header">
       <h1>About ProxyPrice</h1>
       <p class="page-subtitle">
-        ProxyPrice helps you compare proxy providers transparently by collecting public pricing and presenting it in a consistent format.
+        We built ProxyPrice because comparing proxy providers was painful. Every company uses different pricing models, making fair comparison nearly impossible. We fix that by normalizing everything to one standard: cost per gigabyte.
       </p>
     </header>
 
     <section class="mission-section">
       <div class="mission-content">
-        <h2>Our Mission</h2>
+        <h2>The Problem We Solve</h2>
         <p>
-          ProxyPrice exists to bring transparency to the opaque proxy market. We normalize complex pricing structures from dozens of providers so you can make informed decisions without spending hours researching each company individually.
+          The proxy industry thrives on confusion. Provider A charges per GB, Provider B charges per IP with bandwidth caps, Provider C bundles traffic into monthly plans with rollover rules. Comparing them requires a spreadsheet and an hour of your time. That is absurd.
         </p>
         <p>
-          The proxy industry is notorious for confusing pricing models, hidden fees, and volume tiers that make true comparison nearly impossible. We solve this by converting everything to a standard <strong>$/GB</strong> metric where possible.
+          We built ProxyPrice to cut through this noise. We collect official pricing from {totalProviders}+ providers, normalize it to a standard <strong>$/GB</strong> metric where possible, and present it in clean comparison tables. You get actionable data in seconds, not hours.
         </p>
       </div>
     </section>
@@ -45,8 +45,8 @@ const proxyTypes = ['residential', 'datacenter', 'mobile', 'isp'];
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3>100% Unbiased</h3>
-          <p>We are not owned by any proxy provider. Our rankings are based solely on published pricing data, never on affiliate commissions or partnerships.</p>
+          <h3>No Hidden Agenda</h3>
+          <p>Many "review" sites are secretly owned by proxy companies or rank providers by affiliate payout. We are independent. Our rankings reflect actual pricing data, nothing else.</p>
         </div>
 
         <div class="why-card">
@@ -55,8 +55,8 @@ const proxyTypes = ['residential', 'datacenter', 'mobile', 'isp'];
               <path fill-rule="evenodd" d="M4.5 2A1.5 1.5 0 003 3.5v13A1.5 1.5 0 004.5 18h11a1.5 1.5 0 001.5-1.5V7.621a1.5 1.5 0 00-.44-1.06l-4.12-4.122A1.5 1.5 0 0011.378 2H4.5zm2.25 8.5a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5zm0 3a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3>Normalized Pricing</h3>
-          <p>We convert confusing pricing models (per IP, per thread, per proxy) into a standard <strong>$/GB</strong> metric for apples-to-apples comparison.</p>
+          <h3>Apples-to-Apples Comparison</h3>
+          <p>Per-GB, per-IP, per-port, bundled plans. We normalize them all to <strong>$/GB</strong> where mathematically possible. When conversion would be misleading, we show pricing as-is with clear labels.</p>
         </div>
 
         <div class="why-card">
@@ -66,8 +66,8 @@ const proxyTypes = ['residential', 'datacenter', 'mobile', 'isp'];
               <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM1 10a9 9 0 1118 0 9 9 0 01-18 0z" />
             </svg>
           </div>
-          <h3>Independent & Open</h3>
-          <p>Our methodology is public. We explain exactly how we collect and normalize data. You can even contribute corrections via our GitHub repository.</p>
+          <h3>Transparent Methodology</h3>
+          <p>We document exactly how we collect, normalize, and present data. No black boxes, no secret sauce. If you spot an error, submit a correction and we will fix it.</p>
         </div>
 
         <div class="why-card">
@@ -76,8 +76,8 @@ const proxyTypes = ['residential', 'datacenter', 'mobile', 'isp'];
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3>Regularly Updated</h3>
-          <p>Pricing changes frequently. We update our data regularly to ensure you see current pricing, not outdated information from months ago.</p>
+          <h3>Current Data</h3>
+          <p>Proxy pricing changes constantly. We monitor providers and update our database regularly. You will never compare against stale data from six months ago.</p>
         </div>
       </div>
     </section>
@@ -105,29 +105,28 @@ const proxyTypes = ['residential', 'datacenter', 'mobile', 'isp'];
     </section>
 
     <section class="content">
-      <h2>What this site does</h2>
+      <h2>What We Track</h2>
       <ul>
-        <li>Aggregates public pricing across residential, datacenter, mobile, and ISP proxy offerings.</li>
-        <li>Highlights providers with comparable <strong>$/GB</strong> pricing so you can sort fairly.</li>
-        <li>Offers a simple calculator to estimate monthly cost for a given bandwidth need.</li>
-        <li>Provides transparent methodology so you understand how we arrive at our comparisons.</li>
+        <li><strong>4 proxy types:</strong> Residential, datacenter, mobile, and ISP proxies from {totalProviders}+ providers worldwide.</li>
+        <li><strong>{totalPricingRecords} pricing records:</strong> Individual tiers, plans, and bundles normalized for comparison.</li>
+        <li><strong>$/GB conversion:</strong> Where mathematically possible, we convert all pricing to cost-per-gigabyte for fair sorting.</li>
+        <li><strong>Price calculator:</strong> Estimate your monthly costs based on expected bandwidth usage.</li>
       </ul>
 
-      <h2>Data freshness</h2>
-      <p>Pricing data was last updated <strong>{DATA_LAST_UPDATED}</strong>.</p>
+      <h2>Data Freshness</h2>
+      <p>Our pricing database was last synchronized on <strong>{DATA_LAST_UPDATED}</strong>. We actively monitor major providers for pricing changes and update within 1-2 weeks of any significant adjustments.</p>
 
-      <h2>Team & Maintainer</h2>
+      <h2>Who Maintains This</h2>
       <p>
-        ProxyPrice is maintained by developers who understand the pain of comparing proxy services. We built this tool because we needed it ourselves, and we're committed to keeping it free and unbiased.
+        ProxyPrice was built by developers who got tired of the proxy comparison grind. We needed to evaluate dozens of providers for web scraping projects and found no reliable, unbiased resource. So we built one.
       </p>
       <p>
-        This is an open-source project. You can view the source code, report issues, or contribute improvements on GitHub.
+        This is an independent project. We are not affiliated with any proxy provider. We do use affiliate links where available, but affiliate status never influences rankings or data presentation. Providers are ranked purely by their normalized pricing.
       </p>
 
-      <h2>Disclaimer</h2>
+      <h2>Accuracy Disclaimer</h2>
       <p>
-        Prices and terms change frequently. Always verify details on the provider's official pricing page before purchasing.
-        If you spot an error, please open a correction issue.
+        Proxy pricing changes frequently. While we strive for accuracy, always verify current pricing on the provider's official website before making a purchase decision. If you find incorrect data, please report it. We take accuracy seriously and will correct errors promptly.
       </p>
       {FEEDBACK_URL && (
         <p>
@@ -137,11 +136,11 @@ const proxyTypes = ['residential', 'datacenter', 'mobile', 'isp'];
     </section>
 
     <section class="cta-section">
-      <h2>Ready to find the best deal?</h2>
-      <p>Compare pricing from {totalProviders}+ providers and save money on your proxy infrastructure.</p>
+      <h2>Stop Overpaying for Proxies</h2>
+      <p>Compare real pricing from {totalProviders}+ providers. Find the best $/GB rate for your use case in minutes, not hours.</p>
       <div class="cta-buttons">
-        <a href="/providers" class="btn btn-primary">Browse All Providers</a>
-        <a href="/calculator" class="btn btn-secondary">Use Calculator</a>
+        <a href="/providers" class="btn btn-primary">Compare All Providers</a>
+        <a href="/calculator" class="btn btn-secondary">Calculate Your Costs</a>
       </div>
     </section>
   </div>

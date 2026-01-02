@@ -22,18 +22,17 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
 
 <BaseLayout
   title="Home"
-  description="Compare 40+ proxy providers and find the best pricing for residential, datacenter, mobile, and ISP proxies. Transparent pricing comparison updated regularly."
+  description={`Compare ${providersData.total_count}+ proxy providers side-by-side. Find the best $/GB rates for residential, datacenter, mobile & ISP proxies. Real pricing data from official sources, updated ${pricingData.last_updated}.`}
 >
   <section class="hero">
     <div class="container">
-      <h1>Find the Cheapest Proxy Provider</h1>
+      <h1>Stop Overpaying for Proxies</h1>
       <p class="hero-subtitle">
-        Compare pricing from 40+ providers across residential, datacenter, mobile, and ISP proxies.
-        Transparent, normalized pricing updated regularly.
+        The proxy market is confusing by design. We cut through the noise by normalizing pricing from {providersData.total_count}+ providers into one simple metric: <strong>cost per GB</strong>. No hidden fees, no marketing fluff.
       </p>
       <div class="hero-cta">
-        <a href="/calculator" class="btn btn-primary">Price Calculator</a>
-        <a href="#comparison" class="btn btn-secondary">View Comparison</a>
+        <a href="/calculator" class="btn btn-primary">Calculate Your Savings</a>
+        <a href="#comparison" class="btn btn-secondary">See All Prices</a>
       </div>
 
       <div class="hero-stats">
@@ -93,29 +92,29 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
         <a href="/residential" class="type-card">
           <div class="type-icon">🏠</div>
           <h3>Residential Proxies</h3>
-          <p>Real residential IPs from ISPs worldwide. Best for web scraping and data collection.</p>
-          <div class="type-count">{countByType('residential')} providers</div>
+          <p>Real IPs from home networks via ISPs. Bypass anti-bot systems on protected sites like Amazon, Google, and social platforms. Rotating or sticky sessions available.</p>
+          <div class="type-count">{countByType('residential')} providers with $/GB pricing</div>
         </a>
 
         <a href="/datacenter" class="type-card">
           <div class="type-icon">🏢</div>
           <h3>Datacenter Proxies</h3>
-          <p>Fast, affordable proxies from data centers. Perfect for high-volume tasks.</p>
-          <div class="type-count">{countByType('datacenter')} providers</div>
+          <p>Server-hosted IPs with sub-100ms latency and unlimited bandwidth. 10-50x cheaper than residential. Ideal for high-volume scraping where detection is not critical.</p>
+          <div class="type-count">{countByType('datacenter')} providers compared</div>
         </a>
 
         <a href="/mobile" class="type-card">
           <div class="type-icon">📱</div>
           <h3>Mobile Proxies</h3>
-          <p>Real mobile IPs from cellular networks. Highest trust score for sensitive tasks.</p>
-          <div class="type-count">{countByType('mobile')} providers</div>
+          <p>4G/5G IPs from real carrier networks. CGNAT means thousands of users share each IP naturally, making blocks nearly impossible. Premium pricing, premium trust.</p>
+          <div class="type-count">{countByType('mobile')} providers tracked</div>
         </a>
 
         <a href="/isp" class="type-card">
           <div class="type-icon">🌐</div>
           <h3>ISP Proxies</h3>
-          <p>Static residential IPs from ISPs. Combines speed and legitimacy.</p>
-          <div class="type-count">{countByType('isp')} providers</div>
+          <p>Static IPs registered to ISPs but hosted in datacenters. Residential-level trust with datacenter speed. Perfect for account management and long sessions.</p>
+          <div class="type-count">{countByType('isp')} providers available</div>
         </a>
       </div>
     </div>
@@ -141,9 +140,9 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
 
   <section class="trust-section">
     <div class="container">
-      <h2>Why Trust ProxyPrice?</h2>
+      <h2>Why Proxy Buyers Trust Us</h2>
       <p class="trust-subtitle">
-        We provide unbiased, transparent pricing comparisons to help you make informed decisions.
+        We built ProxyPrice because we were tired of spending hours comparing providers ourselves. No affiliate rankings, no paid placements. Just real pricing data.
       </p>
 
       <div class="trust-grid">
@@ -154,8 +153,8 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
               <path d="M10 2a8 8 0 100 16 8 8 0 000-16zM1 10a9 9 0 1118 0 9 9 0 01-18 0z" />
             </svg>
           </div>
-          <h3>100% Independent</h3>
-          <p>We are not owned by any proxy provider. Our comparisons are unbiased and based solely on published pricing data.</p>
+          <h3>Zero Provider Ownership</h3>
+          <p>Unlike "review" sites that are secretly owned by proxy companies, we have no financial stake in which provider you choose. Our only goal is accurate data.</p>
         </div>
 
         <div class="trust-card">
@@ -164,8 +163,8 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3>{verificationRate}% Price Verified</h3>
-          <p>Every pricing point is manually verified from provider sources. {totalComparableRecords} records with comparable $/GB pricing.</p>
+          <h3>{verificationRate}% Manually Verified</h3>
+          <p>Every price is pulled directly from official provider websites. We track {totalComparableRecords} pricing tiers that can be fairly compared using our $/GB standard.</p>
         </div>
 
         <div class="trust-card">
@@ -174,8 +173,8 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3>Regularly Updated</h3>
-          <p>Our data is refreshed regularly to ensure you see current pricing. Last update: {pricingData.last_updated}.</p>
+          <h3>Fresh Data Always</h3>
+          <p>Proxy pricing changes constantly. We monitor providers and update our database regularly so you never compare stale numbers. Last sync: {pricingData.last_updated}.</p>
         </div>
 
         <div class="trust-card">
@@ -184,8 +183,8 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
               <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
             </svg>
           </div>
-          <h3>Transparent Methodology</h3>
-          <p>We explain exactly how we collect and normalize pricing data. No hidden formulas or black-box algorithms.</p>
+          <h3>Open Methodology</h3>
+          <p>Wondering how we calculate $/GB from complex pricing tiers? We document everything. Check our methodology page to see exactly how we normalize data.</p>
         </div>
       </div>
 
@@ -213,22 +212,22 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
 
   <section class="how-it-works">
     <div class="container">
-      <h2>How ProxyPrice Works</h2>
+      <h2>How We Cut Through the Confusion</h2>
       <div class="steps-grid">
         <div class="step">
           <div class="step-number">1</div>
-          <h3>We Collect</h3>
-          <p>We collect public pricing data from 40+ proxy providers and keep it updated regularly.</p>
+          <h3>Collect Official Prices</h3>
+          <p>We pull pricing directly from {providersData.total_count}+ provider websites. No third-party data, no outdated spreadsheets. Just current, verified pricing tiers.</p>
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <h3>We Normalize</h3>
-          <p>We convert all pricing models to $/GB for transparent comparisons.</p>
+          <h3>Normalize to $/GB</h3>
+          <p>Providers use different models: per-GB, per-IP, bundled plans. We convert everything to a single standard so you can compare apples to apples.</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
-          <h3>You Compare</h3>
-          <p>Use our calculator or comparison tables to find the best deal for your needs.</p>
+          <h3>Find Your Match</h3>
+          <p>Filter by proxy type, sort by price, or use our calculator to estimate costs for your specific bandwidth needs. Make informed decisions in minutes.</p>
         </div>
       </div>
     </div>

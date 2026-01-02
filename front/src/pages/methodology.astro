@@ -11,13 +11,13 @@ const verificationRate = Math.round((comparableRecords / totalPricingRecords) * 
 
 <BaseLayout
   title="Methodology"
-  description="How ProxyPrice collects and normalizes proxy pricing. Learn what is comparable ($/GB) and what is not."
+  description="How ProxyPrice collects, normalizes, and compares proxy pricing. Learn what makes pricing comparable ($/GB conversion) and why some pricing models cannot be fairly converted."
 >
   <div class="container" style="padding: 3rem 0;">
     <header class="page-header">
-      <h1>Methodology</h1>
+      <h1>Our Methodology</h1>
       <p class="page-subtitle">
-        Proxy providers price products in many ways. Here's how we standardize pricing and what we consider comparable.
+        Proxy providers use wildly different pricing models. This page explains exactly how we normalize them for fair comparison, what we mark as comparable, and where conversion would be misleading.
       </p>
       <div class="header-trust">
         <TrustBadge lastUpdated={pricingData.last_updated} variant="inline" providerCount={providersData.total_count} />
@@ -29,11 +29,10 @@ const verificationRate = Math.round((comparableRecords / totalPricingRecords) * 
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
           <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
         </svg>
-        <h2>Our Commitment to Transparency</h2>
+        <h2>Data Independence Guarantee</h2>
       </div>
       <p class="transparency-text">
-        ProxyPrice is independently operated and has no financial relationships with any proxy providers.
-        Our comparisons are based solely on publicly available pricing data, manually collected and verified.
+        ProxyPrice is independently operated. We have no ownership stakes, exclusive partnerships, or financial arrangements with any proxy provider. Rankings are determined purely by normalized pricing data, not affiliate commissions or promotional agreements.
       </p>
       <div class="transparency-metrics">
         <div class="tm-item">
@@ -52,16 +51,23 @@ const verificationRate = Math.round((comparableRecords / totalPricingRecords) * 
     </section>
 
     <section class="content">
-      <h2>Comparable vs non-comparable</h2>
+      <h2>Comparable vs Non-Comparable Pricing</h2>
       <p>
-        A record is marked <strong>comparable</strong> only when it includes an explicit per-GB rate (for example <code>$5/GB</code>)
-        or a plan that can be converted to <strong>$/GB</strong>.
+        We mark a pricing record as <strong>comparable</strong> only when we can mathematically convert it to a reliable <strong>$/GB</strong> rate. This happens when:
       </p>
+      <ul>
+        <li>The provider publishes an explicit per-GB rate (e.g., <code>$5/GB</code>)</li>
+        <li>The plan includes both total cost and bandwidth allocation (e.g., <code>$600/50GB</code> converts to <code>$12/GB</code>)</li>
+      </ul>
+
       <p>
-        When pricing is expressed as <strong>per IP</strong>, <strong>per proxy</strong>, or <strong>per thread</strong>, we do not convert
-        it to <strong>$/GB</strong> because bandwidth allowances vary and conversion would be misleading. Those records are shown as
-        <strong>non-comparable</strong>.
+        We mark pricing as <strong>non-comparable</strong> when conversion would be misleading:
       </p>
+      <ul>
+        <li><strong>Per-IP pricing</strong> without bandwidth limits (e.g., <code>$5/IP/month</code> with "unlimited" bandwidth)</li>
+        <li><strong>Per-port or per-thread pricing</strong> where bandwidth varies by usage pattern</li>
+        <li><strong>Custom/enterprise pricing</strong> that requires contacting sales</li>
+      </ul>
 
       <div class="info-box">
         <div class="info-icon">
@@ -70,46 +76,45 @@ const verificationRate = Math.round((comparableRecords / totalPricingRecords) * 
           </svg>
         </div>
         <div class="info-content">
-          <strong>Why we do not convert per-IP pricing</strong>
-          <p>Converting per-IP pricing to per-GB would be misleading because different providers include vastly different bandwidth allowances. We show non-comparable pricing as-is so you can make informed decisions.</p>
+          <strong>Why We Refuse to Convert Per-IP Pricing</strong>
+          <p>If Provider A offers $3/IP with 50GB bandwidth and Provider B offers $5/IP with unlimited bandwidth, converting both to "$/GB" would unfairly penalize Provider B. We show these as-is so you can evaluate the full picture.</p>
         </div>
       </div>
 
-      <h2>How we compute $/GB</h2>
+      <h2>How We Calculate $/GB</h2>
       <ul>
-        <li>If the tier already provides <code>$X/GB</code>, we use that as the per-GB rate.</li>
-        <li>If the tier is a plan like <code>$600/50GB</code>, we compute <code>600 / 50 = 12.00</code> $/GB.</li>
-        <li>For each provider + proxy type, we compute the <strong>min</strong> and <strong>max</strong> $/GB across tiers.</li>
+        <li><strong>Direct rate:</strong> If the tier shows <code>$X/GB</code>, we use that value directly.</li>
+        <li><strong>Bundle conversion:</strong> For plans like <code>$600/50GB</code>, we divide: <code>600 / 50 = $12.00/GB</code>.</li>
+        <li><strong>Tiered pricing:</strong> For each provider + proxy type combination, we track the <strong>min</strong> (cheapest tier) and <strong>max</strong> (most expensive tier) $/GB rates.</li>
+        <li><strong>Volume discounts:</strong> We capture multiple tiers when available, so you can see both entry-level and enterprise rates.</li>
       </ul>
 
-      <h2>Data collection process</h2>
+      <h2>Data Collection Process</h2>
       <ol>
-        <li><strong>Provider Discovery</strong> - We identify proxy providers through industry research and user submissions.</li>
-        <li><strong>Manual Collection</strong> - Pricing data is manually collected from official provider websites.</li>
-        <li><strong>Normalization</strong> - All pricing is converted to standardized formats for comparison.</li>
-        <li><strong>Verification</strong> - Data is verified against source material before publication.</li>
-        <li><strong>Regular Updates</strong> - We refresh our data regularly to catch pricing changes.</li>
+        <li><strong>Provider Discovery:</strong> We identify proxy providers through industry research, competitor analysis, and user submissions. We prioritize providers with public, transparent pricing.</li>
+        <li><strong>Manual Collection:</strong> Pricing data is manually extracted from official provider websites. We capture plan names, bandwidth allocations, costs, and any restrictions or conditions.</li>
+        <li><strong>Normalization:</strong> Raw pricing is converted to our standard format with computed $/GB rates where applicable.</li>
+        <li><strong>Verification:</strong> Each entry is cross-checked against the source URL before publication. We note any ambiguities or conditions.</li>
+        <li><strong>Regular Updates:</strong> We monitor major providers for pricing changes and update our database accordingly. The update frequency varies by provider importance.</li>
       </ol>
 
-      <h2>Sorting and recommendations</h2>
+      <h2>Sorting and Ranking Logic</h2>
       <ul>
-        <li>Comparison tables sort by <strong>min $/GB</strong> (lowest first) for comparable records.</li>
-        <li>The calculator recommends providers by selecting the cheapest tier that covers your requested GB (when available).</li>
+        <li><strong>Comparison tables:</strong> Sort by <strong>min $/GB</strong> (lowest first) for comparable records. Non-comparable records appear separately or at the end.</li>
+        <li><strong>Price calculator:</strong> Recommends providers by finding the cheapest tier that meets your requested bandwidth amount.</li>
+        <li><strong>"Best" rankings:</strong> Limited to comparable providers only. We rank purely by lowest available $/GB rate.</li>
       </ul>
 
-      <h2>Data freshness</h2>
+      <h2>Data Freshness</h2>
       <p>
-        Dataset last updated <strong>{pricingData.last_updated}</strong>. If you see stale data, please
-        <a href="https://github.com/proxyprice/proxyprice/issues">report an issue</a>.
+        Dataset last synchronized: <strong>{pricingData.last_updated}</strong>. We actively monitor major providers and typically update within 1-2 weeks of significant pricing changes. If you notice stale or incorrect data, please <a href="https://github.com/proxyprice/proxyprice/issues">report an issue</a> and we will correct it promptly.
       </p>
     </section>
 
     <section class="disclaimer-section">
-      <h3>Disclaimer</h3>
+      <h3>Important Disclaimer</h3>
       <p>
-        ProxyPrice is an independent comparison platform. We do not sell proxies directly and are not affiliated
-        with any provider. While we strive for accuracy, pricing may change and we cannot guarantee real-time accuracy.
-        Always verify pricing directly with the provider before making a purchase decision.
+        ProxyPrice is an independent comparison platform. We do not sell proxies directly and have no ownership or exclusive partnership arrangements with any provider. While we strive for accuracy, proxy pricing changes frequently and we cannot guarantee real-time accuracy. Always verify current pricing on the provider's official website before making a purchase decision. Our $/GB calculations are based on published pricing at the time of data collection. Actual costs may vary based on your specific usage patterns, negotiated rates, or promotional offers.
       </p>
     </section>
   </div>
