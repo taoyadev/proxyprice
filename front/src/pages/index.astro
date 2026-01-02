@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import TrustBadge from '../components/TrustBadge.astro';
+import UpdatedDailyBadge from '../components/UpdatedDailyBadge.astro';
 import providersData from '../data/providers.json';
 import pricingData from '../data/pricing.json';
 import { getFaviconUrl } from '../lib/favicon';
@@ -33,6 +34,10 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
       <div class="hero-cta">
         <a href="/calculator" class="btn btn-primary">Calculate Your Savings</a>
         <a href="#comparison" class="btn btn-secondary">See All Prices</a>
+      </div>
+
+      <div class="hero-updated-badge">
+        <UpdatedDailyBadge variant="hero" lastUpdated={pricingData.last_updated} />
       </div>
 
       <div class="hero-stats">
@@ -294,7 +299,13 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
     display: flex;
     gap: 1rem;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-updated-badge {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
   }
 
   .btn {

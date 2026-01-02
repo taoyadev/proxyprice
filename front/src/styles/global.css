@@ -1510,3 +1510,269 @@ input[type="range"]:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================
+   Guide Content Styles - Premium Documentation
+   ============================================ */
+
+.guide-content {
+  max-width: 900px;
+  margin: 3rem auto 0;
+  padding-top: 3rem;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.guide-section {
+  margin-bottom: 2.5rem;
+  padding: 2rem 2.5rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  position: relative;
+}
+
+.guide-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.guide-section:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-alpha-20);
+  transform: translateY(-2px);
+}
+
+.guide-section:hover::before {
+  opacity: 1;
+}
+
+.guide-section h2 {
+  font-size: 1.375rem;
+  margin-bottom: 1.25rem;
+  color: var(--color-text);
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-primary);
+  display: inline-block;
+  letter-spacing: -0.02em;
+}
+
+.guide-section p {
+  margin-bottom: 1.25rem;
+  line-height: 1.8;
+  color: var(--color-text-light);
+  font-size: 1rem;
+}
+
+.guide-section p:last-child {
+  margin-bottom: 0;
+}
+
+.guide-section strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Use Case List - Premium Card Grid */
+.use-case-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 0.875rem;
+}
+
+.use-case-list li {
+  position: relative;
+  padding: 1.125rem 1.25rem 1.125rem 3.25rem;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-alt) 0%,
+    var(--color-bg) 100%
+  );
+  border-radius: var(--radius-lg);
+  line-height: 1.7;
+  color: var(--color-text-light);
+  border: 1px solid var(--color-border-light);
+  transition: all var(--transition-normal);
+}
+
+.use-case-list li:hover {
+  border-color: var(--color-primary-alpha-20);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary-alpha-10) 0%,
+    var(--color-bg) 100%
+  );
+  transform: translateX(4px);
+  box-shadow: var(--shadow-sm);
+}
+
+.use-case-list li::before {
+  content: "";
+  position: absolute;
+  left: 1.25rem;
+  top: 1.375rem;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-primary-dark) 100%
+  );
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--color-primary-alpha-20);
+}
+
+.use-case-list strong {
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+/* Comparison Grid - Premium Card Design */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.comparison-item {
+  background: var(--color-bg-elevated);
+  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.comparison-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+}
+
+.comparison-item:hover {
+  border-color: var(--color-primary-alpha-20);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.comparison-item:hover::before {
+  opacity: 1;
+}
+
+.comparison-item h3 {
+  font-size: 1.0625rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-text);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.comparison-item h3::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.comparison-item p {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text-light);
+  margin: 0;
+}
+
+/* Header Badges Container */
+.header-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+/* Additional Content Section */
+.content {
+  max-width: 900px;
+  margin: 2.5rem auto 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.content h2 {
+  margin-bottom: 0.75rem;
+}
+
+.content ul {
+  padding-left: 1.25rem;
+}
+
+.muted {
+  color: var(--color-text-light);
+  margin-top: 1rem;
+}
+
+/* Guide Content Responsive */
+@media (max-width: 768px) {
+  .guide-content {
+    padding-top: 2rem;
+    margin-top: 2rem;
+  }
+
+  .guide-section {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .guide-section h2 {
+    font-size: 1.25rem;
+  }
+
+  .comparison-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .use-case-list li {
+    padding-left: 2.75rem;
+  }
+
+  .use-case-list li::before {
+    left: 1rem;
+  }
+
+  .header-badges {
+    align-items: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}

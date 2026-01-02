@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import TrustBadge from '../components/TrustBadge.astro';
+import UpdatedDailyBadge from '../components/UpdatedDailyBadge.astro';
 import pricingData from '../data/pricing.json';
 ---
 
@@ -18,7 +19,10 @@ import pricingData from '../data/pricing.json';
             Server-hosted IPs with enterprise-grade speed and reliability. The most cost-effective option for high-volume operations. Compare shared vs dedicated, IPv4 vs IPv6, and per-IP vs bandwidth pricing models.
           </p>
         </div>
-        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+        <div class="header-badges">
+          <UpdatedDailyBadge variant="inline" />
+          <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+        </div>
       </div>
     </header>
 
@@ -146,25 +150,5 @@ import pricingData from '../data/pricing.json';
       flex-direction: column;
       align-items: flex-start;
     }
-  }
-
-  .content {
-    max-width: 900px;
-    margin: 2.5rem auto 0;
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .content h2 {
-    margin-bottom: 0.75rem;
-  }
-
-  .content ul {
-    padding-left: 1.25rem;
-  }
-
-  .muted {
-    color: var(--color-text-light);
-    margin-top: 1rem;
   }
 </style>

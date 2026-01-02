@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import TrustBadge from '../components/TrustBadge.astro';
+import UpdatedDailyBadge from '../components/UpdatedDailyBadge.astro';
 import pricingData from '../data/pricing.json';
 ---
 
@@ -18,7 +19,10 @@ import pricingData from '../data/pricing.json';
             Genuine residential IPs assigned by ISPs to real households. The gold standard for bypassing Cloudflare, DataDome, PerimeterX, and other anti-bot systems. Compare rotating pools, sticky sessions, and geo-targeting options.
           </p>
         </div>
-        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+        <div class="header-badges">
+          <UpdatedDailyBadge variant="inline" />
+          <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+        </div>
       </div>
     </header>
 
@@ -142,100 +146,5 @@ import pricingData from '../data/pricing.json';
       flex-direction: column;
       align-items: flex-start;
     }
-  }
-
-  .guide-content {
-    max-width: 900px;
-    margin: 3rem auto 0;
-    padding-top: 2.5rem;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .guide-section {
-    margin-bottom: 2.5rem;
-  }
-
-  .guide-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    color: var(--color-text);
-  }
-
-  .guide-section p {
-    margin-bottom: 1rem;
-    line-height: 1.7;
-    color: var(--color-text-light);
-  }
-
-  .guide-section strong {
-    color: var(--color-text);
-  }
-
-  .use-case-list {
-    padding-left: 1.25rem;
-    margin-top: 1rem;
-  }
-
-  .use-case-list li {
-    margin-bottom: 0.75rem;
-    line-height: 1.6;
-    color: var(--color-text-light);
-  }
-
-  .use-case-list strong {
-    color: var(--color-text);
-  }
-
-  .comparison-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-    margin-top: 1.5rem;
-  }
-
-  @media (max-width: 768px) {
-    .comparison-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  .comparison-item {
-    background: var(--color-bg-alt);
-    padding: 1.25rem;
-    border-radius: 8px;
-    border: 1px solid var(--color-border);
-  }
-
-  .comparison-item h3 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-text);
-  }
-
-  .comparison-item p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: var(--color-text-light);
-    margin: 0;
-  }
-
-  .content {
-    max-width: 900px;
-    margin: 2.5rem auto 0;
-    padding-top: 2rem;
-    border-top: 1px solid var(--color-border);
-  }
-
-  .content h2 {
-    margin-bottom: 0.75rem;
-  }
-
-  .content ul {
-    padding-left: 1.25rem;
-  }
-
-  .muted {
-    color: var(--color-text-light);
-    margin-top: 1rem;
   }
 </style>
