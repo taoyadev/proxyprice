@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'astro/types';
 import { DATA_LAST_UPDATED, FEEDBACK_URL, SITE_NAME, SITE_URL } from '../lib/site';
 import Analytics from '../components/Analytics.astro';
+import ChatWidget from '../components/ChatWidget';
 
 interface Props extends HTMLAttributes<'html'> {
   title: string;
@@ -533,5 +534,7 @@ if (breadcrumbs.length >= 2) {
 	    </script>
     <!-- Privacy-Friendly Analytics -->
     <Analytics />
+    <!-- AI Chat Assistant -->
+    <ChatWidget client:load />
   </body>
 </html>
