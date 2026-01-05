@@ -1516,7 +1516,7 @@ input[type="range"]:focus-visible {
    ============================================ */
 
 .guide-content {
-  max-width: 500px;
+  max-width: 720px;
   margin: 3rem auto 0;
   padding-top: 3rem;
   border-top: 1px solid var(--color-border-light);
