@@ -1523,8 +1523,8 @@ input[type="range"]:focus-visible {
 }
 
 .guide-section {
-  margin-bottom: 2.5rem;
-  padding: 2.5rem 3rem;
+  margin-bottom: 3rem;
+  padding: 2.5rem 2.5rem 3rem;
   background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
@@ -1562,7 +1562,7 @@ input[type="range"]:focus-visible {
 
 .guide-section h2 {
   font-size: 1.375rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   color: var(--color-text);
   padding-bottom: 0.75rem;
   border-bottom: 2px solid var(--color-primary);
@@ -1571,8 +1571,8 @@ input[type="range"]:focus-visible {
 }
 
 .guide-section p {
-  margin-bottom: 1.5rem;
-  line-height: 1.85;
+  margin-bottom: 1.75rem;
+  line-height: 2;
   color: var(--color-text-light);
   font-size: 1rem;
 }
