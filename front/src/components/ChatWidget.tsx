@@ -97,7 +97,7 @@ export default function ChatWidget() {
           ...prev,
           { role: "assistant", content: data.message },
         ]);
-      } catch (error) {
+      } catch {
         setMessages((prev) => [
           ...prev,
           {
