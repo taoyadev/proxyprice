@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, useCallback } from "preact/hooks";
-import type { JSX } from "preact";
 
 interface Message {
   role: "user" | "assistant";
@@ -113,12 +112,12 @@ export default function ChatWidget() {
     [messages, isLoading],
   );
 
-  const handleSubmit = (e: JSX.TargetedEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: Event) => {
     e.preventDefault();
     sendMessage(input);
   };
 
-  const handleKeyDown = (e: JSX.TargetedKeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (e: KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       sendMessage(input);
@@ -130,7 +129,7 @@ export default function ChatWidget() {
     setShowBubble(false);
   };
 
-  const closeBubble = (e: JSX.TargetedMouseEvent<HTMLButtonElement>) => {
+  const closeBubble = (e: MouseEvent) => {
     e.stopPropagation();
     setShowBubble(false);
   };

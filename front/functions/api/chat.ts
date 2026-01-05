@@ -3,9 +3,22 @@
  * Securely proxies requests to OpenRouter without exposing API keys
  */
 
+// Cloudflare Pages Function types
 interface Env {
   OPENROUTER_API_KEY: string;
 }
+
+interface EventContext<E> {
+  request: Request;
+  env: E;
+  params: Record<string, string>;
+  waitUntil: (promise: Promise<unknown>) => void;
+  passThroughOnException: () => void;
+}
+
+type PagesFunction<E = unknown> = (
+  context: EventContext<E>,
+) => Response | Promise<Response>;
 
 interface ChatRequest {
   message: string;
