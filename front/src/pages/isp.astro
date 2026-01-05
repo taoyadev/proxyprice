@@ -86,22 +86,66 @@ import pricingData from '../data/pricing.json';
         <p>
           ISP and residential proxies both offer legitimate user IPs, but their underlying architecture creates important differences in performance, persistence, and pricing.
         </p>
-        <div class="comparison-grid">
-          <div class="comparison-item">
-            <h3>IP Persistence</h3>
-            <p>ISP proxies are static, giving you the same IP for weeks or months at a time. Residential proxies typically rotate, cycling through different IPs with each request or session. Choose ISP for stable identity; choose residential for anonymity through rotation.</p>
+        <div class="comparison-grid enhanced">
+          <div class="comparison-item" data-icon="lock">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>IP Persistence</h3>
+              <p>ISP proxies are static, giving you the same IP for weeks or months at a time. Residential proxies typically rotate, cycling through different IPs with each request or session. Choose ISP for stable identity; choose residential for anonymity through rotation.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner isp">ISP</span>
+                <span class="verdict-label">wins for stability</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Speed and Reliability</h3>
-            <p>ISP proxies run on datacenter infrastructure, delivering consistent high-speed performance with enterprise uptime. Residential proxies route through consumer networks with variable speeds depending on the end user's connection quality and availability.</p>
+          <div class="comparison-item" data-icon="zap">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Speed and Reliability</h3>
+              <p>ISP proxies run on datacenter infrastructure, delivering consistent high-speed performance with enterprise uptime. Residential proxies route through consumer networks with variable speeds depending on the end user's connection quality and availability.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner isp">ISP</span>
+                <span class="verdict-label">wins for speed</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Trust Level</h3>
-            <p>Both proxy types appear as legitimate ISP customers to websites. ISP proxies may face slightly higher scrutiny because their IPs can be fingerprinted as hosting-based despite ISP registration. Residential proxies from actual homes have slightly higher trust for extremely sensitive targets.</p>
+          <div class="comparison-item" data-icon="shield">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Trust Level</h3>
+              <p>Both proxy types appear as legitimate ISP customers to websites. ISP proxies may face slightly higher scrutiny because their IPs can be fingerprinted as hosting-based despite ISP registration. Residential proxies from actual homes have slightly higher trust for extremely sensitive targets.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner">Residential</span>
+                <span class="verdict-label">slight edge</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Cost Structure</h3>
-            <p>ISP proxies charge per IP with often unlimited bandwidth, making costs predictable. Residential proxies charge per GB, which can add up quickly for bandwidth-heavy tasks. For high-traffic stable sessions, ISP proxies often provide better value.</p>
+          <div class="comparison-item" data-icon="dollar">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Cost Structure</h3>
+              <p>ISP proxies charge per IP with often unlimited bandwidth, making costs predictable. Residential proxies charge per GB, which can add up quickly for bandwidth-heavy tasks. For high-traffic stable sessions, ISP proxies often provide better value.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner isp">ISP</span>
+                <span class="verdict-label">wins for value</span>
+              </div>
+            </div>
           </div>
         </div>
       </article>

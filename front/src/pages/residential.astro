@@ -79,22 +79,66 @@ import pricingData from '../data/pricing.json';
         <p>
           Choosing between residential and datacenter proxies depends on your specific requirements for anonymity, speed, and budget. Each type has distinct advantages for different use cases.
         </p>
-        <div class="comparison-grid">
-          <div class="comparison-item">
-            <h3>Anonymity and Detection</h3>
-            <p>Residential proxies offer superior anonymity because they use real ISP-assigned IPs. Websites struggle to differentiate residential proxy traffic from regular visitors. Datacenter IPs are easier to identify and block since they originate from known hosting ranges.</p>
+        <div class="comparison-grid enhanced">
+          <div class="comparison-item" data-icon="shield">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Anonymity and Detection</h3>
+              <p>Residential proxies offer superior anonymity because they use real ISP-assigned IPs. Websites struggle to differentiate residential proxy traffic from regular visitors. Datacenter IPs are easier to identify and block since they originate from known hosting ranges.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner">Residential</span>
+                <span class="verdict-label">wins for stealth</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Speed and Performance</h3>
-            <p>Datacenter proxies typically deliver faster connection speeds and lower latency because they run on dedicated server infrastructure. Residential proxies route through consumer networks, which can introduce variable performance depending on the end user's connection quality.</p>
+          <div class="comparison-item" data-icon="zap">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Speed and Performance</h3>
+              <p>Datacenter proxies typically deliver faster connection speeds and lower latency because they run on dedicated server infrastructure. Residential proxies route through consumer networks, which can introduce variable performance depending on the end user's connection quality.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner datacenter">Datacenter</span>
+                <span class="verdict-label">wins for speed</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Cost Efficiency</h3>
-            <p>Datacenter proxies are significantly cheaper, often 10-20x less expensive than residential options. For high-volume tasks where detection is not a concern, datacenter proxies provide better cost efficiency. Residential proxies justify their premium for tasks requiring authentic user appearances.</p>
+          <div class="comparison-item" data-icon="dollar">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Cost Efficiency</h3>
+              <p>Datacenter proxies are significantly cheaper, often 10-20x less expensive than residential options. For high-volume tasks where detection is not a concern, datacenter proxies provide better cost efficiency. Residential proxies justify their premium for tasks requiring authentic user appearances.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner datacenter">Datacenter</span>
+                <span class="verdict-label">wins for budget</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Pool Size and Coverage</h3>
-            <p>Leading residential providers maintain pools of 50+ million IPs across every country. Datacenter providers offer smaller pools but with more predictable availability. Residential IPs rotate frequently as users connect and disconnect, while datacenter IPs remain stable.</p>
+          <div class="comparison-item" data-icon="globe">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Pool Size and Coverage</h3>
+              <p>Leading residential providers maintain pools of 50+ million IPs across every country. Datacenter providers offer smaller pools but with more predictable availability. Residential IPs rotate frequently as users connect and disconnect, while datacenter IPs remain stable.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner">Residential</span>
+                <span class="verdict-label">wins for coverage</span>
+              </div>
+            </div>
           </div>
         </div>
       </article>

@@ -83,22 +83,66 @@ import pricingData from '../data/pricing.json';
         <p>
           Understanding the tradeoffs between datacenter and residential proxies helps you select the right tool for each task. Here is how they compare across critical dimensions.
         </p>
-        <div class="comparison-grid">
-          <div class="comparison-item">
-            <h3>Cost Comparison</h3>
-            <p>Datacenter proxies offer dramatically lower costs, often 10-50x cheaper than residential alternatives. A datacenter proxy might cost $2-5 per month with unlimited bandwidth, while residential proxies charge $5-15 per GB. For bandwidth-heavy tasks, datacenter proxies provide substantial savings.</p>
+        <div class="comparison-grid enhanced">
+          <div class="comparison-item" data-icon="dollar">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Cost Comparison</h3>
+              <p>Datacenter proxies offer dramatically lower costs, often 10-50x cheaper than residential alternatives. A datacenter proxy might cost $2-5 per month with unlimited bandwidth, while residential proxies charge $5-15 per GB. For bandwidth-heavy tasks, datacenter proxies provide substantial savings.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner datacenter">Datacenter</span>
+                <span class="verdict-label">wins for cost</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Speed and Reliability</h3>
-            <p>Datacenter proxies deliver consistent high-speed connections because they run on enterprise infrastructure with dedicated bandwidth. Expect sub-100ms latency and speeds measured in Gbps. Residential proxies depend on consumer connections, introducing variable performance.</p>
+          <div class="comparison-item" data-icon="zap">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Speed and Reliability</h3>
+              <p>Datacenter proxies deliver consistent high-speed connections because they run on enterprise infrastructure with dedicated bandwidth. Expect sub-100ms latency and speeds measured in Gbps. Residential proxies depend on consumer connections, introducing variable performance.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner datacenter">Datacenter</span>
+                <span class="verdict-label">wins for speed</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Detection and Blocking</h3>
-            <p>Websites can easily identify datacenter IP ranges through ASN databases. Sophisticated anti-bot systems like Cloudflare, PerimeterX, and DataDome actively block or challenge datacenter traffic. Residential IPs avoid this detection because they match legitimate user patterns.</p>
+          <div class="comparison-item" data-icon="shield">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Detection and Blocking</h3>
+              <p>Websites can easily identify datacenter IP ranges through ASN databases. Sophisticated anti-bot systems like Cloudflare, PerimeterX, and DataDome actively block or challenge datacenter traffic. Residential IPs avoid this detection because they match legitimate user patterns.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner">Residential</span>
+                <span class="verdict-label">wins for stealth</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Use Case Fit</h3>
-            <p>Choose datacenter proxies for: high-volume scraping of permissive sites, SEO monitoring, internal testing, and cost-sensitive operations. Choose residential proxies for: scraping protected sites, social media automation, ad verification, and any task requiring authentic user appearance.</p>
+          <div class="comparison-item" data-icon="target">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Use Case Fit</h3>
+              <p>Choose datacenter proxies for: high-volume scraping of permissive sites, SEO monitoring, internal testing, and cost-sensitive operations. Choose residential proxies for: scraping protected sites, social media automation, ad verification, and any task requiring authentic user appearance.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner datacenter">Datacenter</span>
+                <span class="verdict-label">for volume</span>
+              </div>
+            </div>
           </div>
         </div>
       </article>

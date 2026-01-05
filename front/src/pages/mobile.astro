@@ -83,22 +83,66 @@ import pricingData from '../data/pricing.json';
         <p>
           Both mobile and residential proxies provide authentic user IPs, but they differ in important ways that affect performance, cost, and use case fit.
         </p>
-        <div class="comparison-grid">
-          <div class="comparison-item">
-            <h3>Trust and Detection</h3>
-            <p>Mobile proxies carry the highest trust scores because mobile IPs are naturally shared among thousands of users through CGNAT. Blocking a mobile IP risks blocking legitimate customers. Residential IPs have good trust but are increasingly fingerprinted and blacklisted by aggressive anti-bot systems.</p>
+        <div class="comparison-grid enhanced">
+          <div class="comparison-item" data-icon="shield">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Trust and Detection</h3>
+              <p>Mobile proxies carry the highest trust scores because mobile IPs are naturally shared among thousands of users through CGNAT. Blocking a mobile IP risks blocking legitimate customers. Residential IPs have good trust but are increasingly fingerprinted and blacklisted by aggressive anti-bot systems.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner mobile">Mobile</span>
+                <span class="verdict-label">wins for trust</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Price Comparison</h3>
-            <p>Mobile proxies cost 2-5x more than residential alternatives. Expect $20-50 per GB for mobile versus $5-15 per GB for residential. This premium reflects the infrastructure costs and scarcity of mobile IP access. Budget carefully based on your volume requirements.</p>
+          <div class="comparison-item" data-icon="dollar">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Price Comparison</h3>
+              <p>Mobile proxies cost 2-5x more than residential alternatives. Expect $20-50 per GB for mobile versus $5-15 per GB for residential. This premium reflects the infrastructure costs and scarcity of mobile IP access. Budget carefully based on your volume requirements.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner">Residential</span>
+                <span class="verdict-label">wins for budget</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>Speed and Latency</h3>
-            <p>Residential proxies typically offer faster and more stable connections because they route through fixed broadband networks. Mobile proxies may experience variable latency depending on cellular network conditions, signal strength, and carrier congestion.</p>
+          <div class="comparison-item" data-icon="zap">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>Speed and Latency</h3>
+              <p>Residential proxies typically offer faster and more stable connections because they route through fixed broadband networks. Mobile proxies may experience variable latency depending on cellular network conditions, signal strength, and carrier congestion.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner">Residential</span>
+                <span class="verdict-label">wins for speed</span>
+              </div>
+            </div>
           </div>
-          <div class="comparison-item">
-            <h3>When to Choose Mobile</h3>
-            <p>Select mobile proxies for: social media automation, accessing mobile-first platforms, bypassing the most aggressive anti-bot systems, mobile ad verification, and any scenario where residential proxies face blocks. Use residential for general scraping and tasks where mobile trust is not required.</p>
+          <div class="comparison-item" data-icon="target">
+            <div class="comparison-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <div class="comparison-content">
+              <h3>When to Choose Mobile</h3>
+              <p>Select mobile proxies for: social media automation, accessing mobile-first platforms, bypassing the most aggressive anti-bot systems, mobile ad verification, and any scenario where residential proxies face blocks. Use residential for general scraping and tasks where mobile trust is not required.</p>
+              <div class="comparison-verdict">
+                <span class="verdict-winner mobile">Mobile</span>
+                <span class="verdict-label">for social media</span>
+              </div>
+            </div>
           </div>
         </div>
       </article>
