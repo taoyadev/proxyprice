@@ -213,6 +213,10 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=proxyprice --branch=pr-${{ github.event.number }}
           workingDirectory: front
+          secrets: |
+            OPENROUTER_API_KEY
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Comment PR with preview URL
         uses: actions/github-script@v7
@@ -269,3 +273,7 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=proxyprice
           workingDirectory: front
+          secrets: |
+            OPENROUTER_API_KEY
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
