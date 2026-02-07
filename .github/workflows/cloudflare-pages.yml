@@ -100,12 +100,6 @@ jobs:
           python3 scripts/parse_csv.py
           python3 scripts/normalize.py
 
-      - name: Copy data to frontend
-        working-directory: .
-        run: |
-          cp data/raw/pricing_raw.json front/src/data/pricing.json
-          cp data/raw/providers_raw.json front/src/data/providers.json
-
       - name: Upload generated data
         uses: actions/upload-artifact@v4
         with:
@@ -157,6 +151,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Download generated data
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-data
+          path: .
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -190,6 +190,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Download generated data
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-data
+          path: .
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -238,6 +244,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Download generated data
+        uses: actions/download-artifact@v4
+        with:
+          name: generated-data
+          path: .
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
