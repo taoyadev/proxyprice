@@ -4,14 +4,9 @@
  * Configures the testing environment with jsdom and custom matchers.
  */
 
-import { expect, afterEach, vi } from "vitest";
+import { afterEach, vi } from "vitest";
 import { cleanup } from "@testing-library/preact";
-
-// Extend Vitest's expect with jest-dom matchers
-// Import matchers directly to avoid top-level expect.extend call
-import { matchers } from "@testing-library/jest-dom/matchers";
-
-Object.assign(expect, matchers);
+import "@testing-library/jest-dom/vitest";
 
 // Cleanup after each test
 afterEach(() => {

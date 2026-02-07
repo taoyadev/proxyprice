@@ -1,162 +1,115 @@
 /**
  * Calculator Component Tests
  *
- * Tests the Calculator.tsx component including:
- * - Signal state management
- * - Recommendation generation logic
- * - Monthly cost calculations
- * - Price per GB calculations
- * - Best value determination
- * - PAYG tier handling
- * - Fallback provider display
+ * Focuses on UI state + rendering. The pricing math is covered by
+ * pure logic tests in `src/lib/__tests__/calculatorLogic.test.ts`.
  */
 
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/preact";
+import type { ProxyType } from "../../lib/proxy-types";
+import type { Recommendation, FallbackProvider } from "../Calculator/types";
 import Calculator from "../Calculator";
 
-// Mock the imported data
-const mockPricingData = {
-  pricing: [
-    {
-      provider_id: "provider-a",
-      provider_name: "Provider A",
-      proxy_type: "residential",
-      comparable: true,
-      has_pricing: true,
-      pricing_model: "per_gb",
-      tiers: [
-        { gb: 10, price_per_gb: 5.0, total: 50, pricing_model: "per_gb" },
-        { gb: 50, price_per_gb: 3.0, total: 150, pricing_model: "per_gb" },
-        { gb: 100, price_per_gb: 2.5, total: 250, pricing_model: "per_gb" },
-      ],
-      tier_count: 3,
-    },
-    {
-      provider_id: "provider-b",
-      provider_name: "Provider B",
-      proxy_type: "residential",
-      comparable: true,
-      has_pricing: true,
-      pricing_model: "per_gb",
-      tiers: [
-        {
-          gb: 1,
-          price_per_gb: 4.5,
-          total: 4.5,
-          pricing_model: "per_gb",
-          is_payg: true,
-        },
-      ],
-      tier_count: 1,
-    },
-    {
-      provider_id: "provider-c",
-      provider_name: "Provider C",
-      proxy_type: "residential",
-      comparable: true,
-      has_pricing: true,
-      pricing_model: "per_gb",
-      tiers: [
-        { gb: 25, price_per_gb: 3.5, total: 87.5, pricing_model: "per_gb" },
-        { gb: 100, price_per_gb: 2.0, total: 200, pricing_model: "per_gb" },
-      ],
-      tier_count: 2,
-    },
-    {
-      provider_id: "provider-d",
-      provider_name: "Provider D",
-      proxy_type: "residential",
-      comparable: false,
-      has_pricing: true,
-      pricing_model: "per_ip",
-      tiers: [],
-      tier_count: 0,
-    },
-    {
-      provider_id: "provider-e",
-      provider_name: "Provider E",
-      proxy_type: "datacenter",
-      comparable: true,
-      has_pricing: true,
-      pricing_model: "per_gb",
-      tiers: [
-        { gb: 100, price_per_gb: 1.0, total: 100, pricing_model: "per_gb" },
-      ],
-      tier_count: 1,
-    },
-  ],
-};
-
-const mockProvidersData = {
-  providers: [
-    {
-      id: "provider-a",
-      name: "Provider A",
-      website_url: "https://example.com/a",
-      slug: "provider-a",
-    },
-    {
-      id: "provider-b",
-      name: "Provider B",
-      website_url: "https://example.com/b",
-      slug: "provider-b",
-    },
-    {
-      id: "provider-c",
-      name: "Provider C",
-      website_url: "https://example.com/c",
-      slug: "provider-c",
-    },
-    {
-      id: "provider-d",
-      name: "Provider D",
-      website_url: "https://example.com/d",
-      slug: "provider-d",
-    },
-    {
-      id: "provider-e",
-      name: "Provider E",
-      website_url: "https://example.com/e",
-      slug: "provider-e",
-    },
-  ],
-  total_count: 5,
-};
-
-// Mock favicon function
+// Mock favicon function (avoid network and keep snapshots stable)
 vi.mock("../../lib/favicon", () => ({
   getFaviconUrl: (url: string) => `https://favicon.com/?url=${url}`,
 }));
 
+function buildMockRecommendations(
+  gb: number,
+  type: ProxyType,
+): Recommendation[] {
+  if (type !== "residential") return [];
+
+  return [
+    {
+      provider: "Provider A",
+      proxyType: "residential",
+      monthlyCost: Math.ceil(2.5 * gb),
+      pricePerGb: 2.5,
+      tierLabel: "100 GB tier at $2.50/GB",
+      provider_id: "provider-a",
+      website_url: "https://example.com/a",
+      reason: "Lowest cost for your bandwidth",
+      isBestValue: true,
+      isMostPopular: false,
+      isPAYG: false,
+    },
+    {
+      provider: "Provider B",
+      proxyType: "residential",
+      monthlyCost: Math.ceil(3.0 * gb),
+      pricePerGb: 3.0,
+      tierLabel: "50 GB tier at $3.00/GB",
+      provider_id: "provider-b",
+      website_url: "https://example.com/b",
+      reason: "Exact tier match for your bandwidth",
+      isBestValue: false,
+      isMostPopular: false,
+      isPAYG: false,
+      savingsPercent: 17,
+    },
+    {
+      provider: "Provider C",
+      proxyType: "residential",
+      monthlyCost: Math.ceil(4.5 * gb),
+      pricePerGb: 4.5,
+      tierLabel: "PAYG at $4.50/GB",
+      provider_id: "provider-c",
+      website_url: "https://example.com/c",
+      reason: "Flexible pay-as-you-go pricing",
+      isBestValue: false,
+      isMostPopular: false,
+      isPAYG: true,
+    },
+  ];
+}
+
+function buildMockFallbackProviders(): FallbackProvider[] {
+  return [
+    {
+      provider: "Fallback Provider",
+      provider_id: "fallback-provider",
+      pricing_model: "per_ip",
+      website_url: "https://example.com/fallback",
+    },
+  ];
+}
+
+vi.mock("../Calculator/compute", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("../Calculator/compute")>();
+  return {
+    ...actual,
+    computeRecommendations: (gb: number, type: ProxyType) =>
+      buildMockRecommendations(gb, type),
+    computeFallbackProviders: (type: ProxyType) => {
+      void type;
+      return buildMockFallbackProviders();
+    },
+  };
+});
+
 describe("Calculator Component", () => {
   beforeEach(() => {
-    // Reset modules before each test
-    vi.resetModules();
-
-    // Mock the data imports
-    vi.doMock("../../data/pricing.json", () => mockPricingData);
-    vi.doMock("../../data/providers.json", () => mockProvidersData);
+    // The component syncs state into the URL; reset between tests.
+    window.history.replaceState({}, "", "/");
   });
 
   describe("Bandwidth Input", () => {
     it("renders bandwidth slider with default value of 50 GB", () => {
       render(<Calculator />);
 
-      expect(screen.getByText(/50 GB/i)).toBeInTheDocument();
+      const slider = screen.getByLabelText(/monthly bandwidth/i);
+      expect(slider).toHaveValue("50");
     });
 
     it("updates bandwidth value when slider changes", () => {
       render(<Calculator />);
 
-      const slider =
-        screen.getByRole("slider", { hidden: true }) ||
-        document.querySelector("input[type=range]");
-      if (slider) {
-        fireEvent.input(slider, { target: { value: "100" } });
-        // The value display should update
-        expect(screen.getByText(/100 GB/i)).toBeInTheDocument();
-      }
+      const slider = screen.getByLabelText(/monthly bandwidth/i);
+      fireEvent.input(slider, { target: { value: "100" } });
+      expect(slider).toHaveValue("100");
     });
 
     it("shows minimum and maximum range labels", () => {
@@ -180,56 +133,39 @@ describe("Calculator Component", () => {
     it("defaults to residential proxy type", () => {
       render(<Calculator />);
 
-      const select = screen.getByDisplayValue("Residential");
-      expect(select).toBeInTheDocument();
+      const activeButton = screen.getByRole("button", {
+        name: "Residential Real IP addresses",
+      });
+      expect(activeButton).toHaveAttribute("aria-pressed", "true");
     });
   });
 
   describe("Recommendation Logic", () => {
-    it("calculates monthly cost correctly (50 GB * $3.00 = $150)", async () => {
+    it("renders monthly cost and $/GB rate", () => {
       render(<Calculator />);
 
-      // With 50 GB, Provider C's 100GB tier at $2.50/GB would be $125
-      // Provider B's PAYG at $4.50/GB would be $225
-      // Provider A's 50GB tier at $3.00/GB would be $150
-      // Best should be Provider C at $125
-      const priceElements = screen.queryAllByText(/\$/);
-      expect(
-        priceElements.some((el: HTMLElement) =>
-          el.textContent?.includes("$125"),
-        ),
-      ).toBe(true);
+      // With the mocked data: 50GB * $2.50 = $125
+      expect(screen.getByText("$125")).toBeInTheDocument();
+      expect(screen.getByText("$2.50/GB")).toBeInTheDocument();
 
-      // At minimum, recommendations should be shown
       expect(screen.getByText("Top Recommendations")).toBeInTheDocument();
     });
 
     it("shows best value badge for lowest cost provider", () => {
       render(<Calculator />);
 
-      // Should show "Best Value" badge for the cheapest option
-      const bestValueBadge = screen.queryByText("Best Value");
-      // Badge may or may not be present depending on data
-      expect(
-        bestValueBadge !== null || screen.getByText("Top Recommendations"),
-      ).toBeTruthy();
+      expect(screen.getByText("Best Value")).toBeInTheDocument();
     });
 
     it("displays pay-as-you-go indication for PAYG tiers", () => {
       render(<Calculator />);
 
-      // PAYG providers should be indicated
-      const recommendations = screen.queryByText(/PAYG/i);
-      // This depends on the actual recommendation logic
-      expect(
-        recommendations !== null || screen.getByText("Top Recommendations"),
-      ).toBeTruthy();
+      expect(screen.getByText(/PAYG/i)).toBeInTheDocument();
     });
 
     it("limits recommendations to 10 items", () => {
       render(<Calculator />);
 
-      // Should not show more than 10 recommendations
       const allCards = document.querySelectorAll(".recommendation-card");
       expect(allCards.length).toBeLessThanOrEqual(10);
     });
@@ -239,48 +175,41 @@ describe("Calculator Component", () => {
     it("handles minimum bandwidth (1 GB)", () => {
       render(<Calculator />);
 
-      const slider = document.querySelector(
-        "input[type=range]",
-      ) as HTMLInputElement;
-      if (slider) {
-        fireEvent.input(slider, { target: { value: "1" } });
-        expect(screen.getByText(/1 GB/i)).toBeInTheDocument();
-      }
+      const slider = screen.getByLabelText(/monthly bandwidth/i);
+      fireEvent.input(slider, { target: { value: "1" } });
+      expect(slider).toHaveValue("1");
     });
 
     it("handles maximum bandwidth (1000 GB)", () => {
       render(<Calculator />);
 
-      const slider = document.querySelector(
-        "input[type=range]",
-      ) as HTMLInputElement;
-      if (slider) {
-        fireEvent.input(slider, { target: { value: "1000" } });
-        expect(screen.getByText(/1000 GB/i)).toBeInTheDocument();
-      }
+      const slider = screen.getByLabelText(/monthly bandwidth/i);
+      fireEvent.input(slider, { target: { value: "1000" } });
+      expect(slider).toHaveValue("1000");
     });
 
     it("shows fallback providers when no exact matches", () => {
       render(<Calculator />);
 
-      // When changing to a proxy type with fewer providers
-      const select = screen.getByDisplayValue(
-        "Residential",
-      ) as HTMLSelectElement;
-      if (select) {
-        fireEvent.change(select, { target: { value: "isp" } });
+      const ispButton = screen.getByRole("button", {
+        name: "ISP Static residential",
+      });
+      fireEvent.click(ispButton);
 
-        // Should show some kind of result or fallback
-        expect(screen.getByText("Top Recommendations")).toBeInTheDocument();
-      }
+      expect(screen.getByText("Top Recommendations")).toBeInTheDocument();
+      expect(screen.getByText("No exact matches found")).toBeInTheDocument();
+      expect(screen.getByText(/Alternative/i)).toBeInTheDocument();
     });
 
     it("displays no results message when applicable", () => {
       render(<Calculator />);
 
-      // If no results, should show appropriate message
-      // This depends on the data, so we just check the component renders
-      expect(screen.getByText("Top Recommendations")).toBeInTheDocument();
+      const ispButton = screen.getByRole("button", {
+        name: "ISP Static residential",
+      });
+      fireEvent.click(ispButton);
+
+      expect(screen.getByText("No exact matches found")).toBeInTheDocument();
     });
   });
 
@@ -288,7 +217,6 @@ describe("Calculator Component", () => {
     it("renders provider links correctly", () => {
       render(<Calculator />);
 
-      // Should have links to provider pages
       const links = document.querySelectorAll('a[href^="/provider/"]');
       expect(links.length).toBeGreaterThan(0);
     });
@@ -296,21 +224,14 @@ describe("Calculator Component", () => {
 
   describe("Tier Selection Logic", () => {
     it("selects tier that covers requested bandwidth", () => {
-      // This tests the internal logic through component behavior
       render(<Calculator />);
 
-      // For 50GB:
-      // - 10GB tier won't cover (10 < 50)
-      // - 50GB tier will cover (50 >= 50)
-      // - PAYG always covers
       expect(screen.getByText("Top Recommendations")).toBeInTheDocument();
     });
 
     it("prefers lower price_per_gb when multiple tiers cover bandwidth", () => {
-      // When two tiers both cover the bandwidth, the cheaper one should be selected
       render(<Calculator />);
 
-      // This is tested by observing the "Best Value" badge
       expect(screen.getByText("Top Recommendations")).toBeInTheDocument();
     });
   });
@@ -319,19 +240,26 @@ describe("Calculator Component", () => {
     it("displays fallback providers for non-comparable pricing", () => {
       render(<Calculator />);
 
-      // Provider D has comparable: false, should appear in fallback
       const fallbackSection = screen.queryByText(/Alternative/i);
-      // May or may not show depending on if we have recommendations
-      expect(
-        fallbackSection !== null || screen.getByText("Top Recommendations"),
-      ).toBeTruthy();
+      expect(fallbackSection).toBeNull();
+
+      const ispButton = screen.getByRole("button", {
+        name: "ISP Static residential",
+      });
+      fireEvent.click(ispButton);
+
+      expect(screen.getByText(/Alternative/i)).toBeInTheDocument();
     });
 
     it("shows pricing model for fallback providers", () => {
       render(<Calculator />);
 
-      // Fallback providers should show their pricing model
-      expect(screen.getByText("Top Recommendations")).toBeInTheDocument();
+      const ispButton = screen.getByRole("button", {
+        name: "ISP Static residential",
+      });
+      fireEvent.click(ispButton);
+
+      expect(screen.getByText(/\(per_ip\)/i)).toBeInTheDocument();
     });
   });
 });

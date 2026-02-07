@@ -2,8 +2,8 @@
 
 The definitive proxy price comparison platform - compare 40+ proxy providers transparently.
 
-[CI/CD](https://github.com/YOUR_USERNAME/proxyprice/actions/workflows/cloudflare-pages.yml/badge.svg)
-[Codecov](https://codecov.io/gh/YOUR_USERNAME/proxyprice)
+[CI/CD](https://github.com/taoyadev/proxyprice/actions)
+[Codecov](https://codecov.io/gh/taoyadev/proxyprice)
 [Data Freshness](https://img.shields.io/badge/data--freshness-30--days-green)
 
 ## 🚀 Project Overview
@@ -223,6 +223,7 @@ See `docs/release/GITHUB_PAGES.md`.
 
 - `PUBLIC_FEEDBACK_URL` (optional): GitHub Issues URL for “Report a Correction” link.
 - `PUBLIC_SITE_URL` (optional): Override canonical URL + sitemap host (defaults to `https://proxyprice.com`).
+- `PUBLIC_COMPARE_PROVIDER_LIMIT` (optional): Max providers used to generate `/compare/*` static pages (default `12`, min `2`, max `20`).
 
 ## 📝 Adding New Providers
 

@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import pricingData from "../../data/pricing.json";
-import { SITE_NAME } from "../../lib/site";
+import { DATA_LAST_UPDATED, SITE_NAME } from "../../lib/site";
 
 const breadcrumbs = [
   { name: SITE_NAME, url: new URL("/", Astro.site).toString() },
@@ -11,14 +10,14 @@ const breadcrumbs = [
 
 <BaseLayout
   title="Best Proxy Providers"
-  description={`Best proxy providers by category (comparable $/GB only). Updated ${pricingData.last_updated}.`}
+  description={`Best proxy providers by category (comparable $/GB only). Updated ${DATA_LAST_UPDATED}.`}
   breadcrumbs={breadcrumbs}
 >
   <div class="container" style="padding: 3rem 0;">
     <header class="page-header">
       <h1>Best Proxy Providers</h1>
       <p class="page-subtitle">
-        Category pages that rank providers with comparable <strong>$/GB</strong> pricing. Updated {pricingData.last_updated}.
+        Category pages that rank providers with comparable <strong>$/GB</strong> pricing. Updated {DATA_LAST_UPDATED}.
       </p>
     </header>
 
@@ -111,4 +110,3 @@ const breadcrumbs = [
     }
   }
 </style>
-

@@ -4,8 +4,9 @@
   "version": "1.0.0",
   "description": "ProxyPrice - The definitive proxy price comparison platform",
   "scripts": {
+    "generate:calculator-data": "node scripts/generate-calculator-data.mjs",
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "node scripts/generate-calculator-data.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",

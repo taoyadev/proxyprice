@@ -4,7 +4,7 @@ import TrustBadge from '../../components/TrustBadge.astro';
 import DataFreshnessBadge from '../../components/DataFreshnessBadge.astro';
 import providersData from '../../data/providers.json';
 import pricingData from '../../data/pricing.json';
-import { SITE_NAME } from '../../lib/site';
+import { DATA_LAST_UPDATED, SITE_NAME } from '../../lib/site';
 import { getFaviconUrl } from '../../lib/favicon';
 import { getProxyTypeLabel } from '../../lib/proxy-types';
 
@@ -34,8 +34,8 @@ const enhancedTitle = proxyTypesDescription
   : `${provider.name} Proxy Pricing & Plans`;
 
 const enhancedDescription = provider.cheapest_price_per_gb
-  ? `Compare ${provider.name} proxy pricing starting at $${provider.cheapest_price_per_gb.toFixed(2)}/GB. ${proxyTypesDescription ? `Offers ${proxyTypesDescription} proxies.` : ''} Transparent pricing comparison updated ${pricingData.last_updated}.`
-  : `Compare ${provider.name} proxy pricing across all proxy types. ${proxyTypesDescription ? `Offers ${proxyTypesDescription} proxies.` : ''} Transparent pricing data updated ${pricingData.last_updated}.`;
+  ? `Compare ${provider.name} proxy pricing starting at $${provider.cheapest_price_per_gb.toFixed(2)}/GB. ${proxyTypesDescription ? `Offers ${proxyTypesDescription} proxies.` : ''} Transparent pricing comparison updated ${DATA_LAST_UPDATED}.`
+  : `Compare ${provider.name} proxy pricing across all proxy types. ${proxyTypesDescription ? `Offers ${proxyTypesDescription} proxies.` : ''} Transparent pricing data updated ${DATA_LAST_UPDATED}.`;
 
 // Build Product schema with aggregate offer
 const minPrice = comparablePricing.reduce((min, p) => {
@@ -117,7 +117,7 @@ const faqSchema = {
       'name': 'How often is pricing updated?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': `Pricing data was last updated ${pricingData.last_updated}. See our methodology page for details on data collection and updates.`,
+        'text': `Pricing data was last updated ${DATA_LAST_UPDATED}. See our methodology page for details on data collection and updates.`,
       },
     },
   ],
@@ -256,6 +256,8 @@ const topAlternatives = (type: string, count = 5) => {
           class="provider-favicon"
           width="64"
           height="64"
+          loading="lazy"
+          decoding="async"
         />
         <div>
           <h1>{provider.name} Proxy Pricing & Plans</h1>
@@ -267,7 +269,7 @@ const topAlternatives = (type: string, count = 5) => {
       <div class="provider-header-badges">
         <DataFreshnessBadge
           hasComparablePricing={comparablePricing.length > 0}
-          lastUpdated={pricingData.last_updated}
+          lastUpdated={DATA_LAST_UPDATED}
           variant="compact"
         />
       </div>
@@ -511,6 +513,8 @@ const topAlternatives = (type: string, count = 5) => {
                           class="alt-favicon"
                           width="24"
                           height="24"
+                          loading="lazy"
+                          decoding="async"
                         />
                         <span class="alt-name">{p.name}</span>
                       </div>

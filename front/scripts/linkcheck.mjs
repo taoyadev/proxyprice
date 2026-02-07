@@ -122,31 +122,34 @@ const imageFiles = new Set(
 // Enhanced regex to catch more link patterns
 const linkPatterns = [
   // <a href="...">
-  /<a\b[^>]*\bhref=["']([^"']+)["'][^>]*>/gi,
+  { kind: "url", pattern: /<a\b[^>]*\bhref=["']([^"']+)["'][^>]*>/gi },
   // <link href="...">
-  /<link\b[^>]*\bhref=["']([^"']+)["'][^>]*>/gi,
+  { kind: "url", pattern: /<link\b[^>]*\bhref=["']([^"']+)["'][^>]*>/gi },
   // <script src="...">
-  /<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi,
+  { kind: "url", pattern: /<script\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi },
   // <img src="...">
-  /<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi,
+  { kind: "url", pattern: /<img\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi },
   // <source src="...">
-  /<source\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi,
+  { kind: "url", pattern: /<source\b[^>]*\bsrc=["']([^"']+)["'][^>]*>/gi },
   // <img srcset="...">
-  /<img\b[^>]*\bsrcset=["']([^"']+)["'][^>]*>/gi,
+  { kind: "srcset", pattern: /<img\b[^>]*\bsrcset=["']([^"']+)["'][^>]*>/gi },
 ];
 
 for (const file of htmlFiles) {
   const relativeFile = path.relative(distDir, file);
   const html = fs.readFileSync(file, "utf-8");
 
-  for (const pattern of linkPatterns) {
+  for (const { kind, pattern } of linkPatterns) {
     let m;
     while ((m = pattern.exec(html))) {
       const raw = m[1];
 
-      // Handle srcset (may contain multiple URLs)
-      if (raw.includes(",")) {
-        const srcsetUrls = raw.split(",").map((s) => s.trim().split(/\s+/)[0]);
+      // Handle srcset (may contain multiple URLs, comma-delimited)
+      if (kind === "srcset") {
+        const srcsetUrls = raw
+          .split(",")
+          .map((s) => s.trim().split(/\s+/)[0])
+          .filter(Boolean);
         for (const url of srcsetUrls) {
           validateLink(url, file, relativeFile);
         }

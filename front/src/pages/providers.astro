@@ -2,8 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import TrustBadge from '../components/TrustBadge.astro';
-import pricingData from '../data/pricing.json';
 import providersData from '../data/providers.json';
+import { DATA_LAST_UPDATED } from '../lib/site';
 ---
 
 <BaseLayout
@@ -22,7 +22,7 @@ import providersData from '../data/providers.json';
             By default we show comparable <strong>$/GB</strong> pricing. Uncheck "Comparable only" to view non-comparable models (per IP / per proxy / per thread).
           </p>
         </div>
-        <TrustBadge lastUpdated={pricingData.last_updated} variant="full" providerCount={providersData.total_count} />
+        <TrustBadge lastUpdated={DATA_LAST_UPDATED} variant="full" providerCount={providersData.total_count} />
       </div>
     </header>
 

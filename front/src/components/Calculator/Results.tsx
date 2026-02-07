@@ -92,6 +92,8 @@ export const RecommendationCard: FunctionalComponent<
             class="rec-favicon"
             width="48"
             height="48"
+            loading="lazy"
+            decoding="async"
           />
         )}
         <div class="rec-rank">#{rank}</div>

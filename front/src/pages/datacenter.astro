@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import ComparisonTable from '../components/ComparisonTable.astro';
 import TrustBadge from '../components/TrustBadge.astro';
 import UpdatedDailyBadge from '../components/UpdatedDailyBadge.astro';
-import pricingData from '../data/pricing.json';
+import { DATA_LAST_UPDATED } from '../lib/site';
 ---
 
 <BaseLayout
@@ -21,7 +21,7 @@ import pricingData from '../data/pricing.json';
         </div>
         <div class="header-badges">
           <UpdatedDailyBadge variant="inline" />
-          <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+          <TrustBadge lastUpdated={DATA_LAST_UPDATED} variant="compact" />
         </div>
       </div>
     </header>

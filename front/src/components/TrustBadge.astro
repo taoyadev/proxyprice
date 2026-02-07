@@ -21,13 +21,16 @@ const {
   providerCount,
 } = Astro.props;
 
-// Parse the date and calculate relative time
 const getDateInfo = (dateStr: string | undefined) => {
   if (!dateStr) {
     return { text: 'Recently updated', title: dateStr || 'Data updated recently' };
   }
 
   const date = new Date(dateStr);
+  if (Number.isNaN(date.getTime())) {
+    return { text: 'Recently updated', title: dateStr || 'Data updated recently' };
+  }
+
   const now = new Date();
   const diffMs = now.getTime() - date.getTime();
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
@@ -50,10 +53,19 @@ const getDateInfo = (dateStr: string | undefined) => {
     text = `Updated ${years} year${years > 1 ? 's' : ''} ago`;
   }
 
+  const longDate = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
   return {
-    text: showFullDate ? `Updated ${date.toLocaleDateString()}` : text,
-    fullDate: date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-    title: `Last verified: ${date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}`,
+    text: showFullDate
+      ? `Updated ${date.toLocaleDateString('en-US', { timeZone: 'UTC' })}`
+      : text,
+    fullDate: longDate,
+    title: `Last verified: ${longDate}`,
   };
 };
 

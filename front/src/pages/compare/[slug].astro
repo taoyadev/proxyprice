@@ -4,7 +4,7 @@ import providersData from '../../data/providers.json';
 import pricingData from '../../data/pricing.json';
 import { getFaviconUrl } from '../../lib/favicon';
 import { getProxyTypeLabel, PROXY_TYPES } from '../../lib/proxy-types';
-import { SITE_NAME, SITE_URL } from '../../lib/site';
+import { DATA_LAST_UPDATED, SITE_NAME, SITE_URL } from '../../lib/site';
 
 interface Provider {
   id: string;
@@ -42,11 +42,20 @@ interface Pricing {
 }
 
 export async function getStaticPaths() {
+  const maxCompareProviders = Number.parseInt(
+    import.meta.env.PUBLIC_COMPARE_PROVIDER_LIMIT ?? '12',
+    10,
+  );
+
+  const effectiveProviderLimit = Number.isFinite(maxCompareProviders)
+    ? Math.max(2, Math.min(maxCompareProviders, 20))
+    : 12;
+
   // Get providers with pricing data, sorted by cheapest price
   const providers = (providersData.providers as Provider[])
     .filter(p => p.cheapest_price_per_gb !== null)
     .sort((a, b) => (a.cheapest_price_per_gb ?? Infinity) - (b.cheapest_price_per_gb ?? Infinity))
-    .slice(0, 20); // Limit to top 20 providers
+    .slice(0, effectiveProviderLimit);
 
   const comparisons: { params: { slug: string }; props: { provider1: Provider; provider2: Provider } }[] = [];
 
@@ -138,7 +147,7 @@ const overallWinner = provider1Wins > provider2Wins ? provider1
 
 // SEO data
 const pageTitle = `${provider1.name} vs ${provider2.name}: Proxy Pricing Compared`;
-const pageDescription = `Compare ${provider1.name} and ${provider2.name} proxy pricing side-by-side. Starting prices: ${provider1.name} from $${provider1.cheapest_price_per_gb?.toFixed(2)}/GB, ${provider2.name} from $${provider2.cheapest_price_per_gb?.toFixed(2)}/GB. Updated ${pricingData.last_updated}.`;
+const pageDescription = `Compare ${provider1.name} and ${provider2.name} proxy pricing side-by-side. Starting prices: ${provider1.name} from $${provider1.cheapest_price_per_gb?.toFixed(2)}/GB, ${provider2.name} from $${provider2.cheapest_price_per_gb?.toFixed(2)}/GB. Updated ${DATA_LAST_UPDATED}.`;
 
 const canonicalUrl = new URL(`/compare/${provider1.slug}-vs-${provider2.slug}/`, Astro.site).toString();
 
@@ -236,7 +245,7 @@ const faqSchema = {
       'name': 'How often is pricing data updated?',
       'acceptedAnswer': {
         '@type': 'Answer',
-        'text': `Pricing data was last updated ${pricingData.last_updated}. We regularly update pricing from official provider websites.`
+        'text': `Pricing data was last updated ${DATA_LAST_UPDATED}. We regularly update pricing from official provider websites.`
       }
     }
   ]
@@ -299,6 +308,8 @@ const formatPrice = (price: number | null) => {
             class="provider-favicon"
             width="48"
             height="48"
+            loading="lazy"
+            decoding="async"
           />
           <div>
             <div class="provider-card-title">{provider1.name}</div>
@@ -345,6 +356,8 @@ const formatPrice = (price: number | null) => {
             class="provider-favicon"
             width="48"
             height="48"
+            loading="lazy"
+            decoding="async"
           />
           <div>
             <div class="provider-card-title">{provider2.name}</div>
@@ -390,11 +403,25 @@ const formatPrice = (price: number | null) => {
             <tr>
               <th>Proxy Type</th>
               <th>
-                <img src={getFaviconUrl(provider1.website_url, 20)} alt="" width="20" height="20" />
+                <img
+                  src={getFaviconUrl(provider1.website_url, 20)}
+                  alt=""
+                  width="20"
+                  height="20"
+                  loading="lazy"
+                  decoding="async"
+                />
                 {provider1.name}
               </th>
               <th>
-                <img src={getFaviconUrl(provider2.website_url, 20)} alt="" width="20" height="20" />
+                <img
+                  src={getFaviconUrl(provider2.website_url, 20)}
+                  alt=""
+                  width="20"
+                  height="20"
+                  loading="lazy"
+                  decoding="async"
+                />
                 {provider2.name}
               </th>
               <th>Winner</th>
@@ -566,9 +593,23 @@ const formatPrice = (price: number | null) => {
         {relatedComparisons.slice(0, 6).map(comp => (
           <a href={`/compare/${comp.slug}`} class="related-card">
             <div class="related-providers">
-              <img src={getFaviconUrl(provider1.website_url, 24)} alt="" width="24" height="24" />
+              <img
+                src={getFaviconUrl(provider1.website_url, 24)}
+                alt=""
+                width="24"
+                height="24"
+                loading="lazy"
+                decoding="async"
+              />
               <span class="vs-text">vs</span>
-              <img src={getFaviconUrl(comp.provider.website_url, 24)} alt="" width="24" height="24" />
+              <img
+                src={getFaviconUrl(comp.provider.website_url, 24)}
+                alt=""
+                width="24"
+                height="24"
+                loading="lazy"
+                decoding="async"
+              />
             </div>
             <span class="related-title">{comp.title}</span>
           </a>

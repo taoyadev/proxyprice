@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import TrustBadge from "../../components/TrustBadge.astro";
 import providersData from "../../data/providers.json";
 import pricingData from "../../data/pricing.json";
-import { SITE_NAME } from "../../lib/site";
+import { DATA_LAST_UPDATED, SITE_NAME } from "../../lib/site";
 
 const type = "datacenter";
 const typeLabel = "Datacenter";
@@ -70,7 +70,7 @@ const itemListSchema = {
 
 <BaseLayout
   title={`Best ${typeLabel} Proxies`}
-  description={`Best ${typeLabel.toLowerCase()} proxy providers with comparable $/GB pricing. Updated ${pricingData.last_updated}.`}
+  description={`Best ${typeLabel.toLowerCase()} proxy providers with comparable $/GB pricing. Updated ${DATA_LAST_UPDATED}.`}
   breadcrumbs={breadcrumbs}
 >
   <!-- ItemList Schema -->
@@ -85,7 +85,7 @@ const itemListSchema = {
             Providers with comparable <strong>$/GB</strong> pricing for datacenter proxies, ranked by lowest min $/GB.
           </p>
         </div>
-        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" />
+        <TrustBadge lastUpdated={DATA_LAST_UPDATED} variant="compact" />
       </div>
     </header>
 

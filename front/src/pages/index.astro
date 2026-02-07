@@ -6,6 +6,7 @@ import UpdatedDailyBadge from '../components/UpdatedDailyBadge.astro';
 import providersData from '../data/providers.json';
 import pricingData from '../data/pricing.json';
 import { getFaviconUrl } from '../lib/favicon';
+import { DATA_LAST_UPDATED } from '../lib/site';
 
 const comparableProviders = providersData.providers.filter(p => p.cheapest_price_per_gb !== null);
 const cheapestProvider = comparableProviders[0];
@@ -23,7 +24,7 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
 
 <BaseLayout
   title="Home"
-  description={`Compare ${providersData.total_count}+ proxy providers side-by-side. Find the best $/GB rates for residential, datacenter, mobile & ISP proxies. Real pricing data from official sources, updated ${pricingData.last_updated}.`}
+  description={`Compare ${providersData.total_count}+ proxy providers side-by-side. Find the best $/GB rates for residential, datacenter, mobile & ISP proxies. Real pricing data from official sources, updated ${DATA_LAST_UPDATED}.`}
 >
   <section class="hero">
     <div class="container">
@@ -37,7 +38,7 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
       </div>
 
       <div class="hero-updated-badge">
-        <UpdatedDailyBadge variant="hero" lastUpdated={pricingData.last_updated} />
+        <UpdatedDailyBadge variant="hero" lastUpdated={DATA_LAST_UPDATED} />
       </div>
 
       <div class="hero-stats">
@@ -72,6 +73,8 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
             class="highlight-favicon"
             width="64"
             height="64"
+            loading="lazy"
+            decoding="async"
           />
           <h2>{cheapestProvider.name}</h2>
           <p class="highlight-price">
@@ -134,7 +137,7 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
             Showing providers with transparent per-GB pricing.
           </p>
         </div>
-        <TrustBadge lastUpdated={pricingData.last_updated} variant="compact" providerCount={providersData.total_count} />
+        <TrustBadge lastUpdated={DATA_LAST_UPDATED} variant="compact" providerCount={providersData.total_count} />
       </div>
       <ComparisonTable limit={20} showControls={false} />
       <div class="view-all">
@@ -179,7 +182,10 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
             </svg>
           </div>
           <h3>Fresh Data Always</h3>
-          <p>Proxy pricing changes constantly. We monitor providers and update our database regularly so you never compare stale numbers. Last sync: {pricingData.last_updated}.</p>
+          <p>
+            Proxy pricing changes constantly. We monitor providers and update our database regularly so you never compare stale numbers.
+            Last sync: {DATA_LAST_UPDATED}.
+          </p>
         </div>
 
         <div class="trust-card">

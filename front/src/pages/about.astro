@@ -1,6 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { DATA_LAST_UPDATED, FEEDBACK_URL, SITE_URL, SITE_NAME } from "../lib/site";
+import { DATA_LAST_UPDATED_LONG, FEEDBACK_URL, SITE_URL, SITE_NAME } from "../lib/site";
 import providersData from "../data/providers.json";
 import pricingData from "../data/pricing.json";
 
@@ -114,7 +114,9 @@ const proxyTypes = ['residential', 'datacenter', 'mobile', 'isp'];
       </ul>
 
       <h2>Data Freshness</h2>
-      <p>Our pricing database was last synchronized on <strong>{DATA_LAST_UPDATED}</strong>. We actively monitor major providers for pricing changes and update within 1-2 weeks of any significant adjustments.</p>
+      <p>
+        Our pricing database was last synchronized on <strong>{DATA_LAST_UPDATED_LONG}</strong>. We actively monitor major providers for pricing changes and update within 1-2 weeks of any significant adjustments.
+      </p>
 
       <h2>Who Maintains This</h2>
       <p>

@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import TrustBadge from "../components/TrustBadge.astro";
 import pricingData from "../data/pricing.json";
 import providersData from "../data/providers.json";
+import { DATA_LAST_UPDATED, DATA_LAST_UPDATED_LONG } from "../lib/site";
 
 const totalPricingRecords = pricingData.pricing.length;
 const comparableRecords = pricingData.pricing.filter(p => p.comparable).length;
@@ -20,7 +21,7 @@ const verificationRate = Math.round((comparableRecords / totalPricingRecords) * 
         Proxy providers use wildly different pricing models. This page explains exactly how we normalize them for fair comparison, what we mark as comparable, and where conversion would be misleading.
       </p>
       <div class="header-trust">
-        <TrustBadge lastUpdated={pricingData.last_updated} variant="inline" providerCount={providersData.total_count} />
+        <TrustBadge lastUpdated={DATA_LAST_UPDATED} variant="inline" providerCount={providersData.total_count} />
       </div>
     </header>
 
@@ -106,10 +107,10 @@ const verificationRate = Math.round((comparableRecords / totalPricingRecords) * 
       </ul>
 
       <h2>Data Freshness</h2>
-      <p>
-        Dataset last synchronized: <strong>{pricingData.last_updated}</strong>. We actively monitor major providers and typically update within 1-2 weeks of significant pricing changes. If you notice stale or incorrect data, please <a href="https://github.com/proxyprice/proxyprice/issues">report an issue</a> and we will correct it promptly.
-      </p>
-    </section>
+	      <p>
+	        Dataset last synchronized: <strong>{DATA_LAST_UPDATED_LONG}</strong>. We actively monitor major providers and typically update within 1-2 weeks of significant pricing changes. If you notice stale or incorrect data, please <a href="https://github.com/taoyadev/proxyprice/issues">report an issue</a> and we will correct it promptly.
+	      </p>
+	    </section>
 
     <section class="disclaimer-section">
       <h3>Important Disclaimer</h3>

@@ -3,12 +3,10 @@
  * These functions have no side effects and can be tested independently
  */
 
-import type { Tier } from "../../lib/schemas";
 import type { ProxyType } from "../../lib/proxy-types";
 import type { Recommendation, FallbackProvider } from "./types";
 import { MOST_POPULAR_PROVIDERS } from "./types";
-import pricingData from "../../data/pricing.json";
-import providersData from "../../data/providers.json";
+import calculatorData from "../../data/calculator-data.json";
 
 // Re-export the popular providers set for use in components
 export { MOST_POPULAR_PROVIDERS };
@@ -23,69 +21,54 @@ export function computeRecommendations(
   gb: number,
   type: ProxyType,
 ): Recommendation[] {
-  // Filter pricing by proxy type and comparable
-  const relevant = pricingData.pricing.filter(
-    (p) =>
-      p.proxy_type === type && p.comparable && p.tiers && p.tiers.length > 0,
+  const relevant = calculatorData.comparable_pricing.filter(
+    (record) => record.proxy_type === type && record.tiers.length > 0,
   );
 
   const recs: Recommendation[] = [];
 
   for (const pricing of relevant) {
-    const tiers = pricing.tiers as Tier[];
-    const perGbTiers = tiers.filter(
-      (t): t is Tier & { price_per_gb: number } =>
-        t &&
-        t.pricing_model === "per_gb" &&
-        typeof t.price_per_gb === "number" &&
-        Number.isFinite(t.price_per_gb),
-    );
+    const tiers = pricing.tiers;
 
     // Find the best tier for this bandwidth
-    let bestTier: Tier | null = null;
-    for (const tier of perGbTiers) {
+    let bestTier: (typeof tiers)[number] | null = null;
+    for (const tier of tiers) {
       const covers =
         tier.is_payg === true || (typeof tier.gb === "number" && tier.gb >= gb);
       if (!covers) continue;
 
       if (
         !bestTier ||
-        tier.price_per_gb <
-          (bestTier as Tier & { price_per_gb: number }).price_per_gb
+        tier.price_per_gb < bestTier.price_per_gb
       ) {
         bestTier = tier;
       }
     }
 
-    const typedBestTier = bestTier as (Tier & { price_per_gb: number }) | null;
-    if (typedBestTier && typedBestTier.price_per_gb) {
-      const isPAYG = typedBestTier.is_payg === true;
+    if (bestTier?.price_per_gb) {
+      const isPAYG = bestTier.is_payg === true;
       const tierLabel = isPAYG
-        ? `PAYG at $${typedBestTier.price_per_gb.toFixed(2)}/GB`
-        : `${typedBestTier.gb} GB tier at $${typedBestTier.price_per_gb.toFixed(2)}/GB`;
+        ? `PAYG at $${bestTier.price_per_gb.toFixed(2)}/GB`
+        : `${bestTier.gb} GB tier at $${bestTier.price_per_gb.toFixed(2)}/GB`;
 
       let reason = "";
       if (isPAYG) {
         reason = "Flexible pay-as-you-go pricing";
-      } else if (typedBestTier.gb === gb) {
+      } else if (bestTier.gb === gb) {
         reason = "Exact tier match for your bandwidth";
       } else {
         reason = `Best rate for ${gb}GB usage`;
       }
-
-      const providerData = providersData.providers.find(
-        (p) => p.id === pricing.provider_id,
-      );
       const isMostPopular = MOST_POPULAR_PROVIDERS.has(pricing.provider_id);
 
       recs.push({
         provider: pricing.provider_name,
         proxyType: pricing.proxy_type,
-        monthlyCost: Math.ceil(typedBestTier.price_per_gb * gb),
-        pricePerGb: typedBestTier.price_per_gb,
+        monthlyCost: Math.ceil(bestTier.price_per_gb * gb),
+        pricePerGb: bestTier.price_per_gb,
         tierLabel,
         provider_id: pricing.provider_id,
-        website_url: providerData?.website_url || "",
+        website_url: pricing.website_url || "",
         reason,
         isBestValue: false,
         isMostPopular,
@@ -146,17 +129,15 @@ export function computeRecommendations(
  * @returns Array of providers with non-comparable pricing
  */
 export function computeFallbackProviders(type: ProxyType): FallbackProvider[] {
-  const nonComparable = pricingData.pricing.filter(
-    (p) => p.proxy_type === type && !p.comparable && p.has_pricing,
+  const candidates = calculatorData.fallback_pricing.filter(
+    (record) => record.proxy_type === type,
   );
 
-  return nonComparable.slice(0, 5).map((p) => ({
-    provider: p.provider_name,
-    provider_id: p.provider_id,
-    pricing_model: p.pricing_model,
-    website_url:
-      providersData.providers.find((prov) => prov.id === p.provider_id)
-        ?.website_url || "#",
+  return candidates.slice(0, 5).map((record) => ({
+    provider: record.provider_name,
+    provider_id: record.provider_id,
+    pricing_model: record.pricing_model,
+    website_url: record.website_url || "#",
   }));
 }
 
