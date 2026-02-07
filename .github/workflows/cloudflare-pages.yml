@@ -155,7 +155,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: generated-data
-          path: .
+          path: front/src/data
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -195,7 +195,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: generated-data
-          path: .
+          path: front/src/data
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -249,7 +249,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: generated-data
-          path: .
+          path: front/src/data
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
