@@ -5,6 +5,10 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+  schedule:
+    # Daily refresh to keep `last_updated` current (cron uses UTC).
+    # 08:05 UTC ≈ 00:05 Pacific, 03:05 Eastern.
+    - cron: "5 8 * * *"
   workflow_dispatch:
 
 jobs:
@@ -234,7 +238,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: [validate, data-freshness]
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     permissions:
       contents: read
       deployments: write
