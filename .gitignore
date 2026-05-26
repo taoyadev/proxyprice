@@ -21,6 +21,7 @@ wrangler.toml
 # Build outputs
 dist/
 .astro/
+front/public/api/
 
 # IDE
 .vscode/
