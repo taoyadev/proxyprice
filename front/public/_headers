@@ -4,7 +4,7 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Strict-Transport-Security: max-age=31536000; includeSubDomains
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()
-  Content-Security-Policy: default-src 'self'; img-src 'self' https://t0.gstatic.com data: https://*.google.com https://*.gstatic.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self';
+  Content-Security-Policy: default-src 'self'; img-src 'self' https://t0.gstatic.com data: https://*.google.com https://*.gstatic.com; script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'self';
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
