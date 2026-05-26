@@ -188,6 +188,7 @@ def save_json_file(path: Path, data: Any) -> None:
     try:
         with open(path, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
+            f.write('\n')
         logger.info(f"Saved: {path}")
     except IOError as e:
         logger.error(f"Failed to write {path}: {e}")

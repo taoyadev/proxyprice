@@ -24,6 +24,10 @@ export const ResultsSummary: FunctionalComponent<ResultsSummaryProps> = ({
         Found <strong>{count} providers</strong> for{" "}
         <strong>{bandwidth}GB</strong> on <strong>{proxyType}</strong> proxies.
       </p>
+      <p class="results-method-note">
+        Recommendations use only comparable per-GB tiers. Per-IP, per-proxy,
+        and quote-based offers are kept out of the cost ranking.
+      </p>
     </div>
   );
 };
@@ -131,6 +135,9 @@ export const RecommendationCard: FunctionalComponent<
         </div>
 
         <div class="rec-meta">{rec.tierLabel}</div>
+        <div class="rec-meta">
+          Estimated monthly cost = requested bandwidth x selected per-GB rate.
+        </div>
 
         {rec.savingsPercent && (
           <div class="rec-savings">

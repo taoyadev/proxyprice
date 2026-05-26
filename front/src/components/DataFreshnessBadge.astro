@@ -32,25 +32,26 @@ const getFreshnessInfo = (dateStr: string | undefined) => {
   const diffMs = now.getTime() - date.getTime();
   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
+  const displayDate = date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: 'UTC',
+  });
+
   let level: 'fresh' | 'moderate' | 'stale' | 'unknown';
-  let text: string;
 
   if (diffDays <= 7) {
     level = 'fresh';
-    text = 'Verified recently';
   } else if (diffDays <= 30) {
     level = 'moderate';
-    text = `Verified ${diffDays} days ago`;
   } else if (diffDays <= 90) {
     level = 'stale';
-    text = `Verified ${Math.floor(diffDays / 30)} month${Math.floor(diffDays / 30) > 1 ? 's' : ''} ago`;
   } else {
     level = 'stale';
-    const months = Math.floor(diffDays / 30);
-    text = `Verified ${months > 12 ? '1+ year' : months + ' months'} ago`;
   }
 
-  return { level, text, days: diffDays };
+  return { level, text: `Verified ${displayDate}`, days: diffDays };
 };
 
 const freshness = getFreshnessInfo(lastUpdated);
@@ -124,7 +125,7 @@ const displayLongDate = lastUpdated
     <div class="freshness-details">
       <p class="freshness-status">{freshness.text}</p>
       {lastUpdated && displayLongDate && (
-        <p class="freshness-date">Last updated: {displayLongDate}</p>
+        <p class="freshness-date">Last reviewed: {displayLongDate}</p>
       )}
       {hasComparablePricing ? (
         <p class="freshness-note">This provider has comparable $/GB pricing verified from official sources.</p>

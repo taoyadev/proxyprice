@@ -113,12 +113,8 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run data pipeline
-        run: make pipeline
-
-      - name: Copy data to frontend
-        run: |
-          cp data/raw/pricing_raw.json front/src/data/pricing.json
-          cp data/raw/providers_raw.json front/src/data/providers.json
+        working-directory: backend
+        run: make pipeline-check
 
       - name: Upload generated data
         uses: actions/upload-artifact@v4

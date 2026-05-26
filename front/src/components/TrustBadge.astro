@@ -1,6 +1,6 @@
 ---
 /**
- * TrustBadge - Reusable component displaying data freshness and verification status
+ * TrustBadge - Reusable component displaying monthly review and verification status
  *
  * @param lastUpdated - Date string when data was last updated
  * @param showFullDate - If true, shows full date instead of relative time
@@ -23,34 +23,12 @@ const {
 
 const getDateInfo = (dateStr: string | undefined) => {
   if (!dateStr) {
-    return { text: 'Recently updated', title: dateStr || 'Data updated recently' };
+    return { text: 'Review date unavailable', title: dateStr || 'Review date unavailable' };
   }
 
   const date = new Date(dateStr);
   if (Number.isNaN(date.getTime())) {
-    return { text: 'Recently updated', title: dateStr || 'Data updated recently' };
-  }
-
-  const now = new Date();
-  const diffMs = now.getTime() - date.getTime();
-  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-
-  let text = '';
-  if (diffDays === 0) {
-    text = 'Updated today';
-  } else if (diffDays === 1) {
-    text = 'Updated yesterday';
-  } else if (diffDays < 7) {
-    text = `Updated ${diffDays} days ago`;
-  } else if (diffDays < 30) {
-    const weeks = Math.floor(diffDays / 7);
-    text = `Updated ${weeks} week${weeks > 1 ? 's' : ''} ago`;
-  } else if (diffDays < 365) {
-    const months = Math.floor(diffDays / 30);
-    text = `Updated ${months} month${months > 1 ? 's' : ''} ago`;
-  } else {
-    const years = Math.floor(diffDays / 365);
-    text = `Updated ${years} year${years > 1 ? 's' : ''} ago`;
+    return { text: 'Review date unavailable', title: dateStr || 'Review date unavailable' };
   }
 
   const longDate = date.toLocaleDateString('en-US', {
@@ -62,10 +40,10 @@ const getDateInfo = (dateStr: string | undefined) => {
 
   return {
     text: showFullDate
-      ? `Updated ${date.toLocaleDateString('en-US', { timeZone: 'UTC' })}`
-      : text,
+      ? `Reviewed ${longDate}`
+      : 'Reviewed monthly',
     fullDate: longDate,
-    title: `Last verified: ${longDate}`,
+    title: `Last review: ${longDate}`,
   };
 };
 

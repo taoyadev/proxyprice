@@ -8,7 +8,21 @@ import re
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from urllib.parse import urlparse
-from slugify import slugify
+try:
+    from slugify import slugify
+except ImportError:
+    def slugify(value: str) -> str:
+        """Small fallback matching the provider slug shape used by the site."""
+        cleaned = []
+        previous_dash = False
+        for char in value.lower():
+            if char.isalnum():
+                cleaned.append(char)
+                previous_dash = False
+            elif not previous_dash:
+                cleaned.append("-")
+                previous_dash = True
+        return "".join(cleaned).strip("-")
 
 
 def _to_float(s: str) -> float:
@@ -759,9 +773,11 @@ def main():
 
     with open(providers_output, 'w', encoding='utf-8') as f:
         json.dump(providers, f, indent=2, ensure_ascii=False)
+        f.write('\n')
 
     with open(pricing_output, 'w', encoding='utf-8') as f:
         json.dump(pricing_records, f, indent=2, ensure_ascii=False)
+        f.write('\n')
 
     print(f"✓ Parsed {len(providers)} providers")
     print(f"✓ Parsed {len(pricing_records)} pricing records")

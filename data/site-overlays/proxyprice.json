@@ -1,0 +1,394 @@
+{
+  "schema_version": "1.0.0",
+  "site_key": "proxyprice",
+  "global_merchant_skill": "/Users/butterfly/.codex/skills/proxy-merchant-intel",
+  "providers": {
+    "proxyempire": {
+      "merchant_key": "proxyempire",
+      "include": true,
+      "go_slug": "proxyempire",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "shifter": {
+      "merchant_key": "shifter",
+      "include": true,
+      "go_slug": "shifter",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "decodo": {
+      "merchant_key": "decodo",
+      "include": true,
+      "go_slug": "decodo",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "soax": {
+      "merchant_key": "soax",
+      "include": true,
+      "go_slug": "soax",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "oxylabs": {
+      "merchant_key": "oxylabs",
+      "include": true,
+      "go_slug": "oxylabs",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "geonode": {
+      "merchant_key": "geonode",
+      "include": true,
+      "go_slug": "geonode",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "bright-data": {
+      "merchant_key": "bright-data",
+      "include": true,
+      "go_slug": "bright-data",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "netnut": {
+      "merchant_key": "netnut",
+      "include": true,
+      "go_slug": "netnut",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "packetstream": {
+      "merchant_key": "packetstream",
+      "include": true,
+      "go_slug": "packetstream",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "proxyscrape": {
+      "merchant_key": "proxyscrape",
+      "include": true,
+      "go_slug": "proxyscrape",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "rayobyte": {
+      "merchant_key": "rayobyte",
+      "include": true,
+      "go_slug": "rayobyte",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "proxyrack": {
+      "merchant_key": null,
+      "include": true,
+      "go_slug": "proxyrack",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "no global merchant match"
+    },
+    "proxyguys": {
+      "merchant_key": "proxyguys",
+      "include": true,
+      "go_slug": "proxyguys",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "froxy": {
+      "merchant_key": "froxy",
+      "include": true,
+      "go_slug": "froxy",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "hydraproxy": {
+      "merchant_key": "hydraproxy",
+      "include": true,
+      "go_slug": "hydraproxy",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "asocks": {
+      "merchant_key": null,
+      "include": true,
+      "go_slug": "asocks",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "no global merchant match"
+    },
+    "webshare": {
+      "merchant_key": "webshare",
+      "include": true,
+      "go_slug": "webshare",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "nimbleway": {
+      "merchant_key": null,
+      "include": true,
+      "go_slug": "nimbleway",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "no global merchant match"
+    },
+    "iproyal": {
+      "merchant_key": "iproyal",
+      "include": true,
+      "go_slug": "iproyal",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "infatica": {
+      "merchant_key": "infatica",
+      "include": true,
+      "go_slug": "infatica",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "proxy-seller": {
+      "merchant_key": "proxy-seller",
+      "include": true,
+      "go_slug": "proxy-seller",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "proxy-cheap": {
+      "merchant_key": "proxy-cheap",
+      "include": true,
+      "go_slug": "proxy-cheap",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "proxy-ipv4": {
+      "merchant_key": "proxy-ipv4",
+      "include": true,
+      "go_slug": "proxy-ipv4",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "geonix": {
+      "merchant_key": "geonix",
+      "include": true,
+      "go_slug": "geonix",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "youproxy": {
+      "merchant_key": "youproxy",
+      "include": true,
+      "go_slug": "youproxy",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "myprivateproxy": {
+      "merchant_key": "myprivateproxy",
+      "include": true,
+      "go_slug": "myprivateproxy",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "buyproxies": {
+      "merchant_key": "buyproxies",
+      "include": true,
+      "go_slug": "buyproxies",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "proxyline": {
+      "merchant_key": "proxyline",
+      "include": true,
+      "go_slug": "proxyline",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "instantproxies": {
+      "merchant_key": "instantproxies",
+      "include": true,
+      "go_slug": "instantproxies",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "marsproxies": {
+      "merchant_key": "marsproxies",
+      "include": true,
+      "go_slug": "marsproxies",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "simplynode": {
+      "merchant_key": "simplynode",
+      "include": true,
+      "go_slug": "simplynode",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "proxy6": {
+      "merchant_key": "proxy6",
+      "include": true,
+      "go_slug": "proxy6",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "oculusproxies": {
+      "merchant_key": "oculus-proxies",
+      "include": true,
+      "go_slug": "oculusproxies",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider display name or alias"
+    },
+    "toolip": {
+      "merchant_key": "toolip",
+      "include": true,
+      "go_slug": "toolip",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "resiprox": {
+      "merchant_key": null,
+      "include": true,
+      "go_slug": "resiprox",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "no global merchant match"
+    },
+    "dataimpulse": {
+      "merchant_key": "dataimpulse",
+      "include": true,
+      "go_slug": "dataimpulse",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "squidproxies": {
+      "merchant_key": "squidproxies",
+      "include": true,
+      "go_slug": "squidproxies",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "proxys-io": {
+      "merchant_key": "proxys",
+      "include": true,
+      "go_slug": "proxys-io",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched domain proxys.io"
+    },
+    "spaceproxy": {
+      "merchant_key": "spaceproxy",
+      "include": true,
+      "go_slug": "spaceproxy",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "auto",
+      "notes": "matched provider id"
+    },
+    "stormproxies": {
+      "merchant_key": "stormproxies",
+      "include": true,
+      "go_slug": "stormproxies",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "the-social-proxy": {
+      "merchant_key": "thesocialproxy",
+      "include": true,
+      "go_slug": "the-social-proxy",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider display name or alias"
+    },
+    "proxywow": {
+      "merchant_key": "proxywow",
+      "include": true,
+      "go_slug": "proxywow",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    },
+    "airproxy": {
+      "merchant_key": "airproxy",
+      "include": true,
+      "go_slug": "airproxy",
+      "url_override": null,
+      "affiliate": null,
+      "publish_mode": "hold",
+      "notes": "matched provider id"
+    }
+  }
+}
