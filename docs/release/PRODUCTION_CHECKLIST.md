@@ -3,6 +3,7 @@
 ## 构建与数据
 
 - `python3 backend/scripts/run_pipeline.py` 可运行并更新 `front/src/data/*.json`
+- `python3 backend/scripts/monthly_update.py --write-overlay --sync-redirects` 可生成本月 mapping/report，且缺 bundle/大幅价格变化不会自动发布
 - `cd backend && pytest`
 - `cd front && npm run verify`
 

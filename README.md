@@ -193,19 +193,26 @@ npm run verify
 
 ## 🔄 Data Updates
 
-To update pricing data:
+Monthly data refreshes are driven by the project overlay plus the global proxy merchant intelligence layer.
 
-1. Update `docs/Price.csv` with new pricing
-2. Run data pipeline:
+1. Generate the monthly mapping report and overlay updates:
    ```bash
-   python3 backend/scripts/parse_csv.py
-   python3 backend/scripts/normalize.py
+   cd backend
+   make monthly-report
    ```
-3. Rebuild frontend:
+2. Review `reports/monthly/YYYY-MM.md` for missing bundles, held providers, failed fetches, and large price deltas.
+3. After accepted price edits are in `docs/Price.csv`, refresh normalized JSON:
    ```bash
-   cd front && npm run build
+   cd backend
+   make monthly-refresh
    ```
-4. Deploy (automatic with git push)
+4. Validate and deploy through the normal PR flow:
+   ```bash
+   cd backend && pytest
+   cd ../front && npm run verify
+   ```
+
+See: `docs/MONTHLY_DATA_REFRESH.md`
 
 ## 🔗 Affiliate / Redirect Links
 
@@ -255,7 +262,7 @@ Each workflow runs the following jobs:
 | ---------------- | ---------------------------------------------------------- |
 | `backend-test`   | Runs Python tests with coverage reporting                  |
 | `frontend-test`  | Runs TypeScript/Vitest tests with coverage                 |
-| `data-pipeline`  | Executes the full data pipeline (parse + normalize + copy) |
+| `data-pipeline`  | Executes the validated CSV → normalized JSON pipeline       |
 | `data-freshness` | Verifies data files are updated within 30 days             |
 | `validate`       | Runs linting, type checking, and data validation           |
 | `deploy-preview` | Creates preview deployments for pull requests              |
@@ -270,7 +277,7 @@ Coverage reports are uploaded to:
 
 ### Data Freshness Check
 
-The CI automatically checks that `front/src/data/pricing.json` and `front/src/data/providers.json` have been updated within the last 30 days. Builds will fail if data is stale.
+The CI checks that `front/src/data/pricing.json` and `front/src/data/providers.json` have been updated within the last 30 days. Monthly refreshes should include a `reports/monthly/YYYY-MM.md` evidence report.
 
 ### Local Development
 
@@ -297,7 +304,7 @@ The CI automatically checks that `front/src/data/pricing.json` and `front/src/da
 
 ### Phase 2 (Future)
 
-- [ ] Automated weekly scraping with SOAX API
+- [ ] Monthly official-source refresh automation
 - [ ] Price change tracking
 - [ ] User reviews
 - [ ] Provider claim/verification program
@@ -316,4 +323,4 @@ MIT License - See LICENSE file for details
 ---
 
 **Last Updated**: 2025-12-27
-**Data Freshness**: Updated weekly
+**Data Freshness**: Reviewed monthly

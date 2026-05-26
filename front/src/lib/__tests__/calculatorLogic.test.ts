@@ -6,6 +6,12 @@
  */
 
 import { describe, it, expect } from "vitest";
+import {
+  buildQueryString,
+  computeFallbackProviders,
+  computeRecommendations,
+  getUrlParams,
+} from "../../components/Calculator/compute";
 
 // Types matching Calculator.tsx
 interface PricingTier {
@@ -558,6 +564,85 @@ describe("Calculator Logic - Unit Tests", () => {
 
       const cheapRec = recs.find((r) => r.provider_id === "cheap-provider");
       expect(cheapRec?.website_url).toBe("");
+    });
+  });
+});
+
+describe("Calculator compute module", () => {
+  describe("computeRecommendations", () => {
+    it("returns sorted real-data recommendations with cost rationale", () => {
+      const recs = computeRecommendations(50, "residential");
+
+      expect(recs.length).toBeGreaterThan(0);
+      expect(recs.length).toBeLessThanOrEqual(10);
+      expect(recs[0].isBestValue).toBe(true);
+      expect(recs[0].monthlyCost).toBe(
+        Math.ceil(recs[0].pricePerGb * 50),
+      );
+      expect(recs[0].tierLabel).toMatch(/\$[0-9.]+\/GB/);
+
+      for (let i = 1; i < recs.length; i++) {
+        expect(recs[i].monthlyCost).toBeGreaterThanOrEqual(
+          recs[i - 1].monthlyCost,
+        );
+      }
+    });
+
+    it("marks non-best providers with savings percentages when applicable", () => {
+      const recs = computeRecommendations(25, "mobile");
+      const providerWithSavings = recs.find(
+        (rec) => rec.savingsPercent !== undefined,
+      );
+
+      if (providerWithSavings) {
+        expect(providerWithSavings.savingsPercent).toBeGreaterThanOrEqual(0);
+      } else {
+        expect(recs.length).toBeLessThanOrEqual(1);
+      }
+    });
+  });
+
+  describe("computeFallbackProviders", () => {
+    it("returns non-comparable providers separately from $/GB rankings", () => {
+      const fallback = computeFallbackProviders("datacenter");
+
+      expect(fallback.length).toBeLessThanOrEqual(5);
+      for (const provider of fallback) {
+        expect(provider.provider_id).toBeTruthy();
+        expect(provider.pricing_model).not.toBe("per_gb");
+      }
+    });
+
+  });
+
+  describe("URL helpers", () => {
+    it("omits default query parameters", () => {
+      expect(buildQueryString(50, "residential", { id: "custom" })).toBe("");
+    });
+
+    it("serializes non-default query parameters", () => {
+      const query = buildQueryString(100, "datacenter", {
+        id: "seo-monitoring",
+      });
+      const params = new URLSearchParams(query);
+
+      expect(params.get("gb")).toBe("100");
+      expect(params.get("type")).toBe("datacenter");
+      expect(params.get("useCase")).toBe("seo-monitoring");
+    });
+
+    it("parses calculator URL parameters from the browser location", () => {
+      window.history.replaceState(
+        {},
+        "",
+        "/calculator?gb=200&type=mobile&useCase=social-automation",
+      );
+
+      expect(getUrlParams()).toEqual({
+        bandwidth: "200",
+        proxyType: "mobile",
+        useCase: "social-automation",
+      });
     });
   });
 });

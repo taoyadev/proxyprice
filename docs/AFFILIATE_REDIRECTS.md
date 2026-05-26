@@ -6,7 +6,8 @@
 
 - 跳转路由：`/go/<provider-slug>`
 - 实现文件：`front/src/pages/go/[slug].astro`
-- 数据源：`front/src/data/redirects.json`
+- 运行时数据源：`front/src/data/redirects.json`
+- 维护源头：`data/site-overlays/proxyprice.json`
 
 页面会根据 `slug` 找到对应的目标 URL，并用 **meta refresh + JS** 立即跳转；同时带 `noindex, nofollow`，避免被搜索引擎收录。
 
@@ -41,7 +42,7 @@
 
 ### 1) 给某个 Provider 配置 affiliate
 
-把对应 `slug` 的 `affiliate` 从 `null` 改为你的 affiliate URL：
+把 `data/site-overlays/proxyprice.json` 中对应 `slug` 的 `affiliate` 从 `null` 改为你的 affiliate URL，然后运行 `cd backend && make monthly-report` 同步 `redirects.json`：
 
 ```jsonc
 "netnut": {
@@ -58,7 +59,7 @@ https://netnut.io/?ref=YOUR_CODE&utm_source=proxyprice&utm_medium=go&utm_campaig
 
 ### 2) 仅更新官网跳转地址（不启用 affiliate）
 
-只改 `url`，保持 `affiliate: null` 即可。
+在 overlay 中设置对应 provider 的 `url_override`，保持 `affiliate: null` 即可。
 
 ### 3) 新增 Provider 的跳转
 
@@ -67,7 +68,7 @@ https://netnut.io/?ref=YOUR_CODE&utm_source=proxyprice&utm_medium=go&utm_campaig
 新增步骤：
 
 1. 确认/创建 `provider.slug`
-2. （可选）如果需要 affiliate 或覆盖 URL，在 `front/src/data/redirects.json` 的 `providers` 下新增同名条目（至少包含 `url` 或 `affiliate` 其一）
+2. （可选）如果需要 affiliate 或覆盖 URL，在 `data/site-overlays/proxyprice.json` 的 `providers` 下新增同名条目，再运行 `cd backend && make monthly-report`
 
 ## 本地验证
 

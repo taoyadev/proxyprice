@@ -1168,6 +1168,13 @@ input[type="range"]:focus-visible {
   line-height: 1.6;
 }
 
+.results-method-note {
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+  color: var(--color-text-light);
+  font-size: 0.875rem;
+}
+
 /* Recommendations List (Bento Grid) */
 .recommendations-list {
   display: grid;

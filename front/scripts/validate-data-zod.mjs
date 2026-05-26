@@ -139,7 +139,7 @@ for (const p of providers) {
   }
 
   // Numeric fields validation
-  if (p.cheapest_price_per_gb !== undefined) {
+  if (p.cheapest_price_per_gb != null) {
     if (
       typeof p.cheapest_price_per_gb !== "number" ||
       p.cheapest_price_per_gb < 0
@@ -242,10 +242,11 @@ for (const record of pricing) {
     continue;
   }
 
-  // Check for duplicate pricing records
+  // Multiple rows per provider/type are allowed because some merchants expose
+  // several product families or pricing units under the same proxy type.
   const key = `${record.provider_id}/${record.proxy_type}`;
   if (pricingKeys.has(key)) {
-    errors.push(`duplicate pricing record for ${key}`);
+    warnings.push(`multiple pricing records for ${key}`);
   }
   pricingKeys.add(key);
 
@@ -411,7 +412,7 @@ for (const provider of providers) {
   }
 
   // Validate cheapest_price_per_gb matches actual data
-  if (provider.cheapest_price_per_gb !== undefined) {
+  if (provider.cheapest_price_per_gb != null) {
     const minPrice = Math.min(
       ...providerPricing
         .filter((p) => p.min_price_per_gb !== undefined)

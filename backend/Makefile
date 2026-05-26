@@ -1,4 +1,4 @@
-.PHONY: help test test-cov test-watch lint clean validate pipeline pipeline-check all
+.PHONY: help test test-cov test-watch lint clean validate pipeline pipeline-check monthly-report monthly-refresh all
 
 # Default target
 help:
@@ -10,6 +10,8 @@ help:
 	@echo "  make validate     - Run validation only (parse + normalize)"
 	@echo "  make pipeline     - Run full data pipeline (parse + normalize + copy)"
 	@echo "  make pipeline-check - Run pipeline with output validation"
+	@echo "  make monthly-report - Generate monthly merchant mapping report"
+	@echo "  make monthly-refresh - Generate report, sync redirects, and run validated pipeline"
 	@echo "  make clean        - Remove cache and coverage files"
 	@echo "  make all          - Run validation, tests, and linting"
 
@@ -39,11 +41,7 @@ validate:
 # Run full data pipeline (parse + normalize + copy to frontend)
 pipeline:
 	@echo "Running data pipeline..."
-	python3 scripts/parse_csv.py
-	python3 scripts/normalize.py
-	@echo "Copying data to frontend..."
-	cp ../data/raw/pricing_raw.json ../front/src/data/pricing.json
-	cp ../data/raw/providers_raw.json ../front/src/data/providers.json
+	python3 scripts/run_pipeline.py
 	@echo "Pipeline complete!"
 
 # Run full pipeline with validation (fails if data is invalid)
@@ -51,6 +49,14 @@ pipeline-check:
 	@echo "Running data pipeline with validation..."
 	python3 scripts/run_pipeline.py
 	@echo "Pipeline with validation complete!"
+
+# Generate monthly mapping/report artifacts without refreshing data timestamps.
+monthly-report:
+	python3 scripts/monthly_update.py --write-overlay --sync-redirects
+
+# Run the monthly report flow, then refresh normalized JSON after review.
+monthly-refresh:
+	python3 scripts/monthly_update.py --write-overlay --sync-redirects --run-pipeline --fail-on-pipeline-error
 
 # Clean cache and coverage
 clean:

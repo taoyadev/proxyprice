@@ -4,20 +4,32 @@
       "url": "https://proxyempire.io",
       "affiliate": null
     },
+    "shifter": {
+      "url": "https://shifter.io",
+      "affiliate": null
+    },
     "decodo": {
       "url": "https://decodo.com",
+      "affiliate": null
+    },
+    "soax": {
+      "url": "https://soax.com",
       "affiliate": null
     },
     "oxylabs": {
       "url": "https://oxylabs.io",
       "affiliate": null
     },
-    "netnut": {
-      "url": "https://netnut.io",
+    "geonode": {
+      "url": "https://geonode.com",
       "affiliate": null
     },
     "bright-data": {
       "url": "https://brightdata.com",
+      "affiliate": null
+    },
+    "netnut": {
+      "url": "https://netnut.io",
       "affiliate": null
     },
     "packetstream": {
@@ -28,8 +40,36 @@
       "url": "https://proxyscrape.com",
       "affiliate": null
     },
+    "rayobyte": {
+      "url": "https://rayobyte.com",
+      "affiliate": null
+    },
+    "proxyrack": {
+      "url": "https://www.proxyrack.com",
+      "affiliate": null
+    },
     "proxyguys": {
       "url": "https://proxyguys.com",
+      "affiliate": null
+    },
+    "froxy": {
+      "url": "https://froxy.com",
+      "affiliate": null
+    },
+    "hydraproxy": {
+      "url": "https://hydraproxy.com",
+      "affiliate": null
+    },
+    "asocks": {
+      "url": "https://asocks.com",
+      "affiliate": null
+    },
+    "webshare": {
+      "url": "https://webshare.io",
+      "affiliate": null
+    },
+    "nimbleway": {
+      "url": "https://www.nimbleway.com",
       "affiliate": null
     },
     "iproyal": {
@@ -40,16 +80,8 @@
       "url": "https://infatica.io",
       "affiliate": null
     },
-    "soax": {
-      "url": "https://soax.com",
-      "affiliate": null
-    },
     "proxy-seller": {
       "url": "https://proxy-seller.com",
-      "affiliate": null
-    },
-    "webshare": {
-      "url": "https://webshare.io",
       "affiliate": null
     },
     "proxy-cheap": {
@@ -68,10 +100,6 @@
       "url": "https://youproxy.io",
       "affiliate": null
     },
-    "rayobyte": {
-      "url": "https://rayobyte.com",
-      "affiliate": null
-    },
     "myprivateproxy": {
       "url": "https://myprivateproxy.net",
       "affiliate": null
@@ -86,10 +114,6 @@
     },
     "instantproxies": {
       "url": "https://instantproxies.com",
-      "affiliate": null
-    },
-    "shifter": {
-      "url": "https://shifter.io",
       "affiliate": null
     },
     "marsproxies": {
@@ -128,28 +152,12 @@
       "url": "https://proxys.io",
       "affiliate": null
     },
-    "hydraproxy": {
-      "url": "https://hydraproxy.com",
-      "affiliate": null
-    },
     "spaceproxy": {
       "url": "https://spaceproxy.net",
       "affiliate": null
     },
-    "geonode": {
-      "url": "https://geonode.com",
-      "affiliate": null
-    },
     "stormproxies": {
       "url": "https://stormproxies.com",
-      "affiliate": null
-    },
-    "proxyrack": {
-      "url": "https://www.proxyrack.com",
-      "affiliate": null
-    },
-    "froxy": {
-      "url": "https://froxy.com",
       "affiliate": null
     },
     "the-social-proxy": {
@@ -163,15 +171,7 @@
     "airproxy": {
       "url": "https://airproxy.io",
       "affiliate": null
-    },
-    "nimbleway": {
-      "url": "https://www.nimbleway.com",
-      "affiliate": null
-    },
-    "asocks": {
-      "url": "https://asocks.com",
-      "affiliate": null
     }
   },
-  "_comment": "Set 'affiliate' to override 'url'. Example: \"affiliate\": \"https://proxyempire.io?ref=abc123\""
+  "_comment": "Generated from data/site-overlays/proxyprice.json. Set affiliate in the overlay, not in merchant bundles."
 }
