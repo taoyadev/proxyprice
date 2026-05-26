@@ -191,6 +191,8 @@ html {
   color: var(--color-text);
   line-height: 1.6;
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -198,6 +200,8 @@ html {
 
 body {
   min-height: 100vh;
+  max-width: 100%;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   font-feature-settings:
