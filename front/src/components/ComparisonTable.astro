@@ -253,6 +253,8 @@ const tableSchema = {
 <style>
   .comparison-table-wrapper {
     margin: 2rem 0;
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .table-controls {
@@ -304,9 +306,12 @@ const tableSchema = {
   }
 
   .table-container {
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
+    -webkit-overflow-scrolling: touch;
   }
 
   .comparison-table {
