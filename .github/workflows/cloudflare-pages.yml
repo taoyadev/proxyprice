@@ -148,12 +148,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Download generated data
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-data
-          path: front/src/data
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -190,12 +184,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Download generated data
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-data
-          path: front/src/data
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -247,12 +235,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Download generated data
-        uses: actions/download-artifact@v4
-        with:
-          name: generated-data
-          path: front/src/data
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
