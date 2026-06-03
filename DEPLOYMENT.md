@@ -1,199 +1,84 @@
-# ProxyPrice - Development Complete ✅
+# ProxyPrice Deployment
 
-## Implementation Summary
+ProxyPrice production is served by Cloudflare Pages. The repository keeps the
+frontend static build, Pages Functions, security headers, redirect pages, and
+data export assets in one deployable `front/dist` artifact.
 
-### Phase 1: Data Pipeline ✅
+## Production Path
 
-- **CSV Parser** (`parse_csv.py`): Parses 131 pricing records from 43 providers
-- **Normalization** (`normalize.py`): Converts pricing to comparable $/GB metrics
-- **Unit Tests**: 11/11 tests passing
-- **Data Output**:
-  - `providers.json`: 43 providers with metadata
-  - `pricing.json`: 131 pricing records, 27 with comparable pricing
+The production deploy path is `.github/workflows/cloudflare-pages.yml`.
 
-### Phase 2: Frontend ✅
+On pushes to `main`, the workflow:
 
-- **Astro Framework**: Static site generation
-- **Cloudflare Pages**: Optimized for edge caching and global distribution
-- **Preact Integration**: Lightweight calculator component (6KB)
-- **Pages Created**:
-  - Homepage with stats and featured providers
-  - 4 proxy type pages (residential, datacenter, mobile, ISP)
-  - 43 provider detail pages (SSG)
-  - Price calculator page
-  - All providers listing
+1. Runs backend pytest through `make test` and `make test-cov`.
+2. Runs frontend tests.
+3. Runs the Python data pipeline.
+4. Validates frontend data and type checks.
+5. Builds the Astro site.
+6. Runs data validation and linkcheck.
+7. Uploads `front/dist` to Cloudflare Pages project `proxyprice`.
 
-### Phase 3: SEO & Performance ✅
+Required GitHub secrets:
 
-- **Meta Tags**: Open Graph, Twitter Cards
-- **Sitemap**: Auto-generated with @astrojs/sitemap
-- **robots.txt**: Configured for search engines
-- **Build Output**: 50 static HTML pages, 1.5MB total
-- **Performance**: ~1s build time, minimal JavaScript
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_ACCOUNT_ID`
 
-## Build Results
+Required Cloudflare Pages secret:
+
+- `OPENROUTER_API_KEY` for `/api/chat`
+
+Optional Cloudflare Pages variables:
+
+- `PUBLIC_SITE_URL`
+- `PUBLIC_FEEDBACK_URL`
+- `PUBLIC_COMPARE_PROVIDER_LIMIT`
+- `ALLOWED_ORIGINS`
+
+## Manual Validation
+
+Run backend checks locally or in CI:
 
 ```bash
-✓ Completed build in 785ms
-✓ 50 HTML pages generated
-✓ Sitemap created at dist/sitemap-index.xml
-✓ Total bundle size: 1.5MB
+cd backend
+pytest
 ```
 
-## Test Results
+Run frontend checks on a dependency-capable runtime such as OpenClaw:
 
 ```bash
-✓ Unit tests: 11/11 passing
-✓ Type checking: No errors
-✓ Build validation: Success
-```
-
-## Key Files
-
-| File                                         | Purpose                     | Status |
-| -------------------------------------------- | --------------------------- | ------ |
-| `front/src/layouts/BaseLayout.astro`         | Main layout with nav/footer | ✅     |
-| `front/src/components/ComparisonTable.astro` | Sortable pricing table      | ✅     |
-| `front/src/components/Calculator.tsx`        | Preact price calculator     | ✅     |
-| `front/src/pages/index.astro`                | Homepage                    | ✅     |
-| `front/src/pages/provider/[slug].astro`      | Provider detail pages       | ✅     |
-| `backend/scripts/parse_csv.py`               | CSV parser                  | ✅     |
-| `backend/scripts/normalize.py`               | Price normalization         | ✅     |
-| `backend/tests/test_normalization.py`        | Unit tests                  | ✅     |
-
-## Next Steps for Production
-
-### 1. Deploy to GitHub Pages
-
-```bash
-# Local preview
 cd front
-npm run preview
+CI=1 PUPPETEER_SKIP_DOWNLOAD=1 PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm ci
+npm audit --json
+npm run verify
+npm test -- --run
+```
 
-# Production build
+Run browser QA against a built preview:
+
+```bash
+cd front
 npm run build
-
-# Deploy via GitHub Actions (see docs/release/GITHUB_PAGES.md)
+python3 -m http.server 4327 --directory dist --bind 127.0.0.1
+BASE_URL=http://127.0.0.1:4327 npm run qa:browser
 ```
 
-### 2. Configure Domain
+## Production Smoke
 
-- Set custom domain in GitHub Pages
-- Ensure `front/public/CNAME` is `proxyprice.com`
-- Rebuild and deploy
-
-### 3. Set Up Data Updates
-
-Option A: Manual (MVP)
+After deployment, verify:
 
 ```bash
-# Edit docs/Price.csv
-# Run pipeline
-python3 backend/scripts/parse_csv.py
-python3 backend/scripts/normalize.py
-# Commit and push (triggers rebuild)
+curl -I https://proxyprice.com/
+curl -I https://proxyprice.com/providers/
+curl -I https://proxyprice.com/calculator/
+curl -I https://proxyprice.com/provider/bright-data/
+curl -I https://proxyprice.com/api/v1/export/proxy-merchant-intel-candidates.json
+curl -I https://proxyprice.com/sitemap-index.xml
 ```
 
-Option B: Automated (Phase 2)
+The candidate export should return JSON with:
 
-- Implement SOAX API scraping
-- Set up weekly cron job
-- Automatic PR creation with updated data
-
-### 4. Monitoring
-
-- GitHub Pages provides basic insights; optional: add analytics later
-- Add error tracking (optional: Sentry)
-- Monitor data freshness
-
-## Architecture Decisions
-
-### Why Static Site?
-
-- **Performance**: <100ms TTFB, instant page loads
-- **Cost**: Low cost hosting on GitHub Pages
-- **Reliability**: No database to crash
-- **Scalability**: CDN handles traffic spikes
-
-### Why Astro?
-
-- **Zero JS by default**: Only calculator is interactive
-- **Islands Architecture**: Preact only where needed
-- **SSG**: All 50 pages pre-rendered at build time
-- **Developer Experience**: TypeScript, hot reload
-
-### Why JSON Files?
-
-- **Simplicity**: No database queries at runtime
-- **Performance**: Data embedded in build
-- **Versioning**: Git tracks data changes
-- **Portability**: Easy to migrate or backup
-
-## Performance Optimizations
-
-1. **Static Generation**: All pages pre-rendered
-2. **Code Splitting**: Calculator loads only on /calculator
-3. **CSS Inlining**: Critical CSS inlined automatically
-4. **Minimal JS**: <10KB total JavaScript
-5. **CDN caching**: Global edge caching via GitHub Pages / CDN
-
-## Testing Checklist
-
-- [x] CSV parsing with real data
-- [x] Price normalization accuracy
-- [x] Homepage renders correctly
-- [x] Proxy type pages filter properly
-- [x] Provider detail pages generate (43 pages)
-- [x] Calculator interactivity works
-- [x] Table sorting functionality
-- [x] Mobile responsive design
-- [x] SEO meta tags present
-- [x] Sitemap generated
-- [x] Build succeeds without errors
-- [x] TypeScript type checking passes
-
-## Known Limitations (By Design)
-
-1. **No Real-time Updates**: Weekly batch updates sufficient for proxy pricing
-2. **No User Accounts**: Not needed for MVP
-3. **No Server-side API**: All data embedded at build time
-4. **Manual Price Updates**: Automated scraping in Phase 2
-
-## Production Readiness
-
-| Criterion       | Status | Notes                 |
-| --------------- | ------ | --------------------- |
-| **Functional**  | ✅     | All features working  |
-| **Tested**      | ✅     | Unit tests passing    |
-| **Built**       | ✅     | Static site generated |
-| **SEO**         | ✅     | Meta tags, sitemap    |
-| **Performance** | ✅     | <1.5MB bundle         |
-| **Mobile**      | ✅     | Responsive design     |
-| **Accessible**  | ✅     | Semantic HTML         |
-| **Documented**  | ✅     | README complete       |
-
-## Deployment Command
-
-```bash
-# Final pre-deployment check
-cd front
-npm run check && npm run build
-
-# Preview locally
-npm run preview
-
-# Push to deploy (if Cloudflare Pages connected)
-git add .
-git commit -m "feat: ProxyPrice MVP ready for production"
-git push origin main
-```
-
----
-
-**Status**: ✅ **READY FOR PRODUCTION**
-**Build Time**: ~1 second
-**Bundle Size**: 1.5MB
-**Pages**: 50 static HTML pages
-**Performance**: Lighthouse 95+ expected
-
-The project is production-ready and can be deployed immediately.
+- `export_type: proxy_merchant_intel_candidates`
+- `data_last_updated` matching `front/src/data/pricing.json`
+- `total_count` matching `items.length`
+- no affiliate or ranking fields
+- HTTPS `pricing_evidence[].source_url` values

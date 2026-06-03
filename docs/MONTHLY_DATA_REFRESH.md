@@ -29,6 +29,7 @@ npm run verify
 - maps every `front/src/data/providers.json` provider to the global merchant universe and bundle index
 - writes or updates `data/site-overlays/proxyprice.json`
 - syncs `front/src/data/redirects.json` from the overlay
+- generates `front/src/data/merchant-profiles.json` from public merchant bundle fields for provider-page enrichment
 - compares current per-GB prices with structured bundle entry-price evidence
 - holds missing bundles, unit mismatches, and large price deltas for review
 - writes `reports/monthly/YYYY-MM.md`
@@ -41,6 +42,7 @@ It does not infer prices from prose, login-only pages, configurators, or quote-b
 - Missing merchant bundles are `onboarding_required`; they must not be auto-rewritten.
 - Per-IP, per-proxy, per-thread, and quote-based products stay outside the $/GB calculator ranking.
 - Affiliate links and `go` routing stay in the ProxyPrice overlay, not in global merchant bundles.
+- Generated merchant profiles must not contain affiliate, rank, sponsor, publish-mode, or private overlay fields.
 - GitHub deploy workflows should validate and deploy committed data only. They must not run a fake daily freshness refresh.
 
 ## Validation

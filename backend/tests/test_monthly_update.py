@@ -155,6 +155,31 @@ def test_build_overlay_matches_by_domain_and_preserves_existing_values(tmp_path)
     assert validate_overlay(overlay, ["smartproxy"]) == []
 
 
+def test_build_overlay_does_not_infer_identity_from_affiliate_redirect(tmp_path):
+    context = GlobalMerchantContext(build_skill_root(tmp_path))
+    providers = [
+        {
+            "id": "unknown-provider",
+            "slug": "unknown-provider",
+            "name": "Unknown Provider",
+            "website_url": "https://unknown.example",
+        }
+    ]
+    redirects = {
+        "unknown-provider": {
+            "url": "https://decodo.com",
+            "affiliate": "https://decodo.com/?ref=private-routing",
+        }
+    }
+
+    overlay = build_overlay(providers, redirects, {"unknown-provider": []}, context, None)
+
+    entry = overlay["providers"]["unknown-provider"]
+    assert entry["merchant_key"] is None
+    assert entry["publish_mode"] == "hold"
+    assert "no global merchant match" in entry["notes"]
+
+
 def test_build_mappings_marks_missing_bundle(tmp_path):
     context = GlobalMerchantContext(build_skill_root(tmp_path))
     providers = [
@@ -223,6 +248,7 @@ def test_report_contains_required_monthly_sections():
         url_checks=[],
         overlay_written=True,
         redirects_synced=True,
+        merchant_profiles_generated=False,
         pipeline_ran=False,
         pipeline_ok=False,
         url_checks_ran=False,

@@ -105,7 +105,7 @@ if (breadcrumbs.length >= 2) {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL(image, Astro.site)} />
 
-    {noindex && <meta name="robots" content="noindex,nofollow" />}
+    {noindex && <meta name="robots" content="noindex,follow" />}
 
     <meta name="generator" content={Astro.generator} />
 	    <script is:inline
@@ -126,13 +126,13 @@ if (breadcrumbs.length >= 2) {
           <span class="logo-text">ProxyPrice</span>
         </a>
 
-        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false" aria-controls="primary-navigation">
           <span class="hamburger"></span>
           <span class="hamburger"></span>
           <span class="hamburger"></span>
         </button>
 
-	        <ul class="nav-links">
+	        <ul class="nav-links" id="primary-navigation">
 	          <li><a href="/residential">Residential</a></li>
 	          <li><a href="/datacenter">Datacenter</a></li>
 	          <li><a href="/mobile">Mobile</a></li>

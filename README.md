@@ -26,7 +26,7 @@ ProxyPrice is a static site that provides transparent pricing comparison for pro
 | Layer    | Technology                 | Purpose                                     |
 | -------- | -------------------------- | ------------------------------------------- |
 | Frontend | **Astro + Preact Islands** | Static HTML with interactive calculator     |
-| Hosting  | **GitHub Pages**           | Simple static hosting + custom domain       |
+| Hosting  | **Cloudflare Pages**       | Static CDN hosting plus Pages Functions     |
 | Data     | **Static JSON**            | Embedded at build time for instant loads    |
 | Pipeline | **Python Scripts**         | Parse and normalize CSV data                |
 | Styling  | **Vanilla CSS**            | No framework overhead, custom CSS variables |
@@ -73,7 +73,7 @@ proxyprice/
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 22+
 - Python 3.9+
 
 ### Setup
@@ -182,13 +182,16 @@ npm run validate:data
 
 # Run all verification steps
 npm run verify
+
+# Run browser QA against a built preview
+BASE_URL=http://127.0.0.1:4327 npm run qa:browser
 ```
 
 ## 📈 Performance
 
 - **Build time**: ~1 second
 - **Bundle size**: 1.5MB (including 50 pages)
-- **JavaScript**: <10KB (only calculator component)
+- **JavaScript**: Astro islands load only interactive surfaces such as the calculator and chat assistant
 - **Lighthouse Score Target**: 95+
 
 ## 🔄 Data Updates
@@ -222,7 +225,14 @@ See: `docs/AFFILIATE_REDIRECTS.md`
 
 ## 🚀 Deployment
 
-### GitHub Pages (Recommended)
+### Cloudflare Pages (Production)
+
+Production is served by Cloudflare Pages so static pages, security headers, `/go/*`
+redirect pages, and Pages Functions such as `/api/chat` ship together.
+
+Use `.github/workflows/cloudflare-pages.yml` for production deploys.
+
+### GitHub Pages (Static fallback)
 
 See `docs/release/GITHUB_PAGES.md`.
 
@@ -231,6 +241,8 @@ See `docs/release/GITHUB_PAGES.md`.
 - `PUBLIC_FEEDBACK_URL` (optional): GitHub Issues URL for “Report a Correction” link.
 - `PUBLIC_SITE_URL` (optional): Override canonical URL + sitemap host (defaults to `https://proxyprice.com`).
 - `PUBLIC_COMPARE_PROVIDER_LIMIT` (optional): Max providers used to generate `/compare/*` static pages (default `12`, min `2`, max `20`).
+- `OPENROUTER_API_KEY` (Cloudflare Pages secret): Enables `/api/chat`; configure it once in Cloudflare, not inside the deploy workflow.
+- `ALLOWED_ORIGINS` (optional Cloudflare Pages env var): Comma-separated origins allowed to call `/api/chat`; defaults to production, Pages preview, and local dev origins.
 
 ## 📝 Adding New Providers
 
@@ -318,9 +330,9 @@ MIT License - See LICENSE file for details
 
 - **Astro**: Static site framework
 - **Preact**: Lightweight React alternative for calculator
-- **GitHub Pages**: Hosting
+- **Cloudflare Pages**: Hosting, headers, and Pages Functions
 
 ---
 
-**Last Updated**: 2025-12-27
+**Last Updated**: 2026-06-03
 **Data Freshness**: Reviewed monthly

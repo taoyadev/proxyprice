@@ -52,11 +52,11 @@ pipeline-check:
 
 # Generate monthly mapping/report artifacts without refreshing data timestamps.
 monthly-report:
-	python3 scripts/monthly_update.py --write-overlay --sync-redirects
+	python3 scripts/monthly_update.py --write-overlay --sync-redirects --generate-merchant-profiles
 
 # Run the monthly report flow, then refresh normalized JSON after review.
 monthly-refresh:
-	python3 scripts/monthly_update.py --write-overlay --sync-redirects --run-pipeline --fail-on-pipeline-error
+	python3 scripts/monthly_update.py --write-overlay --sync-redirects --generate-merchant-profiles --run-pipeline --fail-on-pipeline-error
 
 # Clean cache and coverage
 clean:

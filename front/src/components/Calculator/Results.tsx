@@ -144,6 +144,20 @@ export const RecommendationCard: FunctionalComponent<
             {rec.savingsPercent}% more than best value
           </div>
         )}
+
+        <div class="rec-actions">
+          <a
+            class="rec-action-primary"
+            href={`/go/${rec.provider_id}`}
+            target="_blank"
+            rel="sponsored noopener noreferrer"
+          >
+            Visit official pricing
+          </a>
+          <a class="rec-action-secondary" href={`/provider/${rec.provider_id}`}>
+            View details
+          </a>
+        </div>
       </div>
     </div>
   );

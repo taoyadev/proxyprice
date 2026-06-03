@@ -26,8 +26,10 @@ if (mobileMenuBtn && navLinks) {
   // Close menu on escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
+      const wasOpen = navLinks.classList.contains('nav-links-open');
       navLinks.classList.remove('nav-links-open');
       mobileMenuBtn.setAttribute('aria-expanded', 'false');
+      if (wasOpen) mobileMenuBtn.focus();
     }
   });
 }

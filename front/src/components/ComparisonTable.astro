@@ -1,6 +1,7 @@
 ---
 import providersData from '../data/providers.json';
 import pricingData from '../data/pricing.json';
+import merchantProfilesData from '../data/merchant-profiles.json';
 import { getFaviconUrl } from '../lib/favicon';
 import { getProxyTypeLabel } from '../lib/proxy-types';
 
@@ -59,6 +60,15 @@ const getModelLabel = (model: string) => {
   return labels[model] || model;
 };
 
+const hasIndexableMerchantProfile = (profile: any) =>
+  profile?.display_profile === true &&
+  Boolean(profile?.merchant_key) &&
+  Boolean(profile?.names?.display_name) &&
+  Boolean(profile?.official?.homepage_url) &&
+  Boolean(profile?.official?.pricing_url) &&
+  (profile?.products || []).length > 0 &&
+  (profile?.evidence?.official_pages || []).length > 0;
+
 // Generate Table Schema for SEO
 const tableSchemaData = filteredPricing
   .filter(p => p.comparable)
@@ -67,9 +77,10 @@ const tableSchemaData = filteredPricing
     const provider = getProvider(pricing.provider_id);
     return provider ? {
       provider: provider.name,
+      providerSlug: provider.slug,
       proxyType: getProxyTypeLabel(pricing.proxy_type),
-      minPrice: pricing.min_price_per_gb ? `$${pricing.min_price_per_gb.toFixed(2)}/GB` : 'N/A',
-      maxPrice: pricing.max_price_per_gb ? `$${pricing.max_price_per_gb.toFixed(2)}/GB` : 'N/A',
+      minPrice: pricing.min_price_per_gb,
+      maxPrice: pricing.max_price_per_gb,
       tiers: pricing.tier_count ?? 0,
       trial: provider.trial_offer || 'No'
     } : null;
@@ -78,11 +89,31 @@ const tableSchemaData = filteredPricing
 
 const tableSchema = {
   "@context": "https://schema.org",
-  "@type": "Table",
-  "about": proxyType
+  "@type": "ItemList",
+  "name": proxyType
     ? `${getProxyTypeLabel(proxyType)} proxy pricing comparison`
     : "Proxy provider pricing comparison",
-  "cssSelector": ".comparison-table",
+  "numberOfItems": tableSchemaData.length,
+  "itemListElement": tableSchemaData.map((row: any, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "item": {
+      "@type": "Product",
+      "name": `${row.provider} ${row.proxyType} proxies`,
+      "category": row.proxyType,
+      "url": new URL(`/provider/${row.providerSlug}/`, Astro.site).toString(),
+      ...(typeof row.minPrice === "number" && {
+        "offers": {
+          "@type": "AggregateOffer",
+          "lowPrice": row.minPrice,
+          "highPrice": typeof row.maxPrice === "number" ? row.maxPrice : row.minPrice,
+          "priceCurrency": "USD",
+          "offerCount": row.tiers,
+          "availability": "https://schema.org/InStock",
+        },
+      }),
+    },
+  })),
 };
 ---
 
@@ -98,6 +129,7 @@ const tableSchema = {
       class="results-count"
       data-results-count
       data-suffix={proxyType ? ` for ${getProxyTypeLabel(proxyType)} proxies` : ''}
+      aria-live="polite"
     >
       {(() => {
         const visible = filteredPricing.filter((p) => p.comparable).length;
@@ -139,6 +171,11 @@ const tableSchema = {
           <input type="checkbox" data-filter="trialOnly" />
           <span>Trial only</span>
         </label>
+
+        <label class="filter-check">
+          <input type="checkbox" data-filter="profileOnly" />
+          <span>Official evidence</span>
+        </label>
       </div>
     )}
   </div>
@@ -150,7 +187,7 @@ const tableSchema = {
           <th>Provider</th>
           <th>Proxy Type</th>
           <th>Model</th>
-          <th class="sortable">
+          <th class="sortable" data-sort-heading aria-sort="none">
             <button
               class="sort-btn"
               data-sort="price"
@@ -172,6 +209,9 @@ const tableSchema = {
         {filteredPricing.map(pricing => {
           const provider = getProvider(pricing.provider_id);
           if (!provider) return null;
+          const hasMerchantEvidence = hasIndexableMerchantProfile(
+            (merchantProfilesData as any).profiles?.[provider.slug],
+          );
 
           return (
             <tr
@@ -180,6 +220,7 @@ const tableSchema = {
               data-proxy-type={pricing.proxy_type}
               data-comparable={pricing.comparable ? '1' : '0'}
               data-has-trial={provider.trial_offer ? '1' : '0'}
+              data-has-merchant-profile={hasMerchantEvidence ? '1' : '0'}
             >
               <td class="provider-name">
                 <a href={`/provider/${provider.slug}`} class="provider-link">
@@ -192,7 +233,10 @@ const tableSchema = {
                     loading="lazy"
                     decoding="async"
                   />
-                  <span>{provider.name}</span>
+                  <span class="provider-link-text">
+                    <span>{provider.name}</span>
+                    {hasMerchantEvidence && <span class="merchant-profile-badge">Official evidence</span>}
+                  </span>
                 </a>
               </td>
               <td>
@@ -248,6 +292,11 @@ const tableSchema = {
       <p>No pricing data available for this proxy type.</p>
     </div>
   )}
+
+  <div class="no-results no-results-client" data-empty-state hidden>
+    <p>No providers match the current filters.</p>
+    <button type="button" class="clear-filters-btn" data-clear-filters>Clear filters</button>
+  </div>
 </div>
 
 <style>
@@ -383,6 +432,19 @@ const tableSchema = {
 
   .provider-link:hover {
     color: var(--color-primary);
+  }
+
+  .provider-link-text {
+    display: grid;
+    gap: 0.2rem;
+    min-width: 0;
+  }
+
+  .merchant-profile-badge {
+    color: var(--color-text-light);
+    font-size: 0.7rem;
+    font-weight: 650;
+    line-height: 1.2;
   }
 
   .provider-favicon-small {
@@ -541,11 +603,58 @@ const tableSchema = {
     color: var(--color-text-light);
   }
 
+  .no-results[hidden] {
+    display: none;
+  }
+
+  .clear-filters-btn {
+    margin-top: 0.875rem;
+    padding: 0.5rem 0.875rem;
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    background: var(--color-bg);
+    color: var(--color-primary);
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .clear-filters-btn:hover {
+    border-color: var(--color-primary);
+  }
+
+  .table-container::before {
+    content: 'Scroll sideways to compare all columns';
+    display: none;
+    padding: 0.625rem 0.75rem;
+    color: var(--color-text-light);
+    font-size: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+
   @media (max-width: 768px) {
+    .table-container::before {
+      display: block;
+    }
+
     .comparison-table th,
     .comparison-table td {
       padding: 0.75rem 0.5rem;
       font-size: 0.875rem;
+    }
+
+    .comparison-table th:first-child,
+    .comparison-table td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background: var(--color-bg);
+      box-shadow: 1px 0 0 var(--color-border);
+    }
+
+    .comparison-table thead th:first-child {
+      background: var(--color-bg-alt);
+      z-index: 2;
     }
 
     .proxy-badge,
@@ -580,12 +689,16 @@ const tableSchema = {
     const typeSelect = wrapper.querySelector('[data-filter="type"]');
     const comparableOnly = wrapper.querySelector('[data-filter="comparableOnly"]');
     const trialOnly = wrapper.querySelector('[data-filter="trialOnly"]');
+    const profileOnly = wrapper.querySelector('[data-filter="profileOnly"]');
+    const emptyState = wrapper.querySelector('[data-empty-state]');
+    const clearFilters = wrapper.querySelector('[data-clear-filters]');
 
     const applyFilters = () => {
       const q = (searchInput && searchInput.value ? searchInput.value : '').trim().toLowerCase();
       const type = typeSelect && typeSelect.value ? typeSelect.value : 'all';
       const comparable = comparableOnly ? comparableOnly.checked : true;
       const trial = trialOnly ? trialOnly.checked : false;
+      const profile = profileOnly ? profileOnly.checked : false;
 
       let visible = 0;
       for (const row of rows) {
@@ -593,12 +706,14 @@ const tableSchema = {
         const rowType = row.dataset.proxyType || '';
         const isComparable = row.dataset.comparable !== '0';
         const hasTrial = row.dataset.hasTrial === '1';
+        const hasProfile = row.dataset.hasMerchantProfile === '1';
 
         const matches =
           (!q || provider.includes(q)) &&
           (type === 'all' || rowType === type) &&
           (!comparable || isComparable) &&
-          (!trial || hasTrial);
+          (!trial || hasTrial) &&
+          (!profile || hasProfile);
 
         row.style.display = matches ? 'table-row' : 'none';
         if (matches) visible += 1;
@@ -609,6 +724,10 @@ const tableSchema = {
         const total = rows.length;
         results.textContent = `Showing ${visible} of ${total} provider${total !== 1 ? 's' : ''}${suffix}`;
       }
+
+      if (emptyState) {
+        emptyState.hidden = visible !== 0;
+      }
     };
 
     const syncUrlParams = () => {
@@ -618,6 +737,7 @@ const tableSchema = {
       const type = typeSelect ? typeSelect.value : 'all';
       const comparable = comparableOnly ? comparableOnly.checked : true;
       const trial = trialOnly ? trialOnly.checked : false;
+      const profile = profileOnly ? profileOnly.checked : false;
 
       if (q) params.set('q', q);
       else params.delete('q');
@@ -630,6 +750,9 @@ const tableSchema = {
 
       if (trial === true) params.set('trial', '1');
       else params.delete('trial');
+
+      if (profile === true) params.set('profile', '1');
+      else params.delete('profile');
 
       const next = params.toString();
       const url = next ? `${window.location.pathname}?${next}` : window.location.pathname;
@@ -647,6 +770,19 @@ const tableSchema = {
     bind(typeSelect, 'change');
     bind(comparableOnly, 'change');
     bind(trialOnly, 'change');
+    bind(profileOnly, 'change');
+
+    if (clearFilters) {
+      clearFilters.addEventListener('click', () => {
+        if (searchInput) searchInput.value = '';
+        if (typeSelect) typeSelect.value = 'all';
+        if (comparableOnly) comparableOnly.checked = true;
+        if (trialOnly) trialOnly.checked = false;
+        if (profileOnly) profileOnly.checked = false;
+        applyFilters();
+        syncUrlParams();
+      });
+    }
 
     // Simple table sorting (scoped) with keyboard support
     wrapper.querySelectorAll('.sort-btn').forEach((btn) => {
@@ -677,6 +813,8 @@ const tableSchema = {
         allRows.forEach((row) => tBody.appendChild(row));
 
         btn.dataset.order = ascending ? 'asc' : 'desc';
+        const heading = btn.closest('[data-sort-heading]');
+        if (heading) heading.setAttribute('aria-sort', ascending ? 'ascending' : 'descending');
         const icon = btn.querySelector('.sort-icon');
         if (icon) {
           icon.textContent = ascending ? '↑' : '↓';
@@ -706,6 +844,7 @@ const tableSchema = {
     if (typeSelect && params.get('type')) typeSelect.value = params.get('type');
     if (comparableOnly && params.get('comparable') === '0') comparableOnly.checked = false;
     if (trialOnly && params.get('trial') === '1') trialOnly.checked = true;
+    if (profileOnly && params.get('profile') === '1') profileOnly.checked = true;
 
     applyFilters();
   }

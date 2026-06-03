@@ -205,7 +205,7 @@ function validateLink(raw, file, relativeFile) {
         `${relativeFile} -> URL contains spaces: ${cleaned.substring(0, 100)}`,
       );
     }
-    if (cleaned.startsWith("http://") && !cleaned.startsWith("http://")) {
+    if (cleaned.startsWith("http://")) {
       warnings.push(
         `${relativeFile} -> using HTTP instead of HTTPS: ${cleaned.substring(0, 100)}`,
       );
@@ -326,6 +326,7 @@ for (const imgPath of imageFiles) {
 const requiredFiles = [
   { path: "robots.txt", optional: false },
   { path: "sitemap-index.xml", optional: false },
+  { path: "api/v1/export/proxy-merchant-intel-candidates.json", optional: false },
   { path: "og-image.svg", optional: false },
   { path: "CNAME", optional: true }, // Only needed for custom domains
   { path: ".nojekyll", optional: true }, // Only needed for GitHub Pages

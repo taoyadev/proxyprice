@@ -6,8 +6,9 @@
   "scripts": {
     "generate:calculator-data": "node scripts/generate-calculator-data.mjs",
     "generate:api-data": "node scripts/generate-api-v1.mjs",
+    "generate:candidate-export": "node scripts/generate-proxy-merchant-intel-candidates.mjs",
     "dev": "astro dev",
-    "build": "node scripts/generate-calculator-data.mjs && node scripts/generate-api-v1.mjs && astro build",
+    "build": "node scripts/generate-calculator-data.mjs && node scripts/generate-api-v1.mjs && node scripts/generate-proxy-merchant-intel-candidates.mjs && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
@@ -16,34 +17,40 @@
     "validate:data:zod": "node scripts/validate-data-zod.mjs",
     "validate:api": "node scripts/generate-api-v1.mjs && node scripts/validate-api-v1.mjs",
     "linkcheck": "node scripts/linkcheck.mjs dist",
-    "verify": "npm run lint && npm run check && npm run build && npm run validate:data && npm run validate:api && npm run linkcheck",
+    "qa:browser": "node scripts/browser-qa.mjs",
+    "verify": "npm run lint && npm run check && npm run build && npm run validate:data && npm run validate:data:zod && npm run validate:api && npm run linkcheck",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui"
   },
   "dependencies": {
-    "@astrojs/preact": "4.1.3",
-    "@preact/signals": "2.5.1",
-    "astro": "^5.16.6",
-    "preact": "10.28.1",
+    "@astrojs/preact": "^5.1.5",
+    "@preact/signals": "^2.9.1",
+    "astro": "^6.4.3",
+    "preact": "^10.29.2",
     "zod": "3.25.76"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.6",
-    "@astrojs/sitemap": "3.6.0",
-    "@preact/preset-vite": "2.10.1",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/sitemap": "^3.7.3",
+    "@preact/preset-vite": "^2.10.5",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/preact": "3.2.4",
     "@typescript-eslint/eslint-plugin": "8.19.0",
     "@typescript-eslint/parser": "8.19.0",
-    "@vitest/coverage-v8": "4.0.16",
-    "@vitest/ui": "4.0.16",
+    "@vitest/coverage-v8": "^4.1.8",
+    "@vitest/ui": "^4.1.8",
     "eslint": "9.39.2",
     "eslint-plugin-astro": "1.5.0",
     "jsdom": "25.0.1",
     "puppeteer": "24.34.0",
     "typescript": "5.7.3",
-    "vitest": "4.0.16"
+    "vitest": "^4.1.8"
+  },
+  "overrides": {
+    "yaml-language-server": {
+      "yaml": "2.9.0"
+    }
   }
 }

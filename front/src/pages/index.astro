@@ -30,7 +30,7 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
     <div class="container">
       <h1>Stop Overpaying for Proxies</h1>
       <p class="hero-subtitle">
-        The proxy market is confusing by design. We cut through the noise by normalizing pricing from {providersData.total_count}+ providers into one simple metric: <strong>cost per GB</strong>. No hidden fees, no marketing fluff.
+        The proxy market is confusing by design. We normalize comparable public pricing into <strong>cost per GB</strong>, and clearly label per-IP, per-proxy, and quote-based plans when conversion would be misleading.
       </p>
       <div class="hero-cta">
         <a href="/calculator" class="btn btn-primary">Calculate Your Savings</a>
@@ -47,8 +47,8 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
           <div class="stat-label">Providers</div>
         </div>
         <div class="stat">
-          <div class="stat-value">{countByType('residential')}</div>
-          <div class="stat-label">Residential</div>
+          <div class="stat-value">{totalComparableRecords}</div>
+          <div class="stat-label">Comparable Records</div>
         </div>
         <div class="stat">
           <div class="stat-value">{countByType('datacenter')}</div>
@@ -161,7 +161,7 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
             </svg>
           </div>
           <h3>Zero Provider Ownership</h3>
-          <p>Unlike "review" sites that are secretly owned by proxy companies, we have no financial stake in which provider you choose. Our only goal is accurate data.</p>
+          <p>We do not sell proxy plans or use paid placement rankings. Affiliate availability never changes price sorting or how we label comparable data.</p>
         </div>
 
         <div class="trust-card">
@@ -170,8 +170,8 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3>{verificationRate}% Manually Verified</h3>
-          <p>Every price is pulled directly from official provider websites. We track {totalComparableRecords} pricing tiers that can be fairly compared using our $/GB standard.</p>
+          <h3>{verificationRate}% Directly Comparable</h3>
+          <p>We track {totalComparableRecords} pricing records that can be fairly compared using our $/GB standard. Other public pricing models stay visible with separate labels.</p>
         </div>
 
         <div class="trust-card">
@@ -180,9 +180,9 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
               <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd" />
             </svg>
           </div>
-          <h3>Fresh Data Always</h3>
+          <h3>Monthly Review Cadence</h3>
           <p>
-            Proxy pricing changes constantly. We monitor providers and update our database regularly so you never compare stale numbers.
+            Proxy pricing changes constantly. We review public pricing sources on a monthly cadence and flag gaps that need merchant-bundle work.
             Last sync: {DATA_LAST_UPDATED}.
           </p>
         </div>
@@ -231,8 +231,8 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
         </div>
         <div class="step">
           <div class="step-number">2</div>
-          <h3>Normalize to $/GB</h3>
-          <p>Providers use different models: per-GB, per-IP, bundled plans. We convert everything to a single standard so you can compare apples to apples.</p>
+          <h3>Normalize What Is Comparable</h3>
+          <p>Providers use different models: per-GB, per-IP, bundled plans. We convert only the tiers that can be compared fairly, then label the rest as non-comparable.</p>
         </div>
         <div class="step">
           <div class="step-number">3</div>
@@ -243,43 +243,6 @@ const verificationRate = Math.round((totalComparableRecords / totalPricingRecord
     </div>
   </section>
 </BaseLayout>
-
-<!-- Organization Schema -->
-<script is:inline type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "ProxyPrice",
-  "url": "https://proxyprice.com",
-  "logo": "https://proxyprice.com/og-image.png",
-  "description": "ProxyPrice is the leading independent proxy price comparison platform. Compare 40+ proxy providers with transparent, normalized pricing for residential, datacenter, mobile, and ISP proxies.",
-  "sameAs": [
-    "https://twitter.com/proxyprice",
-    "https://github.com/proxyprice"
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "customer support",
-    "url": "https://proxyprice.com"
-  },
-  "founder": {
-    "@type": "Organization",
-    "name": "ProxyPrice"
-  },
-  "foundingDate": "2024",
-  "areaServed": "Worldwide",
-  "knowsAbout": [
-    "residential proxies",
-    "datacenter proxies",
-    "mobile proxies",
-    "ISP proxies",
-    "web scraping proxies",
-    "socks5 proxies",
-    "rotating proxies",
-    "static proxies"
-  ]
-}
-</script>
 
 <style>
   .hero {

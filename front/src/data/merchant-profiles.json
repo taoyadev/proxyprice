@@ -1,0 +1,3232 @@
+{
+  "schema_version": "1.0.0",
+  "source": "proxy-merchant-intel",
+  "generated_at": "2026-06-01",
+  "providers_last_updated": "2026-06-01",
+  "pricing_last_updated": "2026-06-01",
+  "total_count": 43,
+  "displayable_count": 25,
+  "profiles": {
+    "proxyempire": {
+      "provider_slug": "proxyempire",
+      "provider_name": "ProxyEmpire",
+      "merchant_key": "proxyempire",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "ProxyEmpire",
+        "aliases": [
+          "Proxy Empire"
+        ],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://proxyempire.io/",
+        "pricing_url": "https://proxyempire.io/rotating-residential-proxies/",
+        "domains": [
+          "proxyempire.io"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "datacenter",
+          "mobile",
+          "static-residential",
+          "isp"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "rotating-residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": null,
+          "source_url": "https://proxyempire.io/rotating-residential-proxies/"
+        },
+        {
+          "product_key": "rotating-datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": null,
+          "source_url": "https://proxyempire.io/rotating-datacenter-proxies/"
+        },
+        {
+          "product_key": "rotating-mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": null,
+          "source_url": "https://proxyempire.io/rotating-mobile-proxies/"
+        },
+        {
+          "product_key": "static-residential-proxies",
+          "proxy_type": "static-residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": null,
+          "source_url": "https://proxyempire.io/static-residential-proxies/"
+        },
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 3.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://proxyempire.io/pricing-table/",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://proxyempire.io/pricing-table/"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 0.35,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://proxyempire.io/pricing-table/",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://proxyempire.io/pricing-table/"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 8.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://proxyempire.io/pricing-table/",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://proxyempire.io/pricing-table/"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 3.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://proxyempire.io/pricing-table/",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://proxyempire.io/pricing-table/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "ProxyEmpire now exposes direct official pages for rotating residential, rotating datacenter, rotating mobile, and static residential offers."
+        ],
+        "weaknesses": [
+          "Price-table evidence still lives on a separate pricing surface, so the product pages and pricing comparisons must stay paired."
+        ],
+        "best_for": [
+          "Weekly-watchlist residential proxy comparisons."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "ProxyEmpire homepage",
+            "url": "https://proxyempire.io/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-08",
+            "kind": "product_page",
+            "label": "ProxyEmpire rotating residential proxies page",
+            "url": "https://proxyempire.io/rotating-residential-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-11",
+            "kind": "product_page",
+            "label": "ProxyEmpire rotating datacenter proxies page",
+            "url": "https://proxyempire.io/rotating-datacenter-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "ProxyEmpire rotating mobile proxies page",
+            "url": "https://proxyempire.io/rotating-mobile-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "static-residential-product-2026-04-11",
+            "kind": "product_page",
+            "label": "ProxyEmpire static residential proxies page",
+            "url": "https://proxyempire.io/static-residential-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "proxyprice-residential-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "ProxyEmpire residential pricing via ProxyPrice",
+            "url": "https://proxyempire.io/pricing-table/",
+            "observed_at": "2026-05-25"
+          }
+        ]
+      }
+    },
+    "shifter": {
+      "provider_slug": "shifter",
+      "provider_name": "Shifter",
+      "merchant_key": "shifter",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "deferred"
+    },
+    "decodo": {
+      "provider_slug": "decodo",
+      "provider_name": "Decodo",
+      "merchant_key": "decodo",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Decodo",
+        "aliases": [],
+        "legacy_aliases": [
+          "Smartproxy"
+        ]
+      },
+      "official": {
+        "homepage_url": "https://decodo.com/",
+        "pricing_url": "https://decodo.com/proxies/residential-proxies/pricing",
+        "domains": [
+          "decodo.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "isp",
+          "datacenter",
+          "mobile"
+        ],
+        "product_categories": [
+          "proxy-network",
+          "scraping-api"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 2.2,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://decodo.com/proxies/residential-proxies/pricing",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://decodo.com/proxies/residential-proxies/pricing"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 1.3,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://decodo.com/proxies/isp-proxies/pricing",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://decodo.com/proxies/isp-proxies/pricing"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 0.39,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://decodo.com/proxies/datacenter-proxies/pricing",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://decodo.com/proxies/datacenter-proxies/pricing"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 3.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://decodo.com/proxies/mobile/pricing",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://decodo.com/proxies/mobile/pricing"
+        },
+        {
+          "product_key": "web-scraping-services",
+          "proxy_type": null,
+          "product_category": "scraping-api",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://decodo.com/scraping"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Current Decodo brand exposes clean official pages for residential, ISP, datacenter, mobile, and scraping products."
+        ],
+        "weaknesses": [
+          "The rebrand still requires legacy alias continuity for Smartproxy references."
+        ],
+        "best_for": [
+          "Users who need one canonical merchant record across Decodo and historical Smartproxy mentions."
+        ],
+        "watchouts": [
+          "Pricing pages drift independently by SKU family, so comparisons should cite the exact Decodo product page in use."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Decodo homepage",
+            "url": "https://decodo.com/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-pricing-2026-04-08",
+            "kind": "product_page",
+            "label": "Decodo residential pricing page",
+            "url": "https://decodo.com/proxies/residential-proxies/pricing",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "isp-product-2026-04-08",
+            "kind": "product_page",
+            "label": "Decodo ISP proxies page",
+            "url": "https://decodo.com/proxies/isp-proxies",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-08",
+            "kind": "product_page",
+            "label": "Decodo datacenter proxies page",
+            "url": "https://decodo.com/proxies/datacenter-proxies",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "mobile-pricing-2026-04-11",
+            "kind": "product_page",
+            "label": "Decodo mobile proxies pricing page",
+            "url": "https://decodo.com/proxies/mobile/pricing",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "scraping-services-2026-04-08",
+            "kind": "product_page",
+            "label": "Decodo web scraping services page",
+            "url": "https://decodo.com/scraping",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "proxyprice-datacenter-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "Decodo datacenter pricing via ProxyPrice",
+            "url": "https://decodo.com/proxies/datacenter-proxies/pricing",
+            "observed_at": "2026-05-25"
+          },
+          {
+            "evidence_key": "proxyprice-isp-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "Decodo isp pricing via ProxyPrice",
+            "url": "https://decodo.com/proxies/isp-proxies/pricing",
+            "observed_at": "2026-05-25"
+          }
+        ]
+      }
+    },
+    "soax": {
+      "provider_slug": "soax",
+      "provider_name": "SOAX",
+      "merchant_key": "soax",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "SOAX",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://soax.com/",
+        "pricing_url": "https://soax.com/pricing",
+        "domains": [
+          "soax.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "mobile",
+          "datacenter"
+        ],
+        "product_categories": [
+          "proxy-network",
+          "scraping-api"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": {
+            "amount": 2.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://soax.com/proxies/residential",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://soax.com/proxies/residential"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": {
+            "amount": 2.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://soax.com/proxies/mobile",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://soax.com/proxies/mobile"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": {
+            "amount": 0.4,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://soax.com/proxies/datacenter",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://soax.com/proxies/datacenter"
+        },
+        {
+          "product_key": "web-data-api",
+          "proxy_type": null,
+          "product_category": "scraping-api",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://soax.com/web-data-api"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "SOAX exposes direct official pages for residential, mobile, datacenter, and Web Data API products."
+        ],
+        "weaknesses": [
+          "The broad pricing hub still exists and can mislead weaker refresh flows."
+        ],
+        "best_for": [
+          "Pages that need clearly separated official pages across network and scraping categories."
+        ],
+        "watchouts": [
+          "Prefer the product pages over the pricing hub when assigning source_url values."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "SOAX homepage",
+            "url": "https://soax.com/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "pricing-2026-04-08",
+            "kind": "pricing",
+            "label": "SOAX pricing page",
+            "url": "https://soax.com/pricing",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-08",
+            "kind": "product_page",
+            "label": "SOAX residential proxies page",
+            "url": "https://soax.com/proxies/residential",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-08",
+            "kind": "product_page",
+            "label": "SOAX mobile proxies page",
+            "url": "https://soax.com/proxies/mobile",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-08",
+            "kind": "product_page",
+            "label": "SOAX datacenter proxies page",
+            "url": "https://soax.com/proxies/datacenter",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "web-data-api-2026-04-08",
+            "kind": "product_page",
+            "label": "SOAX Web Data API page",
+            "url": "https://soax.com/web-data-api",
+            "observed_at": "2026-04-08"
+          }
+        ]
+      }
+    },
+    "oxylabs": {
+      "provider_slug": "oxylabs",
+      "provider_name": "Oxylabs",
+      "merchant_key": "oxylabs",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Oxylabs",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://oxylabs.io/",
+        "pricing_url": "https://oxylabs.io/products/free-trial-proxies",
+        "domains": [
+          "oxylabs.io"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "datacenter",
+          "mobile",
+          "static-residential"
+        ],
+        "product_categories": [
+          "proxy-network",
+          "unblocker"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": {
+            "amount": 5.5031,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://oxylabs.io/products/residential-proxy-pool",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://oxylabs.io/products/residential-proxy-pool"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": {
+            "amount": 0.4798,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://oxylabs.io/products/datacenter-proxies",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://oxylabs.io/products/datacenter-proxies/dedicated-datacenter-proxies"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": {
+            "amount": 14.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://oxylabs.io/products/mobile-proxies",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://oxylabs.io/products/mobile-proxies"
+        },
+        {
+          "product_key": "static-residential-proxies",
+          "proxy_type": "static-residential",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://oxylabs.io/products/static-residential-proxies"
+        },
+        {
+          "product_key": "web-unblocker",
+          "proxy_type": null,
+          "product_category": "unblocker",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://oxylabs.io/products/web-unblocker"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Oxylabs exposes current official pages across proxy-network and unblocker product families."
+        ],
+        "weaknesses": [
+          "Public commercial packaging is promotion-led through the free-trial program rather than one unified pricing hub."
+        ],
+        "best_for": [
+          "Teams comparing premium proxy-network coverage and unblocker tooling on one merchant."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Oxylabs homepage",
+            "url": "https://oxylabs.io/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "free-trial-2026-04-11",
+            "kind": "pricing",
+            "label": "Oxylabs free trial proxies page",
+            "url": "https://oxylabs.io/products/free-trial-proxies",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Oxylabs residential proxies page",
+            "url": "https://oxylabs.io/products/residential-proxy-pool",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Oxylabs shared datacenter proxies page",
+            "url": "https://oxylabs.io/products/datacenter-proxies/shared",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Oxylabs mobile proxies page",
+            "url": "https://oxylabs.io/products/mobile-proxies",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "static-residential-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Oxylabs static residential proxies page",
+            "url": "https://oxylabs.io/products/static-residential-proxies",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "web-unblocker-2026-04-08",
+            "kind": "product_page",
+            "label": "Oxylabs Web Unblocker page",
+            "url": "https://oxylabs.io/products/web-unblocker",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "proxyprice-datacenter-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "Oxylabs datacenter pricing via ProxyPrice",
+            "url": "https://oxylabs.io/products/datacenter-proxies",
+            "observed_at": "2026-05-25"
+          }
+        ]
+      }
+    },
+    "geonode": {
+      "provider_slug": "geonode",
+      "provider_name": "Geonode",
+      "merchant_key": "geonode",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "bright-data": {
+      "provider_slug": "bright-data",
+      "provider_name": "Bright Data",
+      "merchant_key": "bright-data",
+      "display_profile": true,
+      "bundle_state": "verified",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Bright Data",
+        "aliases": [],
+        "legacy_aliases": [
+          "Luminati"
+        ]
+      },
+      "official": {
+        "homepage_url": "https://brightdata.com/",
+        "pricing_url": "https://brightdata.com/proxy-types",
+        "domains": [
+          "brightdata.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "isp",
+          "mobile",
+          "datacenter"
+        ],
+        "product_categories": [
+          "proxy-network",
+          "unblocker",
+          "browser-api"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 5.01,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://brightdata.com/pricing/proxy-network/residential-proxies",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://brightdata.com/pricing/proxy-network/residential-proxies"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 15.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://brightdata.com/pricing/proxy-network/isp-proxies",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://brightdata.com/pricing/proxy-network/isp-proxies"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 0.6,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://brightdata.com/pricing/proxy-network/datacenter-proxies",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://brightdata.com/pricing/proxy-network/datacenter-proxies"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 5.01,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://brightdata.com/proxy-types/mobile-proxies",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://brightdata.com/proxy-types/mobile-proxies"
+        },
+        {
+          "product_key": "web-unlocker",
+          "proxy_type": null,
+          "product_category": "unblocker",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://brightdata.com/products/web-unlocker"
+        },
+        {
+          "product_key": "browser-api",
+          "proxy_type": null,
+          "product_category": "browser-api",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 8.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "payg",
+            "source_url": "https://brightdata.com/pricing/scraping-browser",
+            "observed_at": "2026-04-21"
+          },
+          "source_url": "https://brightdata.com/pricing/scraping-browser"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Bright Data publicly advertises 400M+ monthly residential IPs across 195 countries on its proxy-services hub and proxy docs.",
+          "Bright Data publicly advertises 1.3M+ ISP proxies and 7M+ mobile proxies on current pricing pages.",
+          "The public platform spans proxy networks, Browser API, web access APIs, datasets, and managed data workflows.",
+          "Bright Data's AI docs position the company as real-time web data infrastructure for AI applications, agents, and LLMs."
+        ],
+        "weaknesses": [
+          "Public pricing and promotional mechanics still vary by SKU and landing page.",
+          "Legacy Luminati naming still appears on older ecosystem pages and downstream content."
+        ],
+        "best_for": [
+          "Teams that want one vendor for proxy networks plus browser-based web access and AI/web-data workflows.",
+          "Operators who need country-level geo-targeting with large public residential inventory."
+        ],
+        "watchouts": [
+          "Downstream pages should cite the exact Bright Data page because proxy, Browser API, and AI surfaces use different landing pages and price tables."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "proxy-services-hub-2026-04-21",
+            "kind": "product_page",
+            "label": "Bright Data proxy services hub",
+            "url": "https://brightdata.com/proxy-types",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "residential-pricing-2026-04-21",
+            "kind": "pricing",
+            "label": "Bright Data residential proxy pricing",
+            "url": "https://brightdata.com/pricing/proxy-network/residential-proxies",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "isp-pricing-2026-04-21",
+            "kind": "pricing",
+            "label": "Bright Data ISP proxy pricing",
+            "url": "https://brightdata.com/pricing/proxy-network/isp-proxies",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "mobile-pricing-2026-04-21",
+            "kind": "pricing",
+            "label": "Bright Data mobile proxy pricing",
+            "url": "https://brightdata.com/pricing/proxy-network/mobile-proxies",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-21",
+            "kind": "product_page",
+            "label": "Bright Data datacenter proxies page",
+            "url": "https://brightdata.com/proxy-types/datacenter-proxies",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "datacenter-pricing-2026-04-21",
+            "kind": "pricing",
+            "label": "Bright Data datacenter proxy pricing",
+            "url": "https://brightdata.com/pricing/proxy-network/datacenter-proxies",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "browser-api-pricing-2026-04-21",
+            "kind": "pricing",
+            "label": "Bright Data Browser API pricing",
+            "url": "https://brightdata.com/pricing/scraping-browser",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "proxy-infrastructure-docs-2026-04-21",
+            "kind": "docs",
+            "label": "Bright Data proxy infrastructure docs",
+            "url": "https://docs.brightdata.com/proxy-networks/introduction",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "ai-infrastructure-docs-2026-04-21",
+            "kind": "docs",
+            "label": "Bright Data AI infrastructure docs",
+            "url": "https://docs.brightdata.com/ai/introduction",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "contact-2026-04-21",
+            "kind": "docs",
+            "label": "Bright Data contact and offices page",
+            "url": "https://brightdata.com/contact",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "homepage-2026-04-21",
+            "kind": "homepage",
+            "label": "Bright Data homepage",
+            "url": "https://brightdata.com/",
+            "observed_at": "2026-04-21"
+          },
+          {
+            "evidence_key": "proxyprice-mobile-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "Bright Data mobile pricing via ProxyPrice",
+            "url": "https://brightdata.com/proxy-types/mobile-proxies",
+            "observed_at": "2026-05-25"
+          }
+        ]
+      }
+    },
+    "netnut": {
+      "provider_slug": "netnut",
+      "provider_name": "NetNut",
+      "merchant_key": "netnut",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "packetstream": {
+      "provider_slug": "packetstream",
+      "provider_name": "PacketStream",
+      "merchant_key": "packetstream",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "proxyscrape": {
+      "provider_slug": "proxyscrape",
+      "provider_name": "ProxyScrape",
+      "merchant_key": "proxyscrape",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "rayobyte": {
+      "provider_slug": "rayobyte",
+      "provider_name": "Rayobyte",
+      "merchant_key": "rayobyte",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Rayobyte",
+        "aliases": [],
+        "legacy_aliases": [
+          "Blazing SEO LLC",
+          "Blazing Proxies",
+          "blazingseollc"
+        ]
+      },
+      "official": {
+        "homepage_url": "https://rayobyte.com/",
+        "pricing_url": "https://rayobyte.com/products/residential-proxies/",
+        "domains": [
+          "rayobyte.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "datacenter",
+          "mobile",
+          "isp"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": null,
+          "source_url": "https://rayobyte.com/products/residential-proxies/"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": null,
+          "source_url": "https://rayobyte.com/products/datacenter-ips"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://rayobyte.com/products/mobile-proxies"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": null,
+          "source_url": "https://rayobyte.com/products/isp-proxies"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Rayobyte now exposes direct official pages across residential, datacenter, mobile, and ISP offers."
+        ],
+        "weaknesses": [
+          "Public promotional language is stronger than the current structured pricing evidence, so offers should stay conservative until fully normalized."
+        ],
+        "best_for": [
+          "Coverage of larger public-data infrastructure merchants."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Rayobyte homepage",
+            "url": "https://rayobyte.com/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-08",
+            "kind": "product_page",
+            "label": "Rayobyte residential proxies page",
+            "url": "https://rayobyte.com/products/residential-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Rayobyte datacenter proxies page",
+            "url": "https://rayobyte.com/products/datacenter-ips",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Rayobyte mobile proxies page",
+            "url": "https://rayobyte.com/products/mobile-proxies",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "isp-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Rayobyte ISP proxies page",
+            "url": "https://rayobyte.com/products/isp-proxies",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "proxyrack": {
+      "provider_slug": "proxyrack",
+      "provider_name": "ProxyRack",
+      "merchant_key": null,
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": null
+    },
+    "proxyguys": {
+      "provider_slug": "proxyguys",
+      "provider_name": "ProxyGuys",
+      "merchant_key": "proxyguys",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "deferred"
+    },
+    "froxy": {
+      "provider_slug": "froxy",
+      "provider_name": "Froxy",
+      "merchant_key": "froxy",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "deferred"
+    },
+    "hydraproxy": {
+      "provider_slug": "hydraproxy",
+      "provider_name": "HydraProxy",
+      "merchant_key": "hydraproxy",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "HydraProxy",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://hydraproxy.com/",
+        "pricing_url": "https://hydraproxy.com/pricing/",
+        "domains": [
+          "hydraproxy.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "mobile"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 3.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://hydraproxy.com/pricing/",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://hydraproxy.com/pricing/"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://hydraproxy.com/mobile-proxies/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "HydraProxy exposes direct residential and mobile product pages on the official domain."
+        ],
+        "weaknesses": [
+          "The initial structured bundle keeps only the residential lane."
+        ],
+        "best_for": [
+          "Baseline coverage of a lower-tier residential proxy merchant."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "HydraProxy homepage",
+            "url": "https://hydraproxy.com/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-11",
+            "kind": "product_page",
+            "label": "HydraProxy residential proxies page",
+            "url": "https://hydraproxy.com/residential-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "HydraProxy mobile proxies page",
+            "url": "https://hydraproxy.com/mobile-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "proxyprice-residential-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "HydraProxy residential pricing via ProxyPrice",
+            "url": "https://hydraproxy.com/pricing/",
+            "observed_at": "2026-05-25"
+          }
+        ]
+      }
+    },
+    "asocks": {
+      "provider_slug": "asocks",
+      "provider_name": "Asocks",
+      "merchant_key": null,
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": null
+    },
+    "webshare": {
+      "provider_slug": "webshare",
+      "provider_name": "Webshare",
+      "merchant_key": "webshare",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Webshare",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://www.webshare.io/",
+        "pricing_url": "https://www.webshare.io/pricing",
+        "domains": [
+          "webshare.io"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter",
+          "residential",
+          "static-residential"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "proxy-server",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://www.webshare.io/dedicated-datacenter-proxy"
+        },
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": {
+            "amount": 4.5,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://www.webshare.io/residential-proxy",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://www.webshare.io/residential-proxy"
+        },
+        {
+          "product_key": "static-residential-proxies",
+          "proxy_type": "static-residential",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://www.webshare.io/dedicated-static-residential-proxy"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Webshare exposes distinct official pages for proxy server, residential, and static residential offers."
+        ],
+        "weaknesses": [
+          "Promo copy and landing-page paths can change quickly across self-serve product pages."
+        ],
+        "best_for": [
+          "Users who need a low-friction self-serve merchant with separated network offerings."
+        ],
+        "watchouts": [
+          "Track the current product pages instead of older feature aliases because Webshare retires route variants over time."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Webshare homepage",
+            "url": "https://www.webshare.io/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "pricing-2026-04-08",
+            "kind": "pricing",
+            "label": "Webshare pricing page",
+            "url": "https://www.webshare.io/pricing",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "proxy-server-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Webshare dedicated datacenter proxy page",
+            "url": "https://www.webshare.io/dedicated-datacenter-proxy",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Webshare residential proxies page",
+            "url": "https://www.webshare.io/residential-proxy",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "static-residential-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Webshare dedicated static residential proxy page",
+            "url": "https://www.webshare.io/dedicated-static-residential-proxy",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "nimbleway": {
+      "provider_slug": "nimbleway",
+      "provider_name": "Nimbleway",
+      "merchant_key": null,
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": null
+    },
+    "iproyal": {
+      "provider_slug": "iproyal",
+      "provider_name": "IPRoyal",
+      "merchant_key": "iproyal",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "IPRoyal",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://iproyal.com/",
+        "pricing_url": "https://iproyal.com/pricing/",
+        "domains": [
+          "iproyal.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "datacenter",
+          "isp",
+          "mobile"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 4.9,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://iproyal.com/pricing/residential-proxies/",
+            "observed_at": "2026-05-25"
+          },
+          "source_url": "https://iproyal.com/pricing/residential-proxies/"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 1.39,
+            "currency": "USD",
+            "unit": "IP",
+            "billing_model": "starting_at",
+            "term": "monthly",
+            "source_url": "https://iproyal.com/datacenter-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          "source_url": "https://iproyal.com/pricing/datacenter-proxies/"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://iproyal.com/pricing/isp-proxies/"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://iproyal.com/mobile-proxies/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Public site exposes direct product pages for several major proxy types."
+        ],
+        "weaknesses": [
+          "Product pricing detail still varies by plan and country targeting."
+        ],
+        "best_for": [
+          "Users who want a self-serve proxy merchant with several clearly separated network pages."
+        ],
+        "watchouts": [
+          "Use exact product pages instead of the broad pricing hub when comparing IPRoyal across categories."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "IPRoyal homepage",
+            "url": "https://iproyal.com/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "pricing-2026-04-08",
+            "kind": "pricing",
+            "label": "IPRoyal pricing page",
+            "url": "https://iproyal.com/pricing/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-08",
+            "kind": "product_page",
+            "label": "IPRoyal residential proxies page",
+            "url": "https://iproyal.com/residential-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-08",
+            "kind": "product_page",
+            "label": "IPRoyal datacenter proxies page",
+            "url": "https://iproyal.com/datacenter-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "isp-product-2026-04-08",
+            "kind": "product_page",
+            "label": "IPRoyal ISP proxies page",
+            "url": "https://iproyal.com/isp-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-08",
+            "kind": "product_page",
+            "label": "IPRoyal mobile proxies page",
+            "url": "https://iproyal.com/mobile-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "proxyprice-residential-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "IPRoyal residential pricing via ProxyPrice",
+            "url": "https://iproyal.com/pricing/residential-proxies/",
+            "observed_at": "2026-05-25"
+          },
+          {
+            "evidence_key": "proxyprice-datacenter-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "IPRoyal datacenter pricing via ProxyPrice",
+            "url": "https://iproyal.com/pricing/datacenter-proxies/",
+            "observed_at": "2026-05-25"
+          },
+          {
+            "evidence_key": "proxyprice-isp-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "IPRoyal isp pricing via ProxyPrice",
+            "url": "https://iproyal.com/pricing/isp-proxies/",
+            "observed_at": "2026-05-25"
+          }
+        ]
+      }
+    },
+    "infatica": {
+      "provider_slug": "infatica",
+      "provider_name": "Infatica",
+      "merchant_key": "infatica",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "proxy-seller": {
+      "provider_slug": "proxy-seller",
+      "provider_name": "Proxy-Seller",
+      "merchant_key": "proxy-seller",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Proxy-Seller",
+        "aliases": [
+          "Proxy Seller"
+        ],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://proxy-seller.com/",
+        "pricing_url": "https://proxy-seller.com/residential-proxies/",
+        "domains": [
+          "proxy-seller.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "datacenter",
+          "mobile",
+          "isp"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 0.7,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://proxy-seller.com/residential-proxies/",
+            "observed_at": "2026-04-13"
+          },
+          "source_url": "https://proxy-seller.com/residential-proxies/"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://proxy-seller.com/usa-proxy/"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://proxy-seller.com/mobile-proxies/"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 1.0,
+            "currency": "USD",
+            "unit": "IP",
+            "billing_model": "starting_at",
+            "term": "monthly",
+            "source_url": "https://proxy-seller.com/isp/",
+            "observed_at": "2026-04-13"
+          },
+          "source_url": "https://proxy-seller.com/isp/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Proxy-Seller now exposes verified official pages for residential, datacenter, mobile, and ISP proxy families."
+        ],
+        "weaknesses": [
+          "The current datacenter evidence is a country-specific landing page rather than a single merchant-wide datacenter hub."
+        ],
+        "best_for": [
+          "Cross-site comparisons that need a value-oriented residential merchant."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Proxy-Seller homepage",
+            "url": "https://proxy-seller.com/",
+            "observed_at": "2026-04-13"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-08",
+            "kind": "product_page",
+            "label": "Proxy-Seller residential proxies page",
+            "url": "https://proxy-seller.com/residential-proxies/",
+            "observed_at": "2026-04-13"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Proxy-Seller US datacenter proxies page",
+            "url": "https://proxy-seller.com/usa-proxy/",
+            "observed_at": "2026-04-13"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Proxy-Seller mobile proxies page",
+            "url": "https://proxy-seller.com/mobile-proxies/",
+            "observed_at": "2026-04-13"
+          },
+          {
+            "evidence_key": "isp-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Proxy-Seller ISP proxies page",
+            "url": "https://proxy-seller.com/isp/",
+            "observed_at": "2026-04-13"
+          }
+        ]
+      }
+    },
+    "proxy-cheap": {
+      "provider_slug": "proxy-cheap",
+      "provider_name": "Proxy-Cheap",
+      "merchant_key": "proxy-cheap",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Proxy-Cheap",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://www.proxy-cheap.com/",
+        "pricing_url": "https://www.proxy-cheap.com/pricing/datacenter-proxy-ipv4",
+        "domains": [
+          "proxy-cheap.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter",
+          "residential",
+          "mobile",
+          "static-residential",
+          "isp"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 0.15,
+            "currency": "USD",
+            "unit": "IP",
+            "billing_model": "starting_at",
+            "term": "monthly",
+            "source_url": "https://www.proxy-cheap.com/services/ipv4-proxy",
+            "observed_at": "2026-05-22"
+          },
+          "source_url": "https://www.proxy-cheap.com/pricing/datacenter-proxy-ipv4"
+        },
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 4.99,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "flat",
+            "term": "monthly",
+            "source_url": "https://www.proxy-cheap.com/services/rotating-residential-proxies",
+            "observed_at": "2026-05-22"
+          },
+          "source_url": "https://www.proxy-cheap.com/pricing/rotating-residential-proxies"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 5.99,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "flat",
+            "term": "monthly",
+            "source_url": "https://www.proxy-cheap.com/services/mobile-proxies",
+            "observed_at": "2026-05-22"
+          },
+          "source_url": "https://www.proxy-cheap.com/pricing/rotating-mobile-proxies"
+        },
+        {
+          "product_key": "static-residential-proxies",
+          "proxy_type": "static-residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 2.12,
+            "currency": "USD",
+            "unit": "IP",
+            "billing_model": "starting_at",
+            "term": "monthly",
+            "source_url": "https://www.proxy-cheap.com/services/static-residential-proxies",
+            "observed_at": "2026-05-22"
+          },
+          "source_url": "https://www.proxy-cheap.com/services/static-residential-proxies"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": null,
+          "source_url": "https://www.proxy-cheap.com/pricing/static-residential-proxies"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Budget-oriented merchant with public self-serve pages for datacenter, rotating residential, mobile, and static residential proxies.",
+          "Official product pages expose practical entry-price or plan-card evidence across all tracked proxy types."
+        ],
+        "weaknesses": [
+          "Proxy-Cheap can show different pricing language between service-page headlines, pricing-page cards, and in-body pricing blocks.",
+          "Datacenter entry-price evidence still requires pairing the service page with a separate detailed pricing page to understand the plan breakdown."
+        ],
+        "best_for": [
+          "Users who need low-cost IPv4 or inexpensive bandwidth-based residential and mobile proxy entry points."
+        ],
+        "watchouts": [
+          "Downstream site copy should distinguish headline starting prices from visible pricing-card rates instead of collapsing them into one unsupported number."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-05-22",
+            "kind": "homepage",
+            "label": "Proxy-Cheap homepage",
+            "url": "https://www.proxy-cheap.com/",
+            "observed_at": "2026-05-22"
+          },
+          {
+            "evidence_key": "datacenter-pricing-2026-05-22",
+            "kind": "pricing",
+            "label": "Proxy-Cheap IPv4 datacenter pricing page",
+            "url": "https://www.proxy-cheap.com/pricing/datacenter-proxy-ipv4",
+            "observed_at": "2026-05-22"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-05-22",
+            "kind": "product_page",
+            "label": "Proxy-Cheap IPv4 datacenter proxies page",
+            "url": "https://www.proxy-cheap.com/services/ipv4-proxy",
+            "observed_at": "2026-05-22"
+          },
+          {
+            "evidence_key": "residential-product-2026-05-22",
+            "kind": "product_page",
+            "label": "Proxy-Cheap rotating residential proxies page",
+            "url": "https://www.proxy-cheap.com/services/rotating-residential-proxies",
+            "observed_at": "2026-05-22"
+          },
+          {
+            "evidence_key": "mobile-product-2026-05-22",
+            "kind": "product_page",
+            "label": "Proxy-Cheap mobile proxies page",
+            "url": "https://www.proxy-cheap.com/services/mobile-proxies",
+            "observed_at": "2026-05-22"
+          },
+          {
+            "evidence_key": "static-residential-product-2026-05-22",
+            "kind": "product_page",
+            "label": "Proxy-Cheap static residential proxies page",
+            "url": "https://www.proxy-cheap.com/services/static-residential-proxies",
+            "observed_at": "2026-05-22"
+          },
+          {
+            "evidence_key": "proxyprice-residential-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "Proxy-Cheap residential pricing via ProxyPrice",
+            "url": "https://www.proxy-cheap.com/pricing/rotating-residential-proxies",
+            "observed_at": "2026-05-25"
+          },
+          {
+            "evidence_key": "proxyprice-mobile-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "Proxy-Cheap mobile pricing via ProxyPrice",
+            "url": "https://www.proxy-cheap.com/pricing/rotating-mobile-proxies",
+            "observed_at": "2026-05-25"
+          },
+          {
+            "evidence_key": "proxyprice-isp-pricing-2026-05-25",
+            "kind": "pricing",
+            "label": "Proxy-Cheap isp pricing via ProxyPrice",
+            "url": "https://www.proxy-cheap.com/pricing/static-residential-proxies",
+            "observed_at": "2026-05-25"
+          }
+        ]
+      }
+    },
+    "proxy-ipv4": {
+      "provider_slug": "proxy-ipv4",
+      "provider_name": "Proxy-IPv4",
+      "merchant_key": "proxy-ipv4",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Proxy-IPv4",
+        "aliases": [
+          "IPv4"
+        ],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://proxy-ipv4.com/en/",
+        "pricing_url": "https://proxy-ipv4.com/en/proxy/",
+        "domains": [
+          "proxy-ipv4.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter",
+          "mobile",
+          "isp"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "ipv4-datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 0.45,
+            "currency": "USD",
+            "unit": "IP",
+            "billing_model": "starting_at",
+            "term": "term_dependent",
+            "source_url": "https://proxy-ipv4.com/en/proxy/",
+            "observed_at": "2026-04-08"
+          },
+          "source_url": "https://proxy-ipv4.com/en/proxy/"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://proxy-ipv4.com/en/mobile/"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://proxy-ipv4.com/en/isp/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Public site now exposes distinct official pages for IPv4 datacenter, mobile, and ISP proxy offers."
+        ],
+        "weaknesses": [
+          "Product pages expose entry points and product detail, but not every billing unit is explicit enough for structured pricing."
+        ],
+        "best_for": [
+          "Sites comparing budget per-IP proxy options."
+        ],
+        "watchouts": [
+          "Duration and location still affect the final plan price."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Proxy-IPv4 homepage",
+            "url": "https://proxy-ipv4.com/en/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "proxy-catalog-2026-04-08",
+            "kind": "pricing",
+            "label": "Proxy-IPv4 catalog page",
+            "url": "https://proxy-ipv4.com/en/proxy/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Proxy-IPv4 mobile proxies page",
+            "url": "https://proxy-ipv4.com/en/mobile/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "isp-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Proxy-IPv4 ISP proxies page",
+            "url": "https://proxy-ipv4.com/en/isp/",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "geonix": {
+      "provider_slug": "geonix",
+      "provider_name": "Geonix",
+      "merchant_key": "geonix",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Geonix",
+        "aliases": [],
+        "legacy_aliases": [
+          "Proxy-Sale"
+        ]
+      },
+      "official": {
+        "homepage_url": "https://geonix.com/",
+        "pricing_url": "https://geonix.com/resident/",
+        "domains": [
+          "geonix.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "datacenter",
+          "mobile",
+          "isp"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 2.3,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://geonix.com/resident/",
+            "observed_at": "2026-04-08"
+          },
+          "source_url": "https://geonix.com/resident/"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://geonix.com/proxy-usa/"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://geonix.com/mobile-proxies/"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 1.0,
+            "currency": "USD",
+            "unit": "IP",
+            "billing_model": "starting_at",
+            "term": "term_dependent",
+            "source_url": "https://geonix.com/isp/",
+            "observed_at": "2026-04-11"
+          },
+          "source_url": "https://geonix.com/isp/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Geonix now exposes direct official pages for residential, datacenter, mobile, and ISP offers under the current brand."
+        ],
+        "weaknesses": [
+          "Public pricing specificity still varies by product family."
+        ],
+        "best_for": [
+          "Workflows that need one canonical record across Geonix and historical Proxy-Sale references."
+        ],
+        "watchouts": [
+          "Keep Proxy-Sale only as a legacy alias."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Geonix homepage",
+            "url": "https://geonix.com/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "pricing-2026-04-08",
+            "kind": "pricing",
+            "label": "Geonix residential pricing page",
+            "url": "https://geonix.com/resident/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Geonix datacenter proxies page",
+            "url": "https://geonix.com/proxy-usa/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Geonix mobile proxies page",
+            "url": "https://geonix.com/mobile-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "isp-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Geonix ISP proxies page",
+            "url": "https://geonix.com/isp/",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "youproxy": {
+      "provider_slug": "youproxy",
+      "provider_name": "Youproxy",
+      "merchant_key": "youproxy",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "YouProxy",
+        "aliases": [
+          "youproxy.io"
+        ],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://youproxy.io/en/",
+        "pricing_url": "https://youproxy.io/en/prices/",
+        "domains": [
+          "youproxy.io"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter",
+          "mobile"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": {
+            "amount": 0.07,
+            "currency": "USD",
+            "unit": "IP",
+            "billing_model": "starting_at",
+            "term": "homepage_from",
+            "source_url": "https://youproxy.io/en/",
+            "observed_at": "2026-03-31"
+          },
+          "source_url": "https://youproxy.io/en/prices/"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://youproxy.io/en/mobile/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Merchant naming is straightforward once the `.io` alias is normalized.",
+          "Current site exposes a dedicated mobile product page."
+        ],
+        "weaknesses": [
+          "The current datacenter and ISP pricing surfaces still resolve as broad tabbed pricing rather than clearly separated product pages."
+        ],
+        "best_for": [
+          "Sites that need a normalized merchant record for YouProxy without inheriting old campaign links."
+        ],
+        "watchouts": [
+          "Do not treat the old site-level campaign link as a global default."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-03-31",
+            "kind": "homepage",
+            "label": "YouProxy homepage",
+            "url": "https://youproxy.io/en/",
+            "observed_at": "2026-03-31"
+          },
+          {
+            "evidence_key": "pricing-2026-03-31",
+            "kind": "pricing",
+            "label": "YouProxy prices page",
+            "url": "https://youproxy.io/en/prices/",
+            "observed_at": "2026-03-31"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "YouProxy mobile proxies page",
+            "url": "https://youproxy.io/en/mobile/",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "myprivateproxy": {
+      "provider_slug": "myprivateproxy",
+      "provider_name": "Myprivateproxy",
+      "merchant_key": "myprivateproxy",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "MyPrivateProxy",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://www.myprivateproxy.net/",
+        "pricing_url": "https://www.myprivateproxy.net/private-proxies/",
+        "domains": [
+          "myprivateproxy.net"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "private-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "monthly_subscription",
+          "entry_price": null,
+          "source_url": "https://www.myprivateproxy.net/private-proxies/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Focused private proxy merchant with a narrow datacenter offer."
+        ],
+        "weaknesses": [
+          "Current structured coverage is still intentionally limited to one datacenter product family."
+        ],
+        "best_for": [
+          "Use cases centered on dedicated private proxy subscriptions."
+        ],
+        "watchouts": [
+          "Keep the merchant conservative until a stronger multi-product split is explicitly verified."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "MyPrivateProxy homepage",
+            "url": "https://www.myprivateproxy.net/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "private-proxies-2026-04-08",
+            "kind": "product_page",
+            "label": "MyPrivateProxy private proxies page",
+            "url": "https://www.myprivateproxy.net/private-proxies/",
+            "observed_at": "2026-04-08"
+          }
+        ]
+      }
+    },
+    "buyproxies": {
+      "provider_slug": "buyproxies",
+      "provider_name": "Buyproxies",
+      "merchant_key": "buyproxies",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "BuyProxies",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://buyproxies.org/",
+        "pricing_url": "https://buyproxies.org/panel/index.php?rp=/store/dedicated-proxies",
+        "domains": [
+          "buyproxies.org"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "dedicated-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "monthly_subscription",
+          "entry_price": null,
+          "source_url": "https://buyproxies.org/panel/index.php?rp=/store/dedicated-proxies"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Legacy dedicated proxy merchant still exposes a live official dedicated-proxies storefront."
+        ],
+        "weaknesses": [
+          "The official commercial path is routed through the store panel rather than a marketing landing page."
+        ],
+        "best_for": [
+          "Baseline coverage of dedicated datacenter proxy merchants."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "BuyProxies homepage",
+            "url": "https://buyproxies.org/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "dedicated-product-2026-04-11",
+            "kind": "product_page",
+            "label": "BuyProxies dedicated proxies store page",
+            "url": "https://buyproxies.org/panel/index.php?rp=/store/dedicated-proxies",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "proxyline": {
+      "provider_slug": "proxyline",
+      "provider_name": "Proxyline",
+      "merchant_key": "proxyline",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Proxyline",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://proxyline.tech/",
+        "pricing_url": "https://proxyline.tech/residential_shared",
+        "domains": [
+          "proxyline.tech"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "shared-residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 4.0,
+            "currency": "EUR",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://proxyline.tech/residential_shared",
+            "observed_at": "2026-04-08"
+          },
+          "source_url": "https://proxyline.tech/residential_shared"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Public site exposes a direct shared residential pricing page."
+        ],
+        "weaknesses": [
+          "Mobile and datacenter claims were removed from merchant-level taxonomy until direct product pages are carried in the bundle."
+        ],
+        "best_for": [
+          "Teams comparing European-priced residential options."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Proxyline homepage",
+            "url": "https://proxyline.tech/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "pricing-2026-04-08",
+            "kind": "pricing",
+            "label": "Proxyline shared residential page",
+            "url": "https://proxyline.tech/residential_shared",
+            "observed_at": "2026-04-08"
+          }
+        ]
+      }
+    },
+    "instantproxies": {
+      "provider_slug": "instantproxies",
+      "provider_name": "Instantproxies",
+      "merchant_key": "instantproxies",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "marsproxies": {
+      "provider_slug": "marsproxies",
+      "provider_name": "Marsproxies",
+      "merchant_key": "marsproxies",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "MarsProxies",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://marsproxies.com/",
+        "pricing_url": "https://marsproxies.com/proxies/residential-proxies/",
+        "domains": [
+          "marsproxies.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "datacenter",
+          "mobile",
+          "isp"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": null,
+          "source_url": "https://marsproxies.com/proxies/residential-proxies/"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://marsproxies.com/proxies/datacenter-proxies/"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://marsproxies.com/proxies/mobile-proxies/"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://marsproxies.com/proxies/isp-proxies/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "MarsProxies now exposes direct official pages for residential, datacenter, mobile, and ISP offers."
+        ],
+        "weaknesses": [
+          "Public promo bars can be seasonal, so pricing claims should be re-read from the live product pages before they enter overlays."
+        ],
+        "best_for": [
+          "Baseline coverage of a weekly-watchlist residential proxy merchant."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "MarsProxies homepage",
+            "url": "https://marsproxies.com/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-08",
+            "kind": "product_page",
+            "label": "MarsProxies residential proxies page",
+            "url": "https://marsproxies.com/proxies/residential-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-11",
+            "kind": "product_page",
+            "label": "MarsProxies datacenter proxies page",
+            "url": "https://marsproxies.com/proxies/datacenter-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "MarsProxies mobile proxies page",
+            "url": "https://marsproxies.com/proxies/mobile-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "isp-product-2026-04-11",
+            "kind": "product_page",
+            "label": "MarsProxies ISP proxies page",
+            "url": "https://marsproxies.com/proxies/isp-proxies/",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "simplynode": {
+      "provider_slug": "simplynode",
+      "provider_name": "SimplyNode",
+      "merchant_key": "simplynode",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "SimplyNode",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://www.simplynode.io/",
+        "pricing_url": "https://www.simplynode.io/product/residential-proxies",
+        "domains": [
+          "simplynode.io"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "mobile"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": null,
+          "source_url": "https://www.simplynode.io/product/residential-proxies"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 6.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "payg",
+            "source_url": "https://www.simplynode.io/product/mobile-proxies",
+            "observed_at": "2026-04-13"
+          },
+          "source_url": "https://www.simplynode.io/product/mobile-proxies"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "SimplyNode exposes direct residential and mobile product pages, and the current mobile page includes a public per-GB pricing widget."
+        ],
+        "weaknesses": [
+          "Current refresh path may still need browser help on some official pages."
+        ],
+        "best_for": [
+          "Coverage of emerging residential proxy merchants in the operator baseline."
+        ],
+        "watchouts": [
+          "Re-check the visible mobile pricing widget instead of relying only on the mobile page JSON-LD, because those two surfaces diverged on 2026-04-13."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "SimplyNode homepage",
+            "url": "https://www.simplynode.io/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-08",
+            "kind": "product_page",
+            "label": "SimplyNode residential proxies page",
+            "url": "https://www.simplynode.io/product/residential-proxies",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-13",
+            "kind": "product_page",
+            "label": "SimplyNode mobile proxies page",
+            "url": "https://www.simplynode.io/product/mobile-proxies",
+            "observed_at": "2026-04-13"
+          }
+        ]
+      }
+    },
+    "proxy6": {
+      "provider_slug": "proxy6",
+      "provider_name": "Proxy6",
+      "merchant_key": "proxy6",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Proxy6",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://proxy6.net/en/",
+        "pricing_url": "https://proxy6.net/en/order/ipv4-proxy",
+        "domains": [
+          "proxy6.net"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "ipv4-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_ip",
+          "entry_price": null,
+          "source_url": "https://proxy6.net/en/order/ipv4-proxy"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Proxy6 exposes a direct order page for IPv4 proxies."
+        ],
+        "weaknesses": [
+          "Current refresh path may still need browser follow-up for some official pages."
+        ],
+        "best_for": [
+          "Catalog coverage of low-cost IPv4 proxy supply."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Proxy6 homepage",
+            "url": "https://proxy6.net/en/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "ipv4-order-page-2026-04-08",
+            "kind": "pricing",
+            "label": "Proxy6 IPv4 order page",
+            "url": "https://proxy6.net/en/order/ipv4-proxy",
+            "observed_at": "2026-04-08"
+          }
+        ]
+      }
+    },
+    "oculusproxies": {
+      "provider_slug": "oculusproxies",
+      "provider_name": "OculusProxies",
+      "merchant_key": "oculus-proxies",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Oculus Proxies",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://oculusproxies.com/",
+        "pricing_url": "https://oculusproxies.com/pricing",
+        "domains": [
+          "oculusproxies.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "datacenter",
+          "isp"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 0.1,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://oculusproxies.com/",
+            "observed_at": "2026-04-08"
+          },
+          "source_url": "https://oculusproxies.com/pricing"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://oculusproxies.com/pricing/dedicated-datacenter-proxies"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://oculusproxies.com/pricing/isp-premium-proxies"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Oculus Proxies exposes current official pricing pages for residential, datacenter, and ISP offers."
+        ],
+        "weaknesses": [
+          "Pricing pages are stronger than the current free-offer path, which now resolves as a 404."
+        ],
+        "best_for": [
+          "Coverage of emerging lower-cost proxy merchants."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Oculus Proxies homepage",
+            "url": "https://oculusproxies.com/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "pricing-2026-04-08",
+            "kind": "pricing",
+            "label": "Oculus Proxies pricing overview",
+            "url": "https://oculusproxies.com/pricing",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-pricing-2026-04-11",
+            "kind": "pricing",
+            "label": "Oculus Proxies dedicated datacenter pricing page",
+            "url": "https://oculusproxies.com/pricing/dedicated-datacenter-proxies",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "isp-pricing-2026-04-11",
+            "kind": "pricing",
+            "label": "Oculus Proxies ISP premium proxies pricing page",
+            "url": "https://oculusproxies.com/pricing/isp-premium-proxies",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "toolip": {
+      "provider_slug": "toolip",
+      "provider_name": "Toolip",
+      "merchant_key": "toolip",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "Toolip",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://toolip.io/",
+        "pricing_url": "https://toolip.io/products/dedicated-datacenter-proxies/",
+        "domains": [
+          "toolip.io"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter",
+          "residential",
+          "isp"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "dedicated-datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://toolip.io/products/dedicated-datacenter-proxies/"
+        },
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://toolip.io/pricing/rotating-residential-proxies"
+        },
+        {
+          "product_key": "isp-proxies",
+          "proxy_type": "isp",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://toolip.io/pricing/global-isp-proxies"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Toolip exposes current pricing pages for residential, datacenter, and ISP products."
+        ],
+        "weaknesses": [
+          "Offer density is stronger than structured pricing normalization, so trial data should stay in project-local overlays."
+        ],
+        "best_for": [
+          "Coverage of dedicated datacenter proxy merchants."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Toolip homepage",
+            "url": "https://toolip.io/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-08",
+            "kind": "product_page",
+            "label": "Toolip dedicated datacenter proxies page",
+            "url": "https://toolip.io/products/dedicated-datacenter-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-pricing-2026-04-11",
+            "kind": "pricing",
+            "label": "Toolip rotating residential pricing page",
+            "url": "https://toolip.io/pricing/rotating-residential-proxies",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "isp-pricing-2026-04-11",
+            "kind": "pricing",
+            "label": "Toolip ISP pricing page",
+            "url": "https://toolip.io/pricing/global-isp-proxies",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "resiprox": {
+      "provider_slug": "resiprox",
+      "provider_name": "Resiprox",
+      "merchant_key": null,
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": null
+    },
+    "dataimpulse": {
+      "provider_slug": "dataimpulse",
+      "provider_name": "Dataimpulse",
+      "merchant_key": "dataimpulse",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "DataImpulse",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://dataimpulse.com/",
+        "pricing_url": "https://dataimpulse.com/residential-proxies/",
+        "domains": [
+          "dataimpulse.com"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "residential",
+          "datacenter",
+          "mobile"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 1.0,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://dataimpulse.com/residential-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          "source_url": "https://dataimpulse.com/residential-proxies/"
+        },
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "per_gb",
+          "entry_price": {
+            "amount": 0.5,
+            "currency": "USD",
+            "unit": "GB",
+            "billing_model": "starting_at",
+            "term": "usage_based",
+            "source_url": "https://dataimpulse.com/datacenter-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          "source_url": "https://dataimpulse.com/datacenter-proxies/"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://dataimpulse.com/mobile-proxies/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "DataImpulse now exposes direct official pages for residential, datacenter, and mobile proxies."
+        ],
+        "weaknesses": [
+          "Public pricing specificity varies across product pages."
+        ],
+        "best_for": [
+          "Coverage of lower-cost residential proxy merchants."
+        ],
+        "watchouts": []
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "DataImpulse homepage",
+            "url": "https://dataimpulse.com/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-08",
+            "kind": "product_page",
+            "label": "DataImpulse residential proxies page",
+            "url": "https://dataimpulse.com/residential-proxies/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-11",
+            "kind": "product_page",
+            "label": "DataImpulse datacenter proxies page",
+            "url": "https://dataimpulse.com/datacenter-proxies/",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "DataImpulse mobile proxies page",
+            "url": "https://dataimpulse.com/mobile-proxies/",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "squidproxies": {
+      "provider_slug": "squidproxies",
+      "provider_name": "Squidproxies",
+      "merchant_key": "squidproxies",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "proxys-io": {
+      "provider_slug": "proxys-io",
+      "provider_name": "Proxys.io",
+      "merchant_key": "proxys",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "proxys",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://proxys.io/",
+        "pricing_url": "https://proxys.io/en/p/datacenter-proxies",
+        "domains": [
+          "proxys.io"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter",
+          "residential",
+          "mobile"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "datacenter-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://proxys.io/en/p/datacenter-proxies"
+        },
+        {
+          "product_key": "residential-proxies",
+          "proxy_type": "residential",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://proxys.io/en/residential"
+        },
+        {
+          "product_key": "mobile-proxies",
+          "proxy_type": "mobile",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://proxys.io/en/buy-mobile-proxies"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "Proxys now exposes live official datacenter, residential, and mobile product pages."
+        ],
+        "weaknesses": [
+          "Current official routing still varies between older and newer English paths."
+        ],
+        "best_for": [
+          "Coverage of lower-tier datacenter proxy merchants."
+        ],
+        "watchouts": [
+          "Homepage localization may redirect to non-English paths."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "Proxys homepage",
+            "url": "https://proxys.io/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "datacenter-product-2026-04-08",
+            "kind": "product_page",
+            "label": "Proxys datacenter proxies page",
+            "url": "https://proxys.io/en/p/datacenter-proxies",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "residential-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Proxys residential proxies page",
+            "url": "https://proxys.io/en/residential",
+            "observed_at": "2026-04-11"
+          },
+          {
+            "evidence_key": "mobile-product-2026-04-11",
+            "kind": "product_page",
+            "label": "Proxys mobile proxies page",
+            "url": "https://proxys.io/en/buy-mobile-proxies",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "spaceproxy": {
+      "provider_slug": "spaceproxy",
+      "provider_name": "Spaceproxy",
+      "merchant_key": "spaceproxy",
+      "display_profile": true,
+      "bundle_state": "seeded",
+      "bundle_status": "onboarded",
+      "names": {
+        "display_name": "spaceproxy",
+        "aliases": [],
+        "legacy_aliases": []
+      },
+      "official": {
+        "homepage_url": "https://spaceproxy.net/en/",
+        "pricing_url": "https://spaceproxy.net/proxy-ipv4/",
+        "domains": [
+          "spaceproxy.net"
+        ]
+      },
+      "taxonomy": {
+        "proxy_types": [
+          "datacenter"
+        ],
+        "product_categories": [
+          "proxy-network"
+        ]
+      },
+      "products": [
+        {
+          "product_key": "ipv4-proxies",
+          "proxy_type": "datacenter",
+          "product_category": "proxy-network",
+          "pricing_model": "quote_based",
+          "entry_price": null,
+          "source_url": "https://spaceproxy.net/proxy-ipv4/"
+        }
+      ],
+      "positioning": {
+        "strengths": [
+          "SpaceProxy exposes a direct IPv4 proxy product page."
+        ],
+        "weaknesses": [
+          "Current onboarding keeps only the verified IPv4 proxy lane."
+        ],
+        "best_for": [
+          "Coverage of budget IPv4 proxy merchants."
+        ],
+        "watchouts": [
+          "Some official pages resolve under non-English paths."
+        ]
+      },
+      "evidence": {
+        "official_pages": [
+          {
+            "evidence_key": "homepage-2026-04-08",
+            "kind": "homepage",
+            "label": "SpaceProxy homepage",
+            "url": "https://spaceproxy.net/en/",
+            "observed_at": "2026-04-08"
+          },
+          {
+            "evidence_key": "ipv4-product-2026-04-11",
+            "kind": "product_page",
+            "label": "SpaceProxy IPv4 proxies page",
+            "url": "https://spaceproxy.net/proxy-ipv4/",
+            "observed_at": "2026-04-11"
+          }
+        ]
+      }
+    },
+    "stormproxies": {
+      "provider_slug": "stormproxies",
+      "provider_name": "Stormproxies",
+      "merchant_key": "stormproxies",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "the-social-proxy": {
+      "provider_slug": "the-social-proxy",
+      "provider_name": "The Social Proxy",
+      "merchant_key": "thesocialproxy",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "proxywow": {
+      "provider_slug": "proxywow",
+      "provider_name": "ProxyWow",
+      "merchant_key": "proxywow",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    },
+    "airproxy": {
+      "provider_slug": "airproxy",
+      "provider_name": "Airproxy",
+      "merchant_key": "airproxy",
+      "display_profile": false,
+      "bundle_state": null,
+      "bundle_status": "tracked_not_onboarded"
+    }
+  }
+}

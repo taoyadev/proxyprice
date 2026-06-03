@@ -54,7 +54,6 @@ jobs:
     defaults:
       run:
         working-directory: front
-    continue-on-error: true
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -277,8 +276,7 @@ jobs:
       - name: Validate API contract
         run: npm run validate:api
 
-      - name: Linkcheck (non-blocking)
-        continue-on-error: true
+      - name: Linkcheck
         run: npm run linkcheck
 
       - name: Deploy to Cloudflare Pages
@@ -288,10 +286,3 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: pages deploy dist --project-name=proxyprice
           workingDirectory: front
-
-      - name: Set Pages Function secrets
-        run: |
-          echo '${{ secrets.OPENROUTER_API_KEY }}' | npx wrangler pages secret put OPENROUTER_API_KEY --project-name=proxyprice
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

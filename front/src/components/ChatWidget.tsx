@@ -67,6 +67,17 @@ export default function ChatWidget() {
     return () => document.removeEventListener("click", handler);
   }, []);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [isOpen]);
+
   const sendMessage = useCallback(
     async (text: string) => {
       if (!text.trim() || isLoading) return;
@@ -195,13 +206,18 @@ export default function ChatWidget() {
       {isOpen && (
         <>
           <div class="chat-backdrop" onClick={toggleChat} />
-          <div class="chat-panel">
+          <div
+            class="chat-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="chat-title"
+          >
             {/* Header */}
             <div class="chat-header">
               <div class="chat-header-info">
                 <img src="/favicon.svg" alt="" width="32" height="32" />
                 <div>
-                  <h3>Proxy Price Expert</h3>
+                  <h3 id="chat-title">Proxy Price Expert</h3>
                   <span class="chat-status">AI-powered assistant</span>
                 </div>
               </div>
@@ -323,8 +339,8 @@ export default function ChatWidget() {
         /* FAB Button */
         .chat-fab {
           position: fixed;
-          bottom: 1.5rem;
-          right: 1.5rem;
+          bottom: max(1.5rem, env(safe-area-inset-bottom));
+          right: max(1.5rem, env(safe-area-inset-right));
           width: 56px;
           height: 56px;
           border-radius: 50%;
@@ -374,8 +390,8 @@ export default function ChatWidget() {
         /* Bubble Hint */
         .chat-bubble {
           position: fixed;
-          bottom: 5.5rem;
-          right: 1.5rem;
+          bottom: calc(max(1.5rem, env(safe-area-inset-bottom)) + 4rem);
+          right: max(1.5rem, env(safe-area-inset-right));
           max-width: 220px;
           padding: 0.875rem 1rem;
           background: linear-gradient(135deg, rgba(59, 130, 246, 0.95) 0%, rgba(37, 99, 235, 0.95) 100%);

@@ -6,6 +6,7 @@
 // Cloudflare Pages Function types
 interface Env {
   OPENROUTER_API_KEY: string;
+  ALLOWED_ORIGINS?: string;
 }
 
 interface EventContext<E> {
@@ -24,6 +25,8 @@ interface ChatRequest {
   message: string;
   history?: Array<{ role: string; content: string }>;
 }
+
+type ChatMessage = { role: "user" | "assistant"; content: string };
 
 const SYSTEM_PROMPT = `You are **Proxy Price Expert**, a friendly AI assistant on ProxyPrice.com - the definitive proxy price comparison platform.
 
@@ -54,48 +57,132 @@ const SYSTEM_PROMPT = `You are **Proxy Price Expert**, a friendly AI assistant o
 - End with a relevant follow-up question when appropriate`;
 
 const MODEL = "meta-llama/llama-3.3-70b-instruct:free";
+const MAX_BODY_BYTES = 4096;
+const MAX_MESSAGE_CHARS = 500;
+const MAX_HISTORY_MESSAGES = 6;
+const MAX_HISTORY_CHARS = 1000;
+const UPSTREAM_TIMEOUT_MS = 10000;
+const DEFAULT_ALLOWED_ORIGINS = [
+  "https://proxyprice.com",
+  "https://www.proxyprice.com",
+  "https://proxyprice.pages.dev",
+  "http://localhost:4321",
+  "http://127.0.0.1:4321",
+];
+
+const jsonResponse = (
+  body: Record<string, unknown>,
+  status: number,
+  headers: HeadersInit,
+) =>
+  new Response(JSON.stringify(body), {
+    status,
+    headers: {
+      ...headers,
+      "Content-Type": "application/json",
+      "Cache-Control": "no-store",
+    },
+  });
+
+const allowedOrigins = (env: Env) => {
+  const configured = env.ALLOWED_ORIGINS
+    ?.split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+  return new Set(configured?.length ? configured : DEFAULT_ALLOWED_ORIGINS);
+};
+
+const corsHeadersFor = (request: Request, env: Env) => {
+  const origin = request.headers.get("Origin");
+  const allowed = allowedOrigins(env);
+  const allowOrigin = origin && allowed.has(origin) ? origin : null;
+
+  return {
+    allowed: !origin || Boolean(allowOrigin),
+    headers: {
+      ...(allowOrigin && { "Access-Control-Allow-Origin": allowOrigin }),
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type",
+      "Vary": "Origin",
+      "Cache-Control": "no-store",
+    },
+  };
+};
+
+const sanitizeHistory = (history: unknown): ChatMessage[] => {
+  if (!Array.isArray(history)) return [];
+
+  return history
+    .filter(
+      (message): message is ChatMessage =>
+        message &&
+        typeof message === "object" &&
+        (message as ChatMessage).role !== undefined &&
+        ["user", "assistant"].includes((message as ChatMessage).role) &&
+        typeof (message as ChatMessage).content === "string",
+    )
+    .slice(-MAX_HISTORY_MESSAGES)
+    .map((message) => ({
+      role: message.role,
+      content: message.content.slice(0, MAX_HISTORY_CHARS),
+    }));
+};
+
+const parseChatRequest = async (request: Request): Promise<ChatRequest> => {
+  const contentLength = Number(request.headers.get("Content-Length") || "0");
+  if (contentLength > MAX_BODY_BYTES) {
+    throw new Response("Request body too large", { status: 413 });
+  }
+
+  let body: unknown;
+  try {
+    body = await request.json();
+  } catch {
+    throw new Response("Invalid JSON", { status: 400 });
+  }
+
+  if (!body || typeof body !== "object") {
+    throw new Response("JSON object is required", { status: 400 });
+  }
+
+  const message = (body as ChatRequest).message;
+  if (typeof message !== "string" || !message.trim()) {
+    throw new Response("Message is required", { status: 400 });
+  }
+
+  return {
+    message: message.trim().slice(0, MAX_MESSAGE_CHARS),
+    history: sanitizeHistory((body as ChatRequest).history),
+  };
+};
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
-
-  // CORS headers
-  const corsHeaders = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type",
-  };
+  const requestId = crypto.randomUUID();
+  const { allowed, headers: corsHeaders } = corsHeadersFor(request, env);
 
   // Handle preflight
   if (request.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  if (!allowed) {
+    return jsonResponse({ error: "Origin not allowed", request_id: requestId }, 403, corsHeaders);
+  }
+
   // Validate API key exists
   if (!env.OPENROUTER_API_KEY) {
-    return new Response(JSON.stringify({ error: "API not configured" }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    return jsonResponse({ error: "API not configured", request_id: requestId }, 503, corsHeaders);
   }
 
   try {
-    const body: ChatRequest = await request.json();
-
-    if (!body.message || typeof body.message !== "string") {
-      return new Response(JSON.stringify({ error: "Message is required" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
-    }
-
-    // Rate limiting by IP (simple implementation)
-    const clientIP = request.headers.get("CF-Connecting-IP") || "unknown";
+    const body = await parseChatRequest(request);
 
     // Build messages array
     const messages = [
       { role: "system", content: SYSTEM_PROMPT },
-      ...(body.history || []).slice(-6), // Keep last 6 messages for context
-      { role: "user", content: body.message.slice(0, 1000) }, // Limit message length
+      ...(body.history || []),
+      { role: "user", content: body.message },
     ];
 
     // Call OpenRouter API
@@ -106,7 +193,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
         headers: {
           Authorization: `Bearer ${env.OPENROUTER_API_KEY}`,
           "Content-Type": "application/json",
-          "HTTP-Referer": "https://proxyprice.pages.dev",
+          "HTTP-Referer": "https://proxyprice.com",
           "X-Title": "ProxyPrice Expert",
         },
         body: JSON.stringify({
@@ -116,18 +203,19 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
           temperature: 0.7,
           stream: false,
         }),
+        signal: AbortSignal.timeout(UPSTREAM_TIMEOUT_MS),
       },
     );
 
     if (!response.ok) {
-      const errorText = await response.text();
-      console.error("OpenRouter error:", response.status, errorText);
-      return new Response(
-        JSON.stringify({ error: "AI service temporarily unavailable" }),
-        {
-          status: 502,
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        },
+      console.error(
+        "OpenRouter error",
+        JSON.stringify({ requestId, status: response.status }),
+      );
+      return jsonResponse(
+        { error: "AI service temporarily unavailable", request_id: requestId },
+        502,
+        corsHeaders,
       );
     }
 
@@ -136,31 +224,51 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       data.choices?.[0]?.message?.content ||
       "Sorry, I couldn't generate a response.";
 
-    return new Response(
-      JSON.stringify({
+    return jsonResponse(
+      {
         message: assistantMessage,
         model: MODEL,
-      }),
-      {
-        status: 200,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
       },
+      200,
+      corsHeaders,
     );
   } catch (error) {
-    console.error("Chat API error:", error);
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
-      status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    if (error instanceof Response) {
+      return jsonResponse(
+        { error: await error.text(), request_id: requestId },
+        error.status,
+        corsHeaders,
+      );
+    }
+
+    const isTimeout =
+      error instanceof DOMException && error.name === "TimeoutError";
+    console.error(
+      "Chat API error",
+      JSON.stringify({
+        requestId,
+        kind: isTimeout ? "upstream_timeout" : "internal",
+      }),
+    );
+    return jsonResponse(
+      {
+        error: isTimeout
+          ? "AI service timed out"
+          : "Internal server error",
+        request_id: requestId,
+      },
+      isTimeout ? 504 : 500,
+      corsHeaders,
+    );
   }
 };
 
-export const onRequestOptions: PagesFunction = async () => {
+export const onRequestOptions: PagesFunction<Env> = async ({ request, env }) => {
+  const { allowed, headers } = corsHeadersFor(request, env);
+  if (!allowed) {
+    return new Response(null, { status: 403, headers });
+  }
   return new Response(null, {
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-      "Access-Control-Allow-Headers": "Content-Type",
-    },
+    headers,
   });
 };

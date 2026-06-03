@@ -32,6 +32,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
+from generate_merchant_profiles import build_merchant_profiles
+
 LOGGER = logging.getLogger(__name__)
 
 DEFAULT_GLOBAL_SKILL_ROOT = Path("/Users/butterfly/.codex/skills/proxy-merchant-intel")
@@ -95,6 +97,7 @@ class RunSummary:
     report_path: Path
     overlay_written: bool
     redirects_synced: bool
+    merchant_profiles_generated: bool
     pipeline_ran: bool
     pipeline_ok: bool
     mappings: List[MappingResult]
@@ -289,14 +292,9 @@ class GlobalMerchantContext:
         if name_key:
             return name_key, ["matched provider display name or alias"]
 
+        # Merchant identity must come from public provider facts, not from
+        # site-specific redirect or affiliate routing choices.
         candidate_urls = [provider.get("website_url") or ""]
-        if redirect_entry:
-            candidate_urls.extend(
-                [
-                    redirect_entry.get("url") or "",
-                    redirect_entry.get("affiliate") or "",
-                ]
-            )
         candidate_urls.extend(price_urls)
 
         for url in candidate_urls:
@@ -673,6 +671,7 @@ def build_report(
     url_checks: Sequence[UrlCheckResult],
     overlay_written: bool,
     redirects_synced: bool,
+    merchant_profiles_generated: bool,
     pipeline_ran: bool,
     pipeline_ok: bool,
     url_checks_ran: bool,
@@ -727,6 +726,7 @@ def build_report(
         "",
         f"- overlay_written: {str(overlay_written).lower()}",
         f"- redirects_synced: {str(redirects_synced).lower()}",
+        f"- merchant_profiles_generated: {str(merchant_profiles_generated).lower()}",
         f"- pipeline_ran: {str(pipeline_ran).lower()}",
         f"- pipeline_ok: {str(pipeline_ok).lower() if pipeline_ran else 'not_run'}",
         "",
@@ -927,6 +927,14 @@ def run_monthly_update(args: argparse.Namespace) -> RunSummary:
     if args.sync_redirects:
         sync_redirects(project_root, providers, overlay)
 
+    if args.generate_merchant_profiles:
+        build_merchant_profiles(
+            project_root=project_root,
+            global_skill_root=args.global_skill_root,
+            overlay_path=overlay_path,
+            generated_at=run_date,
+        )
+
     pipeline_ok = False
     if args.run_pipeline:
         pipeline_ok = run_pipeline(project_root)
@@ -940,6 +948,7 @@ def run_monthly_update(args: argparse.Namespace) -> RunSummary:
         url_checks=url_checks,
         overlay_written=args.write_overlay,
         redirects_synced=args.sync_redirects,
+        merchant_profiles_generated=args.generate_merchant_profiles,
         pipeline_ran=args.run_pipeline,
         pipeline_ok=pipeline_ok,
         url_checks_ran=args.check_urls,
@@ -952,6 +961,7 @@ def run_monthly_update(args: argparse.Namespace) -> RunSummary:
         report_path=report_path,
         overlay_written=args.write_overlay,
         redirects_synced=args.sync_redirects,
+        merchant_profiles_generated=args.generate_merchant_profiles,
         pipeline_ran=args.run_pipeline,
         pipeline_ok=pipeline_ok,
         mappings=mappings,
@@ -971,6 +981,7 @@ def parse_args(argv: Optional[Sequence[str]] = None) -> argparse.Namespace:
     parser.add_argument("--run-date", default=None, help="YYYY-MM-DD; defaults to today")
     parser.add_argument("--write-overlay", action="store_true")
     parser.add_argument("--sync-redirects", action="store_true")
+    parser.add_argument("--generate-merchant-profiles", action="store_true")
     parser.add_argument("--run-pipeline", action="store_true")
     parser.add_argument("--fail-on-pipeline-error", action="store_true")
     parser.add_argument("--check-urls", action="store_true")
@@ -988,6 +999,7 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     print(f"price_candidates={len(summary.deltas)}")
     print(f"overlay_written={str(summary.overlay_written).lower()}")
     print(f"redirects_synced={str(summary.redirects_synced).lower()}")
+    print(f"merchant_profiles_generated={str(summary.merchant_profiles_generated).lower()}")
     print(f"pipeline_ran={str(summary.pipeline_ran).lower()}")
     if summary.pipeline_ran:
         print(f"pipeline_ok={str(summary.pipeline_ok).lower()}")

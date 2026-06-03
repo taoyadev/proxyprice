@@ -75,6 +75,7 @@ if (!targetUrl || !isSafeRedirect(targetUrl)) {
 }
 
 const providerName = provider?.name || slug;
+const selfUrl = new URL(`/go/${slug}/`, Astro.site).toString();
 ---
 
 <!DOCTYPE html>
@@ -83,9 +84,10 @@ const providerName = provider?.name || slug;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Redirecting to {providerName} | ProxyPrice</title>
+  <meta name="description" content={`Redirecting to ${providerName}'s official pricing page from ProxyPrice.`} />
   <meta name="robots" content="noindex, nofollow" />
   <meta http-equiv="refresh" content="0; url={targetUrl}" />
-  <link rel="canonical" href={targetUrl} />
+  <link rel="canonical" href={selfUrl} />
   <style>
     * {
       margin: 0;
