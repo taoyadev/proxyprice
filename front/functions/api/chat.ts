@@ -85,11 +85,11 @@ const jsonResponse = (
   });
 
 const allowedOrigins = (env: Env) => {
-  const configured = env.ALLOWED_ORIGINS
+  const configured = (env.ALLOWED_ORIGINS || "")
     ?.split(",")
     .map((origin) => origin.trim())
     .filter(Boolean);
-  return new Set(configured?.length ? configured : DEFAULT_ALLOWED_ORIGINS);
+  return new Set([...DEFAULT_ALLOWED_ORIGINS, ...configured]);
 };
 
 const corsHeadersFor = (request: Request, env: Env) => {
@@ -160,11 +160,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   const { request, env } = context;
   const requestId = crypto.randomUUID();
   const { allowed, headers: corsHeaders } = corsHeadersFor(request, env);
-
-  // Handle preflight
-  if (request.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
-  }
 
   if (!allowed) {
     return jsonResponse({ error: "Origin not allowed", request_id: requestId }, 403, corsHeaders);
@@ -269,6 +264,7 @@ export const onRequestOptions: PagesFunction<Env> = async ({ request, env }) => 
     return new Response(null, { status: 403, headers });
   }
   return new Response(null, {
+    status: 204,
     headers,
   });
 };
