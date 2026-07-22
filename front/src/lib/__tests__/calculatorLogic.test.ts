@@ -576,9 +576,7 @@ describe("Calculator compute module", () => {
       expect(recs.length).toBeGreaterThan(0);
       expect(recs.length).toBeLessThanOrEqual(10);
       expect(recs[0].isBestValue).toBe(true);
-      expect(recs[0].monthlyCost).toBe(
-        Math.ceil(recs[0].pricePerGb * 50),
-      );
+      expect(recs[0].monthlyCost).toBeGreaterThan(0);
       expect(recs[0].tierLabel).toMatch(/\$[0-9.]+\/GB/);
 
       for (let i = 1; i < recs.length; i++) {
@@ -599,6 +597,16 @@ describe("Calculator compute module", () => {
       } else {
         expect(recs.length).toBeLessThanOrEqual(1);
       }
+    });
+
+    it("uses the listed purchasable plan price instead of applying a volume rate to less usage", () => {
+      const rec = computeRecommendations(50, "datacenter").find(
+        (item) => item.provider_id === "decodo",
+      );
+
+      expect(rec?.monthlyCost).toBe(28.5);
+      expect(rec?.costBasis).toBe("listed_plan_price");
+      expect(rec?.tierLabel).toContain("50 GB plan");
     });
   });
 

@@ -35,6 +35,7 @@ function buildMockRecommendations(
       isBestValue: true,
       isMostPopular: false,
       isPAYG: false,
+      costBasis: "listed_plan_price",
     },
     {
       provider: "Provider B",
@@ -48,6 +49,7 @@ function buildMockRecommendations(
       isBestValue: false,
       isMostPopular: false,
       isPAYG: false,
+      costBasis: "listed_plan_price",
       savingsPercent: 17,
     },
     {
@@ -62,6 +64,7 @@ function buildMockRecommendations(
       isBestValue: false,
       isMostPopular: false,
       isPAYG: true,
+      costBasis: "payg_estimate",
     },
   ];
 }
@@ -145,7 +148,7 @@ describe("Calculator Component", () => {
       render(<Calculator />);
 
       // With the mocked data: 50GB * $2.50 = $125
-      expect(screen.getByText("$125")).toBeInTheDocument();
+      expect(screen.getByText("$125.00")).toBeInTheDocument();
       expect(screen.getByText("$2.50/GB")).toBeInTheDocument();
 
       expect(screen.getByText("Top Recommendations")).toBeInTheDocument();
@@ -160,7 +163,7 @@ describe("Calculator Component", () => {
     it("displays pay-as-you-go indication for PAYG tiers", () => {
       render(<Calculator />);
 
-      expect(screen.getByText(/PAYG/i)).toBeInTheDocument();
+      expect(screen.getByText("PAYG at $4.50/GB")).toBeInTheDocument();
     });
 
     it("limits recommendations to 10 items", () => {

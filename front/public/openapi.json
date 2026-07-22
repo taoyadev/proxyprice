@@ -1,0 +1,59 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "ProxyPrice public data export",
+    "version": "1.0.0",
+    "description": "Read-only machine-readable candidate records backed by public provider pricing evidence."
+  },
+  "servers": [
+    {
+      "url": "https://proxyprice.com"
+    }
+  ],
+  "paths": {
+    "/api/v1/export/proxy-merchant-intel-candidates.json": {
+      "get": {
+        "operationId": "getProxyMerchantIntelCandidates",
+        "summary": "Get public proxy merchant-intelligence candidate records",
+        "responses": {
+          "200": {
+            "description": "Candidate export generated from the current price dataset.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": [
+                    "export_type",
+                    "data_last_updated",
+                    "total_count",
+                    "items"
+                  ],
+                  "properties": {
+                    "export_type": {
+                      "type": "string",
+                      "const": "proxy_merchant_intel_candidates"
+                    },
+                    "data_last_updated": {
+                      "type": "string",
+                      "format": "date"
+                    },
+                    "total_count": {
+                      "type": "integer",
+                      "minimum": 0
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

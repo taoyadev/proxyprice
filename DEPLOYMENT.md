@@ -73,6 +73,11 @@ curl -I https://proxyprice.com/calculator/
 curl -I https://proxyprice.com/provider/bright-data/
 curl -I https://proxyprice.com/api/v1/export/proxy-merchant-intel-candidates.json
 curl -I https://proxyprice.com/sitemap-index.xml
+curl -I https://proxyprice.com/sitemap.xml
+curl -I https://proxyprice.com/llms.txt
+curl -I https://proxyprice.com/.well-known/api-catalog
+curl -sS https://proxyprice.com/.well-known/agent-skills/index.json
+curl -sS https://proxyprice.com/ -H 'Accept: text/markdown'
 ```
 
 The candidate export should return JSON with:
@@ -82,3 +87,9 @@ The candidate export should return JSON with:
 - `total_count` matching `items.length`
 - no affiliate or ranking fields
 - HTTPS `pricing_evidence[].source_url` values
+
+The agent-discovery checks should confirm that `/sitemap.xml` redirects to the
+Astro sitemap index, `llms.txt` is served as Markdown, the API catalog returns
+`application/linkset+json`, and a homepage request that explicitly accepts
+`text/markdown` returns the compact agent-facing representation with
+`Vary: Accept`.

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://agentskills.io/schemas/agent-skills-index-v0.2.0.json",
+  "version": "0.2.0",
+  "skills": [
+    {
+      "name": "proxy-price-comparison",
+      "type": "skill",
+      "description": "Compare public proxy pricing with explicit comparability and freshness limits.",
+      "url": "https://proxyprice.com/agent-skills/proxy-price-comparison/SKILL.md",
+      "sha256": "48b5ea894b28f7b5b18563c8fd3d57ecb4fe07049890d8e65e9dd5134b7c7258"
+    }
+  ]
+}

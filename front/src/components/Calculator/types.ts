@@ -23,6 +23,7 @@ export interface Recommendation {
   isBestValue: boolean;
   isMostPopular: boolean;
   isPAYG: boolean;
+  costBasis: "listed_plan_price" | "payg_estimate";
   savingsPercent?: number;
 }
 

@@ -1,5 +1,5 @@
 {
-  "source_last_updated": "2026-05-25",
+  "source_last_updated": "2026-06-01",
   "comparable_pricing": [
     {
       "provider_id": "bright-data",
@@ -10,6 +10,7 @@
         {
           "gb": 1,
           "price_per_gb": 0.6,
+          "total": 0.6,
           "is_payg": true
         }
       ]
@@ -22,39 +23,48 @@
       "tiers": [
         {
           "gb": 10,
-          "price_per_gb": 0.6
+          "price_per_gb": 0.6,
+          "total": 6
         },
         {
           "gb": 50,
-          "price_per_gb": 0.57
+          "price_per_gb": 0.57,
+          "total": 28.5
         },
         {
           "gb": 100,
-          "price_per_gb": 0.54
+          "price_per_gb": 0.54,
+          "total": 54
         },
         {
           "gb": 250,
-          "price_per_gb": 0.51
+          "price_per_gb": 0.51,
+          "total": 127.5
         },
         {
           "gb": 500,
-          "price_per_gb": 0.48
+          "price_per_gb": 0.48,
+          "total": 240
         },
         {
           "gb": 1000,
-          "price_per_gb": 0.45
+          "price_per_gb": 0.45,
+          "total": 450
         },
         {
           "gb": 3000,
-          "price_per_gb": 0.41
+          "price_per_gb": 0.41,
+          "total": 1230
         },
         {
           "gb": 4000,
-          "price_per_gb": 0.4
+          "price_per_gb": 0.4,
+          "total": 1600
         },
         {
           "gb": 5000,
-          "price_per_gb": 0.39
+          "price_per_gb": 0.39,
+          "total": 1950
         }
       ]
     },
@@ -66,27 +76,33 @@
       "tiers": [
         {
           "gb": 1,
-          "price_per_gb": 1
+          "price_per_gb": 1,
+          "total": 1
         },
         {
           "gb": 10,
-          "price_per_gb": 0.9
+          "price_per_gb": 0.9,
+          "total": 9
         },
         {
           "gb": 50,
-          "price_per_gb": 0.8
+          "price_per_gb": 0.8,
+          "total": 40
         },
         {
           "gb": 100,
-          "price_per_gb": 0.7
+          "price_per_gb": 0.7,
+          "total": 70
         },
         {
           "gb": 500,
-          "price_per_gb": 0.6
+          "price_per_gb": 0.6,
+          "total": 300
         },
         {
           "gb": 1000,
-          "price_per_gb": 0.5
+          "price_per_gb": 0.5,
+          "total": 500
         }
       ]
     },
@@ -98,35 +114,43 @@
       "tiers": [
         {
           "gb": 100,
-          "price_per_gb": 1
+          "price_per_gb": 1,
+          "total": 100
         },
         {
           "gb": 250,
-          "price_per_gb": 0.74
+          "price_per_gb": 0.74,
+          "total": 185
         },
         {
           "gb": 500,
-          "price_per_gb": 0.7
+          "price_per_gb": 0.7,
+          "total": 350
         },
         {
           "gb": 750,
-          "price_per_gb": 0.6
+          "price_per_gb": 0.6,
+          "total": 450
         },
         {
           "gb": 100,
-          "price_per_gb": 10.8
+          "price_per_gb": 10.8,
+          "total": 1080
         },
         {
           "gb": 250,
-          "price_per_gb": 7.992
+          "price_per_gb": 7.992,
+          "total": 1998
         },
         {
           "gb": 500,
-          "price_per_gb": 7.56
+          "price_per_gb": 7.56,
+          "total": 3780
         },
         {
           "gb": 750,
-          "price_per_gb": 6.48
+          "price_per_gb": 6.48,
+          "total": 4860
         }
       ]
     },
@@ -138,23 +162,28 @@
       "tiers": [
         {
           "gb": 77,
-          "price_per_gb": 0.6494
+          "price_per_gb": 0.6494,
+          "total": 50
         },
         {
           "gb": 167,
-          "price_per_gb": 0.5988
+          "price_per_gb": 0.5988,
+          "total": 100
         },
         {
           "gb": 364,
-          "price_per_gb": 0.5495
+          "price_per_gb": 0.5495,
+          "total": 200
         },
         {
           "gb": 600,
-          "price_per_gb": 0.5
+          "price_per_gb": 0.5,
+          "total": 300
         },
         {
           "gb": 1042,
-          "price_per_gb": 0.4798
+          "price_per_gb": 0.4798,
+          "total": 500
         }
       ]
     },
@@ -166,27 +195,33 @@
       "tiers": [
         {
           "gb": 40,
-          "price_per_gb": 0.625
+          "price_per_gb": 0.625,
+          "total": 25
         },
         {
           "gb": 100,
-          "price_per_gb": 0.55
+          "price_per_gb": 0.55,
+          "total": 55
         },
         {
           "gb": 200,
-          "price_per_gb": 0.475
+          "price_per_gb": 0.475,
+          "total": 95
         },
         {
           "gb": 500,
-          "price_per_gb": 0.45
+          "price_per_gb": 0.45,
+          "total": 225
         },
         {
           "gb": 1000,
-          "price_per_gb": 0.4
+          "price_per_gb": 0.4,
+          "total": 400
         },
         {
           "gb": 5000,
-          "price_per_gb": 0.35
+          "price_per_gb": 0.35,
+          "total": 1750
         }
       ]
     },
@@ -198,19 +233,23 @@
       "tiers": [
         {
           "gb": 145,
-          "price_per_gb": 0.6207
+          "price_per_gb": 0.6207,
+          "total": 90
         },
         {
           "gb": 346,
-          "price_per_gb": 0.4913
+          "price_per_gb": 0.4913,
+          "total": 170
         },
         {
           "gb": 1761,
-          "price_per_gb": 0.4202
+          "price_per_gb": 0.4202,
+          "total": 740
         },
         {
           "gb": 4000,
-          "price_per_gb": 0.4
+          "price_per_gb": 0.4,
+          "total": 1600
         }
       ]
     },
@@ -223,6 +262,7 @@
         {
           "gb": 1,
           "price_per_gb": 15,
+          "total": 15,
           "is_payg": true
         }
       ]
@@ -235,39 +275,48 @@
       "tiers": [
         {
           "gb": 1,
-          "price_per_gb": 3
+          "price_per_gb": 3,
+          "total": 3
         },
         {
           "gb": 10,
-          "price_per_gb": 2.75
+          "price_per_gb": 2.75,
+          "total": 27.5
         },
         {
           "gb": 20,
-          "price_per_gb": 2.5
+          "price_per_gb": 2.5,
+          "total": 50
         },
         {
           "gb": 50,
-          "price_per_gb": 2.25
+          "price_per_gb": 2.25,
+          "total": 112.5
         },
         {
           "gb": 100,
-          "price_per_gb": 2
+          "price_per_gb": 2,
+          "total": 200
         },
         {
           "gb": 250,
-          "price_per_gb": 1.8
+          "price_per_gb": 1.8,
+          "total": 450
         },
         {
           "gb": 500,
-          "price_per_gb": 1.6
+          "price_per_gb": 1.6,
+          "total": 800
         },
         {
           "gb": 1000,
-          "price_per_gb": 1.4
+          "price_per_gb": 1.4,
+          "total": 1400
         },
         {
           "gb": 2000,
-          "price_per_gb": 1.3
+          "price_per_gb": 1.3,
+          "total": 2600
         }
       ]
     },
@@ -279,43 +328,53 @@
       "tiers": [
         {
           "gb": 20,
-          "price_per_gb": 17.5
+          "price_per_gb": 17.5,
+          "total": 350
         },
         {
           "gb": 50,
-          "price_per_gb": 15
+          "price_per_gb": 15,
+          "total": 750
         },
         {
           "gb": 100,
-          "price_per_gb": 10
+          "price_per_gb": 10,
+          "total": 1000
         },
         {
           "gb": 250,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 2000
         },
         {
           "gb": 500,
-          "price_per_gb": 5
+          "price_per_gb": 5,
+          "total": 2500
         },
         {
           "gb": 20,
-          "price_per_gb": 189
+          "price_per_gb": 189,
+          "total": 3780
         },
         {
           "gb": 50,
-          "price_per_gb": 162
+          "price_per_gb": 162,
+          "total": 8100
         },
         {
           "gb": 100,
-          "price_per_gb": 108
+          "price_per_gb": 108,
+          "total": 10800
         },
         {
           "gb": 250,
-          "price_per_gb": 86.4
+          "price_per_gb": 86.4,
+          "total": 21600
         },
         {
           "gb": 500,
-          "price_per_gb": 5.4
+          "price_per_gb": 5.4,
+          "total": 2700
         }
       ]
     },
@@ -327,15 +386,18 @@
       "tiers": [
         {
           "gb": 20,
-          "price_per_gb": 17
+          "price_per_gb": 17,
+          "total": 340
         },
         {
           "gb": 50,
-          "price_per_gb": 14
+          "price_per_gb": 14,
+          "total": 700
         },
         {
           "gb": 100,
-          "price_per_gb": 11
+          "price_per_gb": 11,
+          "total": 1100
         }
       ]
     },
@@ -347,31 +409,38 @@
       "tiers": [
         {
           "gb": 5,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 40
         },
         {
           "gb": 25,
-          "price_per_gb": 6
+          "price_per_gb": 6,
+          "total": 150
         },
         {
           "gb": 55,
-          "price_per_gb": 5.4545
+          "price_per_gb": 5.4545,
+          "total": 300
         },
         {
           "gb": 120,
-          "price_per_gb": 5
+          "price_per_gb": 5,
+          "total": 600
         },
         {
           "gb": 300,
-          "price_per_gb": 4.1667
+          "price_per_gb": 4.1667,
+          "total": 1250
         },
         {
           "gb": 500,
-          "price_per_gb": 3.5
+          "price_per_gb": 3.5,
+          "total": 1750
         },
         {
           "gb": 1000,
-          "price_per_gb": 3
+          "price_per_gb": 3,
+          "total": 3000
         }
       ]
     },
@@ -384,6 +453,7 @@
         {
           "gb": 1,
           "price_per_gb": 3,
+          "total": 3,
           "is_payg": true
         }
       ]
@@ -397,19 +467,23 @@
         {
           "gb": 1,
           "price_per_gb": 8,
+          "total": 8,
           "is_payg": true
         },
         {
           "gb": 71,
-          "price_per_gb": 7.0282
+          "price_per_gb": 7.0282,
+          "total": 499
         },
         {
           "gb": 166,
-          "price_per_gb": 6.0181
+          "price_per_gb": 6.0181,
+          "total": 999
         },
         {
           "gb": 399,
-          "price_per_gb": 5.01
+          "price_per_gb": 5.01,
+          "total": 1999
         }
       ]
     },
@@ -422,39 +496,48 @@
         {
           "gb": 1,
           "price_per_gb": 8,
+          "total": 8,
           "is_payg": true
         },
         {
           "gb": 2,
-          "price_per_gb": 7.5
+          "price_per_gb": 7.5,
+          "total": 15
         },
         {
           "gb": 8,
-          "price_per_gb": 7
+          "price_per_gb": 7,
+          "total": 56
         },
         {
           "gb": 25,
-          "price_per_gb": 6.5
+          "price_per_gb": 6.5,
+          "total": 162.5
         },
         {
           "gb": 50,
-          "price_per_gb": 6
+          "price_per_gb": 6,
+          "total": 300
         },
         {
           "gb": 100,
-          "price_per_gb": 5.5
+          "price_per_gb": 5.5,
+          "total": 550
         },
         {
           "gb": 250,
-          "price_per_gb": 4
+          "price_per_gb": 4,
+          "total": 1000
         },
         {
           "gb": 500,
-          "price_per_gb": 3.5
+          "price_per_gb": 3.5,
+          "total": 1750
         },
         {
           "gb": 1000,
-          "price_per_gb": 3
+          "price_per_gb": 3,
+          "total": 3000
         }
       ]
     },
@@ -466,27 +549,33 @@
       "tiers": [
         {
           "gb": 1,
-          "price_per_gb": 11
+          "price_per_gb": 11,
+          "total": 11
         },
         {
           "gb": 2,
-          "price_per_gb": 10
+          "price_per_gb": 10,
+          "total": 20
         },
         {
           "gb": 5,
-          "price_per_gb": 9
+          "price_per_gb": 9,
+          "total": 45
         },
         {
           "gb": 10,
-          "price_per_gb": 8.5
+          "price_per_gb": 8.5,
+          "total": 85
         },
         {
           "gb": 20,
-          "price_per_gb": 7.5
+          "price_per_gb": 7.5,
+          "total": 150
         },
         {
           "gb": 100,
-          "price_per_gb": 7
+          "price_per_gb": 7,
+          "total": 700
         }
       ]
     },
@@ -498,27 +587,33 @@
       "tiers": [
         {
           "gb": 1,
-          "price_per_gb": 9.99
+          "price_per_gb": 9.99,
+          "total": 9.99
         },
         {
           "gb": 50,
-          "price_per_gb": 7.99
+          "price_per_gb": 7.99,
+          "total": 399.5
         },
         {
           "gb": 500,
-          "price_per_gb": 5.99
+          "price_per_gb": 5.99,
+          "total": 2995
         },
         {
           "gb": 1500,
-          "price_per_gb": 4.99
+          "price_per_gb": 4.99,
+          "total": 7485
         },
         {
           "gb": 2500,
-          "price_per_gb": 3.99
+          "price_per_gb": 3.99,
+          "total": 9975
         },
         {
           "gb": 3500,
-          "price_per_gb": 3.59
+          "price_per_gb": 3.59,
+          "total": 12565
         }
       ]
     },
@@ -530,43 +625,53 @@
       "tiers": [
         {
           "gb": 3,
-          "price_per_gb": 15
+          "price_per_gb": 15,
+          "total": 45
         },
         {
           "gb": 10,
-          "price_per_gb": 13
+          "price_per_gb": 13,
+          "total": 130
         },
         {
           "gb": 20,
-          "price_per_gb": 12
+          "price_per_gb": 12,
+          "total": 240
         },
         {
           "gb": 50,
-          "price_per_gb": 10
+          "price_per_gb": 10,
+          "total": 500
         },
         {
           "gb": 100,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 800
         },
         {
           "gb": 36,
-          "price_per_gb": 12
+          "price_per_gb": 12,
+          "total": 432
         },
         {
           "gb": 120,
-          "price_per_gb": 10.4
+          "price_per_gb": 10.4,
+          "total": 1248
         },
         {
           "gb": 240,
-          "price_per_gb": 9.6
+          "price_per_gb": 9.6,
+          "total": 2304
         },
         {
           "gb": 600,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 4800
         },
         {
           "gb": 1200,
-          "price_per_gb": 6.4
+          "price_per_gb": 6.4,
+          "total": 7680
         }
       ]
     },
@@ -578,43 +683,53 @@
       "tiers": [
         {
           "gb": 20,
-          "price_per_gb": 20
+          "price_per_gb": 20,
+          "total": 400
         },
         {
           "gb": 50,
-          "price_per_gb": 18
+          "price_per_gb": 18,
+          "total": 900
         },
         {
           "gb": 100,
-          "price_per_gb": 16
+          "price_per_gb": 16,
+          "total": 1600
         },
         {
           "gb": 250,
-          "price_per_gb": 14
+          "price_per_gb": 14,
+          "total": 3500
         },
         {
           "gb": 500,
-          "price_per_gb": 11
+          "price_per_gb": 11,
+          "total": 5500
         },
         {
           "gb": 20,
-          "price_per_gb": 216
+          "price_per_gb": 216,
+          "total": 4320
         },
         {
           "gb": 50,
-          "price_per_gb": 194.4
+          "price_per_gb": 194.4,
+          "total": 9720
         },
         {
           "gb": 100,
-          "price_per_gb": 172.8
+          "price_per_gb": 172.8,
+          "total": 17280
         },
         {
           "gb": 250,
-          "price_per_gb": 151.2
+          "price_per_gb": 151.2,
+          "total": 37800
         },
         {
           "gb": 500,
-          "price_per_gb": 118.8
+          "price_per_gb": 118.8,
+          "total": 59400
         }
       ]
     },
@@ -626,27 +741,33 @@
       "tiers": [
         {
           "gb": 10,
-          "price_per_gb": 20
+          "price_per_gb": 20,
+          "total": 200
         },
         {
           "gb": 20,
-          "price_per_gb": 19
+          "price_per_gb": 19,
+          "total": 380
         },
         {
           "gb": 50,
-          "price_per_gb": 17
+          "price_per_gb": 17,
+          "total": 850
         },
         {
           "gb": 100,
-          "price_per_gb": 16
+          "price_per_gb": 16,
+          "total": 1600
         },
         {
           "gb": 200,
-          "price_per_gb": 15
+          "price_per_gb": 15,
+          "total": 3000
         },
         {
           "gb": 300,
-          "price_per_gb": 14
+          "price_per_gb": 14,
+          "total": 4200
         }
       ]
     },
@@ -658,31 +779,38 @@
       "tiers": [
         {
           "gb": 3,
-          "price_per_gb": 16.6667
+          "price_per_gb": 16.6667,
+          "total": 50
         },
         {
           "gb": 10,
-          "price_per_gb": 15
+          "price_per_gb": 15,
+          "total": 150
         },
         {
           "gb": 22,
-          "price_per_gb": 13.6364
+          "price_per_gb": 13.6364,
+          "total": 300
         },
         {
           "gb": 53,
-          "price_per_gb": 12.4528
+          "price_per_gb": 12.4528,
+          "total": 660
         },
         {
           "gb": 150,
-          "price_per_gb": 10
+          "price_per_gb": 10,
+          "total": 1500
         },
         {
           "gb": 300,
-          "price_per_gb": 8.5
+          "price_per_gb": 8.5,
+          "total": 2550
         },
         {
           "gb": 500,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 4000
         }
       ]
     },
@@ -694,59 +822,73 @@
       "tiers": [
         {
           "gb": 5,
-          "price_per_gb": 4.85
+          "price_per_gb": 4.85,
+          "total": 24.25
         },
         {
           "gb": 10,
-          "price_per_gb": 4.75
+          "price_per_gb": 4.75,
+          "total": 47.5
         },
         {
           "gb": 20,
-          "price_per_gb": 4.5
+          "price_per_gb": 4.5,
+          "total": 90
         },
         {
           "gb": 40,
-          "price_per_gb": 4.25
+          "price_per_gb": 4.25,
+          "total": 170
         },
         {
           "gb": 75,
-          "price_per_gb": 4
+          "price_per_gb": 4,
+          "total": 300
         },
         {
           "gb": 100,
-          "price_per_gb": 3.75
+          "price_per_gb": 3.75,
+          "total": 375
         },
         {
           "gb": 150,
-          "price_per_gb": 3.5
+          "price_per_gb": 3.5,
+          "total": 525
         },
         {
           "gb": 500,
-          "price_per_gb": 2.75
+          "price_per_gb": 2.75,
+          "total": 1375
         },
         {
           "gb": 750,
-          "price_per_gb": 2.5
+          "price_per_gb": 2.5,
+          "total": 1875
         },
         {
           "gb": 1000,
-          "price_per_gb": 2
+          "price_per_gb": 2,
+          "total": 2000
         },
         {
           "gb": 2000,
-          "price_per_gb": 1.85
+          "price_per_gb": 1.85,
+          "total": 3700
         },
         {
           "gb": 3000,
-          "price_per_gb": 1.7
+          "price_per_gb": 1.7,
+          "total": 5100
         },
         {
           "gb": 4000,
-          "price_per_gb": 1.6
+          "price_per_gb": 1.6,
+          "total": 6400
         },
         {
           "gb": 5000,
-          "price_per_gb": 1.5
+          "price_per_gb": 1.5,
+          "total": 7500
         }
       ]
     },
@@ -758,15 +900,18 @@
       "tiers": [
         {
           "gb": 2,
-          "price_per_gb": 25
+          "price_per_gb": 25,
+          "total": 50
         },
         {
           "gb": 15,
-          "price_per_gb": 20
+          "price_per_gb": 20,
+          "total": 300
         },
         {
           "gb": 40,
-          "price_per_gb": 15
+          "price_per_gb": 15,
+          "total": 600
         }
       ]
     },
@@ -778,19 +923,23 @@
       "tiers": [
         {
           "gb": 25,
-          "price_per_gb": 3.6
+          "price_per_gb": 3.6,
+          "total": 90
         },
         {
           "gb": 50,
-          "price_per_gb": 3.4
+          "price_per_gb": 3.4,
+          "total": 170
         },
         {
           "gb": 300,
-          "price_per_gb": 2.4667
+          "price_per_gb": 2.4667,
+          "total": 740
         },
         {
           "gb": 800,
-          "price_per_gb": 2
+          "price_per_gb": 2,
+          "total": 1600
         }
       ]
     },
@@ -802,23 +951,28 @@
       "tiers": [
         {
           "gb": 50,
-          "price_per_gb": 0.98
+          "price_per_gb": 0.98,
+          "total": 49
         },
         {
           "gb": 100,
-          "price_per_gb": 0.99
+          "price_per_gb": 0.99,
+          "total": 99
         },
         {
           "gb": 250,
-          "price_per_gb": 0.996
+          "price_per_gb": 0.996,
+          "total": 249
         },
         {
           "gb": 500,
-          "price_per_gb": 0.998
+          "price_per_gb": 0.998,
+          "total": 499
         },
         {
           "gb": 1000,
-          "price_per_gb": 0.999
+          "price_per_gb": 0.999,
+          "total": 999
         }
       ]
     },
@@ -830,27 +984,33 @@
       "tiers": [
         {
           "gb": 1,
-          "price_per_gb": 4
+          "price_per_gb": 4,
+          "total": 4
         },
         {
           "gb": 50,
-          "price_per_gb": 3.2
+          "price_per_gb": 3.2,
+          "total": 160
         },
         {
           "gb": 500,
-          "price_per_gb": 2.5
+          "price_per_gb": 2.5,
+          "total": 1250
         },
         {
           "gb": 1500,
-          "price_per_gb": 2.15
+          "price_per_gb": 2.15,
+          "total": 3225
         },
         {
           "gb": 2500,
-          "price_per_gb": 1.9
+          "price_per_gb": 1.9,
+          "total": 4750
         },
         {
           "gb": 3500,
-          "price_per_gb": 1.7
+          "price_per_gb": 1.7,
+          "total": 5950
         }
       ]
     },
@@ -862,15 +1022,18 @@
       "tiers": [
         {
           "gb": 5,
-          "price_per_gb": 15
+          "price_per_gb": 15,
+          "total": 75
         },
         {
           "gb": 25,
-          "price_per_gb": 13
+          "price_per_gb": 13,
+          "total": 325
         },
         {
           "gb": 60,
-          "price_per_gb": 11
+          "price_per_gb": 11,
+          "total": 660
         }
       ]
     },
@@ -883,6 +1046,7 @@
         {
           "gb": 1,
           "price_per_gb": 3,
+          "total": 3,
           "is_payg": true
         }
       ]
@@ -896,19 +1060,23 @@
         {
           "gb": 1,
           "price_per_gb": 8,
+          "total": 8,
           "is_payg": true
         },
         {
           "gb": 71,
-          "price_per_gb": 7.0282
+          "price_per_gb": 7.0282,
+          "total": 499
         },
         {
           "gb": 166,
-          "price_per_gb": 6.0181
+          "price_per_gb": 6.0181,
+          "total": 999
         },
         {
           "gb": 399,
-          "price_per_gb": 5.01
+          "price_per_gb": 5.01,
+          "total": 1999
         }
       ]
     },
@@ -921,47 +1089,58 @@
         {
           "gb": 1,
           "price_per_gb": 7,
+          "total": 7,
           "is_payg": true
         },
         {
           "gb": 2,
-          "price_per_gb": 6
+          "price_per_gb": 6,
+          "total": 12
         },
         {
           "gb": 8,
-          "price_per_gb": 5.5
+          "price_per_gb": 5.5,
+          "total": 44
         },
         {
           "gb": 25,
-          "price_per_gb": 5.2
+          "price_per_gb": 5.2,
+          "total": 130
         },
         {
           "gb": 50,
-          "price_per_gb": 4.9
+          "price_per_gb": 4.9,
+          "total": 245
         },
         {
           "gb": 100,
-          "price_per_gb": 4.5
+          "price_per_gb": 4.5,
+          "total": 450
         },
         {
           "gb": 250,
-          "price_per_gb": 4
+          "price_per_gb": 4,
+          "total": 1000
         },
         {
           "gb": 500,
-          "price_per_gb": 3.5
+          "price_per_gb": 3.5,
+          "total": 1750
         },
         {
           "gb": 1000,
-          "price_per_gb": 3
+          "price_per_gb": 3,
+          "total": 3000
         },
         {
           "gb": 2000,
-          "price_per_gb": 2.8
+          "price_per_gb": 2.8,
+          "total": 5600
         },
         {
           "gb": 5000,
-          "price_per_gb": 2.2
+          "price_per_gb": 2.2,
+          "total": 11000
         }
       ]
     },
@@ -973,27 +1152,33 @@
       "tiers": [
         {
           "gb": 1,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 8
         },
         {
           "gb": 3,
-          "price_per_gb": 7
+          "price_per_gb": 7,
+          "total": 21
         },
         {
           "gb": 6.9984,
-          "price_per_gb": 6.43
+          "price_per_gb": 6.43,
+          "total": 45
         },
         {
           "gb": 30,
-          "price_per_gb": 5
+          "price_per_gb": 5,
+          "total": 150
         },
         {
           "gb": 50,
-          "price_per_gb": 4
+          "price_per_gb": 4,
+          "total": 200
         },
         {
           "gb": 1023.8908,
-          "price_per_gb": 2.93
+          "price_per_gb": 2.93,
+          "total": 3000
         }
       ]
     },
@@ -1005,27 +1190,33 @@
       "tiers": [
         {
           "gb": 1,
-          "price_per_gb": 4
+          "price_per_gb": 4,
+          "total": 4
         },
         {
           "gb": 50,
-          "price_per_gb": 3.2
+          "price_per_gb": 3.2,
+          "total": 160
         },
         {
           "gb": 500,
-          "price_per_gb": 2.5
+          "price_per_gb": 2.5,
+          "total": 1250
         },
         {
           "gb": 1500,
-          "price_per_gb": 2.15
+          "price_per_gb": 2.15,
+          "total": 3225
         },
         {
           "gb": 2500,
-          "price_per_gb": 1.9
+          "price_per_gb": 1.9,
+          "total": 4750
         },
         {
           "gb": 3500,
-          "price_per_gb": 1.7
+          "price_per_gb": 1.7,
+          "total": 5950
         }
       ]
     },
@@ -1037,19 +1228,23 @@
       "tiers": [
         {
           "gb": 50,
-          "price_per_gb": 1.98
+          "price_per_gb": 1.98,
+          "total": 99
         },
         {
           "gb": 125,
-          "price_per_gb": 1.992
+          "price_per_gb": 1.992,
+          "total": 249
         },
         {
           "gb": 250,
-          "price_per_gb": 1.996
+          "price_per_gb": 1.996,
+          "total": 499
         },
         {
           "gb": 500,
-          "price_per_gb": 1.998
+          "price_per_gb": 1.998,
+          "total": 999
         }
       ]
     },
@@ -1062,16 +1257,19 @@
         {
           "gb": 1,
           "price_per_gb": 5,
+          "total": 5,
           "is_payg": true
         },
         {
           "gb": 1,
           "price_per_gb": 4,
+          "total": 4,
           "is_payg": true
         },
         {
           "gb": 1,
           "price_per_gb": 3,
+          "total": 3,
           "is_payg": true
         }
       ]
@@ -1084,27 +1282,33 @@
       "tiers": [
         {
           "gb": 8,
-          "price_per_gb": 12
+          "price_per_gb": 12,
+          "total": 96
         },
         {
           "gb": 40,
-          "price_per_gb": 9
+          "price_per_gb": 9,
+          "total": 360
         },
         {
           "gb": 100,
-          "price_per_gb": 7
+          "price_per_gb": 7,
+          "total": 700
         },
         {
           "gb": 400,
-          "price_per_gb": 6
+          "price_per_gb": 6,
+          "total": 2400
         },
         {
           "gb": 96,
-          "price_per_gb": 9.6042
+          "price_per_gb": 9.6042,
+          "total": 922
         },
         {
           "gb": 480,
-          "price_per_gb": 7.2
+          "price_per_gb": 7.2,
+          "total": 3456
         }
       ]
     },
@@ -1116,19 +1320,23 @@
       "tiers": [
         {
           "gb": 1,
-          "price_per_gb": 7
+          "price_per_gb": 7,
+          "total": 7
         },
         {
           "gb": 2,
-          "price_per_gb": 5.95
+          "price_per_gb": 5.95,
+          "total": 11.9
         },
         {
           "gb": 10,
-          "price_per_gb": 5.25
+          "price_per_gb": 5.25,
+          "total": 52.5
         },
         {
           "gb": 50,
-          "price_per_gb": 4.9
+          "price_per_gb": 4.9,
+          "total": 245
         }
       ]
     },
@@ -1140,43 +1348,53 @@
       "tiers": [
         {
           "gb": 20,
-          "price_per_gb": 15
+          "price_per_gb": 15,
+          "total": 300
         },
         {
           "gb": 50,
-          "price_per_gb": 12
+          "price_per_gb": 12,
+          "total": 600
         },
         {
           "gb": 100,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 800
         },
         {
           "gb": 250,
-          "price_per_gb": 6.5
+          "price_per_gb": 6.5,
+          "total": 1625
         },
         {
           "gb": 500,
-          "price_per_gb": 5
+          "price_per_gb": 5,
+          "total": 2500
         },
         {
           "gb": 20,
-          "price_per_gb": 162
+          "price_per_gb": 162,
+          "total": 3240
         },
         {
           "gb": 50,
-          "price_per_gb": 129.6
+          "price_per_gb": 129.6,
+          "total": 6480
         },
         {
           "gb": 100,
-          "price_per_gb": 86.4
+          "price_per_gb": 86.4,
+          "total": 8640
         },
         {
           "gb": 250,
-          "price_per_gb": 70.2
+          "price_per_gb": 70.2,
+          "total": 17550
         },
         {
           "gb": 500,
-          "price_per_gb": 5
+          "price_per_gb": 5,
+          "total": 2500
         }
       ]
     },
@@ -1188,27 +1406,33 @@
       "tiers": [
         {
           "gb": 65.2174,
-          "price_per_gb": 9.2
+          "price_per_gb": 9.2,
+          "total": 600
         },
         {
           "gb": 213.3333,
-          "price_per_gb": 7.5
+          "price_per_gb": 7.5,
+          "total": 1600
         },
         {
           "gb": 654.5455,
-          "price_per_gb": 5.5
+          "price_per_gb": 5.5,
+          "total": 3600
         },
         {
           "gb": 75,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 600
         },
         {
           "gb": 246.1538,
-          "price_per_gb": 6.5
+          "price_per_gb": 6.5,
+          "total": 1600
         },
         {
           "gb": 750,
-          "price_per_gb": 4.8
+          "price_per_gb": 4.8,
+          "total": 3600
         }
       ]
     },
@@ -1220,23 +1444,28 @@
       "tiers": [
         {
           "gb": 11,
-          "price_per_gb": 9
+          "price_per_gb": 9,
+          "total": 99
         },
         {
           "gb": 38,
-          "price_per_gb": 7.8947
+          "price_per_gb": 7.8947,
+          "total": 300
         },
         {
           "gb": 86,
-          "price_per_gb": 6.9767
+          "price_per_gb": 6.9767,
+          "total": 600
         },
         {
           "gb": 133,
-          "price_per_gb": 6.015
+          "price_per_gb": 6.015,
+          "total": 800
         },
         {
           "gb": 318,
-          "price_per_gb": 5.5031
+          "price_per_gb": 5.5031,
+          "total": 1750
         }
       ]
     },
@@ -1248,19 +1477,23 @@
       "tiers": [
         {
           "gb": 50,
-          "price_per_gb": 1
+          "price_per_gb": 1,
+          "total": 50
         },
         {
           "gb": 100,
-          "price_per_gb": 1
+          "price_per_gb": 1,
+          "total": 100
         },
         {
           "gb": 250,
-          "price_per_gb": 1
+          "price_per_gb": 1,
+          "total": 250
         },
         {
           "gb": 500,
-          "price_per_gb": 1
+          "price_per_gb": 1,
+          "total": 500
         }
       ]
     },
@@ -1272,31 +1505,38 @@
       "tiers": [
         {
           "gb": 5,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 40
         },
         {
           "gb": 25,
-          "price_per_gb": 6
+          "price_per_gb": 6,
+          "total": 150
         },
         {
           "gb": 55,
-          "price_per_gb": 5.4545
+          "price_per_gb": 5.4545,
+          "total": 300
         },
         {
           "gb": 120,
-          "price_per_gb": 5
+          "price_per_gb": 5,
+          "total": 600
         },
         {
           "gb": 300,
-          "price_per_gb": 4.1667
+          "price_per_gb": 4.1667,
+          "total": 1250
         },
         {
           "gb": 500,
-          "price_per_gb": 3.5
+          "price_per_gb": 3.5,
+          "total": 1750
         },
         {
           "gb": 1000,
-          "price_per_gb": 3
+          "price_per_gb": 3,
+          "total": 3000
         }
       ]
     },
@@ -1308,31 +1548,38 @@
       "tiers": [
         {
           "gb": 2,
-          "price_per_gb": 25
+          "price_per_gb": 25,
+          "total": 50
         },
         {
           "gb": 5,
-          "price_per_gb": 20
+          "price_per_gb": 20,
+          "total": 100
         },
         {
           "gb": 10,
-          "price_per_gb": 15
+          "price_per_gb": 15,
+          "total": 150
         },
         {
           "gb": 25,
-          "price_per_gb": 10
+          "price_per_gb": 10,
+          "total": 250
         },
         {
           "gb": 50,
-          "price_per_gb": 8
+          "price_per_gb": 8,
+          "total": 400
         },
         {
           "gb": 100,
-          "price_per_gb": 6
+          "price_per_gb": 6,
+          "total": 600
         },
         {
           "gb": 400,
-          "price_per_gb": 2.5
+          "price_per_gb": 2.5,
+          "total": 1000
         }
       ]
     },
@@ -1344,31 +1591,38 @@
       "tiers": [
         {
           "gb": 10,
-          "price_per_gb": 4.995
+          "price_per_gb": 4.995,
+          "total": 49.95
         },
         {
           "gb": 20,
-          "price_per_gb": 4.4975
+          "price_per_gb": 4.4975,
+          "total": 89.95
         },
         {
           "gb": 50,
-          "price_per_gb": 3.999
+          "price_per_gb": 3.999,
+          "total": 199.95
         },
         {
           "gb": 100,
-          "price_per_gb": 3.4995
+          "price_per_gb": 3.4995,
+          "total": 349.95
         },
         {
           "gb": 200,
-          "price_per_gb": 2.9998
+          "price_per_gb": 2.9998,
+          "total": 599.95
         },
         {
           "gb": 500,
-          "price_per_gb": 2.4999
+          "price_per_gb": 2.4999,
+          "total": 1249.95
         },
         {
           "gb": 1000,
-          "price_per_gb": 2.2499
+          "price_per_gb": 2.2499,
+          "total": 2249.95
         }
       ]
     },
@@ -1380,59 +1634,73 @@
       "tiers": [
         {
           "gb": 5,
-          "price_per_gb": 4.85
+          "price_per_gb": 4.85,
+          "total": 24.25
         },
         {
           "gb": 10,
-          "price_per_gb": 4.75
+          "price_per_gb": 4.75,
+          "total": 47.5
         },
         {
           "gb": 20,
-          "price_per_gb": 4.5
+          "price_per_gb": 4.5,
+          "total": 90
         },
         {
           "gb": 40,
-          "price_per_gb": 4.25
+          "price_per_gb": 4.25,
+          "total": 170
         },
         {
           "gb": 75,
-          "price_per_gb": 4
+          "price_per_gb": 4,
+          "total": 300
         },
         {
           "gb": 100,
-          "price_per_gb": 3.75
+          "price_per_gb": 3.75,
+          "total": 375
         },
         {
           "gb": 150,
-          "price_per_gb": 3.5
+          "price_per_gb": 3.5,
+          "total": 525
         },
         {
           "gb": 500,
-          "price_per_gb": 2.75
+          "price_per_gb": 2.75,
+          "total": 1375
         },
         {
           "gb": 750,
-          "price_per_gb": 2.5
+          "price_per_gb": 2.5,
+          "total": 1875
         },
         {
           "gb": 1000,
-          "price_per_gb": 2
+          "price_per_gb": 2,
+          "total": 2000
         },
         {
           "gb": 2000,
-          "price_per_gb": 1.85
+          "price_per_gb": 1.85,
+          "total": 3700
         },
         {
           "gb": 3000,
-          "price_per_gb": 1.7
+          "price_per_gb": 1.7,
+          "total": 5100
         },
         {
           "gb": 4000,
-          "price_per_gb": 1.6
+          "price_per_gb": 1.6,
+          "total": 6400
         },
         {
           "gb": 5000,
-          "price_per_gb": 1.5
+          "price_per_gb": 1.5,
+          "total": 7500
         }
       ]
     },
@@ -1445,31 +1713,37 @@
         {
           "gb": 1,
           "price_per_gb": 7.5,
+          "total": 7.5,
           "is_payg": true
         },
         {
           "gb": 1,
           "price_per_gb": 6.25,
+          "total": 6.25,
           "is_payg": true
         },
         {
           "gb": 1,
           "price_per_gb": 3.5,
+          "total": 3.5,
           "is_payg": true
         },
         {
           "gb": 1,
           "price_per_gb": 3,
+          "total": 3,
           "is_payg": true
         },
         {
           "gb": 1,
           "price_per_gb": 2.5,
+          "total": 2.5,
           "is_payg": true
         },
         {
           "gb": 1,
           "price_per_gb": 2,
+          "total": 2,
           "is_payg": true
         }
       ]
@@ -1482,19 +1756,23 @@
       "tiers": [
         {
           "gb": 200,
-          "price_per_gb": 1
+          "price_per_gb": 1,
+          "total": 199.99
         },
         {
           "gb": 400,
-          "price_per_gb": 0.75
+          "price_per_gb": 0.75,
+          "total": 299.99
         },
         {
           "gb": 200,
-          "price_per_gb": 0.4999
+          "price_per_gb": 0.4999,
+          "total": 99.98
         },
         {
           "gb": 400,
-          "price_per_gb": 0.3749
+          "price_per_gb": 0.3749,
+          "total": 149.98
         }
       ]
     },
@@ -1506,19 +1784,23 @@
       "tiers": [
         {
           "gb": 25,
-          "price_per_gb": 3.6
+          "price_per_gb": 3.6,
+          "total": 90
         },
         {
           "gb": 50,
-          "price_per_gb": 3.4
+          "price_per_gb": 3.4,
+          "total": 170
         },
         {
           "gb": 300,
-          "price_per_gb": 2.4667
+          "price_per_gb": 2.4667,
+          "total": 740
         },
         {
           "gb": 800,
-          "price_per_gb": 2
+          "price_per_gb": 2,
+          "total": 1600
         }
       ]
     },
@@ -1530,39 +1812,48 @@
       "tiers": [
         {
           "gb": 1,
-          "price_per_gb": 7
+          "price_per_gb": 7,
+          "total": 7
         },
         {
           "gb": 10,
-          "price_per_gb": 6
+          "price_per_gb": 6,
+          "total": 60
         },
         {
           "gb": 25,
-          "price_per_gb": 5.5
+          "price_per_gb": 5.5,
+          "total": 137.5
         },
         {
           "gb": 50,
-          "price_per_gb": 5.5
+          "price_per_gb": 5.5,
+          "total": 275
         },
         {
           "gb": 100,
-          "price_per_gb": 5.5
+          "price_per_gb": 5.5,
+          "total": 550
         },
         {
           "gb": 250,
-          "price_per_gb": 5.25
+          "price_per_gb": 5.25,
+          "total": 1312.5
         },
         {
           "gb": 500,
-          "price_per_gb": 5
+          "price_per_gb": 5,
+          "total": 2500
         },
         {
           "gb": 1000,
-          "price_per_gb": 4.5
+          "price_per_gb": 4.5,
+          "total": 4500.01
         },
         {
           "gb": 3000,
-          "price_per_gb": 4.5
+          "price_per_gb": 4.5,
+          "total": 13500.02
         }
       ]
     }

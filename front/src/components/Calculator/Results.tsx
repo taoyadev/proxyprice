@@ -7,6 +7,13 @@ import { getFaviconUrl } from "../../lib/favicon";
 import type { Recommendation, FallbackProvider } from "./types";
 import { PresetIcon } from "./Presets";
 
+const formatUsd = (amount: number): string =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 2,
+  }).format(amount);
+
 interface ResultsSummaryProps {
   count: number;
   bandwidth: number;
@@ -110,7 +117,7 @@ export const RecommendationCard: FunctionalComponent<
 
         <div class="rec-price-row">
           <div class="rec-price">
-            <strong>${rec.monthlyCost}</strong>
+            <strong>{formatUsd(rec.monthlyCost)}</strong>
             <span class="rec-period">/month</span>
           </div>
           <div class="rec-rate">${rec.pricePerGb.toFixed(2)}/GB</div>
@@ -136,7 +143,9 @@ export const RecommendationCard: FunctionalComponent<
 
         <div class="rec-meta">{rec.tierLabel}</div>
         <div class="rec-meta">
-          Estimated monthly cost = requested bandwidth x selected per-GB rate.
+          {rec.costBasis === "payg_estimate"
+            ? "Estimated PAYG cost uses your requested bandwidth."
+            : "Listed plan price for the smallest-cost tier that covers your requested bandwidth."}
         </div>
 
         {rec.savingsPercent && (

@@ -37,6 +37,7 @@ for (const record of pricingRaw.pricing) {
       .map((tier) => ({
         ...(isFiniteNumber(tier.gb) ? { gb: tier.gb } : {}),
         price_per_gb: tier.price_per_gb,
+        ...(isFiniteNumber(tier.total) ? { total: tier.total } : {}),
         ...(tier.is_payg === true ? { is_payg: true } : {}),
       }));
 

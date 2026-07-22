@@ -1,0 +1,39 @@
+# ProxyPrice
+
+> An independent proxy-price comparison tool. It normalizes publicly listed proxy plans to cost per GB only when the math is fair, and keeps per-IP, per-proxy, per-thread, and quote-only plans separate.
+
+Data snapshot: 2026-06-01. The current dataset covers 43 providers, 131 pricing records, and 48 directly comparable records.
+
+## Primary tasks
+
+- Compare residential, datacenter, mobile, and ISP proxy prices: https://proxyprice.com/providers/
+- Estimate the lowest published comparable plan for a bandwidth need: https://proxyprice.com/calculator/
+- Review collection, normalization, exclusions, and freshness limits: https://proxyprice.com/methodology/
+- Inspect a provider's cited official pricing sources: https://proxyprice.com/provider/{provider-slug}/
+
+## Important limits
+
+- Rankings use published, comparable $/GB rates; they are not a quality, reliability, or suitability ranking.
+- Prices can change. Confirm final terms, availability, and promotions with the provider before purchase.
+- ProxyPrice does not sell proxy plans. Affiliate availability does not alter price sorting or comparability labels.
+
+## Machine-readable resources
+
+- API catalog: https://proxyprice.com/.well-known/api-catalog
+- OpenAPI description for the public candidate export: https://proxyprice.com/openapi.json
+- Public merchant-intelligence candidate export (9 records): https://proxyprice.com/api/v1/export/proxy-merchant-intel-candidates.json
+- Agent skill: https://proxyprice.com/agent-skills/proxy-price-comparison/SKILL.md
+- Browser agents with WebMCP support can invoke the read-only calculator tool `compare_proxy_prices` on https://proxyprice.com/calculator/
+- XML sitemap: https://proxyprice.com/sitemap-index.xml
+
+## Core pages
+
+- [Residential proxies](https://proxyprice.com/residential/)
+- [Datacenter proxies](https://proxyprice.com/datacenter/)
+- [Mobile proxies](https://proxyprice.com/mobile/)
+- [ISP proxies](https://proxyprice.com/isp/)
+- [Best providers by type](https://proxyprice.com/best/)
+- [All providers](https://proxyprice.com/providers/)
+- [Price calculator](https://proxyprice.com/calculator/)
+- [Methodology](https://proxyprice.com/methodology/)
+- [About ProxyPrice](https://proxyprice.com/about/)
