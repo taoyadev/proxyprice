@@ -1,6 +1,6 @@
 ---
 /**
- * TrustBadge - Reusable component displaying monthly review and verification status
+ * TrustBadge - Reusable component displaying a dated data snapshot
  *
  * @param lastUpdated - Date string when data was last updated
  * @param showFullDate - If true, shows full date instead of relative time
@@ -40,10 +40,10 @@ const getDateInfo = (dateStr: string | undefined) => {
 
   return {
     text: showFullDate
-      ? `Reviewed ${longDate}`
-      : 'Reviewed monthly',
+      ? `Data snapshot: ${longDate}`
+      : 'Data snapshot',
     fullDate: longDate,
-    title: `Last review: ${longDate}`,
+    title: `Last synchronized: ${longDate}`,
   };
 };
 

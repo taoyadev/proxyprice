@@ -36,6 +36,14 @@ export default defineConfig({
         // Affiliate redirect pages are not content pages and should not be crawled.
         if (pathname.startsWith("/go/")) return false;
 
+        // These are intentionally noindex detail/template routes. Do not send
+        // contradictory crawl signals by listing them in the XML sitemap.
+        if (
+          /^\/(compare|pricing|features|use-cases)\/[^/]+\/$/.test(pathname)
+        ) {
+          return false;
+        }
+
         // Keep provider sitemap entries aligned with the page-level noindex gate.
         if (pathname.startsWith("/provider/")) {
           return indexableProviderPaths.has(pathname.endsWith("/") ? pathname : `${pathname}/`);

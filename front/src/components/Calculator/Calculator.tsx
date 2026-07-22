@@ -19,6 +19,7 @@ import {
 } from "./compute";
 import { Inputs } from "./Inputs";
 import { Results } from "./Results";
+import WebMcpCalculatorTools from "./WebMcpCalculatorTools";
 
 const Calculator: FunctionalComponent = () => {
   // Component-level signals (initialized with defaults, updated on client)
@@ -135,6 +136,7 @@ const Calculator: FunctionalComponent = () => {
 
   return (
     <div class="calculator">
+      <WebMcpCalculatorTools />
       <Inputs
         bandwidth={bandwidth.value}
         proxyType={proxyType.value}

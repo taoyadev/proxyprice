@@ -326,6 +326,12 @@ for (const imgPath of imageFiles) {
 const requiredFiles = [
   { path: "robots.txt", optional: false },
   { path: "sitemap-index.xml", optional: false },
+  { path: "llms.txt", optional: false },
+  { path: ".well-known/llms.txt", optional: false },
+  { path: ".well-known/api-catalog", optional: false },
+  { path: ".well-known/agent-skills/index.json", optional: false },
+  { path: "agent-skills/proxy-price-comparison/SKILL.md", optional: false },
+  { path: "openapi.json", optional: false },
   { path: "api/v1/export/proxy-merchant-intel-candidates.json", optional: false },
   { path: "og-image.svg", optional: false },
   { path: "CNAME", optional: true }, // Only needed for custom domains

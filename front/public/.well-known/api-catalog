@@ -1,0 +1,19 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://proxyprice.com/api/v1/export/proxy-merchant-intel-candidates.json",
+      "service-desc": [
+        {
+          "href": "https://proxyprice.com/openapi.json",
+          "type": "application/vnd.oai.openapi+json;version=3.1"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://proxyprice.com/llms.txt",
+          "type": "text/markdown"
+        }
+      ]
+    }
+  ]
+}

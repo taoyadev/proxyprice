@@ -11,6 +11,9 @@ import calculatorData from "../../data/calculator-data.json";
 // Re-export the popular providers set for use in components
 export { MOST_POPULAR_PROVIDERS };
 
+const roundCurrency = (amount: number): number =>
+  Math.round((amount + Number.EPSILON) * 100) / 100;
+
 /**
  * Compute provider recommendations based on bandwidth and proxy type
  * @param gb - Monthly bandwidth in GB
@@ -30,26 +33,41 @@ export function computeRecommendations(
   for (const pricing of relevant) {
     const tiers = pricing.tiers;
 
-    // Find the best tier for this bandwidth
+    // Find the lowest purchasable plan that covers this bandwidth. A volume
+    // discount only applies when a visitor can actually buy that volume tier;
+    // PAYG remains proportional to the requested bandwidth.
     let bestTier: (typeof tiers)[number] | null = null;
+    let bestTierCost = Number.POSITIVE_INFINITY;
     for (const tier of tiers) {
       const covers =
         tier.is_payg === true || (typeof tier.gb === "number" && tier.gb >= gb);
       if (!covers) continue;
 
+      const isPAYG = tier.is_payg === true;
+      const tierCost = isPAYG
+        ? tier.price_per_gb * gb
+        : typeof tier.total === "number"
+          ? tier.total
+          : typeof tier.gb === "number"
+            ? tier.price_per_gb * tier.gb
+            : Number.POSITIVE_INFINITY;
+
       if (
         !bestTier ||
-        tier.price_per_gb < bestTier.price_per_gb
+        tierCost < bestTierCost ||
+        (tierCost === bestTierCost && tier.price_per_gb < bestTier.price_per_gb)
       ) {
         bestTier = tier;
+        bestTierCost = tierCost;
       }
     }
 
     if (bestTier?.price_per_gb) {
       const isPAYG = bestTier.is_payg === true;
+      const monthlyCost = roundCurrency(bestTierCost);
       const tierLabel = isPAYG
         ? `PAYG at $${bestTier.price_per_gb.toFixed(2)}/GB`
-        : `${bestTier.gb} GB tier at $${bestTier.price_per_gb.toFixed(2)}/GB`;
+        : `${bestTier.gb} GB plan for $${monthlyCost.toFixed(2)} ($${bestTier.price_per_gb.toFixed(2)}/GB)`;
 
       let reason = "";
       if (isPAYG) {
@@ -57,14 +75,14 @@ export function computeRecommendations(
       } else if (bestTier.gb === gb) {
         reason = "Exact tier match for your bandwidth";
       } else {
-        reason = `Best rate for ${gb}GB usage`;
+        reason = `Lowest priced plan that covers ${gb}GB`;
       }
       const isMostPopular = MOST_POPULAR_PROVIDERS.has(pricing.provider_id);
 
       recs.push({
         provider: pricing.provider_name,
         proxyType: pricing.proxy_type,
-        monthlyCost: Math.ceil(bestTier.price_per_gb * gb),
+        monthlyCost,
         pricePerGb: bestTier.price_per_gb,
         tierLabel,
         provider_id: pricing.provider_id,
@@ -73,6 +91,7 @@ export function computeRecommendations(
         isBestValue: false,
         isMostPopular,
         isPAYG,
+        costBasis: isPAYG ? "payg_estimate" : "listed_plan_price",
       });
     }
   }
@@ -84,7 +103,7 @@ export function computeRecommendations(
   if (recs.length > 0) {
     const lowestCost = recs[0].monthlyCost;
     recs[0].isBestValue = true;
-    if (recs[0].reason === `Best rate for ${gb}GB usage`) {
+    if (recs[0].reason === `Lowest priced plan that covers ${gb}GB`) {
       recs[0].reason = "Lowest cost for your bandwidth";
     }
 
